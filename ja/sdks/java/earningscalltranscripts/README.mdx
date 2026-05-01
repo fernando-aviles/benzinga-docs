@@ -1,5 +1,5 @@
 ---
-title: "決算説明会の書き起こし"
+title: "決算説明会トランスクリプト"
 description: earningsCallTranscripts()
 ---
 
@@ -13,14 +13,14 @@ description: earningsCallTranscripts()
   ### 利用可能な操作
 </div>
 
-* [get](#get) - 決算説明会の書き起こしを取得
-* [getAudio](#getaudio) - 決算説明会の書き起こし音声ファイルを取得
+* [get](#get) - 決算説明会トランスクリプトを取得
+* [getAudio](#getaudio) - 決算説明会トランスクリプトの音声ファイルを取得
 
 <div id="get">
   ## get
 </div>
 
-決算説明会の文字起こしを取得する
+決算説明会トランスクリプトを取得
 
 <div id="example-usage">
   ### 使用例
@@ -62,12 +62,12 @@ public class Application {
   ### パラメータ
 </div>
 
-| パラメータ         | 型                 | 必須               | 説明               |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `tickers`          | List&lt;*String*&gt;    | :heavy&#95;minus&#95;sign: | ティッカー         |
-| `callId`           | List&lt;*String*&gt;    | :heavy&#95;minus&#95;sign: | コールID           |
-| `page`             | *Optional&lt;Long&gt;*  | :heavy&#95;minus&#95;sign: | ページ             |
-| `pagesize`         | *Optional&lt;Long&gt;*  | :heavy&#95;minus&#95;sign: | ページサイズ       |
+| パラメータ      | 型                      | 必須                         | 説明     |
+| ---------- | ---------------------- | -------------------------- | ------ |
+| `tickers`  | List&lt;*String*&gt;   | :heavy&#95;minus&#95;sign: | ティッカー  |
+| `callId`   | List&lt;*String*&gt;   | :heavy&#95;minus&#95;sign: | コール ID |
+| `page`     | *Optional&lt;Long&gt;* | :heavy&#95;minus&#95;sign: | ページ    |
+| `pagesize` | *Optional&lt;Long&gt;* | :heavy&#95;minus&#95;sign: | ページサイズ |
 
 <div id="response">
   ### レスポンス
@@ -79,15 +79,15 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                 | ステータスコード           | コンテンツタイプ           |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| エラー種別                      | ステータスコード | コンテンツタイプ |
+| -------------------------- | -------- | -------- |
+| models/errors/APIException | 4XX, 5XX | */*      |
 
 <div id="getaudio">
   ## getAudio
 </div>
 
-Earnings Call Transcript の音声ファイルを取得します
+決算説明会トランスクリプトの音声ファイルを取得する
 
 <div id="example-usage">
   ### 使用例
@@ -119,7 +119,7 @@ public class Application {
                 .call();
 
         if (res.modelsTranscriptSummaryAudios().isPresent()) {
-            // レスポンスを処理
+            // レスポンスを処理する
         }
     }
 }
@@ -129,12 +129,12 @@ public class Application {
   ### パラメータ
 </div>
 
-| パラメータ         | 型                 | 必須               | 説明               |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `tickers`          | List&lt;*String*&gt;    | :heavy&#95;minus&#95;sign: | ティッカー         |
-| `callId`           | List&lt;*String*&gt;    | :heavy&#95;minus&#95;sign: | コールID           |
-| `page`             | *Optional&lt;Long&gt;*  | :heavy&#95;minus&#95;sign: | ページ             |
-| `pagesize`         | *Optional&lt;Long&gt;*  | :heavy&#95;minus&#95;sign: | ページサイズ       |
+| パラメータ      | 型                      | 必須                         | 説明     |
+| ---------- | ---------------------- | -------------------------- | ------ |
+| `tickers`  | List&lt;*String*&gt;   | :heavy&#95;minus&#95;sign: | ティッカー  |
+| `callId`   | List&lt;*String*&gt;   | :heavy&#95;minus&#95;sign: | コールID  |
+| `page`     | *Optional&lt;Long&gt;* | :heavy&#95;minus&#95;sign: | ページ番号  |
+| `pagesize` | *Optional&lt;Long&gt;* | :heavy&#95;minus&#95;sign: | ページサイズ |
 
 <div id="response">
   ### レスポンス
@@ -146,6 +146,6 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                 | ステータスコード           | コンテンツタイプ           |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| エラー種別                      | ステータスコード | コンテンツタイプ |
+| -------------------------- | -------- | -------- |
+| models/errors/APIException | 4XX, 5XX | */*      |

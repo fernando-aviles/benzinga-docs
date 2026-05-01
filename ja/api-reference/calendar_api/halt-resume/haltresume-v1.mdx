@@ -1,46 +1,49 @@
 ---
-title: "Haltresume"
-openapi: /ja/openapi/calendar_api.spec.yml GET /api/v1/signal/halt_resume
+title: "売買停止再開"
+openapi: /openapi/calendar_api.spec.yml GET /api/v1/signal/halt_resume
 ---
 
 <ResponseExample>
-    ```json Response (200 OK)
-    {}
-    ```
-    ```json Response (401 Unauthorized)
-    {
-      "ok": false,
-      "errors": [
-        {
-          "code": "auth_failed",
-          "id": "unauthorized",
-          "value": "Invalid or missing authentication token"
-        }
-      ]
-    }
-    ```
-    ```json Response (404 Not Found)
-    {
-      "ok": false,
-      "errors": [
-        {
-          "code": "no_data_found",
-          "id": "not_found",
-          "value": "No data found for the specified parameters"
-        }
-      ]
-    }
-    ```
-    ```json Response (500 Internal Server Error)
-    {
-      "ok": false,
-      "errors": [
-        {
-          "code": "internal_server_error",
-          "id": "server_error",
-          "value": "An unexpected error occurred while processing your request"
-        }
-      ]
-    }
-    ```
+  ```json レスポンス (200 OK)
+  {}
+  ```
+
+  ```json レスポンス（401 認証されていません）
+  {
+    "ok": false,
+    "errors": [
+      {
+        "code": "auth_failed",
+        "id": "unauthorized",
+        "value": "認証トークンが無効か、指定されていません"
+      }
+    ]
+  }
+  ```
+
+  ```json レスポンス（404 見つかりません）
+  {
+    "ok": false,
+    "errors": [
+      {
+        "code": "no_data_found",
+        "id": "not_found",
+        "value": "指定されたパラメータに一致するデータが見つかりません"
+      }
+    ]
+  }
+  ```
+
+  ```json レスポンス（500 内部サーバーエラー）
+  {
+    "ok": false,
+    "errors": [
+      {
+        "code": "internal_server_error",
+        "id": "server_error",
+        "value": "リクエストの処理中に予期しないエラーが発生しました"
+      }
+    ]
+  }
+  ```
 </ResponseExample>

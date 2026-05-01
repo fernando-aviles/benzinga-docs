@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   contact: {}
-  description: Webhook のテスト配信を行い、連携が正しく動作していることを確認します
+  description: Webhook配信をテストして、統合が正しく機能していることを確認します
   title: Webhook API
   version: 1.0.0
 servers:
@@ -9,14 +9,14 @@ servers:
 paths:
   /api/v1/webhook/test:
     get:
-      summary: Webhook 配信をテストする
-      description: このエンドポイントは、連携を確認できるように、テストデータを利用中のWebhookエンドポイントに送信します
+      summary: Webhook配信のテスト
+      description: このエンドポイントは、統合を確認できるように、Webhookエンドポイントへテストデータを送信します
       operationId: get-webhook-test
       parameters:
         - name: destination
           in: query
           required: true
-          description: テストデータの送信先となる webhook エンドポイントの url
+          description: テストデータの送信先となるWebhookエンドポイントURL
           schema:
             type: string
             format: uri
@@ -24,7 +24,7 @@ paths:
         - name: version
           in: query
           required: true
-          description: API バージョン。現在は webhook/v1。
+          description: APIバージョン。現在は webhook/v1
           schema:
             type: string
             enum:
@@ -33,7 +33,7 @@ paths:
         - name: kind
           in: query
           required: true
-          description: メッセージのkindを識別します。現在の値は「News/v1」です。
+          description: メッセージ種別を識別します。現在は ニュース/v1
           schema:
             type: string
             enum:
@@ -42,12 +42,12 @@ paths:
         - name: token
           in: query
           required: false
-          description: 本番利用向けにデータを変換するためのトークンを指定します
+          description: 本番利用向けにデータを変換するには、token を指定します
           schema:
             type: string
       responses:
         "200":
-          description: 成功 - テスト Webhook を正常に送信しました
+          description: 成功 - テストWebhook配信が正常に送信されました
           content:
             application/json:
               schema:
@@ -57,7 +57,7 @@ paths:
                     type: string
                     example: success
         "400":
-          description: 無効なリクエストです。詳細はレスポンスボディを確認してください。
+          description: 無効なリクエスト - 詳細はレスポンス本文を確認してください
           content:
             application/json:
               schema:
@@ -67,7 +67,7 @@ paths:
                     type: string
                     example: Invalid destination URL
         "424":
-          description: 配信エラー - テストペイロードの配信中にシステムでエラーが発生しました
+          description: 配信エラー - テストペイロードの配信中にシステムエラーが発生しました
           content:
             application/json:
               schema:
@@ -94,4 +94,4 @@ components:
       type: apiKey
       in: header
       name: Key
-      description: Benzinga の API キー
+      description: Benzinga APIキー

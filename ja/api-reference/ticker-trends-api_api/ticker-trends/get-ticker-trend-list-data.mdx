@@ -1,53 +1,53 @@
 ---
-title: "ティッカートレンド一覧データ"
+title: "ティッカートレンドの一覧データ"
 openapi: /ja/openapi/ticker-trends-api_api.spec.yml GET /api/v1/trending-tickers/list
 ---
 
 <ResponseExample>
-```json レスポンス (200 OK)
-{
-  "ok": true,
-  "data": [
-    {
-      "security": {
-        "ticker": "RVLV",
-        "name": "Revolve Gr",
-        "exchange": "NYSE"
-      },
-      "count": 2344,
-      "pct_chg": 23340
-    }
-  ]
-}
-```
+  ```json レスポンス (200 OK)
+  {
+    "ok": true,
+    "data": [
+      {
+        "security": {
+          "ticker": "RVLV",
+          "name": "Revolve Gr",
+          "exchange": "NYSE"
+        },
+        "count": 2344,
+        "pct_chg": 23340
+      }
+    ]
+  }
+  ```
 </ResponseExample>
 
 <ResponseExample>
-```json レスポンス (400 Bad Request)
-{
-    "ok": false,
-    "errors": [
-        {
-            "id": "hbiGJjhsSpnfhM8aBePyTB",
-            "code": "400",
-            "value": "不正なリクエストです"
-        }
-    ]
-}
-```
+  ```json レスポンス（400 不正なリクエスト）
+  {
+      "ok": false,
+      "errors": [
+          {
+              "id": "hbiGJjhsSpnfhM8aBePyTB",
+              "code": "400",
+              "value": "不正なリクエスト"
+          }
+      ]
+  }
+  ```
 </ResponseExample>
 
 <ResponseExample>
-```json レスポンス (500 Internal Server Error)
-{
-    "ok": false,
-    "errors": [
-        {
-            "id": "hbiGJjhsSpnfhM8aBePyTB",
-            "code": "500",
-            "value": "問題が発生しました"
-        }
-    ]
-}
-```
+  ```json レスポンス（500 内部サーバーエラー）
+  {
+      "ok": false,
+      "errors": [
+          {
+              "id": "hbiGJjhsSpnfhM8aBePyTB",
+              "code": "500",
+              "value": "問題が発生しました"
+          }
+      ]
+  }
+  ```
 </ResponseExample>

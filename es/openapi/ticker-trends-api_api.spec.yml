@@ -1,52 +1,51 @@
 openapi: 3.0.0
 info:
   contact: {}
-  description: Esta API REST proporciona endpoints para buscar símbolos bursátiles
-    en tendencia y obtener detalles del ticker.
+  description: Esta API REST proporciona endpoints para buscar tickers en
+    tendencia y obtener detalles del ticker.
   termsOfService: http://swagger.io/terms/
   title: TickerTrends API
   version: 2.1.0
 paths:
   /api/v1/trending-tickers:
     get:
-      description: Recupera datos de tendencia para tickers específicos, incluyendo
-        clasificación y variación. Devuelve puntuaciones de tendencia agregadas
-        y niveles de actividad en distintos intervalos de tiempo.
+      description: Recupera datos de tendencias para tickers específicos, incluidos el
+        rango y la variación. Devuelve puntuaciones de tendencia agregadas y
+        niveles de actividad en distintos intervalos de tiempo.
       operationId: get-ticker-trend-data
       parameters:
-        - description: "Intervalo de tiempo para la agregación de los datos de tendencia.
-            Valores admitidos: 10m (10 minutos), 1h (1 hora), 1d (1 día).
-            Obligatorio."
+        - description: "Intervalo de tiempo para agregar los datos de tendencias. Valores
+            admitidos: 10m (10 minutos), 1h (1 hora), 1d (1 día). Obligatorio."
           in: query
           name: interval
           required: true
           schema:
             type: string
-        - description: Lista de símbolos de ticker de acciones separados por comas (por
-            ejemplo, AAPL, MSFT, TSLA) para obtener datos de tendencia.
+        - description: Lista de símbolos ticker de acciones separados por comas (p. ej.,
+            AAPL,MSFT,TSLA) para los que se recuperarán datos de tendencias.
             Obligatorio.
           in: query
           name: tickers
           required: true
           schema:
             type: string
-        - description: "Filtro de fuente de datos para el cálculo de la tendencia. Valores
+        - description: "Filtro de fuente de datos para el cálculo de tendencias. Valores
             admitidos: all (todas las fuentes combinadas), clickstream (datos de
-            interacción de los usuarios), logo (datos de solicitudes de
-            logotipos). Obligatorio."
+            interacción del usuario), logo (datos de solicitudes de logotipos).
+            Obligatorio."
           in: query
           name: source
           required: true
           schema:
             type: string
-        - description: Ventana temporal para el análisis de tendencias. Permite
-            especificar opcionalmente un período personalizado para filtrar los
-            resultados por rangos de fechas específicos.
+        - description: Ventana temporal para el análisis de tendencias. Especificación
+            opcional de un periodo personalizado para filtrar resultados por
+            rangos de fechas concretos.
           in: query
           name: timeframe
           schema:
             type: string
-        - description: "Número de página para la paginación. Con índice base cero (0 =
+        - description: "Número de página para la paginación. Indexado desde cero (0 =
             primera página, 1 = segunda página, etc.). Valor predeterminado: 0"
           in: query
           name: page
@@ -66,8 +65,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/httpapi.tickerTrendAPIResponse"
         "400":
-          description: "Solicitud incorrecta: falta uno o más parámetros obligatorios o
-            estos no son válidos (interval, tickers o source)"
+          description: "Solicitud incorrecta: faltan parámetros obligatorios o no son
+            válidos (interval, tickers o source)"
           content:
             application/json:
               schema:
@@ -80,94 +79,92 @@ paths:
                 $ref: "#/components/schemas/httpapi.tickerTrendAPIResponse"
       security:
         - ApiKeyAuth: []
-      summary: Obtener datos de la tendencia del ticker
+      summary: Obtener datos de tendencias de ticker
       tags:
         - Ticker Trends
   /api/v1/trending-tickers/list:
     get:
-      description: Recupera una lista de símbolos de ticker en tendencia basada en
-        diversas métricas. Devuelve valores ordenados por puntaje de tendencia
-        en diferentes intervalos de tiempo.
+      description: Recupera una lista de tickers en tendencia según varias métricas.
+        Devuelve valores ordenados por puntuación de tendencia en distintos
+        intervalos de tiempo.
       operationId: get-ticker-trend-list-data
       parameters:
-        - description: Obsoleto. Usa timeframe en su lugar. Intervalo de tiempo para
-            agrupar los datos de tendencia.
+        - description: Obsoleto. Use timeframe en su lugar. Intervalo de tiempo para
+            agregar datos de tendencias.
           in: query
           name: interval
           required: true
           schema:
             type: string
-        - description: Lista opcional separada por comas de símbolos bursátiles para
-            filtrar los resultados. Si se omite, devuelve todos los símbolos
-            bursátiles en tendencia.
+        - description: Lista opcional de símbolos ticker separados por comas para filtrar
+            resultados. Si se omite, devuelve todos los tickers en tendencia.
           in: query
           name: tickers
           schema:
             type: string
-        - description: "Origen de los datos para el cálculo de la tendencia. Valores
+        - description: "Filtro de fuente de datos para el cálculo de tendencias. Valores
             admitidos: all (todas las fuentes combinadas), clickstream (datos de
-            interacción de los usuarios), logo (datos de solicitudes de
-            logotipos). Obligatorio."
+            interacción del usuario), logo (datos de solicitudes de logotipos).
+            Obligatorio."
           in: query
           name: source
           required: true
           schema:
             type: string
-        - description: "Periodo de tiempo para la agregación de la tendencia. Valores
-            admitidos: 10m (10 minutos), 1h (1 hora), 1d (1 día). Por defecto:
-            1d"
+        - description: "Intervalo de tiempo para la agregación de tendencias. Valores
+            admitidos: 10m (10 minutos), 1h (1 hora), 1d (1 día). Valor
+            predeterminado: 1d"
           in: query
           name: timeframe
           schema:
             type: string
-        - description: Hora de inicio en formato de 24 horas (p. ej., 09:15, 14:30). Úsala
-            junto con date_from para definir rangos de tiempo precisos.
+        - description: Filtro de hora de inicio en formato de 24 horas (p. ej., 09:15,
+            14:30). Úselo con date_from para rangos horarios precisos.
           in: query
           name: time_from
           schema:
             type: string
-        - description: Filtro de hora de finalización en formato 24 horas (por ejemplo,
-            16:00, 22:30). Úselo con date_to para rangos de tiempo precisos.
+        - description: Filtro de hora de finalización en formato de 24 horas (p. ej.,
+            16:00, 22:30). Úselo con date_to para rangos horarios precisos.
           in: query
           name: time_to
           schema:
             type: string
-        - description: Filtro de fecha de inicio en formato ISO 8601 (por ejemplo,
-            2024-12-30, 2024-01-15). Úsalo junto con time_from para obtener
-            rangos precisos.
+        - description: Filtro de fecha de inicio en formato ISO 8601 (p. ej., 2024-12-30,
+            2024-01-15). Úselo con time_from para rangos precisos.
           in: query
           name: date_from
           schema:
             type: string
-        - description: Fecha de fin en formato ISO 8601 (por ejemplo, 2024-12-30,
-            2024-01-31). Úsala junto con time_to para obtener rangos precisos.
+        - description: Filtro de fecha de finalización en formato ISO 8601 (p. ej.,
+            2024-12-30, 2024-01-31). Úselo con time_to para rangos precisos.
           in: query
           name: date_to
           schema:
             type: string
-        - description: "Número de página para la paginación. Con índice base cero (0 =
+        - description: "Número de página para la paginación. Indexado desde cero (0 =
             primera página, 1 = segunda página, etc.). Valor predeterminado: 0"
           in: query
           name: page
           schema:
             type: integer
-        - description: "Cantidad de resultados por página. Predeterminado: 1000. Máximo
-            1000"
+        - description: "Número de resultados por página. Valor predeterminado: 1000.
+            Máximo: 1000"
           in: query
           name: pagesize
           schema:
             type: integer
       responses:
         "200":
-          description: Lista ordenada de tickers en tendencia con puntuaciones de
+          description: Lista clasificada de tickers en tendencia con puntuaciones de
             interacción
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/models.TrendingTickersListAPIResponse"
         "400":
-          description: Solicitud incorrecta - falta el parámetro source o no es válido, o
-            el formato de fecha y hora no es válido
+          description: "Solicitud incorrecta: falta el parámetro source o no es válido, o
+            el formato de fecha/hora no es válido"
           content:
             application/json:
               schema:
@@ -180,7 +177,7 @@ paths:
                 $ref: "#/components/schemas/models.TrendingTickersListAPIResponse"
       security:
         - ApiKeyAuth: []
-      summary: Obtener lista de tendencias de tickers
+      summary: Obtener la lista de tickers en tendencia
       tags:
         - Ticker Trends
 components:

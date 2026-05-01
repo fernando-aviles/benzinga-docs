@@ -1,144 +1,143 @@
 openapi: 3.0.0
 info:
   contact: {}
-  description: この REST API は、トレンドになっているティッカーを検索し、ティッカーの詳細を取得するためのエンドポイントを提供します。
+  description: このREST APIは、トレンドティッカーの検索とティッカー詳細の取得を行うためのエンドポイントを提供します。
   termsOfService: http://swagger.io/terms/
   title: TickerTrends API
   version: 2.1.0
 paths:
   /api/v1/trending-tickers:
     get:
-      description: 指定した ticker
-        シンボルについて、順位および変化を含むトレンドデータを取得します。さまざまな時間間隔にわたるトレンドスコアとアクティビティレベルを集計して返します。
+      description: 順位や変動を含む特定のティッカーのトレンドデータを取得します。異なる時間間隔における集計済みのトレンドスコアとアクティビティレベルを返します。
       operationId: get-ticker-trend-data
       parameters:
-        - description: トレンドデータの集計に使用する時間間隔。指定可能な値：10m（10分）、1h（1時間）、1d（1日）。必須。
+        - description: "トレンドデータを集計する時間間隔。サポートされる値: 10m（10分）、1h（1時間）、1d（1日）。必須。"
           in: query
           name: interval
           required: true
           schema:
             type: string
-        - description: "株式のtickerシンボル（カンマ区切り）（例: AAPL,MSFT,TSLA）のトレンドデータを取得する対象。必須。"
+        - description: "トレンドデータを取得する株式ティッカーシンボルのカンマ区切りリスト（例: AAPL,MSFT,TSLA）。必須。"
           in: query
           name: tickers
           required: true
           schema:
             type: string
-        - description: "データソースのフィルター。トレンド計算に使用します。サポートされる値:
-            all（すべてのソースを統合）、clickstream（ユーザーインタラクションデータ）、logo（ロゴリクエストデータ）。必須。"
+        - description: "トレンド計算のデータソースフィルター。サポートされる値:
+            all（すべてのソースを結合）、clickstream（ユーザー操作データ）、logo（ロゴリクエストデータ）。必須。"
           in: query
           name: source
           required: true
           schema:
             type: string
-        - description: トレンド分析の時間ウィンドウ。必要に応じて、結果を特定の日付範囲でフィルタリングするためのカスタム時間枠を指定できます。
+        - description: トレンド分析の時間枠。特定の日付範囲で結果を絞り込むための任意のカスタム時間枠を指定できます。
           in: query
           name: timeframe
           schema:
             type: string
-        - description: "ページネーションのページ番号。0始まり（ゼロインデックス。0 = 1ページ目、1 = 2ページ目、など）です。デフォルト値: 0"
+        - description: "ページネーションのページ番号。ゼロ始まり（0 = 1ページ目、1 = 2ページ目、など）。デフォルト: 0"
           in: query
           name: page
           schema:
             type: integer
-        - description: 1ページあたりの結果数。デフォルト値は 1000 です。最大値は 1000 です。
+        - description: "1ページあたりの結果件数。デフォルト: 1000。最大: 1000"
           in: query
           name: pagesize
           schema:
             type: integer
       responses:
         "200":
-          description: エンゲージメント指標付きトレンドデータ
+          description: エンゲージメント指標を含むトレンドデータ
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/httpapi.tickerTrendAPIResponse"
         "400":
-          description: 不正なリクエスト - 必須パラメータ（interval、tickers、source）のいずれかが不足しているか無効です
+          description: 不正なリクエスト - 必須パラメータ（interval、tickers、またはsource）が不足しているか無効です
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/bzhttp.Resp"
         "500":
-          description: サーバー内部エラー
+          description: 内部サーバーエラー
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/httpapi.tickerTrendAPIResponse"
       security:
         - ApiKeyAuth: []
-      summary: ticker トレンドデータを取得
+      summary: ティッカートレンドデータを取得
       tags:
         - Ticker Trends
   /api/v1/trending-tickers/list:
     get:
-      description: 各種指標に基づいて、トレンド中のtickerシンボルのリストを取得します。トレンドスコアに基づき、複数の時間間隔にわたって証券を並べ替えて返します。
+      description: さまざまな指標に基づくトレンドティッカーの一覧を取得します。異なる時間間隔におけるトレンドスコア順で証券を返します。
       operationId: get-ticker-trend-list-data
       parameters:
-        - description: 非推奨。代わりに timeframe を使用してください。トレンドデータ集計のためのデータの取得間隔。
+        - description: 非推奨です。代わりにtimeframeを使用してください。トレンドデータを集計する時間間隔。
           in: query
           name: interval
           required: true
           schema:
             type: string
-        - description: 結果を絞り込むための省略可能なカンマ区切りのティッカー一覧。省略した場合、すべてのトレンドティッカーを返します。
+        - description: 結果を絞り込むための任意のティッカーシンボルのカンマ区切りリスト。省略した場合は、すべてのトレンドティッカーを返します。
           in: query
           name: tickers
           schema:
             type: string
-        - description: "トレンド計算用のデータソースのフィルター。指定可能な値:
-            all（すべてのソースを統合）、clickstream（ユーザーインタラクションデータ）、logo（ロゴリクエストデータ）。必須。"
+        - description: "トレンド計算のデータソースフィルター。サポートされる値:
+            all（すべてのソースを結合）、clickstream（ユーザー操作データ）、logo（ロゴリクエストデータ）。必須。"
           in: query
           name: source
           required: true
           schema:
             type: string
-        - description: データの期間（トレンド集計の時間間隔）。指定可能な値：10m（10分）、1h（1時間）、1d（1日）。デフォルト：1d
+        - description: "トレンドデータを集計する時間間隔。サポートされる値: 10m（10分）、1h（1時間）、1d（1日）。デフォルト: 1d"
           in: query
           name: timeframe
           schema:
             type: string
-        - description: 24時間表記の開始時刻フィルター（例：09:15、14:30）。date_from と併用して、時間範囲を正確に指定します。
+        - description: "24時間形式の開始時刻フィルター（例: 09:15、14:30）。正確な時間範囲を指定するにはdate_fromと併用してください。"
           in: query
           name: time_from
           schema:
             type: string
-        - description: "終了時刻フィルター（24時間表記、例: 16:00、22:30）。date_to と併用して、正確な時間範囲を指定します。"
+        - description: "24時間形式の終了時刻フィルター（例: 16:00、22:30）。正確な時間範囲を指定するにはdate_toと併用してください。"
           in: query
           name: time_to
           schema:
             type: string
-        - description: ISO 8601 形式の開始日のフィルター（例：2024-12-30、2024-01-15）。厳密な範囲を指定するには
-            time_from と併用します。
+        - description: "ISO 8601形式の開始日フィルター（例:
+            2024-12-30、2024-01-15）。正確な範囲を指定するにはtime_fromと併用してください。"
           in: query
           name: date_from
           schema:
             type: string
-        - description: "ISO 8601 形式の終了日フィルター（例: 2024-12-30, 2024-01-31）。time_to
-            と組み合わせて使用すると、より正確な範囲を指定できます。"
+        - description: "ISO 8601形式の終了日フィルター（例:
+            2024-12-30、2024-01-31）。正確な範囲を指定するにはtime_toと併用してください。"
           in: query
           name: date_to
           schema:
             type: string
-        - description: ページネーションのページ番号。0始まり（0 = 1ページ目、1 = 2ページ目など）。デフォルト：0
+        - description: "ページネーション用のpage番号。0始まり（0 = 1ページ目、1 = 2ページ目、…）。デフォルト: 0"
           in: query
           name: page
           schema:
             type: integer
-        - description: "1ページあたりの返される結果数。デフォルト: 1000件。最大1000件"
+        - description: "1ページあたりの結果数。デフォルト: 1000。最大: 1000"
           in: query
           name: pagesize
           schema:
             type: integer
       responses:
         "200":
-          description: エンゲージメントスコアを含むトレンド中のティッカーのランキング一覧
+          description: エンゲージメントスコア付きのトレンドティッカー順位リスト
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/models.TrendingTickersListAPIResponse"
         "400":
-          description: 不正なリクエスト - source パラメータが欠落しているか不正である、または日付/時刻の形式が不正です
+          description: 不正なリクエスト - source パラメーターが不足しているか無効、またはdate/時刻の形式が無効です
           content:
             application/json:
               schema:
@@ -151,7 +150,7 @@ paths:
                 $ref: "#/components/schemas/models.TrendingTickersListAPIResponse"
       security:
         - ApiKeyAuth: []
-      summary: tickerトレンドリストを取得
+      summary: トレンドティッカーの一覧を取得
       tags:
         - Ticker Trends
 components:

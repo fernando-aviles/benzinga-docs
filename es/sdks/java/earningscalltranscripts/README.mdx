@@ -1,9 +1,9 @@
 ---
-title: "Transcripciones de conferencias de resultados"
+title: "Transcripciones de llamadas de resultados"
 description: earningsCallTranscripts()
 ---
 
-[&lt; ATRÁS](/es/sdks/languages/java#earningscalltranscripts)
+[&lt; VOLVER](/es/sdks/languages/java#earningscalltranscripts)
 
 <div id="overview">
   ## Descripción general
@@ -13,14 +13,14 @@ description: earningsCallTranscripts()
   ### Operaciones disponibles
 </div>
 
-* [get](#get) - Obtener transcripciones de conferencias de resultados
-* [getAudio](#getaudio) - Obtener archivos de audio de las transcripciones de conferencias de resultados
+* [get](#get) - Obtener transcripciones de llamadas de resultados
+* [getAudio](#getaudio) - Obtener archivos de audio de las transcripciones de llamadas de resultados
 
 <div id="get">
   ## get
 </div>
 
-Obtener transcripciones de llamadas de resultados
+Obtener transcripciones de las llamadas de resultados
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -52,7 +52,7 @@ public class Application {
                 .call();
 
         if (res.modelsTranscriptSummaries().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -62,12 +62,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro          | Tipo               | Obligatorio        | Descripción        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `tickers`          | List&lt;*String*&gt;    | :heavy&#95;minus&#95;sign: | Símbolos bursátiles|
-| `callId`           | List&lt;*String*&gt;    | :heavy&#95;minus&#95;sign: | ID de llamada      |
-| `page`             | *Optional&lt;Long&gt;*  | :heavy&#95;minus&#95;sign: | Página             |
-| `pagesize`         | *Optional&lt;Long&gt;*  | :heavy&#95;minus&#95;sign: | Tamaño de página   |
+| Parámetro  | Tipo                   | Obligatorio                | Descripción      |
+| ---------- | ---------------------- | -------------------------- | ---------------- |
+| `tickers`  | List&lt;*String*&gt;   | :heavy&#95;minus&#95;sign: | Tickers          |
+| `callId`   | List&lt;*String*&gt;   | :heavy&#95;minus&#95;sign: | ID de llamada    |
+| `page`     | *Optional&lt;Long&gt;* | :heavy&#95;minus&#95;sign: | Página           |
+| `pagesize` | *Optional&lt;Long&gt;* | :heavy&#95;minus&#95;sign: | Tamaño de página |
 
 <div id="response">
   ### Respuesta
@@ -79,15 +79,15 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado           | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/APIException | 4XX, 5XX         | */*               |
 
 <div id="getaudio">
   ## getAudio
 </div>
 
-Obtener archivos de audio de las transcripciones de conferencias de resultados
+Obtener archivos de audio de la transcripción de la llamada de resultados
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -119,7 +119,7 @@ public class Application {
                 .call();
 
         if (res.modelsTranscriptSummaryAudios().isPresent()) {
-            // gestionar respuesta
+            // manejar respuesta
         }
     }
 }
@@ -129,12 +129,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro          | Tipo               | Obligatorio        | Descripción        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `tickers`          | List&lt;*String*&gt;    | :heavy&#95;minus&#95;sign: | Símbolos bursátiles |
-| `callId`           | List&lt;*String*&gt;    | :heavy&#95;minus&#95;sign: | ID de llamada      |
-| `page`             | *Optional&lt;Long&gt;*  | :heavy&#95;minus&#95;sign: | Página             |
-| `pagesize`         | *Optional&lt;Long&gt;*  | :heavy&#95;minus&#95;sign: | Tamaño de página   |
+| Parámetro  | Tipo                   | Obligatorio                | Descripción      |
+| ---------- | ---------------------- | -------------------------- | ---------------- |
+| `tickers`  | List&lt;*String*&gt;   | :heavy&#95;minus&#95;sign: | Tickers          |
+| `callId`   | List&lt;*String*&gt;   | :heavy&#95;minus&#95;sign: | ID de llamada    |
+| `page`     | *Optional&lt;Long&gt;* | :heavy&#95;minus&#95;sign: | Página           |
+| `pagesize` | *Optional&lt;Long&gt;* | :heavy&#95;minus&#95;sign: | Tamaño de página |
 
 <div id="response">
   ### Respuesta
@@ -146,6 +146,6 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado           | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/APIException | 4XX, 5XX         | */*               |

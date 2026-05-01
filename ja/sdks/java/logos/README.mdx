@@ -13,14 +13,14 @@ description: logos()
   ### 利用可能な操作
 </div>
 
-* [bulkSync](#bulksync) - 指定した検索キーのロゴを取得
-* [search](#search) - 指定した検索キーのロゴを取得
+* [bulkSync](#bulksync) - 指定した検索キーに対応するロゴを取得
+* [search](#search) - 指定した検索キーに対応するロゴを取得
 
 <div id="bulksync">
   ## bulkSync
 </div>
 
-指定した検索キーのロゴを取得
+指定した検索キーに対応するロゴを取得
 
 <div id="example-usage">
   ### 使用例
@@ -65,9 +65,9 @@ public class Application {
   ### パラメータ
 </div>
 
-| パラメータ                                                             | 型                                                                    | 必須                                                                  | 説明                                                                  |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `request`                                                             | [LogoBulkSyncRequest](../../models/operations/LogoBulkSyncRequest.md) | :heavy&#95;check&#95;mark:                                                    | このリクエストで使用するリクエストオブジェクト。                      |
+| パラメータ     | 種別                                                                   | 必須                         | 説明                       |
+| --------- | --------------------------------------------------------------------- | -------------------------- | ------------------------ |
+| `request` | [LogoBulkSyncRequest](../../models/operations/LogoBulkSyncRequest.md) | :heavy&#95;check&#95;mark: | リクエストに使用するリクエストオブジェクトです。 |
 
 <div id="response">
   ### レスポンス
@@ -79,16 +79,16 @@ public class Application {
   ### エラー
 </div>
 
-| エラータイプ               | ステータスコード          | Content-Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/BzhttpResp   | 400, 404, 500              | application/json           |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| エラー種別                      | ステータスコード      | コンテンツタイプ         |
+| -------------------------- | ------------- | ---------------- |
+| models/errors/BzhttpResp   | 400, 404, 500 | application/json |
+| models/errors/APIException | 4XX, 5XX      | */*              |
 
 <div id="search">
   ## search
 </div>
 
-指定した検索キーに一致するロゴを取得します
+指定した検索キーに対応するロゴを取得します
 
 <div id="example-usage">
   ### 使用例
@@ -131,9 +131,9 @@ public class Application {
   ### パラメータ
 </div>
 
-| パラメータ                                                                 | 型                                                                         | 必須                                                                       | 説明                                                                       |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `request`                                                                 | [GetSearchLogosRequest](../../models/operations/GetSearchLogosRequest.md) | :heavy&#95;check&#95;mark:                                                        | リクエストで使用するリクエストオブジェクト。                              |
+| パラメータ     | 種別                                                                        | 必須                         | 説明                     |
+| --------- | ------------------------------------------------------------------------- | -------------------------- | ---------------------- |
+| `request` | [GetSearchLogosRequest](../../models/operations/GetSearchLogosRequest.md) | :heavy&#95;check&#95;mark: | リクエストに使用するリクエストオブジェクト。 |
 
 <div id="response">
   ### レスポンス
@@ -145,7 +145,7 @@ public class Application {
   ### エラー
 </div>
 
-| エラータイプ               | ステータスコード           | Content-Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/BzhttpResp   | 400, 404, 500              | application/json           |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| エラー種別                      | ステータスコード      | コンテンツタイプ         |
+| -------------------------- | ------------- | ---------------- |
+| models/errors/BzhttpResp   | 400, 404, 500 | application/json |
+| models/errors/APIException | 4XX, 5XX      | */*              |

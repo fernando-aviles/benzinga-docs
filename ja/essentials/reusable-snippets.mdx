@@ -1,6 +1,6 @@
 ---
 title: 再利用可能なスニペット
-description: コンテンツを同期させるための再利用可能なカスタムスニペット
+description: コンテンツの一貫性を保つための再利用可能なカスタムスニペット
 icon: 'recycle'
 ---
 
@@ -8,25 +8,25 @@ import SnippetIntro from '/snippets/ja/snippet-intro.mdx';
 
 <SnippetIntro />
 
-
 <div id="creating-a-custom-snippet">
   ## カスタムスニペットの作成
 </div>
 
-**前提条件**: スニペットファイルは必ず `snippets` ディレクトリ内に作成してください。
+**事前条件**: スニペットファイルは `snippets` ディレクトリ内に作成する必要があります。
 
 <Note>
-  `snippets` ディレクトリ内のすべてのページはスニペットとして扱われ、単独のページ
-  としてはレンダリングされません。スニペットから単独のページを作成したい場合は、
-  そのスニペットを別のファイルにインポートし、コンポーネントとして呼び出してくだ
-  さい。
+  `snippets` ディレクトリ内のページはすべてスニペットとして扱われ、
+  独立したページとしてはレンダリングされません。スニペットを独立したページとして作成したい場合は、
+  そのスニペットを別のファイルにインポートし、コンポーネントとして
+  呼び出してください。
 </Note>
 
 <div id="default-export">
   ### デフォルトエクスポート
 </div>
 
-1. 複数の場所で再利用したいコンテンツをスニペットファイルに追加します。必要に応じて、スニペットをインポートするときに props 経由で値を埋め込める変数を追加できます。
+1. 複数の箇所で再利用したい内容を、スニペットファイルに追加します。
+   必要に応じて、スニペットのインポート時に props 経由で値を渡せる変数を追加することもできます。
 
 ```mdx snippets/my-snippet.mdx
 Hello world! This is my content I want to reuse across pages. My keyword of the
@@ -34,10 +34,10 @@ day is {word}.
 ```
 
 <Warning>
-  インポートを正しく行うには、再利用したい content を必ず `snippets` ディレクトリ内に配置しておく必要があります。
+  再利用するコンテンツは、インポートを機能させるために `snippets` ディレクトリ内に配置する必要があります。
 </Warning>
 
-2. スニペットを宛先ファイルにインポートします。
+2. スニペットを対象ファイルにインポートします。
 
 ```mdx destination-file.mdx
 ---
@@ -54,12 +54,11 @@ Lorem impsum dolor sit amet.
 <MySnippet word="bananas" />
 ```
 
-
 <div id="reusable-variables">
   ### 再利用可能な変数
 </div>
 
-1. スニペットファイルから変数をエクスポートします:
+1. スニペットファイルから変数をエクスポートします。
 
 ```mdx snippets/path/to/custom-variables.mdx
 export const myName = 'my name';
@@ -67,7 +66,7 @@ export const myName = 'my name';
 export const myObject = { fruit: 'strawberries' };
 ```
 
-2. 宛先ファイルでスニペットをインポートし、その変数を使用します。
+2. 使用先のファイルからスニペットをインポートし、その変数を使用します:
 
 ```mdx destination-file.mdx
 ---
@@ -80,13 +79,11 @@ import { myName, myObject } from '/snippets/path/to/custom-variables.mdx';
 Hello, my name is {myName} and I like {myObject.fruit}.
 ```
 
-
 <div id="reusable-components">
   ### 再利用可能なコンポーネント
 </div>
 
-1. スニペットファイル内で、props を引数に取るコンポーネントをアロー関数として定義し、
-   それを export します。
+1. スニペットファイル内で、props を受け取るコンポーネントをアロー関数形式でエクスポートして作成します。
 
 ```mdx snippets/custom-component.mdx
 export const MyComponent = ({ title }) => (
@@ -98,11 +95,11 @@ export const MyComponent = ({ title }) => (
 ```
 
 <Warning>
-  MDX はアロー関数の本体の中ではコンパイルされません。可能なかぎり HTML
-  構文を使用するか、MDX を使う必要がある場合は default export を使用してください。
+  MDX はアロー関数の本体内ではコンパイルできません。可能な場合は HTML
+  構文を使用し、MDX を使う必要がある場合は デフォルトエクスポート を使用してください。
 </Warning>
 
-2. スニペットを利用先のファイルにインポートし、props を渡します。
+2. スニペットを対象のファイルにインポートし、props を渡します
 
 ```mdx destination-file.mdx
 ---

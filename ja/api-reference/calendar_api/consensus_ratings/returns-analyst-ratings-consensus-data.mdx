@@ -1,62 +1,65 @@
 ---
-title: "コンセンサス・レーティング"
-openapi: /ja/openapi/calendar_api.spec.yml GET /api/v1/consensus-ratings
+title: "コンセンサスレーティング"
+openapi: /openapi/calendar_api.spec.yml GET /api/v1/consensus-ratings
 ---
 
 <ResponseExample>
-```json レスポンス (200 OK)
-{
-  "aggregate_ratings": {
-    "strong_buy": 7,
-    "buy": 12,
-    "hold": 5,
-    "sell": 2
-  },
-  "aggregate_type": "number",
-  "low_price_target": 200,
-  "high_price_target": 350,
-  "consensus_price_target": 293.69192307692305,
-  "consensus_rating_val": 3.923076923076923,
-  "consensus_rating": "BUY",
-  "updated_at": "2026-01-05T19:42:36Z",
-  "total_analyst_count": 50,
-  "unique_analyst_count": 26
-}
-```
-```json レスポンス (401 Unauthorized)
-{
-  "ok": false,
-  "errors": [
-    {
-      "code": "auth_failed",
-      "id": "unauthorized",
-      "value": "無効または欠落している認証トークンです"
-    }
-  ]
-}
-```
-```json レスポンス (404 Not Found)
-{
-  "ok": false,
-  "errors": [
-    {
-      "code": "no_data_found",
-      "id": "not_found",
-      "value": "指定されたパラメータに一致するデータが見つかりませんでした"
-    }
-  ]
-}
-```
-```json レスポンス (500 Internal Server Error)
-{
-  "ok": false,
-  "errors": [
-    {
-      "code": "internal_server_error",
-      "id": "server_error",
-      "value": "リクエストの処理中に予期しないエラーが発生しました"
-    }
-  ]
-}
-```
+  ```json レスポンス (200 OK)
+  {
+    "aggregate_ratings": {
+      "strong_buy": 7,
+      "buy": 12,
+      "hold": 5,
+      "sell": 2
+    },
+    "aggregate_type": "number",
+    "low_price_target": 200,
+    "high_price_target": 350,
+    "consensus_price_target": 293.69192307692305,
+    "consensus_rating_val": 3.923076923076923,
+    "consensus_rating": "BUY",
+    "updated_at": "2026-01-05T19:42:36Z",
+    "total_analyst_count": 50,
+    "unique_analyst_count": 26
+  }
+  ```
+
+  ```json レスポンス（401 認証されていません）
+  {
+    "ok": false,
+    "errors": [
+      {
+        "code": "auth_failed",
+        "id": "unauthorized",
+        "value": "認証トークンが無効であるか、指定されていません"
+      }
+    ]
+  }
+  ```
+
+  ```json レスポンス（404 見つかりません）
+  {
+    "ok": false,
+    "errors": [
+      {
+        "code": "no_data_found",
+        "id": "not_found",
+        "value": "指定されたパラメータに該当するデータが見つかりません"
+      }
+    ]
+  }
+  ```
+
+  ```json レスポンス（500 内部サーバーエラー）
+  {
+    "ok": false,
+    "errors": [
+      {
+        "code": "internal_server_error",
+        "id": "server_error",
+        "value": "リクエストの処理中に予期しないエラーが発生しました"
+      }
+    ]
+  }
+  ```
 </ResponseExample>

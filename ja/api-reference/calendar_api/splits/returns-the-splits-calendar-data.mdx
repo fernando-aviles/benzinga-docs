@@ -1,66 +1,69 @@
 ---
 title: "株式分割"
-openapi: /ja/openapi/calendar_api.spec.yml GET /api/v2.1/calendar/splits
+openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/splits
 ---
 
 <ResponseExample>
-```json レスポンス (200 OK)
-{
-  "splits": [
-    {
-      "cusip": "87807D509",
-      "date_announced": "2025-12-30",
-      "date_distribution": "2025-01-06",
-      "date_ex": "2025-01-07",
-      "date_recorded": "2025-01-02",
-      "exchange": "NASDAQ",
-      "id": "677675329a903000017cb6f1",
-      "importance": 1,
-      "name": "TC BioPharm (Holdings)",
-      "notes": "",
-      "optionable": false,
-      "ratio": "1.25:1",
-      "split_type": "ADR Ratio Change",
-      "ticker": "TCBP",
-      "updated": 1735816783
-    }
-  ]
-}
-```
-```json レスポンス (401 Unauthorized)
-{
-  "ok": false,
-  "errors": [
-    {
-      "code": "auth_failed",
-      "id": "unauthorized",
-      "value": "認証トークンが無効であるか、指定されていません"
-    }
-  ]
-}
-```
-```json レスポンス (404 Not Found)
-{
-  "ok": false,
-  "errors": [
-    {
-      "code": "no_data_found",
-      "id": "not_found",
-      "value": "指定されたパラメータに一致するデータが見つかりませんでした"
-    }
-  ]
-}
-```
-```json レスポンス (500 Internal Server Error)
-{
-  "ok": false,
-  "errors": [
-    {
-      "code": "internal_server_error",
-      "id": "server_error",
-      "value": "リクエストの処理中に予期しないエラーが発生しました"
-    }
-  ]
-}
-```
+  ```json レスポンス (200 OK)
+  {
+    "splits": [
+      {
+        "cusip": "87807D509",
+        "date_announced": "2025-12-30",
+        "date_distribution": "2025-01-06",
+        "date_ex": "2025-01-07",
+        "date_recorded": "2025-01-02",
+        "exchange": "NASDAQ",
+        "id": "677675329a903000017cb6f1",
+        "importance": 1,
+        "name": "TC BioPharm (Holdings)",
+        "notes": "",
+        "optionable": false,
+        "ratio": "1.25:1",
+        "split_type": "ADR Ratio Change",
+        "ticker": "TCBP",
+        "updated": 1735816783
+      }
+    ]
+  }
+  ```
+
+  ```json レスポンス（401 認証されていません）
+  {
+    "ok": false,
+    "errors": [
+      {
+        "code": "auth_failed",
+        "id": "unauthorized",
+        "value": "認証トークンが無効か、指定されていません"
+      }
+    ]
+  }
+  ```
+
+  ```json レスポンス（404 見つかりません）
+  {
+    "ok": false,
+    "errors": [
+      {
+        "code": "no_data_found",
+        "id": "not_found",
+        "value": "指定されたパラメータに一致するデータが見つかりません"
+      }
+    ]
+  }
+  ```
+
+  ```json レスポンス（500 内部サーバーエラー）
+  {
+    "ok": false,
+    "errors": [
+      {
+        "code": "internal_server_error",
+        "id": "server_error",
+        "value": "リクエストの処理中に予期しないエラーが発生しました"
+      }
+    ]
+  }
+  ```
 </ResponseExample>

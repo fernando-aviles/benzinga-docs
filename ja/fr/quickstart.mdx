@@ -1,0 +1,81 @@
+---
+title: 'クイックスタート'
+description: '5分以内に優れたドキュメント作成を始めましょう'
+---
+
+<div id="setup-your-development">
+  ## 開発環境のセットアップ
+</div>
+
+ローカルでドキュメントを更新し、公開環境にデプロイする方法を説明します。
+
+<div id="edit-and-preview">
+  ### 編集とプレビュー
+</div>
+
+<AccordionGroup>
+  <Accordion icon="github" title="ドキュメントをローカルにクローンする">
+    オンボーディングの際に、ドキュメントのコンテンツを含むリポジトリを
+    お使いの GitHub 上に作成しました。このリポジトリは、
+    [ダッシュボード](https://dashboard.mintlify.com) で確認できます。リポジトリを
+    ローカルにクローンするには、ターミナルで次の
+    [手順](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+    に従ってください。
+  </Accordion>
+
+  <Accordion icon="rectangle-terminal" title="変更をプレビューする">
+    プレビューすると、変更が意図したとおりに表示されるか確認できます。これらの
+    変更をローカルでレンダリングするためのコマンドラインインターフェースを用意しています。1.
+    次のコマンドを使って、ドキュメントの変更をローカルでプレビューするための
+    [Mintlify CLI](https://www.npmjs.com/package/mintlify) をインストールします: `npm i -g mintlify`
+    2. ドキュメントのルート (
+    `docs.json` がある場所) で、次のコマンドを実行します: `mintlify dev`
+  </Accordion>
+</AccordionGroup>
+
+<div id="deploy-your-changes">
+  ### 変更をデプロイする
+</div>
+
+<AccordionGroup>
+  <Accordion icon="message-bot" title="GitHub appをインストールする">
+    GitHub appをインストールすると、変更内容がドキュメントサイトに自動でデプロイされるため、
+    デプロイを手動で管理する必要はありません。インストール用リンクは
+    [ダッシュボード](https://dashboard.mintlify.com)で確認できます。ボットの
+    インストールが正常に完了すると、リポジトリのコミットハッシュの横に
+    チェックマークが表示されます。
+  </Accordion>
+
+  <Accordion icon="rocket" title="変更をプッシュする">
+    ドキュメントサイトに変更を反映するには、
+    [変更をコミットして Git にプッシュして
+    ください](https://docs.github.com/en/get-started/using-git/pushing-commits-to-a-remote-repository#about-git-push)。
+    プッシュしても GitHub app による変更のデプロイが正常に完了したことを確認できない場合は、
+    [ダッシュボード](https://dashboard.mintlify.com)から手動で
+    ドキュメントを更新することもできます。
+  </Accordion>
+</AccordionGroup>
+
+<div id="update-your-docs">
+  ## ドキュメントを更新
+</div>
+
+MDX構文とReactコンポーネントを使って、ファイルに直接コンテンツを追加できます。用意されているコンポーネントはもちろん、独自のコンポーネントを作成することもできます。
+
+<CardGroup>
+  <Card title="ドキュメントのスタイル設定" icon="paintbrush" href="/ja/settings/global">
+    ブランドに合わせてカスタマイズし、ドキュメントに個性を加えましょう。
+  </Card>
+
+  <Card title="APIエンドポイントを追加" icon="square-code" href="/ja/api-playground/configuration">
+    OpenAPI仕様を実装し、APIの対話操作を有効にします。
+  </Card>
+
+  <Card title="アナリティクスを統合" icon="chart-mixed" href="/ja/analytics/supported-integrations">
+    ドキュメント上でのユーザー操作からインサイトを得られます。
+  </Card>
+
+  <Card title="カスタムドメインでホスト" icon="browser" href="/ja/settings/custom-domain/subdomain">
+    ドキュメントを自社サイトのサブドメインで公開できます。
+  </Card>
+</CardGroup>

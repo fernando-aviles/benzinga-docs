@@ -1,6 +1,6 @@
 ---
-title: "Stream de Transcripciones"
-description: "Transcripciones de conferencias de resultados en tiempo real, frase por frase a medida que se pronuncian."
+title: "Flujo de transcripciones"
+description: "Transcripciones de llamadas de resultados en tiempo real, frase por frase, a medida que se van pronunciando."
 asyncapi: "/asyncapi/transcripts-stream.yml transcripts"
 ---
 
@@ -8,35 +8,35 @@ asyncapi: "/asyncapi/transcripts-stream.yml transcripts"
   ## Descripción general
 </div>
 
-Suscríbete a transcripciones en tiempo real de llamadas de resultados y recibe actualizaciones frase por frase a medida que se pronuncian durante las llamadas de resultados en vivo. Ideal para crear visores de transcripciones en tiempo real y herramientas de análisis.
+Suscríbase a las transcripciones en tiempo real de las llamadas de resultados y reciba actualizaciones frase por frase a medida que se van pronunciando durante las llamadas en vivo. Ideal para crear visualizadores de transcripciones y herramientas de análisis en tiempo real.
 
 <div id="key-features">
-  ### Funcionalidades principales
+  ### Características clave
 </div>
 
-- **Transcripción en vivo**: Obtén actualizaciones de frases en tiempo real mientras los oradores hablan durante las llamadas de resultados
-- **Temporización a nivel de palabra**: Cada frase incluye marcas de tiempo para cada palabra y puntuaciones de confianza
-- **Identificación de oradores**: Realiza un seguimiento de quién está hablando (ejecutivos, analistas, etc.)
-- **Seguimiento del estado**: Supervisa si las transcripciones están en curso o completas
-- **Suscripción flexible**: Suscríbete a símbolos bursátiles específicos o a todas las transcripciones con `*`
-- **Pruebas con datos simulados**: Prueba tu integración con datos simulados cuando no haya llamadas en vivo en curso
+* **Transcripción en vivo**: Obtén actualizaciones de frases en tiempo real a medida que los participantes hablan durante las llamadas de resultados
+* **Marcas de tiempo por palabra**: Cada frase incluye marcas de tiempo de cada palabra y puntuaciones de confianza
+* **Identificación de hablantes**: Haz seguimiento de quién está hablando (ejecutivos, analistas, etc.)
+* **Seguimiento del estado**: Supervisa si las transcripciones están en curso o se han completado
+* **Suscripción flexible**: Suscríbete a tickers específicos o a todas las transcripciones con `*`
+* **Pruebas simuladas**: Prueba tu integración con datos simulados cuando no haya llamadas en vivo activas
 
 <div id="use-cases">
   ### Casos de uso
 </div>
 
-- Crear visualizadores en tiempo real de transcripciones de llamadas de resultados
-- Crear herramientas de subtitulado en vivo y de accesibilidad
-- Realizar análisis de sentimiento en tiempo real sobre llamadas de resultados
-- Extraer frases y métricas clave a medida que se mencionan
-- Generar alertas para palabras clave o temas específicos durante llamadas en vivo
-- Archivar transcripciones completas con marcas de tiempo precisas
+* Crear visualizadores de transcripciones de llamadas de resultados en tiempo real
+* Crear herramientas de subtitulado en directo y accesibilidad
+* Realizar análisis de sentimiento en tiempo real de llamadas de resultados
+* Extraer frases clave y métricas a medida que se mencionan
+* Generar alertas sobre palabras clave o temas específicos durante llamadas en directo
+* Archivar transcripciones completas con marcas de tiempo precisas
 
 <div id="quick-start">
   ## Inicio rápido
 </div>
 
-Usa la herramienta interactiva de prueba de WebSocket de arriba para conectarte y probar el flujo en tiempo real.
+Usa el probador interactivo de WebSocket que aparece arriba para conectarte y probar el stream en tiempo real.
 
 <div id="connection-url">
   ### URL de conexión
@@ -46,20 +46,19 @@ Usa la herramienta interactiva de prueba de WebSocket de arriba para conectarte 
 wss://api.benzinga.com/api/v1/transcripts/stream?token=YOUR_TOKEN
 ```
 
-
 <div id="query-parameters">
   ### Parámetros de consulta
 </div>
 
-| Parámetro | Obligatorio | Descripción |
-|-----------|----------|-------------|
-| `token` | Sí | Tu token de la API WebSocket de Benzinga |
+| Parámetro | Obligatorio | Descripción                                 |
+| --------- | ----------- | ------------------------------------------- |
+| `token`   | Sí          | Tu token de la API de WebSocket de Benzinga |
 
 <div id="subscription-commands">
   ## Comandos de suscripción
 </div>
 
-Envía comandos en JSON para controlar tus suscripciones:
+Envíe comandos JSON para gestionar sus suscripciones:
 
 <div id="subscribe-to-a-ticker">
   ### Suscribirse a un ticker
@@ -72,7 +71,6 @@ Envía comandos en JSON para controlar tus suscripciones:
 }
 ```
 
-
 <div id="subscribe-to-all-transcripts">
   ### Suscribirse a todas las transcripciones
 </div>
@@ -83,7 +81,6 @@ Envía comandos en JSON para controlar tus suscripciones:
   "ticker": "*"
 }
 ```
-
 
 <div id="unsubscribe-from-a-ticker">
   ### Cancelar la suscripción a un ticker
@@ -96,7 +93,6 @@ Envía comandos en JSON para controlar tus suscripciones:
 }
 ```
 
-
 <div id="list-active-transcripts">
   ### Listar transcripciones activas
 </div>
@@ -107,9 +103,8 @@ Envía comandos en JSON para controlar tus suscripciones:
 }
 ```
 
-
 <div id="keep-connection-alive">
-  ### Mantén la conexión activa
+  ### Mantener la conexión abierta
 </div>
 
 ```json
@@ -118,12 +113,11 @@ Envía comandos en JSON para controlar tus suscripciones:
 }
 ```
 
-
 <div id="test-with-mock-data">
   ### Prueba con datos simulados
 </div>
 
-Cuando no haya transcripciones en tiempo real disponibles, usa el modo simulado para realizar pruebas:
+Cuando no haya transcripciones en vivo disponibles, use el modo simulado para hacer pruebas:
 
 ```json
 {
@@ -133,8 +127,7 @@ Cuando no haya transcripciones en tiempo real disponibles, usa el modo simulado 
 }
 ```
 
-Tickers simulados admitidos: `AAPL`, `MSFT`, `TSLA`
-
+Tickers de prueba admitidos: `AAPL`, `MSFT`, `TSLA`
 
 <div id="message-example">
   ## Ejemplo de mensaje
@@ -175,35 +168,34 @@ Tickers simulados admitidos: `AAPL`, `MSFT`, `TSLA`
 }
 ```
 
-
 <div id="key-fields">
   ### Campos clave
 </div>
 
-| Campo | Descripción |
-|-------|-------------|
-| `sentence` | El texto completo de la frase pronunciada |
-| `sequence` | Orden de esta frase dentro de la transcripción (0, 1, 2...) |
-| `speaker` | Nombre/identificador de la persona que habla |
-| `status` | `IN_PROGRESS` (en curso) o `COMPLETE` (completado) |
-| `confidence` | Confianza general en la precisión (0.0 - 1.0) |
-| `words` | Lista de palabras individuales con marcas de tiempo y nivel de confianza |
-| `start_time` / `end_time` | Marcas de tiempo ISO 8601 para el inicio y fin de la frase |
+| Campo                     | Descripción                                                  |
+| ------------------------- | ------------------------------------------------------------ |
+| `sentence`                | Texto completo de la frase pronunciada                       |
+| `sequence`                | Orden de esta frase en la transcripción (0, 1, 2...)         |
+| `speaker`                 | Nombre/identificador de la persona que habla                 |
+| `status`                  | `IN_PROGRESS` (en curso) o `COMPLETE` (finalizado)           |
+| `confidence`              | Confianza general en la precisión (0.0 - 1.0)                |
+| `words`                   | Array de palabras individuales con hora y nivel de confianza |
+| `start_time` / `end_time` | Marcas de tiempo ISO 8601 para la sincronización de la frase |
 
 <div id="transcript-status">
   ### Estado de la transcripción
 </div>
 
-| Estado | Descripción |
-|--------|-------------|
-| `IN_PROGRESS` | La transcripción está en vivo y recibiendo actualizaciones |
-| `COMPLETE` | La transcripción ha finalizado, no se esperan más actualizaciones |
+| Estado        | Descripción                                                       |
+| ------------- | ----------------------------------------------------------------- |
+| `IN_PROGRESS` | La transcripción está activa y recibiendo actualizaciones         |
+| `COMPLETE`    | La transcripción ha finalizado; no se esperan más actualizaciones |
 
 <div id="word-level-data">
-  ## Datos a nivel de palabra
+  ## Datos por palabra
 </div>
 
-Cada oración incluye información detallada a nivel de palabra:
+Cada oración incluye información detallada de cada palabra:
 
 ```json
 {
@@ -215,58 +207,57 @@ Cada oración incluye información detallada a nivel de palabra:
 ```
 
 * **text**: La palabra en sí
-* **confidence**: Confianza de reconocimiento (0.0 - 1.0)
-* **start/end**: Desplazamientos de tiempo en milisegundos desde el inicio de la oración
-
+* **confidence**: Nivel de confianza del reconocimiento (0.0 - 1.0)
+* **start/end**: Desplazamientos temporales en milisegundos desde el inicio de la oración
 
 <div id="interactive-commands">
   ## Comandos interactivos
 </div>
 
-| Comando | Parámetros | Descripción |
-|---------|------------|-------------|
-| `subscribe` | `ticker` | Suscribirse a las actualizaciones de transcripciones de un ticker |
-| `unsubscribe` | `ticker` | Dejar de recibir actualizaciones de transcripciones de un ticker |
-| `list` | - | Obtener la lista de transcripciones activas/disponibles |
-| `subscribed` | - | Obtener la lista de tus suscripciones actuales |
-| `ping` | - | Mantener viva la conexión (responde con `pong`) |
-| `echo` | `message` | Prueba de eco (responde con tu mensaje) |
+| Comando       | Parámetros | Descripción                                                       |
+| ------------- | ---------- | ----------------------------------------------------------------- |
+| `subscribe`   | `ticker`   | Suscribirse a las actualizaciones de transcripciones de un ticker |
+| `unsubscribe` | `ticker`   | Dejar de recibir actualizaciones de un ticker                     |
+| `list`        | -          | Obtener la lista de transcripciones activas o disponibles         |
+| `subscribed`  | -          | Obtener la lista de tus suscripciones actuales                    |
+| `ping`        | -          | Mantener la conexión activa (responde con `pong`)                 |
+| `echo`        | `message`  | Prueba de eco (responde con tu mensaje)                           |
 
 <div id="best-practices">
-  ## Prácticas recomendadas
+  ## Buenas prácticas
 </div>
 
 <div id="real-time-display">
   ### Visualización en tiempo real
 </div>
 
-- **Gestión de búfer**: Muestra las oraciones en orden de secuencia utilizando el campo `sequence`
-- **Formato de orador**: Aplica un formato diferente según el valor de `speaker` (ejecutivos vs analistas)
-- **Indicadores de estado**: Muestra indicadores visuales para los estados `IN_PROGRESS` y `COMPLETE`
+* **Gestión del búfer**: Muestra las frases en orden secuencial usando el campo `sequence`
+* **Formato del hablante**: Aplica un formato distinto según `speaker` (ejecutivos frente a analistas)
+* **Indicadores de estado**: Muestra indicadores visuales para los estados `IN_PROGRESS` y `COMPLETE`
 
 <div id="performance">
   ### Rendimiento
 </div>
 
-- **Precaución con comodines**: Usar `ticker: "*"` te suscribe a TODAS las transcripciones, lo que puede generar un volumen elevado
-- **Suscripciones específicas**: Suscríbete solo a los símbolos bursátiles que necesitas para reducir el uso de ancho de banda
-- **Heartbeat**: Envía `ping` cada 30–60 segundos para mantener la conexión
+* **Precaución con comodines**: Usar `ticker: "*"` lo suscribe a TODAS las transcripciones, lo que puede generar un alto volumen
+* **Suscripciones específicas**: Suscríbase solo a los tickers que necesite para reducir el ancho de banda
+* **Heartbeat**: Envíe `ping` cada 30-60 segundos para mantener la conexión
 
 <div id="data-quality">
-  ### Calidad de datos
+  ### Calidad de los datos
 </div>
 
-- **Filtrado por confianza**: Considera ignorar o marcar las oraciones con puntuaciones de confianza bajas
-- **Precisión de palabras**: Utiliza la confianza a nivel de palabra para identificar transcripciones dudosas
-- **Gestión del idioma**: Verifica el campo `language` para una representación adecuada del texto
+* **Filtrado por nivel de confianza**: Considere ignorar o marcar las oraciones con puntuaciones de confianza bajas
+* **Precisión a nivel de palabra**: Use la confianza a nivel de palabra para identificar transcripciones dudosas
+* **Gestión del idioma**: Verifique el campo `language` para que el texto se represente correctamente
 
 <div id="testing">
   ### Pruebas
 </div>
 
-- **Modo simulado**: Usa `mock: true` para desarrollo cuando no haya llamadas en vivo activas
-- **Prueba de eco**: Usa la acción `echo` para verificar la conexión y el manejo de mensajes
-- **Comando de lista**: Consulta `list` para ver qué está disponible actualmente
+* **Modo simulado**: Usa `mock: true` durante el desarrollo cuando no haya llamadas en vivo activas
+* **Prueba de eco**: Usa la acción `echo` para verificar la conexión y la gestión de mensajes
+* **Comando `list`**: Revisa `list` para ver qué está disponible actualmente
 
 <div id="example-integration">
   ## Ejemplo de integración
@@ -288,12 +279,12 @@ ws.onopen = () => {
 ws.onmessage = (event) => {
   const data = JSON.parse(event.data);
 
-  // Mostrar la frase con el interlocutor
+  // Mostrar la oración con el hablante
   console.log(`[${data.sequence}] ${data.speaker}: ${data.sentence}`);
 
   // Verificar si la transcripción está completa
   if (data.status === 'COMPLETE') {
-    console.log('Transcripción finalizada');
+    console.log('Transcript finished');
   }
 };
 
@@ -303,10 +294,9 @@ setInterval(() => {
 }, 30000);
 ```
 
-
 <div id="related-documentation">
   ## Documentación relacionada
 </div>
 
-- [Introducción a WebSocket](../introduction) - Conceptos generales sobre WebSocket y aspectos básicos de la conexión
-- [Autenticación](../authentication) - Cómo obtener y usar tokens de la API
+* [Introducción a WebSocket](../introduction) - Conceptos generales de WebSocket y fundamentos de la conexión
+* [Autenticación](../authentication) - Cómo obtener y usar tokens de la API

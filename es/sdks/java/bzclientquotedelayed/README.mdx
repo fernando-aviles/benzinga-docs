@@ -1,9 +1,9 @@
 ---
-title: "Cotización diferida"
+title: "Cotización retrasada"
 description: quoteDelayed()
 ---
 
-[&lt; ATRÁS](/es/sdks/languages/java#quotedelayed)
+[&lt; VOLVER](/es/sdks/languages/java#quotedelayed)
 
 <div id="overview">
   ## Descripción general
@@ -13,13 +13,13 @@ description: quoteDelayed()
   ### Operaciones disponibles
 </div>
 
-* [get](#get) - Obtener cotizaciones diferidas v2
+* [get](#get) - Obtiene cotizaciones diferidas V2
 
 <div id="get">
   ## get
 </div>
 
-Obtener cotizaciones en diferido para una lista de símbolos
+Obtiene cotizaciones diferidas para una lista de símbolos
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -47,7 +47,7 @@ public class Application {
                 .call();
 
         if (res.string().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -57,11 +57,11 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                       | Tipo                            | Obligatorio                     | Descripción                              |
-| ------------------------------- | ------------------------------- | ------------------------------- | ---------------------------------------- |
-| `symbols`                       | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Lista de símbolos separados por comas    |
-| `isin`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | ISIN del valor                           |
-| `cik`                           | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | CIK del valor                            |
+| Parámetro | Tipo                     | Requerido                  | Descripción                           |
+| --------- | ------------------------ | -------------------------- | ------------------------------------- |
+| `symbols` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Lista de símbolos separados por comas |
+| `isin`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | ISIN del instrumento                  |
+| `cik`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | CIK del instrumento                   |
 
 <div id="response">
   ### Respuesta
@@ -73,6 +73,6 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado           | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/APIException | 4XX, 5XX         | */*               |

@@ -1,6 +1,6 @@
 ---
-title: "Transmisión de calificaciones de consenso"
-description: "Calificaciones de consenso y precios objetivo agregados en tiempo real."
+title: "Flujo de calificaciones de consenso"
+description: "Calificaciones de consenso agregadas y precios objetivo en tiempo real."
 asyncapi: "/asyncapi/consensus-ratings-stream.yml consensusRatings"
 ---
 
@@ -8,33 +8,33 @@ asyncapi: "/asyncapi/consensus-ratings-stream.yml consensusRatings"
   ## Descripción general
 </div>
 
-Suscríbase a calificaciones de consenso en tiempo real que consolidan múltiples opiniones de analistas en calificaciones unificadas y precios objetivo. Supervise el sentimiento general del mercado y los cambios en el consenso de los analistas.
+Suscríbase a las calificaciones de consenso en tiempo real, que consolidan múltiples opiniones de analistas en calificaciones y precios objetivo unificados. Siga el sentimiento general del mercado y los cambios en el consenso de los analistas.
 
 <div id="key-features">
-  ### Características clave
+  ### Funcionalidades clave
 </div>
 
-- **Consenso agregado**: Vista combinada de todas las calificaciones de analistas para un valor
-- **Consenso de precio objetivo**: Objetivos de precio promedio, máximo y mínimo
-- **Distribución de calificaciones**: Desglose por “Strong Buy”, “Buy”, “Hold”, “Sell”, “Strong Sell”
-- **Número de analistas**: Seguimiento del número total de analistas y de los analistas únicos que cubren el valor
-- **Agregación flexible**: Visualización como recuentos o porcentajes
+* **Consenso agregado**: Vista combinada de todas las calificaciones de analistas para un valor
+* **Consenso de precio objetivo**: Precio objetivo promedio, máximo y mínimo
+* **Distribución de calificaciones**: Desglose por Compra fuerte, Compra, Mantener, Venta y Venta fuerte
+* **Número de analistas**: Seguimiento de la cobertura total y de analistas únicos
+* **Agregación flexible**: Visualización en recuentos o porcentajes
 
 <div id="use-cases">
   ### Casos de uso
 </div>
 
-- Crear paneles y widgets de recomendaciones de consenso
-- Hacer seguimiento de cambios generales en el sentimiento de los analistas
-- Comparar recomendaciones individuales con el consenso
-- Monitorizar rangos de precio objetivo (alto, bajo, promedio)
-- Identificar valores con un consenso en mejora o deterioro
+* Crear dashboards y widgets de calificaciones de consenso
+* Hacer seguimiento de la evolución general del sentimiento de los analistas
+* Comparar calificaciones individuales con el consenso
+* Supervisar los rangos de precios objetivo (máximo, mínimo, promedio)
+* Identificar valores cuyo consenso mejora o empeora
 
 <div id="quick-start">
   ## Inicio rápido
 </div>
 
-Usa la herramienta interactiva de prueba de WebSocket de arriba para conectarte y probar el flujo en tiempo real.
+Utiliza el probador interactivo de WebSocket de arriba para conectarte y probar el flujo en tiempo real.
 
 <div id="connection-url">
   ### URL de conexión
@@ -44,18 +44,17 @@ Usa la herramienta interactiva de prueba de WebSocket de arriba para conectarte 
 wss://api.benzinga.com/api/v1/consensus-ratings/stream?token=YOUR_TOKEN
 ```
 
-
 <div id="query-parameters">
   ### Parámetros de consulta
 </div>
 
-| Parámetro | Obligatorio | Descripción |
-|-----------|-------------|-------------|
-| `token` | Sí | Tu token de la API WebSocket de Benzinga (bz.production***) |
-| `tickers` | No | Lista separada por comas de símbolos bursátiles (p. ej., `AAPL,MSFT`) |
-| `isins` | No | Lista separada por comas de códigos ISIN para filtrar |
-| `simplify` | No | Simplifica las calificaciones a Buy, Hold, Sell |
-| `aggregate_type` | No | Tipo de agregación: `number` o `percentage` |
+| Parámetro        | Obligatorio | Descripción                                                      |
+| ---------------- | ----------- | ---------------------------------------------------------------- |
+| `token`          | Sí          | Su token de la API WebSocket de Benzinga (bz.production***)      |
+| `tickers`        | No          | Lista de ticker symbols separada por comas (p. ej., `AAPL,MSFT`) |
+| `isins`          | No          | Lista de ISIN separados por comas para filtrar                   |
+| `simplify`       | No          | Reduce las calificaciones a Buy, Hold y Sell                     |
+| `aggregate_type` | No          | Tipo de agregación: `number` o `percentage`                      |
 
 <div id="message-example">
   ## Ejemplo de mensaje
@@ -87,48 +86,47 @@ wss://api.benzinga.com/api/v1/consensus-ratings/stream?token=YOUR_TOKEN
 }
 ```
 
-
 <div id="consensus-ratings">
   ### Calificaciones de consenso
 </div>
 
-| Calificación | Valor numérico | Descripción |
-|-------------|----------------|-------------|
-| `STRONG_BUY` | 5.0 | Consenso muy alcista |
-| `BUY` | 4.0 - 4.9 | Consenso alcista |
-| `HOLD` | 3.0 - 3.9 | Consenso neutro |
-| `SELL` | 2.0 - 2.9 | Consenso bajista |
-| `STRONG_SELL` | 1.0 - 1.9 | Consenso muy bajista |
+| Calificación  | Valor numérico | Descripción          |
+| ------------- | -------------- | -------------------- |
+| `STRONG_BUY`  | 5.0            | Consenso muy alcista |
+| `BUY`         | 4.0 - 4.9      | Consenso alcista     |
+| `HOLD`        | 3.0 - 3.9      | Consenso neutro      |
+| `SELL`        | 2.0 - 2.9      | Consenso bajista     |
+| `STRONG_SELL` | 1.0 - 1.9      | Consenso muy bajista |
 
 <div id="key-metrics">
   ### Métricas clave
 </div>
 
-| Campo | Descripción |
-|-------|-------------|
-| `consensus_rating` | Calificación general (BUY, HOLD, SELL) |
-| `consensus_rating_val` | Valor numérico de la calificación (1.0-5.0) |
-| `consensus_price_target` | Precio objetivo promedio entre todos los analistas |
-| `high_price_target` | Precio objetivo más alto |
-| `low_price_target` | Precio objetivo más bajo |
-| `total_analyst_count` | Número total de calificaciones |
-| `unique_analyst_count` | Número de analistas distintos |
+| Campo                    | Descripción                                 |
+| ------------------------ | ------------------------------------------- |
+| `consensus_rating`       | Calificación general (BUY, HOLD, SELL)      |
+| `consensus_rating_val`   | Valor numérico de la calificación (1.0-5.0) |
+| `consensus_price_target` | Precio objetivo promedio de los analistas   |
+| `high_price_target`      | Precio objetivo más alto                    |
+| `low_price_target`       | Precio objetivo más bajo                    |
+| `total_analyst_count`    | Número total de calificaciones              |
+| `unique_analyst_count`   | Número de analistas distintos               |
 
 <div id="interactive-commands">
   ## Comandos interactivos
 </div>
 
-| Comando | Descripción |
-|---------|-------------|
-| `ping` | Mantener la conexión activa (responde con `pong`) |
-| `replay` | Reproducir hasta los últimos 100 mensajes almacenados en caché |
+| Comando  | Descripción                                       |
+| -------- | ------------------------------------------------- |
+| `ping`   | Mantiene la conexión activa (responde con `pong`) |
+| `replay` | Reproduce hasta los últimos 100 mensajes en caché |
 
 <div id="best-practices">
-  ## Mejores prácticas
+  ## Prácticas recomendadas
 </div>
 
-- **Cambios en el consenso**: Supervisa los cambios en `consensus_rating_val` a lo largo del tiempo
-- **Rango de precio objetivo**: Compara el precio actual con los objetivos máximo y mínimo para obtener contexto de valoración
-- **Profundidad de cobertura**: Un mayor número de analistas indica un consenso más confiable
-- **Análisis de distribución**: Examina el desglose de `aggregate_ratings` para captar matices en el sentimiento
-- **Vista porcentual**: Usa `aggregate_type=percentage` para comparaciones normalizadas
+* **Cambios en el consenso**: Supervise los cambios en `consensus_rating_val` con el paso del tiempo
+* **Rango de precio objetivo**: Compare el precio actual con los objetivos máximo y mínimo para contextualizar la valoración
+* **Profundidad de cobertura**: Un mayor número de analistas indica un consenso más fiable
+* **Análisis de distribución**: Examine el desglose de `aggregate_ratings` para captar mejor los matices del sentimiento
+* **Vista porcentual**: Use `aggregate_type=percentage` para realizar comparaciones normalizadas

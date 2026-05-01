@@ -1,5 +1,5 @@
 ---
-title: "Lo que dicen los alcistas y los bajistas"
+title: "Qué dicen los alcistas y los bajistas"
 description: bullsBearsSayBearsSay()
 ---
 
@@ -13,13 +13,13 @@ description: bullsBearsSayBearsSay()
   ### Operaciones disponibles
 </div>
 
-* [get](#get) - Obtener Bulls Say Bears Say V1
+* [obtener](#get) - Obtener lo que dicen los alcistas y los bajistas V1
 
 <div id="get">
-  ## get
+  ## obtener
 </div>
 
-Obtener Bulls Say Bears Say V1
+Obtener lo que dicen los alcistas y los bajistas V1
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -46,7 +46,7 @@ public class Application {
                 .call();
 
         if (res.modelsBullsSayBearsSayJSON().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -56,9 +56,9 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro           | Tipo                | Obligatorio         | Descripción                                      |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `symbols`           | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign:  | Símbolos (lista de símbolos separados por comas) |
+| Parámetro | Tipo                     | Obligatorio                | Descripción |
+| --------- | ------------------------ | -------------------------- | ----------- |
+| `symbols` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Símbolos    |
 
 <div id="response">
   ### Respuesta
@@ -70,7 +70,7 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error                  | Código de estado               | Tipo de contenido              |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| models/errors/ApiErrorResponse | 400, 500                       | application/json               |
-| models/errors/APIException     | 4XX, 5XX                       | */*                          |
+| Tipo de error                  | Código de estado | Tipo de contenido |
+| ------------------------------ | ---------------- | ----------------- |
+| models/errors/ApiErrorResponse | 400, 500         | application/json  |
+| models/errors/APIException     | 4XX, 5XX         | */*               |

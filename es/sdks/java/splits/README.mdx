@@ -3,7 +3,7 @@ title: "Splits"
 description: splits()
 ---
 
-[&lt; VOLVER](/es/sdks/languages/java#splits)
+[&lt; Volver](/es/sdks/languages/java#splits)
 
 <div id="overview">
   ## Descripción general
@@ -13,13 +13,13 @@ description: splits()
   ### Operaciones disponibles
 </div>
 
-* [get](#get) - Obtener desdoblamientos de acciones
+* [get](#get) - Obtener desdoblamientos
 
 <div id="get">
   ## get
 </div>
 
-Devuelve datos sobre el calendar de splits
+Devuelve los datos del calendario de splits
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -49,7 +49,7 @@ public class Application {
                 .call();
 
         if (res.modelsSplitJSON().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -59,9 +59,9 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                                                       | Tipo                                                            | Obligatorio                                                     | Descripción                                                     |
-| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| `request`                                                       | [GetSplitsRequest](../../models/operations/GetSplitsRequest.md) | :heavy&#95;check&#95;mark:                                              | Objeto de solicitud que se usará en la solicitud.               |
+| Parámetro | Tipo                                                            | Obligatorio                | Descripción                                                |
+| --------- | --------------------------------------------------------------- | -------------------------- | ---------------------------------------------------------- |
+| `request` | [GetSplitsRequest](../../models/operations/GetSplitsRequest.md) | :heavy&#95;check&#95;mark: | El objeto de solicitud que se utilizará en esta solicitud. |
 
 <div id="response">
   ### Respuesta
@@ -73,6 +73,6 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado           | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/APIException | 4XX, 5XX         | */*               |

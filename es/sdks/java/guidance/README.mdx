@@ -1,5 +1,5 @@
 ---
-title: "Guía"
+title: "Previsiones"
 description: guidance()
 ---
 
@@ -19,7 +19,7 @@ description: guidance()
   ## get
 </div>
 
-Devuelve los datos de guidance
+Devuelve los datos de previsiones
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -49,7 +49,7 @@ public class Application {
                 .call();
 
         if (res.modelsGuidanceJSON().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -59,9 +59,9 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                                                           | Tipo                                                                | Obligatorio                                                         | Descripción                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `request`                                                           | [GetGuidanceRequest](../../models/operations/GetGuidanceRequest.md) | :heavy&#95;check&#95;mark:                                                  | El objeto de solicitud que se utilizará en la solicitud.            |
+| Parámetro | Type                                                                | Obligatorio                | Descripción                              |
+| --------- | ------------------------------------------------------------------- | -------------------------- | ---------------------------------------- |
+| `request` | [GetGuidanceRequest](../../models/operations/GetGuidanceRequest.md) | :heavy&#95;check&#95;mark: | El objeto de solicitud que se utilizará. |
 
 <div id="response">
   ### Respuesta
@@ -73,6 +73,6 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado HTTP      | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/APIException | 4XX, 5XX         | */*               |

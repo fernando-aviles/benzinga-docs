@@ -19,7 +19,7 @@ description: removed()
   ## get
 </div>
 
-Obtener Removed del endpoint v2
+Obtener elementos eliminados del endpoint v2
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -49,7 +49,7 @@ public class Application {
                 .call();
 
         if (res.modelsRmvdJSON().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -59,12 +59,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                                          | Tipo                                               | Obligatorio                                        | Descripción                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `page`                                             | *Optional&lt;Long&gt;*                                  | :heavy&#95;minus&#95;sign:                                 | Número de página                                   |
-| `pageSize`                                         | *Optional&lt;Long&gt;*                                  | :heavy&#95;minus&#95;sign:                                 | Tamaño de página                                   |
-| `type`                                             | [Optional&lt;Type&gt;](../../models/operations/Type.md) | :heavy&#95;minus&#95;sign:                                 | Tipo                                               |
-| `updated`                                          | *Optional&lt;Long&gt;*                                  | :heavy&#95;minus&#95;sign:                                 | Momento de actualización en formato Unix           |
+| Parámetro  | Tipo                                                    | Obligatorio                | Descripción                           |
+| ---------- | ------------------------------------------------------- | -------------------------- | ------------------------------------- |
+| `page`     | *Optional&lt;Long&gt;*                                  | :heavy&#95;minus&#95;sign: | Número de página                      |
+| `pageSize` | *Optional&lt;Long&gt;*                                  | :heavy&#95;minus&#95;sign: | Tamaño de la página                   |
+| `type`     | [Optional&lt;Type&gt;](../../models/operations/Type.md) | :heavy&#95;minus&#95;sign: | Tipo                                  |
+| `updated`  | *Optional&lt;Long&gt;*                                  | :heavy&#95;minus&#95;sign: | Hora de actualización en formato Unix |
 
 <div id="response">
   ### Respuesta
@@ -76,6 +76,6 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado           | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/APIException | 4XX, 5XX         | */*               |

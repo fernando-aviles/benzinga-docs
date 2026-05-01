@@ -1,51 +1,52 @@
 openapi: 3.0.0
 info:
   contact: {}
-  description: Esta API REST proporciona endpoints para buscar fundamentos y
-    obtener detalles sobre ellos.
+  description: Esta API REST proporciona endpoints para buscar datos fundamentales
+    y obtener sus detalles.
   termsOfService: http://swagger.io/terms/
   title: Data API Proxy
   version: 2.0.0
 paths:
   /api/v1/market/movers:
     get:
-      description: Obtiene datos de market movers según los filtros especificados.
-        Devuelve las acciones que se han movido de forma significativa durante
-        la sesión y el intervalo de tiempo indicados. Admite consultas
-        personalizadas de screener y de market movers para un filtrado avanzado.
+      description: Recupera datos de movimientos del mercado según los filtros
+        especificados. Devuelve acciones que han registrado movimientos
+        significativos durante la sesión y el intervalo de tiempo especificados.
+        Admite consultas personalizadas de screener y movers para un filtrado
+        avanzado.
       operationId: get-movers
       parameters:
-        - description: Número máximo de resultados devueltos. Determina el tamaño de la
-            respuesta.
+        - description: Número máximo de resultados que se devolverán. Controla el tamaño
+            de la respuesta.
           in: query
           name: maxResults
           schema:
             type: integer
-        - description: "Fecha y hora de inicio de los datos de movers. Formato: YYYY-MM-DD
-            o YYYY-MM-DDTHH:MM:SS"
+        - description: "Fecha/hora de inicio de los datos de movers. Formato: YYYY-MM-DD o
+            YYYY-MM-DDTHH:MM:SS"
           in: query
           name: from
           schema:
             type: string
-        - description: "Fecha y hora de fin para los datos de movers. Formato: YYYY-MM-DD
-            o YYYY-MM-DDTHH:MM:SS"
+        - description: "Fecha/hora de fin de los datos de movers. Formato: YYYY-MM-DD o
+            YYYY-MM-DDTHH:MM:SS"
           in: query
           name: to
           schema:
             type: string
-        - description: "Sesión de mercado para filtrar los movers. Ejemplos: PRE_MARKET,
+        - description: "Sesión de trading para filtrar movers. Ejemplos: PRE_MARKET,
             REGULAR, AFTER_MARKET"
           in: query
           name: session
           schema:
             type: string
-        - description: Cadena de consulta de screener personalizado para filtrar valores
+        - description: Cadena de consulta personalizada del screener para filtrar valores
             según criterios específicos
           in: query
           name: screenerQuery
           schema:
             type: string
-        - description: Cadena de consulta de movers personalizada para definir patrones de
+        - description: Cadena de consulta personalizada para movers que define patrones de
             movimiento o umbrales específicos
           in: query
           name: moversQuery
@@ -53,13 +54,13 @@ paths:
             type: string
       responses:
         "200":
-          description: Datos de los principales movimientos del mercado
+          description: Datos de movers del mercado
           content:
             application/json:
               schema:
                 type: object
         "400":
-          description: Solicitud incorrecta - parámetros inválidos
+          description: "Solicitud incorrecta: parámetros no válidos"
           content:
             application/json:
               schema:
@@ -72,28 +73,28 @@ paths:
                 type: object
       security:
         - ApiKeyAuth: []
-      summary: Principales movimientos del mercado
+      summary: Movimientos del mercado
       tags:
         - Market Data
   /api/v1/quoteDelayed:
     get:
-      description: Obtener cotizaciones diferidas de una lista de símbolos, ISIN o CIK
+      description: Obtener cotizaciones diferidas para una lista de symbols, ISIN o CIK
       operationId: get-quote-delayed-v1
       parameters:
-        - description: Lista de símbolos de ticker de acciones separados por comas. Se
-            requiere al menos uno de símbolos, ISIN o CIK.
+        - description: Lista de ticker separada por comas. Se requiere al menos uno de
+            symbols, isin o cik.
           in: query
           name: symbols
           schema:
             type: string
-        - description: Lista de identificadores ISIN separados por comas. Máximo 50. Se
-            requiere al menos uno de symbols, isin o cik.
+        - description: "Lista de identificadores ISIN separada por comas. Máximo: 50. Se
+            requiere al menos uno de symbols, isin o cik."
           in: query
           name: isin
           schema:
             type: string
-        - description: Lista de identificadores CIK separados por comas. Se requiere al
-            menos uno de símbolos, ISIN o CIK.
+        - description: Lista de identificadores CIK separada por comas. Se requiere al
+            menos uno de symbols, isin o cik.
           in: query
           name: cik
           schema:
@@ -119,62 +120,63 @@ paths:
                 type: string
       security:
         - ApiKeyAuth: []
-      summary: Obtener cotizaciones en diferido V1
+      summary: Obtener cotizaciones con retraso V1
       tags:
         - QuoteDelayed
   /api/v1/shortinterest:
     get:
-      description: Obtiene datos de posiciones cortas para los valores especificados.
-        Incluye información sobre acciones vendidas en corto, días para cubrir
-        la posición y ratios de posición corta. Admite datos opcionales de
-        informes de FINRA y filtrado por rango de fechas.
+      description: Recupera datos de posiciones cortas para los valores especificados.
+        Incluye información sobre acciones vendidas en corto, días para cubrir y
+        ratios de posiciones cortas. Admite datos opcionales de informes de
+        FINRA y filtrado por rango de fechas.
       operationId: get-short-interest
       parameters:
-        - description: Lista de símbolos de ticker de acciones separados por comas (por
-            ejemplo, AAPL,MSFT,TSLA). Obligatorio.
+        - description: Lista de ticker separada por comas (p. ej., AAPL,MSFT,TSLA).
+            Obligatorio.
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: "Incluir datos del informe de posiciones cortas de FINRA. Valor
-            predeterminado: false"
+        - description: "Incluir datos del informe de posiciones cortas de FINRA.
+            Predeterminado: false"
           in: query
           name: finraReport
           schema:
             type: boolean
-        - description: Número de página para la paginación. Se utiliza en conjunto con el
-            parámetro pageSize.
+        - description: Número de página para la paginación. Se usa con el parámetro
+            pageSize.
           in: query
           name: page
           schema:
             type: integer
         - description: Número de resultados por página. El valor predeterminado varía
-            según la configuración de cada endpoint.
+            según la configuración del endpoint.
           in: query
           name: pageSize
           schema:
             type: integer
-        - description: "Fecha de inicio de los datos de interés en corto. Formato:
+        - description: "Fecha de inicio para los datos de posiciones cortas. Formato:
             YYYY-MM-DD"
           in: query
           name: from
           schema:
             type: string
-        - description: "Fecha de fin de los datos de posiciones cortas. Formato: AAAA-MM-DD"
+        - description: "Fecha de fin para los datos de posiciones cortas. Formato:
+            YYYY-MM-DD"
           in: query
           name: to
           schema:
             type: string
       responses:
         "200":
-          description: Datos de interés corto de los símbolos solicitados
+          description: Datos de posiciones cortas para los symbols solicitados
           content:
             application/json:
               schema:
                 type: object
         "400":
-          description: Solicitud incorrecta - falta el parámetro símbolos o no es válido
+          description: "Solicitud incorrecta: falta el parámetro symbols o no es válido"
           content:
             application/json:
               schema:
@@ -192,50 +194,50 @@ paths:
         - Market Data
   /api/v2.1/fundamentals:
     get:
-      description: Obtiene datos mejorados de fundamentos financieros para los valores
-        especificados. Esta es una versión mejorada del endpoint v2 con campos
-        de datos adicionales y mejor rendimiento. Devuelve métricas financieras,
-        ratios e información de la empresa completas provenientes de fuentes de
-        datos actualizadas.
+      description: Recupera datos mejorados de Fundamentales financieros para los
+        valores especificados. Esta es una versión mejorada del endpoint V2 con
+        campos de datos adicionales y mejor rendimiento. Devuelve métricas
+        financieras completas, ratios e información de company a partir de
+        fuentes de datos actualizadas.
       operationId: get-fundamentals-v21
       parameters:
-        - description: Lista de símbolos de ticker de acciones separados por comas (por
-            ejemplo, AAPL, MSFT, GOOGL). Obligatorio.
+        - description: Lista de ticker separada por comas (p. ej., AAPL,MSFT,GOOGL).
+            Obligatorio.
           in: query
           name: symbols
           required: true
           schema:
             type: string
         - description: "Filtra los resultados para fechas iguales o posteriores a esta
-            fecha. Formato: AAAA-MM-DD (p. ej., 2024-01-01)"
+            fecha. Formato: YYYY-MM-DD (p. ej., 2024-01-01)"
           in: query
           name: asOf
           schema:
             type: string
-        - description: "Filtro por período para períodos de reporte financiero. Valores:
-            Q1 (primer trimestre), Q2 (segundo trimestre), Q3 (tercer
+        - description: "Filtro de period para períodos de informes financieros. Valores
+            admitidos: Q1 (primer trimestre), Q2 (segundo trimestre), Q3 (tercer
             trimestre), Q4 (cuarto trimestre), FY (año fiscal), TTM (últimos
             doce meses)"
           in: query
           name: period
           schema:
             type: string
-        - description: "Tipo de informe financiero que se va a obtener. Valores admitidos:
-            TTM (últimos doce meses), A (tal como se informó originalmente), R
-            (valores reexpresados), P (anuncios preliminares)"
+        - description: "Tipo de informe financiero que se va a recuperar. Valores
+            admitidos: TTM (últimos doce meses), A (según se informó
+            originalmente), R (valores reexpresados), P (anuncios preliminares)"
           in: query
           name: reportType
           schema:
             type: string
       responses:
         "200":
-          description: Datos de fundamentos ampliados con métricas y ratios adicionales
+          description: Datos de Fundamentales mejorados con métricas y ratios adicionales
           content:
             application/json:
               schema:
                 type: object
         "400":
-          description: Solicitud incorrecta - falta el parámetro de símbolos o no es válido
+          description: "Solicitud incorrecta: falta el parámetro symbols o no es válido"
           content:
             application/json:
               schema:
@@ -248,35 +250,35 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: Fundamentos de la empresa v2.1
+      summary: Fundamentales de la empresa V2.1
       tags:
         - Fundamentals
   /api/v2.1/fundamentals/alphaBeta:
     get:
-      description: Obtener las métricas Alpha y Beta para los símbolos especificados.
-        Estas métricas indican la volatilidad y el rendimiento relativos al
-        mercado.
+      description: Recupera métricas Alpha y Beta para los symbols especificados.
+        Estas métricas indican la volatilidad y el rendimiento en relación con
+        el mercado.
       operationId: get-alpha-beta-v21
       parameters:
-        - description: Lista de símbolos separados por comas (por ejemplo, AAPL, MSFT)
+        - description: Lista de symbols separados por comas (p. ej., AAPL, MSFT)
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: Devuelve resultados para fechas posteriores o iguales a la
+        - description: Devuelve resultados para fechas iguales o posteriores a la date
             especificada en este parámetro (YYYY-MM-DD)
           in: query
           name: asOf
           schema:
             type: string
-        - description: Especifica el período de tiempo de los resultados que se devuelven
-            (por ejemplo, Q1 de 2023)
+        - description: Especifica el período de tiempo de los resultados devueltos (p.
+            ej., Q1, 2023)
           in: query
           name: period
           schema:
             type: string
-        - description: "Tipo de informe: TTM (últimos doce meses), A (tal como se informó
+        - description: "Tipo de informe: TTM (últimos doce meses), A (según se informó
             originalmente), R (reexpresado), P (preliminar)"
           in: query
           name: reportType
@@ -284,7 +286,7 @@ paths:
             type: string
       responses:
         "200":
-          description: Datos alfa y beta
+          description: Datos alfa-beta
           content:
             application/json:
               schema:
@@ -303,12 +305,12 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: Obtener Alpha Beta v2.1
+      summary: Obtener alfa y beta V2.1
       tags:
         - Fundamentals
   /api/v2.1/fundamentals/assetClassification:
     get:
-      description: Obtén detalles de clasificación de activos para los símbolos
+      description: Recupera detalles de clasificación de activos para los símbolos
         especificados, incluidos el sector, la industria y otros metadatos de
         clasificación. Útil para la categorización y el análisis de carteras.
       operationId: get-asset-classification-v21
@@ -319,19 +321,19 @@ paths:
           required: true
           schema:
             type: string
-        - description: Devuelve resultados para fechas posteriores o iguales a la fecha
+        - description: Devuelve resultados para fechas iguales o posteriores a la fecha
             especificada en este parámetro (YYYY-MM-DD)
           in: query
           name: asOf
           schema:
             type: string
-        - description: Especifica el período de los resultados devueltos (por ejemplo, Q1
-            de 2023)
+        - description: Especifica el período de tiempo de los resultados devueltos (p.
+            ej., Q1, 2023)
           in: query
           name: period
           schema:
             type: string
-        - description: "Tipo de informe: TTM (últimos doce meses), A (tal como se informó
+        - description: "Tipo de informe: TTM (últimos doce meses), A (según se informó
             originalmente), R (reexpresado), P (preliminar)"
           in: query
           name: reportType
@@ -358,40 +360,40 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: Obtener clasificación de activos v2.1
+      summary: Obtener clasificación de activos V2.1
       tags:
         - Fundamentals
   /api/v2.1/fundamentals/company:
     get:
-      description: Recupera datos financieros detallados de una empresa, incluidos
-        indicadores clave, estadísticas operativas y el desempeño financiero
-        histórico. Ofrece una visión integral de las finanzas de la empresa más
-        allá de los fundamentos básicos.
+      description: Recupera datos financieros detallados específicos de la empresa,
+        incluidas métricas clave, estadísticas operativas y rendimiento
+        financiero histórico. Proporciona una visión integral de las finanzas de
+        la empresa más allá de los Fundamentales básicos.
       operationId: get-company-v21
       parameters:
-        - description: Lista de símbolos separada por comas (ticker de acciones; p. ej.,
-            AAPL, MSFT, GOOGL). Obligatorio.
+        - description: Lista de ticker separados por comas (p. ej., AAPL,MSFT,GOOGL).
+            Obligatorio.
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: "Filtra los resultados para fechas iguales o posteriores a esta
-            fecha. Formato: YYYY-MM-DD (p. ej., 2024-01-01)"
+        - description: "Filtra los resultados para fechas en esta fecha o posteriores.
+            Formato: YYYY-MM-DD (p. ej., 2024-01-01)"
           in: query
           name: asOf
           schema:
             type: string
-        - description: "Filtro por período de tiempo para períodos de información
-            financiera. Valores admitidos: Q1, Q2, Q3, Q4 (trimestres), FY (año
-            fiscal), TTM (últimos doce meses)"
+        - description: "Filtro de período para períodos de informes financieros. Valores
+            admitidos: Q1, Q2, Q3, Q4 (trimestres), FY (año fiscal), TTM
+            (últimos doce meses)"
           in: query
           name: period
           schema:
             type: string
         - description: "Tipo de informe financiero. Valores admitidos: TTM (últimos doce
-            meses), A (como se informó originalmente), R (valores reexpresados),
-            P (anuncios preliminares)"
+            meses), A (según se informó originalmente), R (valores
+            reexpresados), P (anuncios preliminares)"
           in: query
           name: reportType
           schema:
@@ -404,8 +406,7 @@ paths:
               schema:
                 type: object
         "400":
-          description: "Solicitud no válida: falta el parámetro de símbolos o este no es
-            válido"
+          description: "Solicitud incorrecta: falta el parámetro symbols o no es válido"
           content:
             application/json:
               schema:
@@ -418,34 +419,34 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: Datos financieros de empresa v2.1
+      summary: Datos financieros de la empresa V2.1
       tags:
         - Fundamentals
   /api/v2.1/fundamentals/companyProfile:
     get:
-      description: Obtiene información completa del perfil de la empresa, incluida la
-        descripción de la empresa, la clasificación industrial, los detalles del
-        sector, la ubicación de la sede central, los directivos clave y otros
-        metadatos corporativos. Es fundamental para comprender el trasfondo de
-        la empresa y su estructura organizativa.
+      description: Recupera información integral del perfil de la empresa, incluida la
+        descripción del negocio, la clasificación de la industria, los detalles
+        del sector, la ubicación de la sede, los ejecutivos clave y otros
+        metadatos corporativos. Esencial para comprender los antecedentes de la
+        empresa y su estructura organizativa.
       operationId: get-company-profile-v21
       parameters:
-        - description: Lista de símbolos separados por comas de ticker de acciones (p.
-            ej., AAPL, MSFT, GOOGL). Obligatorio.
+        - description: Lista de ticker separados por comas (p. ej., AAPL,MSFT,GOOGL).
+            Obligatorio.
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: "Devuelve resultados para fechas posteriores o iguales a esta
-            fecha. Formato: AAAA-MM-DD (p. ej., 2024-01-01)"
+        - description: "Filtra los resultados para fechas en esta fecha o posteriores.
+            Formato: YYYY-MM-DD (p. ej., 2024-01-01)"
           in: query
           name: asOf
           schema:
             type: string
-        - description: "Filtro de período de tiempo para los períodos de informes
-            financieros. Valores admitidos: Q1, Q2, Q3, Q4 (trimestres), FY (año
-            fiscal), TTM (últimos doce meses)"
+        - description: "Filtro de período para períodos de informes financieros. Valores
+            admitidos: Q1, Q2, Q3, Q4 (trimestres), FY (año fiscal), TTM
+            (últimos doce meses)"
           in: query
           name: period
           schema:
@@ -465,7 +466,7 @@ paths:
               schema:
                 type: object
         "400":
-          description: Solicitud incorrecta - falta el parámetro symbols o no es válido
+          description: "Solicitud incorrecta: falta el parámetro symbols o no es válido"
           content:
             application/json:
               schema:
@@ -483,38 +484,38 @@ paths:
         - Fundamentals
   /api/v2.1/fundamentals/earningRatios:
     get:
-      description: Obtén ratios de beneficios para una lista de símbolos. Incluye
-        métricas como la relación P/E, las ganancias por acción (EPS) y otros
-        ratios relacionados con los beneficios.
+      description: Recupera ratios de ganancias para una lista de símbolos. Incluye
+        métricas como el PER, el EPS y otros ratios relacionados con las
+        ganancias.
       operationId: get-earning-ratios-v21
       parameters:
-        - description: Lista separada por comas de símbolos (p. ej., AAPL, MSFT)
+        - description: Lista de símbolos separados por comas (p. ej., AAPL, MSFT)
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: Devuelve resultados para fechas mayores o iguales que la fecha
-            especificada en este parámetro (AAAA-MM-DD)
+        - description: Devuelve resultados para fechas posteriores o iguales a la
+            especificada en este parámetro (YYYY-MM-DD)
           in: query
           name: asOf
           schema:
             type: string
-        - description: Especifica el período de los resultados devueltos (p. ej., Q1 de
-            2023)
+        - description: Especifica el período de tiempo de los resultados devueltos (p.
+            ej., Q1, 2023)
           in: query
           name: period
           schema:
             type: string
-        - description: "Tipo de informe: TTM (Últimos doce meses), A (Tal como se informó
-            originalmente), R (Reexpresado), P (Preliminar)"
+        - description: "Tipo de informe: TTM (últimos doce meses), A (según lo informado
+            originalmente), R (reexpresado), P (preliminar)"
           in: query
           name: reportType
           schema:
             type: string
       responses:
         "200":
-          description: Datos de ratios de beneficio
+          description: Datos de ratios de ganancias
           content:
             application/json:
               schema:
@@ -533,42 +534,41 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: Obtener ratios de resultados v2.1
+      summary: Obtener ratios de rentabilidad V2.1
       tags:
         - Fundamentals
   /api/v2.1/fundamentals/earningReports:
     get:
-      description: Obtiene informes de resultados detallados para los valores
-        especificados, incluyendo ingresos, ganancias por acción (Earnings Per
-        Share, EPS), EBITDA, beneficio neto y otros resultados financieros clave
-        de los informes trimestrales y anuales. Es esencial para analizar el
-        desempeño financiero de la empresa y las tendencias de resultados a lo
-        largo del tiempo.
+      description: Recupera informes detallados de ganancias para los valores
+        especificados, incluidos los ingresos, las ganancias por acción (EPS),
+        el EBITDA, los ingresos netos y otros resultados financieros clave de
+        informes trimestrales y anuales. Esencial para analizar el rendimiento
+        financiero de la empresa y las tendencias de ganancias a lo largo del
+        tiempo.
       operationId: get-earnings-reports-v21
       parameters:
-        - description: Lista de símbolos de ticker de acciones separados por comas (por
-            ejemplo, AAPL, MSFT, GOOGL). Obligatorio.
+        - description: Lista separada por comas de ticker de acciones (p. ej.,
+            AAPL,MSFT,GOOGL). Obligatorio.
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: "Filtra los resultados correspondientes a fechas iguales o
-            posteriores a esta fecha. Formato: YYYY-MM-DD (por ejemplo,
-            2024-01-01)"
+        - description: "Filtra resultados para fechas iguales o posteriores a esta fecha.
+            Formato: YYYY-MM-DD (p. ej., 2024-01-01)"
           in: query
           name: asOf
           schema:
             type: string
-        - description: "Filtro de período para períodos de información financiera. Valores
-            admitidos: Q1, Q2, Q3, Q4 (trimestres), FY (año fiscal), TTM
+        - description: "Filtro de período para los períodos de informes financieros.
+            Valores admitidos: Q1, Q2, Q3, Q4 (trimestres), FY (año fiscal), TTM
             (últimos doce meses)"
           in: query
           name: period
           schema:
             type: string
         - description: "Tipo de informe financiero. Valores admitidos: TTM (últimos doce
-            meses), A (tal como se informó originalmente), R (valores
+            meses), A (según lo informado originalmente), R (valores
             reexpresados), P (anuncios preliminares)"
           in: query
           name: reportType
@@ -576,13 +576,13 @@ paths:
             type: string
       responses:
         "200":
-          description: Datos de informes de resultados financieros
+          description: Datos de informes de ganancias
           content:
             application/json:
               schema:
                 type: object
         "400":
-          description: Solicitud incorrecta - falta el parámetro «símbolos» o no es válido
+          description: "Solicitud incorrecta: falta el parámetro symbols o no es válido"
           content:
             application/json:
               schema:
@@ -595,14 +595,14 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: Informes de resultados trimestrales y anuales v2.1
+      summary: Informes trimestrales y anuales de resultados V2.1
       tags:
         - Fundamentals
   /api/v2.1/fundamentals/financials:
     get:
-      description: Recupera los estados financieros de los símbolos especificados.
-        Incluye datos de balances generales, estados de resultados y estados de
-        flujos de efectivo.
+      description: Recupera estados financieros para los símbolos especificados.
+        Incluye datos de balances, estados de resultados y estados de flujo de
+        efectivo.
       parameters:
         - description: Lista de símbolos separados por comas (p. ej., AAPL, MSFT)
           in: query
@@ -610,19 +610,19 @@ paths:
           required: true
           schema:
             type: string
-        - description: Devuelve resultados para fechas posteriores o iguales a la fecha
-            indicada en este parámetro (YYYY-MM-DD)
+        - description: Devuelve resultados para fechas posteriores o iguales a la
+            especificada en este parámetro (YYYY-MM-DD)
           in: query
           name: asOf
           schema:
             type: string
-        - description: Especifica el período al que corresponden los resultados devueltos
-            (p. ej., Q1 de 2023)
+        - description: Especifica el período de tiempo de los resultados devueltos (p.
+            ej., Q1, 2023)
           in: query
           name: period
           schema:
             type: string
-        - description: "Tipo de informe: TTM (últimos doce meses), A (tal como se informó
+        - description: "Tipo de informe: TTM (últimos doce meses), A (según lo informado
             originalmente), R (reexpresado), P (preliminar)"
           in: query
           name: reportType
@@ -638,7 +638,7 @@ paths:
                   type: string
                 type: array
         "400":
-          description: Solicitud no válida
+          description: Solicitud incorrecta
           content:
             application/json:
               schema:
@@ -651,13 +651,14 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: Obtener estados financieros v2.1
+      summary: Obtener datos financieros V2.1
       tags:
         - Fundamentals
   /api/v2.1/fundamentals/operationRatios:
     get:
-      description: Obtén ratios operativos para una lista de símbolos. Incluye
-        métricas como margen operativo, margen de beneficio, ROA, ROE y otras.
+      description: Recupera ratios operativos para una lista de símbolos. Incluye
+        métricas como el margen operativo, el margen de beneficio, el ROA, el
+        ROE y otras.
       operationId: get-operation-ratios-v21
       parameters:
         - description: Lista de símbolos separados por comas (p. ej., AAPL, MSFT)
@@ -666,19 +667,19 @@ paths:
           required: true
           schema:
             type: string
-        - description: Devuelve resultados para fechas iguales o posteriores a la fecha
+        - description: Devuelve resultados para fechas posteriores o iguales a la
             especificada en este parámetro (YYYY-MM-DD)
           in: query
           name: asOf
           schema:
             type: string
-        - description: Especifica el período al que corresponden los resultados devueltos
-            (p. ej., Q1 de 2023)
+        - description: Especifica el período de tiempo de los resultados devueltos (p.
+            ej., Q1, 2023)
           in: query
           name: period
           schema:
             type: string
-        - description: "Tipo de informe: TTM (últimos doce meses), A (según se informó
+        - description: "Tipo de informe: TTM (últimos doce meses), A (según lo informado
             originalmente), R (reexpresado), P (preliminar)"
           in: query
           name: reportType
@@ -686,7 +687,7 @@ paths:
             type: string
       responses:
         "200":
-          description: Datos de ratios de operación
+          description: Datos de ratios operativos
           content:
             application/json:
               schema:
@@ -705,36 +706,35 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: Obtener ratios operativos v2.1
+      summary: Obtener ratios operativos V2.1
       tags:
         - Fundamentals
   /api/v2.1/fundamentals/shareClass:
     get:
-      description: Obtener información sobre clases de acción para símbolos
-        específicos. Devuelve datos detallados sobre la estructura de capital,
-        incluidos los ID de clase de acción, la divisa y otros metadatos
+      description: Recupera información sobre clases de acciones para symbols
+        específicos. Devuelve datos detallados de la estructura accionaria,
+        incluidos los ID de las clases de acciones, la moneda y otros metadatos
         relacionados.
       parameters:
-        - description: Lista de símbolos separada por comas (por ejemplo, AAPL, MSFT)
+        - description: Lista de symbols separados por comas (p. ej., AAPL, MSFT)
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: Devuelve resultados para fechas iguales o posteriores a la fecha
+        - description: Devuelve resultados para fechas iguales o posteriores a la date
             especificada en este parámetro (YYYY-MM-DD)
           in: query
           name: asOf
           schema:
             type: string
-        - description: Especifica el período de tiempo de los resultados retornados (p.
-            ej., Q1 de 2023)
+        - description: Especifica el period de los resultados devueltos (p. ej., Q1, 2023)
           in: query
           name: period
           schema:
             type: string
-        - description: "Tipo de informe: TTM (últimos doce meses), A (como se informó
-            originalmente), R (reexpresado), P (anuncios preliminares)"
+        - description: "Tipo de informe: TTM (últimos doce meses), A (según lo informado
+            originalmente), R (reexpresado), P (preliminar)"
           in: query
           name: reportType
           schema:
@@ -760,34 +760,33 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: Obtener clase de acciones v2.1
+      summary: Obtener clase de acciones V2.1
       tags:
         - Fundamentals
   /api/v2.1/fundamentals/shareClassProfile:
     get:
-      description: Obtener información de perfil para clases de acciones,
-        proporcionando detalles sobre las características de cada clase de
-        acciones y los metadatos asociados.
+      description: Recupera información de perfil de clases de acciones y proporciona
+        detalles sobre las características de la clase de acciones y los
+        metadatos asociados.
       parameters:
-        - description: Lista de símbolos separada por comas (p. ej., AAPL, MSFT)
+        - description: Lista de symbols separados por comas (p. ej., AAPL, MSFT)
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: Devuelve resultados para fechas posteriores o iguales a la
-            especificada en este parámetro (AAAA-MM-DD)
+        - description: Devuelve resultados para fechas iguales o posteriores a la date
+            especificada en este parámetro (YYYY-MM-DD)
           in: query
           name: asOf
           schema:
             type: string
-        - description: Especifica el período de tiempo de los resultados que se devuelven
-            (p. ej., Q1 de 2023)
+        - description: Especifica el period de los resultados devueltos (p. ej., Q1, 2023)
           in: query
           name: period
           schema:
             type: string
-        - description: "Tipo de informe: TTM (últimos doce meses), A (como se informó
+        - description: "Tipo de informe: TTM (últimos doce meses), A (según lo informado
             originalmente), R (reexpresado), P (preliminar)"
           in: query
           name: reportType
@@ -795,7 +794,7 @@ paths:
             type: string
       responses:
         "200":
-          description: Datos del perfil de la clase de acción
+          description: Datos del perfil de clases de acciones
           content:
             application/json:
               schema:
@@ -814,35 +813,34 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: Obtener perfil de la clase de acciones v2.1
+      summary: Obtener perfil de la clase de acciones V2.1
       tags:
         - Fundamentals
   /api/v2.1/fundamentals/valuationRatios:
     get:
-      description: Obtenga ratios de valoración para una lista de símbolos. Incluye
-        métricas como P/E, P/B, P/S y otras métricas de valoración esenciales
-        para el análisis de inversión.
+      description: Recupera ratios de valoración para una lista de symbols. Incluye
+        métricas como PER, P/B, P/S y otros indicadores de valoración esenciales
+        para el análisis de inversiones.
       operationId: get-valuation-ratios-v21
       parameters:
-        - description: Lista de símbolos separados por comas (p. ej., AAPL, MSFT)
+        - description: Lista de symbols separados por comas (p. ej., AAPL, MSFT)
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: Devuelve resultados para fechas iguales o posteriores a la fecha
-            especificada en este parámetro (AAAA-MM-DD)
+        - description: Devuelve resultados para fechas iguales o posteriores a la date
+            especificada en este parámetro (YYYY-MM-DD)
           in: query
           name: asOf
           schema:
             type: string
-        - description: Especifica el período al que corresponden los resultados devueltos
-            (p. ej., Q1 de 2023)
+        - description: Especifica el period de los resultados devueltos (p. ej., Q1, 2023)
           in: query
           name: period
           schema:
             type: string
-        - description: "Tipo de informe: TTM (últimos doce meses), A (según se informó
+        - description: "Tipo de informe: TTM (últimos doce meses), A (según lo informado
             originalmente), R (reexpresado), P (preliminar)"
           in: query
           name: reportType
@@ -850,7 +848,7 @@ paths:
             type: string
       responses:
         "200":
-          description: Datos sobre ratios de valoración
+          description: Datos de ratios de valoración
           content:
             application/json:
               schema:
@@ -869,58 +867,59 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: Obtener ratios de valoración v2.1
+      summary: Obtener ratios de valoración V2.1
       tags:
         - Fundamentals
   /api/v2/bars:
     get:
-      description: Obtiene datos históricos de barras de precios OHLCV (Open, High,
-        Low, Close, Volume) para los valores especificados. Devuelve datos de
-        precios agregados según el intervalo indicado. Admite múltiples símbolos
-        de ticker y varios rangos de tiempo, incluidas fechas relativas.
+      description: Recupera datos históricos de barras de precios OHLCV (apertura,
+        máximo, mínimo, cierre, volumen) para los valores especificados.
+        Devuelve datos de precios agregados según el intervalo especificado.
+        Admite múltiples ticker y varios rangos de tiempo, incluidas fechas
+        relativas.
       operationId: get-bars-v2
       parameters:
-        - description: Lista de símbolos de ticker de acciones separados por comas (por
-            ejemplo, AAPL,MSFT,TSLA). Obligatorio.
+        - description: Lista de ticker de acciones separados por comas (p. ej.,
+            AAPL,MSFT,TSLA). Obligatorio.
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: "Fecha y hora de inicio de las barras. Formatos: YYYY-MM-DD,
-            YYYY-MM-DDTHH:MM:SS, YTD (año hasta la fecha) o en formato relativo,
+        - description: "Fecha/hora de inicio de las barras. Formatos: YYYY-MM-DD,
+            YYYY-MM-DDTHH:MM:SS, YTD (año hasta la fecha) o valores relativos
             como 1MONTH/1m/1M, 1WEEK/1w/1W, 1DAY/1d/1D. Obligatorio."
           in: query
           name: from
           required: true
           schema:
             type: string
-        - description: "Fecha y hora de finalización de las barras. Formato: YYYY-MM-DD o
-            YYYY-MM-DDTHH:MM:SS. De forma predeterminada, se usa la fecha y hora
-            actuales si no se especifica."
+        - description: "Fecha/hora de fin de las barras. Formato: YYYY-MM-DD o
+            YYYY-MM-DDTHH:MM:SS. Si no se especifica, el valor predeterminado es
+            la fecha/hora actual."
           in: query
           name: to
           schema:
             type: string
-        - description: "Intervalo temporal para la agregación de barras de precios.
-            Valores admitidos: 1m (1 minuto), 5m (5 minutos), 15m (15 minutos),
-            30m (30 minutos), 1h (1 hora), 1d (1 día), 1w (1 semana), 1M (1
-            mes). Valor predeterminado: 1d"
+        - description: "Intervalo temporal para agregar barras de precios. Valores
+            admitidos: 1m (1 minuto), 5m (5 minutos), 15m (15 minutos), 30m (30
+            minutos), 1h (1 hora), 1d (1 día), 1w (1 semana), 1M (1 mes). Valor
+            predeterminado: 1d"
           in: query
           name: interval
           schema:
             type: string
         - description: "Filtro de sesión de negociación. Valores admitidos: ANY (todas las
-            sesiones), PRE_MARKET (premercado), REGULAR (horario de negociación
-            regular), AFTER_MARKET (operaciones fuera de horario). Valor
-            predeterminado: ANY"
+            sesiones), PRE_MARKET (negociación antes de la apertura), REGULAR
+            (horario de negociación habitual), AFTER_MARKET (negociación fuera
+            de horario). Valor predeterminado: ANY"
           in: query
           name: session
           schema:
             type: string
       responses:
         "200":
-          description: Array de datos de gráficos con barras OHLCV para cada símbolo
+          description: Matriz de datos de gráficos con barras OHLCV para cada símbolo
           content:
             application/json:
               schema:
@@ -928,7 +927,8 @@ paths:
                   $ref: "#/components/schemas/httpapi.Chart"
                 type: array
         "400":
-          description: "Solicitud incorrecta: parámetros obligatorios ausentes o no válidos"
+          description: "Solicitud incorrecta: faltan parámetros obligatorios o no son
+            válidos"
           content:
             application/json:
               schema:
@@ -946,51 +946,50 @@ paths:
         - Market Data
   /api/v2/fundamentals:
     get:
-      description: Obtiene datos completos de fundamentos financieros para los valores
-        especificados. Devuelve métricas financieras clave, ratios e información
-        de la empresa a partir de fuentes de datos de Morningstar. Utiliza este
-        endpoint para acceder a datos del estado de resultados, balance general
-        y estado de flujos de efectivo.
+      description: Recupera datos completos de Fundamentales financieros para los
+        valores especificados. Devuelve métricas financieras clave, ratios e
+        información de la empresa procedentes de las fuentes de datos de
+        Morningstar. Use este endpoint para acceder a datos del estado de
+        resultados, el balance general y el estado de flujo de efectivo.
       operationId: get-fundamentals-v2
       parameters:
-        - description: Lista de símbolos de ticker de acciones, separados por comas (por
-            ejemplo, AAPL,MSFT,GOOGL). Obligatorio.
+        - description: Lista de ticker separados por comas (p. ej., AAPL,MSFT,GOOGL).
+            Obligatorio.
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: "Filtra resultados para fechas posteriores o iguales a esta fecha.
-            Formato: AAAA-MM-DD (por ejemplo, 2024-01-01)"
+        - description: "Filtra los resultados por fechas iguales o posteriores a esta
+            fecha. Formato: YYYY-MM-DD (p. ej., 2024-01-01)"
           in: query
           name: asOf
           schema:
             type: string
-        - description: "Filtro de período para períodos de informes financieros. Valores
+        - description: "Filtro de período para periodos de informes financieros. Valores
             admitidos: Q1 (primer trimestre), Q2 (segundo trimestre), Q3 (tercer
-            trimestre), Q4 (cuarto trimestre), FY (año fiscal), TTM (últimos
-            doce meses)"
+            trimestre), Q4 (cuarto trimestre), FY (ejercicio fiscal), TTM
+            (últimos doce meses)"
           in: query
           name: period
           schema:
             type: string
-        - description: "Tipo de informe financiero que se va a obtener. Valores admitidos:
-            TTM (últimos doce meses), A (tal como se informó originalmente), R
-            (valores reexpresados), P (informes preliminares)"
+        - description: "Tipo de informe financiero que se va a recuperar. Valores
+            admitidos: TTM (últimos doce meses), A (tal como se informó
+            originalmente), R (valores reexpresados), P (anuncios preliminares)"
           in: query
           name: reportType
           schema:
             type: string
       responses:
         "200":
-          description: Datos fundamentales, incluidos estados financieros y métricas
+          description: Datos de Fundamentales, incluidos estados financieros y métricas
           content:
             application/json:
               schema:
                 type: object
         "400":
-          description: "Solicitud incorrecta: falta el parámetro `symbols` o su valor no
-            es válido"
+          description: "Solicitud incorrecta: falta el parámetro symbols o no es válido"
           content:
             application/json:
               schema:
@@ -1003,41 +1002,41 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: Fundamentos de la empresa V2
+      summary: Fundamentales de la empresa V2
       tags:
         - Fundamentals
   /api/v2/fundamentals/operationRatios:
     get:
-      description: Obtiene ratios y métricas de eficiencia operativa para los valores
+      description: Recupera ratios y métricas de eficiencia operativa para los valores
         especificados. Incluye indicadores clave de rendimiento como la rotación
-        de activos, la rotación de inventarios, la rotación de cuentas por
-        cobrar, el período de cuentas por pagar y otras métricas operativas que
-        miden la eficacia con la que una empresa utiliza sus activos y gestiona
-        sus operaciones.
+        de activos, la rotación de inventario, la rotación de cuentas por
+        cobrar, el período de pago y otras métricas operativas que miden la
+        eficacia con la que una empresa utiliza sus activos y gestiona sus
+        operaciones.
       operationId: get-operation-ratios-v2
       parameters:
-        - description: Lista de símbolos separada por comas (ticker de acciones; p. ej.,
-            AAPL, MSFT, GOOGL). Obligatorio.
+        - description: Lista de ticker bursátiles separados por comas (p. ej.,
+            AAPL,MSFT,GOOGL). Obligatorio.
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: "Filtra resultados para fechas iguales o posteriores a esta fecha.
-            Formato: YYYY-MM-DD (p. ej., 2024-01-01)"
+        - description: "Filtra los resultados por fechas iguales o posteriores a esta
+            fecha. Formato: YYYY-MM-DD (p. ej., 2024-01-01)"
           in: query
           name: asOf
           schema:
             type: string
-        - description: "Filtro del período de tiempo para los períodos de reporte
-            financiero. Valores admitidos: Q1, Q2, Q3, Q4 (trimestres), FY
-            (ejercicio fiscal), TTM (últimos doce meses)"
+        - description: "Filtro de período para periodos de informes financieros. Valores
+            admitidos: Q1, Q2, Q3, Q4 (trimestres), FY (ejercicio fiscal), TTM
+            (últimos doce meses)"
           in: query
           name: period
           schema:
             type: string
         - description: "Tipo de informe financiero. Valores admitidos: TTM (últimos doce
-            meses), A (según lo informado originalmente), R (valores
+            meses), A (tal como se informó originalmente), R (valores
             reexpresados), P (anuncios preliminares)"
           in: query
           name: reportType
@@ -1045,13 +1044,13 @@ paths:
             type: string
       responses:
         "200":
-          description: Ratios de operación y métricas de eficiencia
+          description: Ratios y métricas de eficiencia operativa
           content:
             application/json:
               schema:
                 type: object
         "400":
-          description: Solicitud incorrecta - falta el parámetro de símbolos o no es válido
+          description: "Solicitud incorrecta: falta el parámetro symbols o no es válido"
           content:
             application/json:
               schema:
@@ -1069,36 +1068,36 @@ paths:
         - Fundamentals
   /api/v2/quoteDelayed:
     get:
-      description: Obtener cotizaciones diferidas para una lista de símbolos
+      description: Obtiene cotizaciones diferidas para una lista de symbols
       operationId: get-quote-delayed-v2
       parameters:
-        - description: Lista de símbolos de ticker de acciones separados por comas. Se
-            requiere al menos uno de los parámetros symbols, isin o cik.
+        - description: "Lista de ticker bursátiles separada por comas. Se requiere al
+            menos uno de estos parámetros: symbols, isin o cik."
           in: query
           name: symbols
           schema:
             type: string
-        - description: Lista de identificadores ISIN separados por comas. Máximo 50. Se
-            requiere al menos uno de symbols, isin o cik.
+        - description: "Lista de identificadores ISIN separada por comas. Máximo: 50. Se
+            requiere al menos uno de estos parámetros: symbols, isin o cik."
           in: query
           name: isin
           schema:
             type: string
-        - description: Lista de identificadores CIK separados por comas. Es obligatorio
-            proporcionar al menos uno de símbolos, isin o cik.
+        - description: "Lista de identificadores CIK separada por comas. Se requiere al
+            menos uno de estos parámetros: symbols, isin o cik."
           in: query
           name: cik
           schema:
             type: string
       responses:
         "200":
-          description: Devuelve un objeto JSON con cotizaciones en diferido
+          description: Devuelve un objeto JSON con cotizaciones diferidas
           content:
             application/json:
               schema:
                 type: string
         "400":
-          description: Solicitud no válida
+          description: Solicitud incorrecta
           content:
             application/json:
               schema:
@@ -1111,42 +1110,42 @@ paths:
                 type: string
       security:
         - ApiKeyAuth: []
-      summary: Obtener cotizaciones en diferido V2
+      summary: Obtener cotizaciones con retraso V2
       tags:
         - QuoteDelayed
   /api/v3/fundamentals:
     get:
-      description: Obtiene la generación más reciente de datos de fundamentos
-        financieros, potenciados por el pipeline de datos mejorado de Benzinga.
-        Proporciona estados financieros, métricas y ratios completos, con mayor
-        calidad y cobertura de datos. Permite consultas con rangos de fechas
-        flexibles y especificaciones de fechas relativas.
+      description: Recupera la versión más reciente de los datos financieros
+        Fundamentales, impulsada por el canal de datos mejorado de Benzinga.
+        Proporciona estados financieros, métricas y ratios completos, con mejor
+        calidad y cobertura de datos. Admite consultas flexibles por rango de
+        fechas y especificaciones de fechas relativas.
       operationId: get-fundamentals-v3
       parameters:
-        - description: Lista de símbolos de ticker de acciones separados por comas (por
-            ejemplo, AAPL, MSFT, GOOGL). Obligatorio.
+        - description: Lista de ticker bursátiles separada por comas (p. ej.,
+            AAPL,MSFT,GOOGL). Obligatorio.
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: "Fecha de inicio de la consulta. Admite múltiples formatos:
-            YYYY-MM-DD (p. ej., 2024-01-01), YTD (año hasta la fecha desde el 1
-            de enero), o fechas relativas como 1MONTH/1m/1M (hace 1 mes),
-            1WEEK/1w/1W (hace 1 semana), 1DAY/1d/1D (hace 1 día)."
+        - description: "Fecha de inicio de la consulta. Admite varios formatos: YYYY-MM-DD
+            (p. ej., 2024-01-01), YTD (año en curso desde el 1 de enero) o
+            fechas relativas como 1MONTH/1m/1M (hace 1 mes), 1WEEK/1w/1W (hace 1
+            semana), 1DAY/1d/1D (hace 1 día)"
           in: query
           name: from
           schema:
             type: string
-        - description: Fecha de fin de la consulta en formato AAAA-MM-DD (por ejemplo,
-            2024-12-31). Devuelve datos hasta esta fecha incluida. De manera
-            predeterminada, se usa la fecha actual si no se especifica.
+        - description: "Fecha de fin de la consulta. Formato: YYYY-MM-DD (p. ej.,
+            2024-12-31). Devuelve datos hasta esta fecha inclusive. Si no se
+            especifica, se usa la fecha actual de forma predeterminada."
           in: query
           name: to
           schema:
             type: string
-        - description: "Filtro por tipo de informe para estados financieros. Valores
-            admitidos: TTM (últimos doce meses), A (tal como se informó
+        - description: "Filtro de tipo de informe para estados financieros. Valores
+            admitidos: TTM (últimos doce meses), A (según se informó
             originalmente), R (valores reexpresados), P (anuncios preliminares)"
           in: query
           name: date
@@ -1154,13 +1153,13 @@ paths:
             type: string
       responses:
         "200":
-          description: Datos fundamentales más recientes, con mayor cobertura y calidad
+          description: Datos Fundamentales más recientes con mejor cobertura y calidad
           content:
             application/json:
               schema:
                 type: object
         "400":
-          description: Solicitud incorrecta - falta el parámetro symbols o no es válido
+          description: "Solicitud incorrecta: falta el parámetro symbols o no es válido"
           content:
             application/json:
               schema:
@@ -1173,99 +1172,42 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: Fundamentos de la empresa v3
+      summary: Fundamentales de la empresa V3
       tags:
         - Fundamentals
   /api/v3/fundamentals/balance-sheet:
     get:
-      description: Obtener los datos del balance general para los símbolos
-        especificados. Incluye detalles de activos, pasivos y patrimonio neto.
+      description: Recupera datos del balance para los symbols especificados. Incluye
+        detalles de activos, pasivos y patrimonio neto.
       operationId: get-balance-sheet-v3
       parameters:
-        - description: Lista de símbolos de ticker de acciones separados por comas (p.
-            ej., AAPL, MSFT)
+        - description: Lista de ticker bursátiles separada por comas (p. ej., AAPL, MSFT)
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: "Fecha de inicio de la consulta en formato AAAA-MM-DD. Permite:
-            AAAA-MM-DD, YTD (año hasta la fecha), 1MONTH/1m/1M (hace 1 mes)"
+        - description: "Fecha de inicio de la consulta en formato YYYY-MM-DD. Admite:
+            YYYY-MM-DD, YTD (año en curso), 1MONTH/1m/1M (hace 1 mes)"
           in: query
           name: from
           schema:
             type: string
-        - description: Fecha de fin de la consulta en formato AAAA-MM-DD. Devuelve datos
-            hasta esa fecha inclusive.
-          in: query
-          name: to
-          schema:
-            type: string
-        - description: "Filtro de tipo de informe. Valores: TTM (últimos doce meses), A
-            (tal como se informó), R (reexpresado), P (preliminar)"
-          in: query
-          name: date
-          schema:
-            type: string
-      responses:
-        "200":
-          description: Datos del balance general
-          content:
-            application/json:
-              schema:
-                items:
-                  type: string
-                type: array
-        "400":
-          description: Solicitud incorrecta
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/bzhttp.Resp"
-        "500":
-          description: Error interno del servidor
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/bzhttp.Resp"
-      security:
-        - ApiKeyAuth: []
-      summary: Obtener balance general v3
-      tags:
-        - Fundamentals
-  /api/v3/fundamentals/cash-flow:
-    get:
-      description: Obtén datos detallados del estado de flujo de caja para los
-        símbolos especificados. Incluye flujos de efectivo de actividades de
-        operación, inversión y financiación.
-      parameters:
-        - description: Lista de símbolos separados por comas (p. ej., AAPL, MSFT)
-          in: query
-          name: symbols
-          required: true
-          schema:
-            type: string
-        - description: "Fecha de inicio de la consulta en formato AAAA-MM-DD. Permite:
-            AAAA-MM-DD, YTD (año hasta la fecha), 1MONTH/1m/1M (hace 1 mes)"
-          in: query
-          name: from
-          schema:
-            type: string
-        - description: Fecha de fin de la consulta en formato AAAA-MM-DD. Devuelve datos
+        - description: Fecha de fin de la consulta en formato YYYY-MM-DD. Devuelve datos
             hasta esta fecha inclusive.
           in: query
           name: to
           schema:
             type: string
-        - description: "Filtro por tipo de informe. Valores: TTM (últimos doce meses), A
-            (tal como se informó), R (reexpresado), P (preliminar)"
+        - description: "Filtro de tipo de informe. Valores: TTM (últimos doce meses), A
+            (según se informó), R (reexpresado), P (preliminar)"
           in: query
           name: date
           schema:
             type: string
       responses:
         "200":
-          description: Datos del estado de flujos de efectivo
+          description: Datos del balance
           content:
             application/json:
               schema:
@@ -1284,12 +1226,69 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/bzhttp.Resp"
-      summary: Obtener flujos de efectivo v3
+      security:
+        - ApiKeyAuth: []
+      summary: Obtener balance general V3
+      tags:
+        - Fundamentals
+  /api/v3/fundamentals/cash-flow:
+    get:
+      description: Recupera datos detallados del estado de flujos de efectivo para los
+        symbols especificados. Incluye flujos de efectivo de operación,
+        inversión y financiación.
+      parameters:
+        - description: Lista de symbols separada por comas (p. ej., AAPL, MSFT)
+          in: query
+          name: symbols
+          required: true
+          schema:
+            type: string
+        - description: "Fecha de inicio de la consulta en formato YYYY-MM-DD. Admite:
+            YYYY-MM-DD, YTD (año en curso hasta la fecha) y 1MONTH/1m/1M (hace 1
+            mes)"
+          in: query
+          name: from
+          schema:
+            type: string
+        - description: Fecha de fin de la consulta en formato YYYY-MM-DD. Devuelve datos
+            hasta esta fecha inclusive.
+          in: query
+          name: to
+          schema:
+            type: string
+        - description: "Filtro de tipo de informe. Valores: TTM (últimos doce meses), A
+            (según lo informado), R (reexpresado), P (preliminar)"
+          in: query
+          name: date
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Datos del estado de flujo de efectivo
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+        "400":
+          description: Solicitud incorrecta
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/bzhttp.Resp"
+        "500":
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/bzhttp.Resp"
+      summary: Obtener flujo de caja V3
       tags:
         - Fundamentals
   /api/v3/fundamentals/derived:
     get:
-      description: Obtener cifras y ratios financieros derivados para una lista de
+      description: Recupera cifras financieras derivadas y ratios para una lista de
         símbolos. Incluye métricas calculadas esenciales para el análisis
         financiero.
       operationId: get-derived-figures-and-ratios-v3
@@ -1301,26 +1300,27 @@ paths:
           schema:
             type: string
         - description: "Fecha de inicio de la consulta en formato YYYY-MM-DD. Admite:
-            YYYY-MM-DD, YTD (en lo que va de año), 1MONTH/1m/1M (hace un mes)"
+            YYYY-MM-DD, YTD (año en curso hasta la fecha) y 1MONTH/1m/1M (hace 1
+            mes)"
           in: query
           name: from
           schema:
             type: string
-        - description: Fecha de fin de la consulta en formato AAAA-MM-DD. Devuelve datos
+        - description: Fecha de fin de la consulta en formato YYYY-MM-DD. Devuelve datos
             hasta esta fecha inclusive.
           in: query
           name: to
           schema:
             type: string
-        - description: "Filtro por tipo de informe. Valores: TTM (últimos doce meses), A
-            (tal como se informó), R (reexpresado), P (preliminar)"
+        - description: "Filtro de tipo de informe. Valores: TTM (últimos doce meses), A
+            (según lo informado), R (reexpresado), P (preliminar)"
           in: query
           name: date
           schema:
             type: string
       responses:
         "200":
-          description: Datos de valores y ratios derivados
+          description: Datos de cifras y ratios derivados
           content:
             application/json:
               schema:
@@ -1339,41 +1339,40 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: Obtener métricas y ratios derivados v3
+      summary: Obtener cifras y ratios derivados V3
       tags:
         - Fundamentals
   /api/v3/fundamentals/income-statement:
     get:
-      description: Obtiene datos completos del estado de resultados para los valores
-        especificados. Incluye ingresos, costo de los bienes vendidos, gastos
-        operativos, resultado operativo, gastos por intereses, impuestos,
-        utilidad neta y ganancias por acción. Es esencial para analizar la
-        rentabilidad de la empresa y su desempeño operativo a lo largo del
-        tiempo.
+      description: Recupera datos completos del estado de resultados para los valores
+        especificados. Incluye ingresos, costo de ventas, gastos operativos,
+        ingresos operativos, gastos por intereses, impuestos, ingreso neto y
+        ganancias por acción. Es esencial para analizar la rentabilidad de la
+        empresa y su desempeño operativo a lo largo del tiempo.
       operationId: get-income-statement-v3
       parameters:
-        - description: Lista de símbolos separados por comas de ticker de acciones (p.
-            ej., AAPL, MSFT, GOOGL). Obligatorio.
+        - description: Lista separada por comas de ticker bursátiles (p. ej.,
+            AAPL,MSFT,GOOGL). Obligatorio.
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: "Fecha de inicio de la consulta. Admite varios formatos: AAAA-MM-DD
-            (por ejemplo, 2024-01-01), YTD (año hasta la fecha desde el 1 de
-            enero) o fechas relativas como 1MONTH/1m/1M (hace 1 mes)."
+        - description: "Fecha de inicio de la consulta. Admite varios formatos: YYYY-MM-DD
+            (p. ej., 2024-01-01), YTD (año en curso hasta la fecha desde el 1 de
+            enero) o fechas relativas como 1MONTH/1m/1M (hace 1 mes)"
           in: query
           name: from
           schema:
             type: string
-        - description: "Fecha de finalización de la consulta. Formato: AAAA-MM-DD (p. ej.,
-            2024-12-31). Devuelve los datos hasta esta fecha inclusive."
+        - description: "Fecha de fin de la consulta. Formato: YYYY-MM-DD (p. ej.,
+            2024-12-31). Devuelve datos hasta esta fecha inclusive."
           in: query
           name: to
           schema:
             type: string
-        - description: "Filtro del tipo de informe para estados financieros. Valores
-            admitidos: TTM (últimos doce meses), A (tal como se informó
+        - description: "Filtro de tipo de informe para estados financieros. Valores
+            admitidos: TTM (últimos doce meses), A (según lo informado
             originalmente), R (valores reexpresados), P (anuncios preliminares)"
           in: query
           name: date
@@ -1387,7 +1386,7 @@ paths:
               schema:
                 type: object
         "400":
-          description: "Solicitud no válida: el parámetro de símbolos falta o es inválido"
+          description: "Solicitud incorrecta: falta el parámetro symbols o no es válido"
           content:
             application/json:
               schema:
@@ -1400,45 +1399,44 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: Datos del estado de resultados v3
+      summary: Datos del estado de resultados V3
       tags:
         - Fundamentals
   /api/v3/fundamentals/share-price-ratios:
     get:
-      description: Obtén ratios del precio de la acción para los símbolos
-        especificados (lista de símbolos separada por comas). Incluye métricas
-        como la relación precio-beneficio (price-to-earnings), la relación
-        precio-ventas (price-to-sales) y otros ratios basados en el precio.
+      description: Recupera ratios del precio de las acciones para los símbolos
+        especificados. Incluye métricas como el per, precio/ventas y otros
+        ratios basados en el precio.
       operationId: get-share-price-ratios-v3
       parameters:
-        - description: Lista de símbolos de ticker de acciones separados por comas (p.
-            ej., AAPL, MSFT)
+        - description: Lista separada por comas de ticker bursátiles (p. ej., AAPL, MSFT)
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: "Fecha de inicio de la consulta en formato AAAA-MM-DD. Permite:
-            AAAA-MM-DD, YTD (año hasta la fecha), 1MONTH/1m/1M (hace 1 mes)"
+        - description: "Fecha de inicio de la consulta en formato YYYY-MM-DD. Admite:
+            YYYY-MM-DD, YTD (año en curso hasta la fecha) y 1MONTH/1m/1M (hace 1
+            mes)"
           in: query
           name: from
           schema:
             type: string
-        - description: Fecha de finalización de la consulta en formato AAAA-MM-DD.
-            Devuelve datos hasta esta fecha inclusive.
+        - description: Fecha de fin de la consulta en formato YYYY-MM-DD. Devuelve datos
+            hasta esta fecha, incluida.
           in: query
           name: to
           schema:
             type: string
-        - description: "Filtro por tipo de informe. Valores: TTM (últimos doce meses), A
-            (tal como se informó), R (reexpresado), P (preliminar)"
+        - description: "Filtro de tipo de informe. Valores: TTM (últimos doce meses), A
+            (según lo informado), R (reexpresado), P (preliminar)"
           in: query
           name: date
           schema:
             type: string
       responses:
         "200":
-          description: Datos de ratios de precio de la acción
+          description: Datos de ratios del precio de la acción
           content:
             application/json:
               schema:
@@ -1459,7 +1457,7 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: Obtener ratios de precio por acción V3
+      summary: Obtener ratios del precio de la acción V3
       tags:
         - Fundamentals
 components:
@@ -1480,6 +1478,8 @@ components:
       type: object
     bzhttp.ErrorCode:
       enum:
+        - unsupported_message_type
+        - database_query_error
         - json_unmarshaling_error
         - no_data_found
         - no_matching_endpoint
@@ -1491,10 +1491,10 @@ components:
         - failed_dependency
         - service_unavailable
         - upstream_api_error
-        - unsupported_message_type
-        - database_query_error
       type: string
       x-enum-varnames:
+        - ErrorUnsupportedMessageType
+        - ErrorDBQueryError
         - ErrorJSONUnmarshaling
         - ErrorNoDataFound
         - ErrorNoMatchingEndpoint
@@ -1506,8 +1506,6 @@ components:
         - ErrorFailedDependency
         - ErrorServiceUnavailable
         - ErrorUpstreamAPIError
-        - ErrorUnsupportedMessageType
-        - ErrorDBQueryError
     bzhttp.Resp:
       properties:
         data:

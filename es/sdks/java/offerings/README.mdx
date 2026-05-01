@@ -1,5 +1,5 @@
 ---
-title: "Productos"
+title: "Ofertas"
 description: offerings()
 ---
 
@@ -13,7 +13,7 @@ description: offerings()
   ### Operaciones disponibles
 </div>
 
-* [get](#get) - Obtener ofertas
+* [get](#get) - Consultar ofertas
 
 <div id="get">
   ## get
@@ -49,7 +49,7 @@ public class Application {
                 .call();
 
         if (res.modelsOfferingJSON().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -59,9 +59,9 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                                                             | Tipo                                                                  | Obligatorio                                                           | Descripción                                                           |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `request`                                                             | [GetOfferingsRequest](../../models/operations/GetOfferingsRequest.md) | :heavy&#95;check&#95;mark:                                                    | Objeto de solicitud que se utilizará en la llamada.                   |
+| Parámetro | Tipo                                                                  | Obligatorio                | Descripción                                               |
+| --------- | --------------------------------------------------------------------- | -------------------------- | --------------------------------------------------------- |
+| `request` | [GetOfferingsRequest](../../models/operations/GetOfferingsRequest.md) | :heavy&#95;check&#95;mark: | El objeto de solicitud que se debe usar para la petición. |
 
 <div id="response">
   ### Respuesta
@@ -73,6 +73,6 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado           | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/APIException | 4XX, 5XX         | */*               |

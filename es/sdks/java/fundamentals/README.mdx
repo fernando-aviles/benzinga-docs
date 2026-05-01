@@ -1,5 +1,5 @@
 ---
-title: "Fundamentos"
+title: "Fundamentales"
 description: fundamentals()
 ---
 
@@ -13,27 +13,27 @@ description: fundamentals()
   ### Operaciones disponibles
 </div>
 
-* [getV21](#getv21) - Obtener Fundamentos V2.1
-* [getAlphaBeta](#getalphabeta) - Obtener Alfa Beta V2.1
-* [getCompanyV21](#getcompanyv21) - Obtener datos de la empresa v2.1
-* [getCompanyProfileV21](#getcompanyprofilev21) - Obtener perfil de la empresa v2.1
-* [getShareClass](#getshareclass) - Obtener clase de acciones V2.1
-* [getShareClassProfile](#getshareclassprofile) - Obtener perfil de la clase de acciones V2.1
-* [get](#get) - Obtener Fundamentos V2
-* [getAssetClassification](#getassetclassification) - Obtener clasificación de activos V2.1
+* [getV21](#getv21) - Obtener Fundamentales V2.1
+* [getAlphaBeta](#getalphabeta) - Obtener alfa beta V2.1
+* [getCompanyV21](#getcompanyv21) - Obtener datos de la empresa V2.1
+* [getCompanyProfileV21](#getcompanyprofilev21) - Obtener el perfil de la empresa V2.1
+* [getShareClass](#getshareclass) - Obtener la clase de acciones V2.1
+* [getShareClassProfile](#getshareclassprofile) - Obtener el perfil de la clase de acciones V2.1
+* [get](#get) - Obtener Fundamentales V2
+* [getAssetClassification](#getassetclassification) - Obtener la clasificación de activos V2.1
 * [getEarningsReports](#getearningsreports) - Obtener informes de resultados V2.1
 * [getFinancialsV21](#getfinancialsv21) - Obtener estados financieros V2.1
-* [getV3](#getv3) - Obtener Fundamentos V3
+* [getV3](#getv3) - Obtener Fundamentales V3
 * [getBalanceSheetV3](#getbalancesheetv3) - Obtener balance general V3
-* [getCashFlowV3](#getcashflowv3) - Obtener flujos de efectivo V3
+* [getCashFlowV3](#getcashflowv3) - Obtener flujo de caja V3
 * [getIncomeStatement](#getincomestatement) - Obtener estado de resultados V3
-* [getSharePriceRatios](#getsharepriceratios) - Obtener ratios del precio de la acción V3
+* [getSharePriceRatios](#getsharepriceratios) - Obtener ratios de cotización V3
 
 <div id="getv21">
   ## getV21
 </div>
 
-Obtener fundamentos V2.1
+Obtener Fundamentales V2.1
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -62,7 +62,7 @@ public class Application {
                 .call();
 
         if (res.string().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -72,12 +72,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                       | Tipo                            | Obligatorio                     | Descripción                             |
-| ------------------------------- | ------------------------------- | ------------------------------- | --------------------------------------- |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | Lista separada por comas de símbolos    |
-| `asOf`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Fecha de corte                          |
-| `period`                        | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Período                                 |
-| `reportType`                    | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Tipo de informe                         |
+| Parámetro    | Tipo                     | Obligatorio                | Descripción                          |
+| ------------ | ------------------------ | -------------------------- | ------------------------------------ |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separada por comas |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de referencia                  |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Período                              |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                      |
 
 <div id="response">
   ### Respuesta
@@ -89,15 +89,15 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado           | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/APIException | 4XX, 5XX         | */*               |
 
 <div id="getalphabeta">
   ## getAlphaBeta
 </div>
 
-Obtener alfa y beta
+Obtener Alpha Beta
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -126,7 +126,7 @@ public class Application {
                 .call();
 
         if (res.string().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -136,12 +136,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                       | Tipo                            | Obligatorio                     | Descripción                     |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | Lista de símbolos separados por comas |
-| `asOf`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Fecha de referencia             |
-| `period`                        | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Período                         |
-| `reportType`                    | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Tipo de informe                 |
+| Parámetro    | Tipo                     | Obligatorio                | Descripción                           |
+| ------------ | ------------------------ | -------------------------- | ------------------------------------- |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separados por comas |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de referencia                   |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Período                               |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                       |
 
 <div id="response">
   ### Respuesta
@@ -153,15 +153,15 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado           | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/APIException | 4XX, 5XX         | */*               |
 
 <div id="getcompanyv21">
   ## getCompanyV21
 </div>
 
-Obtener datos de la compañía
+Obtener datos de la empresa
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -190,7 +190,7 @@ public class Application {
                 .call();
 
         if (res.string().isPresent()) {
-            // gestionar respuesta
+            // manejar respuesta
         }
     }
 }
@@ -200,12 +200,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                       | Tipo                            | Obligatorio                     | Descripción                     |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | Lista de símbolos separados por comas |
-| `asOf`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Fecha de referencia             |
-| `period`                        | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Período                         |
-| `reportType`                    | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Tipo de informe                 |
+| Parámetro    | Tipo                     | Obligatorio                | Descripción                          |
+| ------------ | ------------------------ | -------------------------- | ------------------------------------ |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separada por comas |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de referencia                  |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Período                              |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                      |
 
 <div id="response">
   ### Respuesta
@@ -217,9 +217,9 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado           | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/APIException | 4XX, 5XX         | */*               |
 
 <div id="getcompanyprofilev21">
   ## getCompanyProfileV21
@@ -254,7 +254,7 @@ public class Application {
                 .call();
 
         if (res.string().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -264,12 +264,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                       | Tipo                            | Obligatorio                     | Descripción                     |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | Lista de símbolos, separados por comas |
-| `asOf`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Fecha de referencia             |
-| `period`                        | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Período                         |
-| `reportType`                    | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Tipo de informe                 |
+| Parámetro    | Tipo                     | Obligatorio                | Descripción                          |
+| ------------ | ------------------------ | -------------------------- | ------------------------------------ |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separada por comas |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de referencia                  |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Período                              |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                      |
 
 <div id="response">
   ### Respuesta
@@ -281,15 +281,15 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado           | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/APIException | 4XX, 5XX         | */*               |
 
 <div id="getshareclass">
   ## getShareClass
 </div>
 
-Obtener clase de acciones
+Obtener la clase de acciones
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -318,7 +318,7 @@ public class Application {
                 .call();
 
         if (res.string().isPresent()) {
-            // gestionar respuesta
+            // manejar respuesta
         }
     }
 }
@@ -328,12 +328,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                       | Tipo                            | Obligatorio                     | Descripción                     |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | Lista de símbolos, separados por comas |
-| `asOf`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Fecha de referencia             |
-| `period`                        | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Período                         |
-| `reportType`                    | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Tipo de informe                 |
+| Parámetro    | Tipo                     | Obligatorio                | Descripción                           |
+| ------------ | ------------------------ | -------------------------- | ------------------------------------- |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separados por comas |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de referencia                   |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Período                               |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                       |
 
 <div id="response">
   ### Respuesta
@@ -345,9 +345,9 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado           | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/APIException | 4XX, 5XX         | */*               |
 
 <div id="getshareclassprofile">
   ## getShareClassProfile
@@ -382,7 +382,7 @@ public class Application {
                 .call();
 
         if (res.string().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -392,12 +392,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                       | Tipo                            | Obligatorio                     | Descripción                     |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | Lista de símbolos, separados por comas |
-| `asOf`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Fecha de referencia             |
-| `period`                        | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Período                         |
-| `reportType`                    | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Tipo de informe                 |
+| Parámetro    | Tipo                     | Obligatorio                | Descripción                           |
+| ------------ | ------------------------ | -------------------------- | ------------------------------------- |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separados por comas |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de referencia                   |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Período                               |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                       |
 
 <div id="response">
   ### Respuesta
@@ -409,15 +409,15 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado           | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/APIException | 4XX, 5XX         | */*               |
 
 <div id="get">
-  ## get
+  ## obtener
 </div>
 
-Obtener fundamentos V2
+Obtener Fundamentales V2
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -446,7 +446,7 @@ public class Application {
                 .call();
 
         if (res.string().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -456,12 +456,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                       | Tipo                            | Obligatorio                     | Descripción                                      |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------------------------ |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | Lista de símbolos separados por comas           |
-| `asOf`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Fecha de referencia                              |
-| `period`                        | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Período                                          |
-| `reportType`                    | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Tipo de informe                                  |
+| Parámetro    | Tipo                     | Obligatorio                | Descripción                          |
+| ------------ | ------------------------ | -------------------------- | ------------------------------------ |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separada por comas |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de referencia                  |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Período                              |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                      |
 
 <div id="response">
   ### Respuesta
@@ -473,9 +473,9 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado HTTP      | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/APIException | 4XX, 5XX         | */*               |
 
 <div id="getassetclassification">
   ## getAssetClassification
@@ -520,12 +520,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                       | Tipo                            | Obligatorio                     | Descripción                          |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------------ |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | Lista de símbolos separados por comas |
-| `asOf`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Fecha de corte                      |
-| `period`                        | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Período                             |
-| `reportType`                    | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Tipo de reporte                     |
+| Parámetro    | Tipo                     | Obligatorio                | Descripción                          |
+| ------------ | ------------------------ | -------------------------- | ------------------------------------ |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separada por comas |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de referencia                  |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Período                              |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                      |
 
 <div id="response">
   ### Respuesta
@@ -537,9 +537,9 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado           | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/APIException | 4XX, 5XX         | */*               |
 
 <div id="getearningsreports">
   ## getEarningsReports
@@ -574,7 +574,7 @@ public class Application {
                 .call();
 
         if (res.string().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -584,12 +584,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                       | Tipo                            | Obligatorio                     | Descripción                     |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | Lista de símbolos separada por comas |
-| `asOf`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Fecha de referencia             |
-| `period`                        | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Período                         |
-| `reportType`                    | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Tipo de informe                 |
+| Parámetro    | Tipo                     | Obligatorio                | Descripción                           |
+| ------------ | ------------------------ | -------------------------- | ------------------------------------- |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separados por comas |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de referencia                   |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Período                               |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                       |
 
 <div id="response">
   ### Respuesta
@@ -601,15 +601,15 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado           | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/APIException | 4XX, 5XX         | */*               |
 
 <div id="getfinancialsv21">
   ## getFinancialsV21
 </div>
 
-Obtener estados financieros v2.1
+Obtener estados financieros V2.1
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -639,7 +639,7 @@ public class Application {
                 .call();
 
         if (res.strings().isPresent()) {
-            // gestionar respuesta
+            // manejar respuesta
         }
     }
 }
@@ -649,12 +649,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                       | Tipo                            | Obligatorio                     | Descripción                     |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | Lista de símbolos separados por comas |
-| `asOf`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Fecha de referencia             |
-| `period`                        | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Período                         |
-| `reportType`                    | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Tipo de informe                 |
+| Parámetro    | Tipo                     | Obligatorio                | Descripción                          |
+| ------------ | ------------------------ | -------------------------- | ------------------------------------ |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separada por comas |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de referencia                  |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Período                              |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                      |
 
 <div id="response">
   ### Respuesta
@@ -666,16 +666,16 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado           | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/BzhttpResp   | 400, 500                   | application/json           |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/BzhttpResp   | 400, 500         | application/json  |
+| models/errors/APIException | 4XX, 5XX         | */*               |
 
 <div id="getv3">
   ## getV3
 </div>
 
-Obtener fundamentos v3
+Obtener Fundamentales V3
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -704,7 +704,7 @@ public class Application {
                 .call();
 
         if (res.string().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -714,12 +714,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                       | Tipo                            | Obligatorio                     | Descripción                     |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | Lista de símbolos separados por comas |
-| `from`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Fecha de inicio                 |
-| `to`                            | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Fecha de fin                    |
-| `date`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Tipo de informe                 |
+| Parámetro | Tipo                     | Obligatorio                | Descripción                          |
+| --------- | ------------------------ | -------------------------- | ------------------------------------ |
+| `symbols` | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separada por comas |
+| `from`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de inicio                      |
+| `to`      | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de fin                         |
+| `date`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                      |
 
 <div id="response">
   ### Respuesta
@@ -731,15 +731,15 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado           | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/APIException | 4XX, 5XX         | */*               |
 
 <div id="getbalancesheetv3">
   ## getBalanceSheetV3
 </div>
 
-Obtener balance general v3
+Obtener el balance general V3
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -779,12 +779,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parâmetro           | Tipo                | Obligatorio         | Descripción                                |
-| ------------------- | ------------------- | ------------------- | ------------------------------------------ |
-| `symbols`           | *String*            | :heavy&#95;check&#95;mark:  | Símbolos (lista de símbolos separada por comas) |
-| `from`              | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign:  | Desde                                      |
-| `to`                | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign:  | Hasta                                      |
-| `date`              | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign:  | Tipo de informe                            |
+| Parámetro | Tipo                     | Obligatorio                | Descripción     |
+| --------- | ------------------------ | -------------------------- | --------------- |
+| `symbols` | *String*                 | :heavy&#95;check&#95;mark: | Símbolos        |
+| `from`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Desde           |
+| `to`      | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Hasta           |
+| `date`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe |
 
 <div id="response">
   ### Respuesta
@@ -796,16 +796,16 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado           | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/BzhttpResp   | 400                        | application/json           |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/BzhttpResp   | 400              | application/json  |
+| models/errors/APIException | 4XX, 5XX         | */*               |
 
 <div id="getcashflowv3">
   ## getCashFlowV3
 </div>
 
-Obtener flujo de caja v3
+Obtener el flujo de caja V3
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -835,7 +835,7 @@ public class Application {
                 .call();
 
         if (res.strings().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -845,12 +845,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                       | Tipo                            | Obligatorio                     | Descripción                     |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | Lista de símbolos separados por comas |
-| `from`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Fecha inicial                   |
-| `to`                            | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Fecha final                     |
-| `date`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Tipo de informe                 |
+| Parámetro | Tipo                     | Obligatorio                | Descripción                           |
+| --------- | ------------------------ | -------------------------- | ------------------------------------- |
+| `symbols` | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separados por comas |
+| `from`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de inicio                       |
+| `to`      | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de fin                          |
+| `date`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                       |
 
 <div id="response">
   ### Respuesta
@@ -862,10 +862,10 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado           | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/BzhttpResp   | 400, 500                   | application/json           |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/BzhttpResp   | 400, 500         | application/json  |
+| models/errors/APIException | 4XX, 5XX         | */*               |
 
 <div id="getincomestatement">
   ## getIncomeStatement
@@ -900,7 +900,7 @@ public class Application {
                 .call();
 
         if (res.string().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -910,12 +910,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                       | Tipo                            | Obligatorio                     | Descripción                     |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | Lista de símbolos, separados por comas |
-| `from`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Fecha de inicio                 |
-| `to`                            | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Fecha de fin                    |
-| `date`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Tipo de informe                 |
+| Parámetro | Tipo                     | Obligatorio                | Descripción                          |
+| --------- | ------------------------ | -------------------------- | ------------------------------------ |
+| `symbols` | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separada por comas |
+| `from`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de inicio                      |
+| `to`      | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de fin                         |
+| `date`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                      |
 
 <div id="response">
   ### Respuesta
@@ -927,15 +927,15 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado           | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/APIException | 4XX, 5XX         | */*               |
 
 <div id="getsharepriceratios">
   ## getSharePriceRatios
 </div>
 
-Obtener ratios del precio de la acción
+Obtener ratios de cotización
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -965,7 +965,7 @@ public class Application {
                 .call();
 
         if (res.strings().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -975,12 +975,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                       | Tipo                            | Obligatorio                        | Descripción                     |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | Lista de símbolos separados por comas |
-| `from`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Fecha de inicio                       |
-| `to`                            | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Fecha de fin                         |
-| `date`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Tipo de informe                     |
+| Parámetro | Tipo                     | Obligatorio                | Descripción                           |
+| --------- | ------------------------ | -------------------------- | ------------------------------------- |
+| `symbols` | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separados por comas |
+| `from`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de inicio                       |
+| `to`      | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de fin                          |
+| `date`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                       |
 
 <div id="response">
   ### Respuesta
@@ -992,7 +992,7 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado           | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/BzhttpResp   | 400, 500                   | application/json           |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/BzhttpResp   | 400, 500         | application/json  |
+| models/errors/APIException | 4XX, 5XX         | */*               |

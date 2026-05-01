@@ -1,5 +1,5 @@
 ---
-title: "Perspectivas de analistas"
+title: "Analyst Insights"
 description: analystInsights()
 ---
 
@@ -19,7 +19,7 @@ description: analystInsights()
   ## get
 </div>
 
-Obtener perspectivas de analistas V1
+Obtener Analyst Insights V1
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -50,7 +50,7 @@ public class Application {
                 .call();
 
         if (res.modelsAnalystInsightsJSON().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -60,9 +60,9 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                                                                             | Tipo                                                                                  | Obligatorio                                                                          | Descripción                                                                          |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `request`                                                                             | [GetAnalystInsightsV1Request](../../models/operations/GetAnalystInsightsV1Request.md) | :heavy&#95;check&#95;mark:                                                                    | Objeto de solicitud que se utilizará en la petición.                                  |
+| Parámetro | Tipo                                                                                  | Obligatorio                | Descripción                                              |
+| --------- | ------------------------------------------------------------------------------------- | -------------------------- | -------------------------------------------------------- |
+| `request` | [GetAnalystInsightsV1Request](../../models/operations/GetAnalystInsightsV1Request.md) | :heavy&#95;check&#95;mark: | El objeto de solicitud que se utilizará en la solicitud. |
 
 <div id="response">
   ### Respuesta
@@ -74,7 +74,7 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error                  | Código de estado               | Tipo de contenido              |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| models/errors/ApiErrorResponse | 400, 500                       | application/json               |
-| models/errors/APIException     | 4XX, 5XX                       | */*                          |
+| Tipo de error                  | Código de estado | Tipo de contenido |
+| ------------------------------ | ---------------- | ----------------- |
+| models/errors/ApiErrorResponse | 400, 500         | application/json  |
+| models/errors/APIException     | 4XX, 5XX         | */*               |

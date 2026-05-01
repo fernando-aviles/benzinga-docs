@@ -13,13 +13,13 @@ description: fda()
   ### Operaciones disponibles
 </div>
 
-* [get](#get) - Obtener FDA
+* [get](#get) - Obtiene FDA
 
 <div id="get">
   ## get
 </div>
 
-Aprobaciones de la FDA, ensayos clínicos y fechas PDUFA
+Aprobaciones de la FDA, ensayos clínicos y fechas de la PDUFA
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -49,7 +49,7 @@ public class Application {
                 .call();
 
         if (res.modelsFDAJSON().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -59,9 +59,9 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                                                 | Tipo                                                      | Obligatorio                                               | Descripción                                               |
-| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| `request`                                                 | [GetFdaRequest](../../models/operations/GetFdaRequest.md) | :heavy&#95;check&#95;mark:                                        | Objeto de solicitud que se utilizará en la operación.     |
+| Parámetro | Tipo                                                      | Requerido                  | Descripción                                             |
+| --------- | --------------------------------------------------------- | -------------------------- | ------------------------------------------------------- |
+| `request` | [GetFdaRequest](../../models/operations/GetFdaRequest.md) | :heavy&#95;check&#95;mark: | El objeto de solicitud que se utilizará en la petición. |
 
 <div id="response">
   ### Respuesta
@@ -73,6 +73,6 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado HTTP      | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/APIException | 4XX, 5XX         | */*               |

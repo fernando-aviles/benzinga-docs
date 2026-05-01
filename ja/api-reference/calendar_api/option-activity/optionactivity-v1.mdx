@@ -1,78 +1,81 @@
 ---
-title: "異常オプションアクティビティ"
-openapi: /ja/openapi/calendar_api.spec.yml GET /api/v1/signal/option_activity
+title: "異常なオプションアクティビティ"
+openapi: /openapi/calendar_api.spec.yml GET /api/v1/signal/option_activity
 ---
 
 <ResponseExample>
-```json レスポンス (200 OK)
-{
-  "option_activity": [
-    {
-      "aggressor_ind": "0.73",
-      "ask": "5.75",
-      "bid": "5.2",
-      "cost_basis": "336000.0",
-      "date": "2025-12-29",
-      "date_expiration": "2026-09-18",
-      "description": "Freeport-McMoRan Option Alert: Sep 18 $50 Puts at the Ask: 600 vs 636 OI; Earnings 1/22 Before Open [est] ",
-      "description_extended": "Freeport-McMoRan Option Alert: Sep 18 $50 Puts at the Ask: 600 @ $5.6 vs 636 OI; Earnings 1/22 Before Open [est] Ref=$51.4",
-      "exchange": "NYSE",
-      "execution_estimate": "AT_ASK",
-      "id": "6952ef7b6ab0a40001b39586",
-      "midpoint": "5.475",
-      "open_interest": "636",
-      "option_activity_type": "TRADE",
-      "option_symbol": "FCX260918P00050000",
-      "price": "5.6",
-      "put_call": "PUT",
-      "sentiment": "BEARISH",
-      "size": "600",
-      "strike_price": "50.00",
-      "ticker": "FCX",
-      "time": "16:15:32",
-      "trade_count": 1,
-      "underlying_price": "51.4",
-      "underlying_type": "STOCK",
-      "updated": 1767042939,
-      "volume": "1601"
-    }
-  ]
-}
-```
-```json レスポンス (401 Unauthorized)
-{
-  "ok": false,
-  "errors": [
-    {
-      "code": "auth_failed",
-      "id": "unauthorized",
-      "value": "Invalid or missing authentication token"
-    }
-  ]
-}
-```
-```json レスポンス (404 Not Found)
-{
-  "ok": false,
-  "errors": [
-    {
-      "code": "no_data_found",
-      "id": "not_found",
-      "value": "No data found for the specified parameters"
-    }
-  ]
-}
-```
-```json レスポンス (500 Internal Server Error)
-{
-  "ok": false,
-  "errors": [
-    {
-      "code": "internal_server_error",
-      "id": "server_error",
-      "value": "An unexpected error occurred while processing your request"
-    }
-  ]
-}
-```
+  ```json レスポンス (200 OK)
+  {
+    "option_activity": [
+      {
+        "aggressor_ind": "0.73",
+        "ask": "5.75",
+        "bid": "5.2",
+        "cost_basis": "336000.0",
+        "date": "2025-12-29",
+        "date_expiration": "2026-09-18",
+        "description": "Freeport-McMoRan オプションアラート: 9月18日満期 $50 プット、アスクで約定: 600 対 636 OI; 決算 1/22 寄り前 [予想] ",
+        "description_extended": "Freeport-McMoRan オプションアラート: 9月18日満期 $50 プット、アスクで約定: 600 @ $5.6 対 636 OI; 決算 1/22 寄り前 [予想] Ref=$51.4",
+        "exchange": "NYSE",
+        "execution_estimate": "AT_ASK",
+        "id": "6952ef7b6ab0a40001b39586",
+        "midpoint": "5.475",
+        "open_interest": "636",
+        "option_activity_type": "TRADE",
+        "option_symbol": "FCX260918P00050000",
+        "price": "5.6",
+        "put_call": "PUT",
+        "sentiment": "BEARISH",
+        "size": "600",
+        "strike_price": "50.00",
+        "ticker": "FCX",
+        "time": "16:15:32",
+        "trade_count": 1,
+        "underlying_price": "51.4",
+        "underlying_type": "STOCK",
+        "updated": 1767042939,
+        "volume": "1601"
+      }
+    ]
+  }
+  ```
+
+  ```json レスポンス（401 認証されていません）
+  {
+    "ok": false,
+    "errors": [
+      {
+        "code": "auth_failed",
+        "id": "unauthorized",
+        "value": "認証トークンが無効か、指定されていません"
+      }
+    ]
+  }
+  ```
+
+  ```json レスポンス（404 見つかりません）
+  {
+    "ok": false,
+    "errors": [
+      {
+        "code": "no_data_found",
+        "id": "not_found",
+        "value": "指定したパラメータに一致するデータが見つかりません"
+      }
+    ]
+  }
+  ```
+
+  ```json レスポンス（500 内部サーバーエラー）
+  {
+    "ok": false,
+    "errors": [
+      {
+        "code": "internal_server_error",
+        "id": "server_error",
+        "value": "リクエストの処理中に予期しないエラーが発生しました"
+      }
+    ]
+  }
+  ```
 </ResponseExample>

@@ -1,5 +1,5 @@
 ---
-title: "Llamadas de resultados"
+title: "Conferencias telefónicas"
 description: conferenceCalls()
 ---
 
@@ -13,13 +13,13 @@ description: conferenceCalls()
   ### Operaciones disponibles
 </div>
 
-* [get](#get) - Obtener llamadas de resultados
+* [get](#get) - Obtener conferencias telefónicas
 
 <div id="get">
-  ## Obtener
+  ## get
 </div>
 
-Devuelve datos de llamadas de resultados
+Devuelve datos de conferencias telefónicas
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -59,9 +59,9 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                                                                         | Tipo                                                                              | Obligatorio                                                                       | Descripción                                                                       |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `request`                                                                         | [GetConferenceCallsRequest](../../models/operations/GetConferenceCallsRequest.md) | :heavy&#95;check&#95;mark:                                                                | El objeto de solicitud que se utilizará para la operación.                        |
+| Parámetro | Tipo                                                                              | Obligatorio                | Descripción                                             |
+| --------- | --------------------------------------------------------------------------------- | -------------------------- | ------------------------------------------------------- |
+| `request` | [GetConferenceCallsRequest](../../models/operations/GetConferenceCallsRequest.md) | :heavy&#95;check&#95;mark: | El objeto de solicitud que se utilizará en la petición. |
 
 <div id="response">
   ### Respuesta
@@ -73,6 +73,6 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado           | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/APIException | 4XX, 5XX         | */*               |

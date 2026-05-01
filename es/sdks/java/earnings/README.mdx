@@ -16,10 +16,10 @@ description: earnings()
 * [get](#get) - Obtener resultados
 
 <div id="get">
-  ## Obtener
+  ## get
 </div>
 
-Devuelve los datos de ganancias.
+Devuelve los datos de resultados
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -49,7 +49,7 @@ public class Application {
                 .call();
 
         if (res.modelsEarningJSON().isPresent()) {
-            // gestionar respuesta
+            // manejar respuesta
         }
     }
 }
@@ -59,9 +59,9 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                                                           | Tipo                                                                | Obligatorio                                                         | Descripción                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `request`                                                           | [GetEarningsRequest](../../models/operations/GetEarningsRequest.md) | :heavy&#95;check&#95;mark:                                                  | El objeto de solicitud que se utilizará en la petición.             |
+| Parámetro | Tipo                                                                | Obligatorio                | Descripción                                                     |
+| --------- | ------------------------------------------------------------------- | -------------------------- | --------------------------------------------------------------- |
+| `request` | [GetEarningsRequest](../../models/operations/GetEarningsRequest.md) | :heavy&#95;check&#95;mark: | El objeto de solicitud que se usará para realizar la solicitud. |
 
 <div id="response">
   ### Respuesta
@@ -73,6 +73,6 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado           | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/APIException | 4XX, 5XX         | */*               |

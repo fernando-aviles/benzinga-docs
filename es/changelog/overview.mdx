@@ -1,63 +1,458 @@
 ---
-title: "¿Qué hay de nuevo?"
+title: "Novedades"
 ---
 
-El siguiente registro de cambios recoge los nuevos desarrollos de producto y las actualizaciones mensuales.
+El siguiente registro de cambios refleja el desarrollo y las actualizaciones del producto mes a mes.
 
-<div id="november-2024">
-  ## Noviembre 2024
+<div id="january-2026">
+  ## Enero de 2026
 </div>
 
-- **Migración de claves de Licensing-Admin**. Para más detalles, consulta [aquí](https://gitlab.benzinga.io/benzinga/bzgo/-/issues/1076).
-- **Agregar anotaciones para webhook-engine, data-api-proxy (BZGO)**. Para más detalles, consulta [aquí](https://gitlab.benzinga.io/benzinga/bzgo/-/issues/1200).
-- **Agregar anotaciones para logo-api, newsquantified-api (BZGO)**. Para más detalles, consulta [aquí](https://gitlab.benzinga.io/benzinga/bzgo/-/issues/1201).
-- **Agregar anotaciones para movers, analyst-reports-raw-text-api (BZGO)**. Para más detalles, consulta [aquí](https://gitlab.benzinga.io/benzinga/bzgo/-/issues/1202).
-- **Agregar flujo de trabajo de GitLab a Bzgo, News-API, Calendar-API**. Para más detalles, consulta [aquí](https://gitlab.benzinga.io/benzinga/bzgo/-/issues/1204).
-- **Validación del flujo de trabajo de autoservicio para el nuevo Licensing-Admin**. Para más detalles, consulta [aquí](https://gitlab.benzinga.io/benzinga/bzgo/-/issues/1236).
-- **Consensus Ratings vía WebSocket**. Para más detalles, consulta [aquí](https://gitlab.benzinga.io/benzinga/bzgo/-/issues/1237).
-- **Obtener Earnings - Consulta por ISIN (lista de ISIN como parámetro de consulta) - REST y WS**. Para más detalles, consulta [aquí](https://gitlab.benzinga.io/benzinga/bzgo/-/issues/1242).
-- **Los elementos eliminados incluyen el payload completo o el valor**. Para más detalles, consulta [aquí](https://gitlab.benzinga.io/benzinga/bzgo/-/issues/1247).
-- **Nueva API para el flujo de trabajo de autoservicio (User Flow)**. Para más detalles, consulta [aquí](https://gitlab.benzinga.io/benzinga/bzgo/-/issues/1253).
-
----
-
-<div id="october-2024">
-  ## Octubre de 2024
+<div id="improvements">
+  ### Mejoras
 </div>
 
-- **Se mejoró la Calendar Earnings API** para proporcionar desgloses detallados de transacciones.
-- **Se agregó la [integración con Slack](https://calendarapi.com/docs/integrations/slack)** para recordatorios de eventos y notificaciones de equipo.
-- **Se mejoró la estructura de mensajes de WebSocket**, incluyendo metadatos para un mejor procesamiento.
-- **Se lanzó la [Calendar Logo API](https://calendarapi.com/docs/logo-api)** para obtener logotipos personalizados para distintas categorías de eventos.
-- **Se lanzó el endpoint `PATCH /v1/events/:id`** para actualizaciones parciales de los detalles de eventos.
-- **Se agregó soporte para [importaciones de archivos ICS](https://calendarapi.com/docs/ics-import)**, lo que permite importaciones masivas de calendarios desde otras plataformas.
-- **Se actualizó el Terraform Provider** con soporte para rotación de claves de API y gestión de políticas.
+* **Platform Services**: Se simplificaron los parámetros de consulta de la API de IPO para facilitar su integración
 
----
-
-<div id="september-2024">
-  ## Septiembre de 2024
+<div id="december-2025">
+  ## Diciembre de 2025
 </div>
 
-- **Se lanzó la [Event Duplication API](https://calendarapi.com/docs/event-duplication)** para agilizar la clonación de eventos existentes en múltiples calendarios.
-- **Se lanzó la política de reintentos de webhooks** para mejorar la fiabilidad durante fallos de red.
-- **Se agregó el endpoint `DELETE /v1/calendars/:id`**, que permite la eliminación permanente de calendarios.
-- **Se mejoró la documentación de la API** con ejemplos ampliados y escenarios de uso para operaciones en lote.
-- **Se lanzaron los webhooks de Google Calendar ([Google Calendar Webhooks](https://calendarapi.com/docs/integrations/google-webhooks))** para mejorar la sincronización de eventos.
-- **Se introdujeron informes de uso diarios** a través del panel de control y la API para monitorear las tendencias de uso de la API.
-- **Se implementaron nodos perimetrales (Edge Nodes) de CalendarAPI** en Sudamérica para un mejor rendimiento regional.
+### Novedades
 
----
+* **Platform Services**: Se lanzó Security Master Builder v2 con una cobertura global de instrumentos ampliada
+* **Platform Services**: Se añadió compatibilidad con Benzinga Pro Headlines en el motor de traducción
+* **Transcripts**: Se mejoró la legibilidad de las transcripciones dividiendo los bloques de texto grandes en párrafos más pequeños
 
-<div id="august-2024">
-  ## Agosto de 2024
+<div id="bug-fixes">
+  ### Correcciones de errores
 </div>
 
-- **Mejorado el rendimiento de WebSocket** para actualizaciones del calendario en tiempo real, reduciendo la latencia en un 30%.
-- **Se lanzó la [integración con Outlook Calendar](https://calendarapi.com/docs/integrations/outlook)**, lo que permite una sincronización fluida de eventos.
-- **Se añadió compatibilidad con [Calendar Webhooks](https://calendarapi.com/docs/webhooks)**, lo que permite notificaciones instantáneas ante cambios en los eventos.
-- **Se mejoró la API `GET /v1/events`** para incluir métricas de popularidad de eventos y valoraciones.
-- **Se lanzó la [API de Custom Calendar Branding](https://calendarapi.com/docs/branding)**, que permite a los usuarios personalizar temas y logotipos del calendario.
-- **Se lanzó [CalendarAPI EU Region](https://eu.calendarapi.com)** para mejorar el cumplimiento normativo y reducir la latencia en Europa.
-- **Se incorporó compatibilidad con autenticación basada en token** en conexiones WebSocket.
-- **Se añadieron múltiples recursos al [CalendarAPI Terraform Provider](https://registry.terraform.io/providers/CalendarAPI/calendarapi/latest/docs)**, incluidas configuraciones de webhooks e integraciones de CDN.
+* **Platform Services**: Se corrigió un problema por el que el calendario de dividendos no mostraba los valores más recientes en registros futuros
+* **Platform Services**: Se resolvieron problemas en la búsqueda de Newsdesk al consultar por ticker o symbol
+* **Platform Services**: Se corrigieron los registros de dividendos no confirmados para que mostraran los valores actuales de dividendos
+* **Platform Services**: Se corrigió un problema por el que las solicitudes por lotes de Logo API v2 devolvían resultados incompletos para fondos mutuos
+* **Platform Services**: Se resolvieron problemas de conectividad de Bulls Bears Say WebSocket
+
+<div id="improvements">
+  ### Mejoras
+</div>
+
+* **Platform Services**: Se actualizó el proceso de transferencia de archivos de PR Newswire
+* **Platform Services**: Se actualizó el socket de streaming de AssemblyAI a la versión más reciente
+* **Platform Services**: Se añadió un parámetro simple de nombre de empresa a Logos API v2 Search/Sync
+* **Platform Services**: Se reforzó la seguridad de los webhooks con autenticación de cliente
+* **Platform Services**: Se añadieron datos de IPO al maestro global de valores
+* **Platform Services**: Se mejoró la deduplicación de registros en las operaciones de sincronización
+* **Platform Services**: Se mejoró la precisión del informe semanal de Trending Tickers
+* **Platform Services**: Se redujo el intervalo de actualización de la administración de licencias a 30 segundos para acelerar las actualizaciones
+* **Platform Services**: Se mejoró el registro para la solución de problemas de la administración de licencias
+* **Transcripts**: Se actualizó el socket de streaming de AssemblyAI a la versión más reciente
+* **Platform Services**: Se migraron 5 feeds RSS a una infraestructura mejorada
+
+<div id="november-2025">
+  ## Noviembre de 2025
+</div>
+
+<div id="new-features">
+  ### Nuevas funcionalidades
+</div>
+
+* **Platform Services**: Se añadió el parámetro de consulta de tickers en tendencia para filtrar
+* **Platform Services**: Se amplió la cobertura global de Logos mediante la búsqueda por FIGI, pasando de 35K a 278K valores
+
+<div id="bug-fixes">
+  ### Correcciones de errores
+</div>
+
+* **Platform Services**: Se resolvieron problemas de tiempo de espera de la base de datos en el servicio de Logos
+* **Platform Services**: Se corrigió la desactivación de claves para que el estado se actualice correctamente a deshabilitado
+* **Platform Services**: Se corrigió la visualización de exchange para PLTR (ahora muestra NASDAQ en lugar de NYSE)
+* **Platform Services**: Se corrigieron errores de procesamiento de imágenes en el motor de feeds
+* **Platform Services**: Se resolvió un problema de datos faltantes en Analyst Insights
+
+<div id="improvements">
+  ### Mejoras
+</div>
+
+* **Platform Services**: Se habilitaron de forma predeterminada todos los servicios para los nuevos usuarios de prueba
+* **Platform Services**: Se estandarizó LSEG Estimates para que se muestre en USD en lugar de CAD
+* **Platform Services**: Se añadió una nueva opción de tipo de fuente PR en la administración de licencias para la configuración de noticias
+* **Calendar API**: Se añadió el endpoint Korean Bull/Bears Says
+* **Platform Services**: Se migraron 7 feeds RSS a una infraestructura mejorada
+
+<div id="october-2025">
+  ## Octubre de 2025
+</div>
+
+### Nuevas funciones
+
+* **Platform Services**: Se lanzó la API de Block Trades para Calendar y EventData
+* **Transcripts**: Se añadieron alertas de Slack para llamadas fallidas, a fin de agilizar la resolución de problemas
+
+<div id="bug-fixes">
+  ### Correcciones de errores
+</div>
+
+* **Transcripts**: Se implementó un mecanismo de reintento para las consultas de OpenAI ante respuestas distintas de 200
+* **Transcripts**: Se corrigieron fallos en el procesamiento del backend de MP4
+
+<div id="improvements">
+  ### Mejoras
+</div>
+
+* **Platform Services**: Se añadió el seguimiento de clics de Citadel Benzinga Ticker Clickstream
+* **Platform Services**: Se optimizaron los feeds RSS de los 20 tickers principales
+* **Platform Services**: Se amplió la distribución de Noticias en coreano y del contenido Bull vs Bear
+* **Platform Services**: Se migraron 9 feeds RSS a una infraestructura mejorada
+
+<div id="september-2025">
+  ## Septiembre de 2025
+</div>
+
+### Novedades
+
+* **Platform Services**: Se añadió el mapeo FIGI a Logos v2.1 para mejorar la identificación de instrumentos financieros
+* **Transcripts**: Se introdujo el seguimiento de revisiones de registros para todas las operaciones de usuario y del sistema
+* **Transcripts**: Se añadieron tablas de seguimiento de actividad para mejorar las pistas de auditoría
+
+<div id="bug-fixes">
+  ### Correcciones de errores
+</div>
+
+* **Platform Services**: Se corrigieron lagunas de datos en la actividad de Unusual Options para QQQ
+* **Platform Services**: Se restauró la funcionalidad de búsqueda en el calendario de Transcripts
+* **Platform Services**: Se añadieron los campos faltantes de sorpresa de EPS a las respuestas de la API de Earnings
+* **API de Noticias**: Se corrigió el manejo del tipo de contenido para los comunicados de prensa
+* **API de Noticias**: Se restableció la entrega de noticias canadienses para CIBC
+* **Transcripts**: Se mejoró el registro de transcripciones con atributos de llamadas para facilitar la depuración
+
+<div id="improvements">
+  ### Mejoras
+</div>
+
+* **Platform Services**: Se añadió compatibilidad con el parámetro Topic AND/OR en la API de Noticias para permitir un filtrado flexible
+* **Platform Services**: Se creó un feed RSS personalizado para Newstex
+* **Platform Services**: Se añadió compatibilidad con consultas de fecha por año para la API del calendario de IPOs
+* **Platform Services**: Se mejoró la coincidencia de nombres propios coreanos en Translation Engine
+* **Platform Services**: Se añadió validación para valores de sorpresa faltantes en el calendario de ganancias
+* **Platform Services**: Se consolidaron perfiles duplicados de analistas
+* **Platform Services**: Se añadieron feeds de noticias en francés, italiano y español para Factiva
+* **Calendar API**: Se añadió compatibilidad con consultas de fecha por año para IPOs
+* **API de Noticias**: Se añadió el parámetro Topic AND/OR para filtrado avanzado
+* **API de Noticias**: Se añadió el parámetro de consulta region para CIBC
+* **Transcripts**: Se publicó la documentación de la API Transcripts v2
+
+<div id="august-2025">
+  ## Agosto de 2025
+</div>
+
+### Nuevas funciones
+
+* **Platform Services**: Se publicaron las especificaciones de la API de Block Trades
+* **Platform Services**: Se lanzó la API de Halts/Resumes para Calendar y EventData
+* **Platform Services**: Se añadió la gestión de Block Trades y Halts/Resume a API Admin
+* **Platform Services**: Se incorporó la funcionalidad de prueba para Noticias y Calendar en Licensing Admin
+* **Transcripts**: Se añadió la generación de URL prefirmadas para acceder de forma segura a las grabaciones
+
+<div id="bug-fixes">
+  ### Correcciones de errores
+</div>
+
+* **Platform Services**: Se corrigieron valores NaN que aparecían en los datos de resultados de WebSocket para Stora Enso
+* **Platform Services**: Se corrigieron errores en la documentación de la API y en las respuestas
+* **Platform Services**: Se añadió validación de emisores basada en comodines para Logos &amp; Movers
+* **Platform Services**: Se resolvieron errores en el procesamiento de Fastly Clickstream y errores de memoria en ClickHouse
+* **Platform Services**: Se corrigieron titulares faltantes en el flujo de BZ Wire
+* **API de Noticias**: Se añadió validación de emisores basada en comodines
+* **Transcripts**: Se corrigió texto duplicado que aparecía en las transcripciones en vivo
+
+<div id="improvements">
+  ### Mejoras
+</div>
+
+* **Platform Services**: Se mejoró la búsqueda de Security Master con soporte para arrays de CIK y el historial de ISIN
+
+<div id="july-2025">
+  ## Julio de 2025
+</div>
+
+### Nuevas funciones
+
+* **Platform Services**: Se añadió la función de búsqueda de Block Trades
+* **Platform Services**: Se añadió la función de búsqueda de Halts/Resumes
+* **Platform Services**: Se incorporó un mecanismo de mock para pruebas de WebSocket de Noticias
+* **Platform Services**: Se añadió el campo de URL del webcast al endpoint de llamadas de Transcripts v2
+
+### Corrección de errores
+
+* **Platform Services**: Se resolvieron inconsistencias de traducción entre idiomas
+* **Platform Services**: Se añadió soporte de autenticación para Licensing Admin
+* **Platform Services**: Se eliminaron las imágenes dañadas anteriores a 2025 del contenido de la API de Noticias
+* **API de Noticias**: Se eliminaron las imágenes dañadas anteriores a 2025 de las respuestas de contenido
+* **Transcripts**: Se corrigió la gestión del estado de las llamadas en casos extremos
+* **Transcripts**: Se mejoró la gestión del nombre de la empresa en los mensajes de corrección
+* **Transcripts**: Se resolvieron problemas en la funcionalidad de carga de archivos
+
+<div id="improvements">
+  ### Mejoras
+</div>
+
+* **Platform Services**: Se agregó compatibilidad con consultas basadas en GICS
+* **Platform Services**: Se automatizó el cálculo del campo de importancia para calendarios
+* **Platform Services**: Se depuró la interfaz de configuración de Licensing Admin
+* **Platform Services**: Se agregó la propiedad de exchange faltante al WebSocket de la API de Noticias
+* **Platform Services**: Se crearon fuentes RSS de LexisNexis para los mercados español, francés y coreano
+* **Transcripts**: Optimizaciones de rendimiento para Transcripts v2
+
+<div id="june-2025">
+  ## Junio de 2025
+</div>
+
+### Nuevas funciones
+
+* **Platform Services**: Se añadió la funcionalidad de replay de WebSocket con los últimos 100 mensajes para Data-Websocket
+* **Platform Services**: Se introdujo el mecanismo de replay para el WebSocket de Noticias
+* **Platform Services**: Se añadió compatibilidad con autenticación JWT para el WebSocket de Noticias
+* **Platform Services**: Se integró el consumo de Block Trades desde Kafka en las herramientas de Newsdesk
+* **Platform Services**: Se integró el consumo de Halts/Resumes desde Kafka en las herramientas de Newsdesk
+
+### Corrección de errores
+
+* **Platform Services**: Se corrigieron problemas de visualización de fechas en el calendario de conferencias telefónicas
+* **Platform Services**: Se resolvieron errores de «conexión rechazada» en RSS Engine
+* **Platform Services**: Se corrigieron errores al analizar JSON en RSS Engine
+
+<div id="improvements">
+  ### Mejoras
+</div>
+
+* **Platform Services**: Se migró la Signals API a api.benzinga.com
+* **Platform Services**: Se subió el historial completo de operaciones de insiders a Ubiquant FTP
+* **Platform Services**: Se creó un servicio de Noticias para la entrega en colas de partners
+* **Platform Services**: Se creó la fuente RSS de INKL
+* **Platform Services**: Se añadieron los campos Revenue, EPS y FFO de Refinitiv Estimates al calendario de resultados
+* **Transcripts**: Se publicó la documentación de la API de Transcripts v2
+* **Platform Services**: Se migraron 4 fuentes RSS a una infraestructura mejorada
+
+<div id="may-2025">
+  ## Mayo de 2025
+</div>
+
+### Nuevas funciones
+
+* **Platform Services**: Se añadió el campo de conteo de palabras para la integración con Syndigate
+* **Platform Services**: Se lanzó la API de Insider Trades
+* **Platform Services**: Se integró Security Master v2 con Licensing Admin
+* **Platform Services**: Se añadió compatibilidad con FIGI por clase de acciones en la base de datos Logos v2
+* **Transcripts**: Se añadió streaming de audio HLS junto con grabaciones MP3
+* **Transcripts**: Se añadió el endpoint PUT para actualizar los detalles de la transcripción
+
+### Corrección de errores
+
+* **Platform Services**: Se resolvieron problemas en la entrega del feed de LexisNexis
+* **Platform Services**: Se corrigieron errores 404 en algunas URL de logotipos compuestos
+
+<div id="improvements">
+  ### Mejoras
+</div>
+
+* **Platform Services**: Se añadió el endpoint de banderas de países
+* **Platform Services**: Se completó el mapeo de campos de ratings de analistas
+* **Platform Services**: Se añadió la configuración de la API de tendencia del ticker a la administración de licencias
+* **Platform Services**: Se restringió el contenido de socios al acceso del equipo editorial
+* **Platform Services**: Se configuraron feeds globales para Interactive Brokers
+* **Platform Services**: Se añadió el parámetro de consulta Event Type a la API de Events
+* **Platform Services**: Se creó un nuevo feed de AOL
+* **Platform Services**: Se creó el feed Newsgen para MSN
+* **Platform Services**: Se automatizaron las reversiones de Why It Is Moving con hora de corte a las 4 p. m. ET
+* **Platform Services**: Se actualizó la autenticación de data-websocket para usar la configuración de Calendar
+* **Transcripts**: Se completó la carga retroactiva de datos históricos de transcripciones
+* **Platform Services**: Se migraron 22 feeds RSS a una infraestructura mejorada
+
+<div id="april-2025">
+  ## Abril de 2025
+</div>
+
+<div id="new-features">
+  ### Nuevas funcionalidades
+</div>
+
+* **Platform Services**: Se agregó compatibilidad con token de autenticación para la integración de TD Bank Logos
+* **Platform Services**: Se agregó una longitud de titulares configurable para Fido
+* **Platform Services**: Se implementó la reindexación automatizada de la tabla FIGI
+* **Platform Services**: Se conectaron los cambios de Noticias y Calendario con Licensing Admin
+* **Platform Services**: Se mejoró Security Master con historial de ISIN y reindexación de Typesense
+* **Platform Services**: Se agregó una opción de parámetro simplificado al WebSocket de ratings
+* **Platform Services**: Se agregó la funcionalidad de hit a la publicación de reversiones de Why It Is Moving
+* **Platform Services**: Se lanzó compatibilidad con traducción al japonés
+* **Platform Services**: Se completó la migración de Licensing Admin a producción
+* **Platform Services**: Se optimizó el flujo de trabajo de Licensing Admin
+
+### Corrección de errores
+
+* **Platform Services**: Se corrigieron errores en la traducción de Noticias de Benzinga
+* **Platform Services**: Se corrigió la visualización de ratings, que mostraba «0» en lugar de dejar el campo en blanco cuando faltaban precios objetivo
+* **Calendar API**: Se corrigió el límite de paginación para permitir resultados de más de 100k
+* **Calendar API**: Se corrigió la discrepancia entre el consenso y el precio objetivo mínimo para NVR
+
+<div id="improvements">
+  ### Mejoras
+</div>
+
+* **Platform Services**: Generación automatizada de futuras filas del calendario de conferencias
+* **Platform Services**: Se añadió el campo Implied Move a la API de Earnings Calendar
+* **Platform Services**: Se lanzó la publicación de reversiones de Why It Is Moving
+* **Platform Services**: Se refinó el formato del feed RSS de Apple News
+* **API de Noticias**: Se migró a Licensing Admin para la administración centralizada de claves
+* **Platform Services**: Se migraron 33 feeds RSS a una infraestructura mejorada
+* **Calendar API**: Se migró 1 feed RSS a una infraestructura mejorada
+
+<div id="march-2025">
+  ## Marzo de 2025
+</div>
+
+<div id="new-features">
+  ### Nuevas funcionalidades
+</div>
+
+* **Platform Services**: Se añadió Widgets como nuevo servicio en Licensing Admin
+* **Platform Services**: Se lanzó la biblioteca cliente en Go para Security Master v2
+* **Platform Services**: Se optimizó la indexación de OpenFIGI con búsqueda por filtros
+* **Platform Services**: Se corrigió Squawk Transcriptions Calendar para que respetara los permisos del complemento HBS
+* **Platform Services**: Se completaron los requisitos previos de despliegue de Transcripts v2
+* **Platform Services**: Se configuró la infraestructura de base de datos de Transcripts v2
+* **Platform Services**: Se creó el pipeline de despliegue de Transcripts v2
+* **Platform Services**: Se añadió la ruta de Widgets a Licensing Admin con autenticación estática
+* **Calendar API**: Se añadieron los campos Free Cash Flow y Gross Margin a Guidance Calendar y a la API
+* **Calendar API**: Se añadió al calendario la columna de variación porcentual del precio objetivo
+* **Calendar API**: Se lanzó el endpoint de API del calendario de eventos
+
+<div id="bug-fixes">
+  ### Correcciones de errores
+</div>
+
+* **Platform Services**: Se corrigieron activaciones falsas de reversión en el publicador de Why It Is Moving
+* **Platform Services**: Se corrigieron problemas de marcas de tiempo en feeds de terceros
+* **Platform Services**: Se corrigió la ausencia del logotipo de FIDD en las respuestas de la API de Logo
+* **Platform Services**: Se corrigieron estimaciones erróneas para el ticker CODA del T1 de 2025 en el calendario de Refinitiv
+
+<div id="improvements">
+  ### Mejoras
+</div>
+
+* **Platform Services**: Se creó un cliente interno de administración de API para servicios
+* **Platform Services**: Se actualizó la interfaz de administración de licencias con visualización de permisos de autoservicio
+* **Platform Services**: Se agregaron alertas de monitoreo para la API de barras históricas
+* **Platform Services**: Se creó un feed RSS de Taboola solo de titulares
+* **Platform Services**: Se añadió soporte para consultas de Elasticsearch en el motor RSS para casos extremos
+* **Platform Services**: Se mejoraron los prompts del motor de traducción
+* **Platform Services**: Se eliminó el contenido de Analyst Ratings del feed de Nordot
+* **Calendar API**: Se movieron los ISIN/tickers al cuerpo de la solicitud para admitir consultas más grandes (50+)
+* **Platform Services**: Se migraron 13 feeds RSS a una infraestructura mejorada
+
+<div id="february-2025">
+  ## Febrero de 2025
+</div>
+
+### Nuevas funciones
+
+* **Platform Services**: Lanzó la API de Sector Performance
+* **Platform Services**: Añadió seguimiento de reversiones de operaciones con metadatos y marcas de tiempo para Why It Is Moving
+* **Platform Services**: Añadió Consensus Ratings al endpoint /ratings
+* **Platform Services**: Lanzó Security Master v2 en producción
+* **Platform Services**: Creó un feed RSS para Dappier
+* **Platform Services**: Añadió formato de párrafos al contenido traducido
+* **Platform Services**: Creó un feed RSS para Apple News
+* **Platform Services**: Añadió compatibilidad con clave de API y token para los parámetros de consulta de Data API Proxy
+* **Platform Services**: Creó un feed RSS personalizado para Beards Bros Pharms
+* **Calendar API**: Mejoró la precisión de Consensus Ratings al deduplicar las calificaciones de analistas
+
+### Corrección de errores
+
+* **Platform Services**: Se corrigieron las filas duplicadas en el calendario de Refinitiv
+* **Platform Services**: Se resolvieron los errores 403 con las claves de Data API Proxy
+* **API de Noticias**: Se corrigió el filtrado por ISIN en las consultas de la API de Noticias
+
+<div id="improvements">
+  ### Mejoras
+</div>
+
+* **Platform Services**: Se rediseñó la interfaz de la configuración de licencias
+* **Platform Services**: Se actualizó la gestión de la configuración de licencias
+* **Platform Services**: Se integraron las URL de los archivos de transcripciones con la cola de mensajes
+* **Platform Services**: Se añadió al endpoint de Corporate Logos el conteo de cobertura de valores por geografía
+* **Platform Services**: Se catalogaron los feeds activos de clientes para facilitar el mantenimiento
+* **Platform Services**: Se eliminaron las estimaciones duplicadas de FY 2024/2025 en el calendario de Refinitiv
+* **Platform Services**: Se envió a EBSCO una carga retroactiva de contenido histórico (abril de 2020 - diciembre de 2023)
+* **Platform Services**: Se implementó la infraestructura de StatefulSet de OpenFIGI
+* **Calendar API**: Se añadió el parámetro simplify para los campos action&#95;company y action&#95;pt de ratings
+* **Platform Services**: Se migró 1 feed RSS a una infraestructura mejorada
+
+<div id="january-2025">
+  ## Enero de 2025
+</div>
+
+### Nuevas funciones
+
+* **Platform Services**: Se creó un dashboard de monitoreo para el WebSocket de datos
+* **Platform Services**: Se añadió un mecanismo de Ping/Pong al WebSocket de Noticias para mejorar la estabilidad de la conexión
+* **Platform Services**: Se añadió una API para obtener los dominios de la lista blanca para todas las licencias o para licencias específicas
+* **Platform Services**: Se añadió una API para actualizar la configuración de licencias mediante el ID de la licencia
+* **Platform Services**: Se actualizó el ticker FISV a FI
+* **Platform Services**: Se cargaron datos históricos de actividad inusual de opciones en el FTP de Cubist
+* **Platform Services**: Se corrigió el problema por el que la precisión de rating devolvía null cuando se solicitaba con rank
+* **Platform Services**: Se añadió una API para obtener dinámicamente las opciones de configuración de licencias
+* **Platform Services**: Se mejoró la estabilidad de la conexión y el rendimiento del WebSocket de datos
+* **Calendar API**: Se añadió Auto Headline Tool
+
+<div id="bug-fixes">
+  ### Correcciones de errores
+</div>
+
+* **Calendar API**: Se corrigió el endpoint de consensus-ratings que devolvía errores 500 para rangos de fechas específicos
+* **API de Noticias**: Se corrigieron los problemas de escalado de las tablas en dispositivos móviles
+
+<div id="improvements">
+  ### Mejoras
+</div>
+
+* **Platform Services**: Se sincronizaron las claves del proxy de Data API con API Admin
+* **Platform Services**: Se actualizó el calendario de Refinitiv según las observaciones del equipo de datos
+* **Platform Services**: Se añadieron campos de estimaciones de Refinitiv al calendario de resultados de Benzinga PRO
+* **Platform Services**: Se corrigieron etiquetas HTML faltantes en las traducciones al coreano
+* **Platform Services**: Se restauró la información de contacto al final de los comunicados de prensa
+* **Platform Services**: Se depuraron registros no válidos de Economics
+* **Platform Services**: Se añadieron nuevos campos a la documentación de insider trades
+* **Platform Services**: Se corrigió la desconexión de Why It Is Moving WebSocket cada 5 minutos
+* **Platform Services**: Se actualizó el ticker de Block Inc. de SQ a XYZ
+
+<div id="2024">
+  ## 2024
+</div>
+
+* **Platform Services**: 41 nuevas funcionalidades, 8 correcciones de errores, 28 mejoras
+* **Calendar API**: 4 nuevas funcionalidades, 3 correcciones de errores, 3 mejoras
+
+<div id="2023">
+  ## 2023
+</div>
+
+* **Platform Services**: 22 nuevas funcionalidades, 16 correcciones de errores, 27 mejoras
+* **Calendar API**: 5 nuevas funcionalidades, 2 correcciones de errores
+* **API de Noticias**: 2 nuevas funcionalidades, 3 correcciones de errores
+
+<div id="2022">
+  ## 2022
+</div>
+
+* **Platform Services**: 26 funcionalidades nuevas, 10 correcciones de errores, 11 mejoras
+* **Calendar API**: 7 funcionalidades nuevas, 1 corrección de errores, 3 mejoras
+* **API de Noticias**: 1 funcionalidad nueva, 2 correcciones de errores, 1 mejora
+
+<div id="2021">
+  ## 2021
+</div>
+
+* **Platform Services**: 7 nuevas funcionalidades, 5 correcciones de errores, 17 mejoras
+* **Calendar API**: 1 nueva funcionalidad

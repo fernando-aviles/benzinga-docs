@@ -1,5 +1,5 @@
 ---
-title: "バリュエーション指標"
+title: "バリュエーション比率"
 description: valuationRatios()
 ---
 
@@ -13,13 +13,13 @@ description: valuationRatios()
   ### 利用可能な操作
 </div>
 
-* [get](#get) - バリュエーション指標比率 v2.1 を取得
+* [get](#get) - V2.1のバリュエーション比率を取得
 
 <div id="get">
   ## get
 </div>
 
-シンボル、ISIN（国際証券識別番号）、CIK のリストに対するバリュエーション比率を取得します。
+シンボル、ISIN、または CIK のリストについて、バリュエーション比率を取得します
 
 <div id="example-usage">
   ### 使用例
@@ -55,15 +55,15 @@ public class Application {
 ```
 
 <div id="parameters">
-  ### パラメーター
+  ### パラメータ
 </div>
 
-| Parameter                       | Type                            | Required                        | Description                                      |
-| ------------------------------- | ------------------------------- | ------------------------------- | ----------------------------------------------- |
-| `symbols`                       | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | カンマ区切りのシンボル一覧                       |
-| `asOf`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 基準日                                          |
-| `period`                        | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 会計期間                                        |
-| `reportType`                    | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | レポートタイプ                                  |
+| Parameter    | Type                     | Required                   | Description    |
+| ------------ | ------------------------ | -------------------------- | -------------- |
+| `symbols`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | シンボルのカンマ区切りリスト |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 基準日            |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 期間             |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | レポートタイプ        |
 
 <div id="response">
   ### レスポンス
@@ -75,6 +75,6 @@ public class Application {
   ### エラー
 </div>
 
-| エラータイプ               | ステータスコード           | コンテンツタイプ           |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| エラー種別                      | ステータスコード | コンテンツタイプ |
+| -------------------------- | -------- | -------- |
+| models/errors/APIException | 4XX, 5XX | */*      |

@@ -1,8 +1,8 @@
 openapi: 3.0.0
 info:
   contact: {}
-  description: Prueba la entrega del webhook para verificar que tu integración
-    funciona correctamente
+  description: Pruebe la entrega del webhook para verificar que su integración
+    funcione correctamente
   title: Webhook API
   version: 1.0.0
 servers:
@@ -11,14 +11,15 @@ paths:
   /api/v1/webhook/test:
     get:
       summary: Probar la entrega del webhook
-      description: Este endpoint enviará datos de prueba a tu webhook para que puedas
-        verificar tu integración
+      description: Este endpoint enviará datos de prueba a su endpoint de webhook para
+        que pueda verificar su integración
       operationId: get-webhook-test
       parameters:
         - name: destination
           in: query
           required: true
-          description: La URL del endpoint de webhook al que se enviarán los datos de prueba
+          description: La URL del endpoint de webhook a la que se enviarán los datos de
+            prueba
           schema:
             type: string
             format: uri
@@ -35,7 +36,7 @@ paths:
         - name: kind
           in: query
           required: true
-          description: "Identifica el kind del mensaje. Actualmente: News/v1"
+          description: Identifica el tipo de mensaje. Actualmente, News/v1
           schema:
             type: string
             enum:
@@ -44,12 +45,13 @@ paths:
         - name: token
           in: query
           required: false
-          description: Indique el token para transformar los datos para su uso en producción
+          description: Especifique el token para que los datos se transformen para su uso
+            en producción
           schema:
             type: string
       responses:
         "200":
-          description: Éxito - La entrega de prueba del webhook se envió correctamente
+          description: "Éxito: la entrega de prueba del webhook se envió correctamente"
           content:
             application/json:
               schema:
@@ -59,7 +61,7 @@ paths:
                     type: string
                     example: success
         "400":
-          description: "Solicitud no válida: consulta el cuerpo de la respuesta para
+          description: "Solicitud no válida: inspeccione el cuerpo de la respuesta para
             obtener más detalles"
           content:
             application/json:
@@ -70,8 +72,8 @@ paths:
                     type: string
                     example: Invalid destination URL
         "424":
-          description: "Error de entrega: el sistema encontró un problema al entregar la
-            carga de prueba"
+          description: "Error de entrega: el sistema encontró un error al entregar la
+            carga útil de prueba"
           content:
             application/json:
               schema:
@@ -98,4 +100,4 @@ components:
       type: apiKey
       in: header
       name: Key
-      description: Tu clave de la API de Benzinga
+      description: Su clave API de Benzinga

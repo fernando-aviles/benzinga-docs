@@ -3,33 +3,32 @@ title: 'Introducción'
 description: 'Una breve introducción a la transmisión de datos en tiempo real con la API WebSocket de Benzinga.'
 ---
 
-Bienvenido a la documentación de la API WebSocket de Benzinga. Esta guía le ayudará a empezar a acceder a los flujos de datos en tiempo real de Benzinga, lo que le permitirá suscribirse a actualizaciones continuas de datos financieros, incluidas cotizaciones de mercado en vivo, operaciones, noticias y otra información clave.
+Bienvenido a la documentación de la API WebSocket de Benzinga. Esta guía le ayudará a empezar a acceder a los flujos de datos en tiempo real de Benzinga, para que pueda suscribirse a actualizaciones continuas de datos financieros, incluidas cotizaciones de mercado en vivo, operaciones, noticias y otra información clave.
 
 <div id="websocket-endpoint">
   ## Endpoint de WebSocket
 </div>
 
-Todas las conexiones WebSocket pueden establecerse mediante el siguiente endpoint:
+Todas las conexiones WebSocket se pueden establecer a través del siguiente endpoint:
 
 ```
 wss://api.benzinga.com
 ```
 
-
 <div id="authentication">
   ## Autenticación
 </div>
 
-La API WebSocket de Benzinga requiere autenticación Bearer. Al iniciar una conexión WebSocket, incluye tu token de API en la URL de conexión como parámetro de consulta en el siguiente formato:
-debes incluir tu token de API en el parámetro de consulta `token` con el formato `token: <token>`.
+La API WebSocket de Benzinga requiere autenticación Bearer. Al iniciar una conexión WebSocket, debe incluir su token de API en la URL de conexión como parámetro de consulta con el siguiente formato:
+debe incluir su token de API en el parámetro de consulta `token` con el formato `token: <token>`.
 
-Consulta la página de [Autenticación](./authentication) para obtener más información sobre cómo obtener y administrar tu token de API.
+Consulte la página de [Autenticación](./authentication) para obtener más información sobre cómo obtener y administrar su token de API.
 
 <div id="subscribing-to-streams">
-  ## Suscripción a streams
+  ## Suscripción a flujo
 </div>
 
-Una vez conectado, puedes suscribirte a streams de datos específicos según tus necesidades, como cotizaciones de acciones, datos de negociación o actualizaciones de noticias. Cada suscripción requiere un identificador único y parámetros específicos según el tipo de datos.
+Una vez conectado, puede suscribirse a flujo de datos específicos según sus necesidades, como cotizaciones de acciones, datos de operaciones o actualizaciones de noticias. Cada suscripción requiere un identificador único y parámetros específicos según el tipo de datos.
 
 <div id="example-subscription-message">
   ### Ejemplo de mensaje de suscripción
@@ -45,20 +44,19 @@ Para suscribirse a un flujo de cotizaciones de acciones en tiempo real, envíe u
 }
 ```
 
-
 <div id="heartbeat-mechanism">
-  ## Mecanismo de latido
+  ## Mecanismo de heartbeat
 </div>
 
-Para mantener una conexión estable y garantizar que el cliente y el servidor sigan sincronizados, la API WebSocket de Benzinga incluye un mecanismo de latido.
+Para mantener una conexión estable y garantizar que el cliente y el servidor permanezcan sincronizados, la API WebSocket de Benzinga incluye un mecanismo de heartbeat.
 
 <div id="client-side-heartbeat">
-  ### Heartbeat en el lado del cliente
+  ### Heartbeat del cliente
 </div>
 
-* Si envías un mensaje ping como un frame de texto sin formato (por ejemplo, la string "ping"), el servidor responderá con un mensaje pong como texto sin formato (por ejemplo, la string "pong").
+* Si envías un mensaje ping en una trama de texto sin formato (por ejemplo, la cadena ping), el servidor responderá con un mensaje pong como texto sin formato (por ejemplo, la cadena pong).
 
-* Esto se puede usar para verificar que la conexión sigue activa y es receptiva.
+* Esto puede usarse para verificar que la conexión sigue activa y responde.
 
 <div id="example">
   #### Ejemplo
@@ -69,27 +67,28 @@ Para mantener una conexión estable y garantizar que el cliente y el servidor si
 * El servidor responde: `pong`
 
 <div id="server-side-heartbeat">
-  ### Heartbeat del lado del servidor
+  ### Heartbeat del servidor
 </div>
 
-* El servidor enviará automáticamente un frame de ping al cliente cada 10 segundos para asegurarse de que la conexión se mantenga activa.
+* El servidor enviará automáticamente un frame de ping al cliente cada 10 segundos para garantizar que la conexión siga activa.
 
-* Se espera que el cliente responda a este frame de ping (la mayoría de las bibliotecas de WebSocket lo manejan automáticamente).
+* Se espera que los clientes respondan a este frame de ping (la mayoría de las bibliotecas de WebSocket lo gestionan automáticamente).
 
 <div id="handling-heartbeats">
-  ### Manejo de latidos (heartbeats)
+  ### Gestión de heartbeats
 </div>
 
-* La mayoría de las librerías cliente WebSocket (por ejemplo, las de JavaScript, Python o Go) manejan automáticamente los pings entrantes del servidor y responden con un pong.
+* La mayoría de las bibliotecas cliente de WebSocket (por ejemplo, las de JavaScript, Python o Go) gestionan automáticamente los pings entrantes del servidor y responden con un pong.
 
-* Sin embargo, si estás implementando un cliente WebSocket personalizado, asegúrate de que responda correctamente a las tramas de ping del servidor para evitar que la conexión se cierre.
+* Sin embargo, si está implementando un cliente WebSocket personalizado, asegúrese de que responda correctamente a las tramas de ping del servidor para evitar que se cierre la conexión.
 
 <div id="rate-limiting">
-  ## Limitación de tasa
+  ## Límites de velocidad
 </div>
 
-Tenga en cuenta que la API de Benzinga tiene límites de tasa para evitar abusos y garantizar la estabilidad del servicio. Solo se permite 1 conexión por token de API a la vez. Si excede el límite de tasa, recibirá una respuesta de error.
+Ten en cuenta que la API de Benzinga tiene límites de velocidad para evitar abusos y garantizar la estabilidad del servicio. Solo se permite 1 conexión por token de API a la vez. Si superas el límite de velocidad, recibirás una respuesta de error.
 
----
+***
 
-Esperamos que esta guía le ayude a comenzar con las API de Benzinga. Si tiene alguna pregunta, no dude en ponerse en contacto con nuestro equipo de soporte.
+Esperamos que esta guía te ayude a empezar a usar las API de Benzinga. Si tienes alguna pregunta, no dudes en ponerte en contacto
+con nuestro equipo de soporte.

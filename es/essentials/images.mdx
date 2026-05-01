@@ -1,6 +1,6 @@
 ---
-title: 'Imágenes y elementos incrustados'
-description: 'Añade imágenes, vídeos y otros elementos HTML'
+title: 'Imágenes y embed'
+description: 'Añade imágenes, videos y otros elementos HTML'
 icon: 'image'
 ---
 
@@ -14,41 +14,41 @@ icon: 'image'
   ### Uso de Markdown
 </div>
 
-La [sintaxis de Markdown](https://www.markdownguide.org/basic-syntax/#images) permite añadir imágenes mediante el siguiente código:
+La [sintaxis de Markdown](https://www.markdownguide.org/basic-syntax/#images) permite agregar imágenes con el siguiente código
 
 ```md
 ![title](/path/image.jpg)
 ```
 
-Ten en cuenta que el tamaño del archivo de imagen debe ser menor de 5 MB. De lo contrario, recomendamos alojarla en un servicio como [Cloudinary](https://cloudinary.com/) o [S3](https://aws.amazon.com/s3/). Luego puedes usar esa URL para incrustar la imagen.
+Ten en cuenta que el tamaño del archivo de imagen debe ser inferior a 5 MB. De lo contrario, recomendamos alojar la imagen en un servicio como [Cloudinary](https://cloudinary.com/) o [S3](https://aws.amazon.com/s3/). Después, puedes usar esa URL para incrustarla.
 
 <div id="using-embeds">
   ### Uso de embeds
 </div>
 
-Para tener más opciones de personalización con las imágenes, también puedes usar [embeds](/es/writing-content/embed) para añadir imágenes
+Para tener más opciones de personalización de las imágenes, también puedes usar [embeds](/es/writing-content/embed) para añadirlas
 
 ```html
 <img height="200" src="/path/image.jpg" />
 ```
 
 <div id="embeds-and-html-elements">
-  ## Contenido incrustado y elementos HTML
+  ## Embed y elementos HTML
 </div>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/4KzFe50RQkQ" title="Reproductor de vídeo de YouTube" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen style={{ width: '100%', borderRadius: '0.5rem' }} />
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4KzFe50RQkQ" title="Reproductor de video de YouTube" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen style={{ width: '100%', borderRadius: '0.5rem' }} />
 
 <br />
 
 <Tip>
-  Mintlify admite [etiquetas HTML en Markdown](https://www.markdownguide.org/basic-syntax/#html). Esto es útil si prefieres las etiquetas HTML a la sintaxis de Markdown y te permite crear documentación con total flexibilidad.
+  Mintlify admite [etiquetas HTML en Markdown](https://www.markdownguide.org/basic-syntax/#html). Esto resulta útil si prefieres usar etiquetas HTML en lugar de la sintaxis Markdown y te permite crear documentación con total flexibilidad.
 </Tip>
 
 <div id="iframes">
   ### iFrames
 </div>
 
-Carga otra página HTML dentro del documento. Se usa principalmente para incrustar vídeos.
+Carga una página HTML dentro del documento. Se utiliza sobre todo para incrustar videos.
 
 ```html
 <iframe src="https://www.youtube.com/embed/4KzFe50RQkQ"> </iframe>

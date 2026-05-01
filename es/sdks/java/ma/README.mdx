@@ -16,7 +16,7 @@ description: ma()
 * [get](#get) - Obtener fusiones y adquisiciones
 
 <div id="get">
-  ## Obtener
+  ## get
 </div>
 
 Devuelve datos de fusiones y adquisiciones
@@ -49,7 +49,7 @@ public class Application {
                 .call();
 
         if (res.modelsAcquisitionJSON().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -59,9 +59,9 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                                               | Tipo                                                    | Obligatorio                                             | Descripción                                             |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `request`                                               | [GetMaRequest](../../models/operations/GetMaRequest.md) | :heavy&#95;check&#95;mark:                                      | El objeto de solicitud que se utilizará en la petición. |
+| Parámetro | Tipo                                                    | Obligatorio                | Descripción                              |
+| --------- | ------------------------------------------------------- | -------------------------- | ---------------------------------------- |
+| `request` | [GetMaRequest](../../models/operations/GetMaRequest.md) | :heavy&#95;check&#95;mark: | El objeto de solicitud que se utilizará. |
 
 <div id="response">
   ### Respuesta
@@ -73,6 +73,6 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado HTTP      | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/APIException | 4XX, 5XX         | */*               |

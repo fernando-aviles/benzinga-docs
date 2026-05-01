@@ -1,74 +1,77 @@
 ---
-title: "Eliminados"
-openapi: /es/openapi/calendar_api.spec.yml GET /api/v2.1/calendar-removed/
+title: "Removed"
+openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar-removed/
 ---
 
 <ResponseExample>
-```json Respuesta (200 OK)
-{
-  "removed": [
-    {
-      "id": "5b5d22b5be523300016fd411",
-      "type": "dividends",
-      "updated": 0
-    },
-    {
-      "id": "5c3dc573a8839f000125ef6b",
-      "type": "dividends",
-      "updated": 0
-    },
-    {
-      "id": "5c3de0ffa8839f000125efd4",
-      "type": "dividends",
-      "updated": 0
-    },
-    {
-      "id": "5c3e642da8839f000125f167",
-      "type": "dividends",
-      "updated": 0
-    },
-    {
-      "id": "5c3d9249a8839f000125ef61",
-      "type": "dividends",
-      "updated": 0
-    }
-  ]
-}
-```
-```json Respuesta (401 Unauthorized)
-{
-  "ok": false,
-  "errors": [
-    {
-      "code": "auth_failed",
-      "id": "unauthorized",
-      "value": "Token de autenticación no válido o ausente"
-    }
-  ]
-}
-```
-```json Respuesta (404 Not Found)
-{
-  "ok": false,
-  "errors": [
-    {
-      "code": "no_data_found",
-      "id": "not_found",
-      "value": "No se encontraron datos para los parámetros especificados"
-    }
-  ]
-}
-```
-```json Respuesta (500 Internal Server Error)
-{
-  "ok": false,
-  "errors": [
-    {
-      "code": "internal_server_error",
-      "id": "server_error",
-      "value": "Se produjo un error inesperado al procesar su solicitud"
-    }
-  ]
-}
-```
+  ```json Respuesta (200 OK)
+  {
+    "removed": [
+      {
+        "id": "5b5d22b5be523300016fd411",
+        "type": "dividends",
+        "updated": 0
+      },
+      {
+        "id": "5c3dc573a8839f000125ef6b",
+        "type": "dividends",
+        "updated": 0
+      },
+      {
+        "id": "5c3de0ffa8839f000125efd4",
+        "type": "dividends",
+        "updated": 0
+      },
+      {
+        "id": "5c3e642da8839f000125f167",
+        "type": "dividends",
+        "updated": 0
+      },
+      {
+        "id": "5c3d9249a8839f000125ef61",
+        "type": "dividends",
+        "updated": 0
+      }
+    ]
+  }
+  ```
+
+  ```json Respuesta (401 No autorizado)
+  {
+    "ok": false,
+    "errors": [
+      {
+        "code": "auth_failed",
+        "id": "unauthorized",
+        "value": "Token de autenticación no válido o faltante"
+      }
+    ]
+  }
+  ```
+
+  ```json Respuesta (404 No encontrado)
+  {
+    "ok": false,
+    "errors": [
+      {
+        "code": "no_data_found",
+        "id": "not_found",
+        "value": "No se encontraron datos para los parámetros especificados"
+      }
+    ]
+  }
+  ```
+
+  ```json Respuesta (500 Error interno del servidor)
+  {
+    "ok": false,
+    "errors": [
+      {
+        "code": "internal_server_error",
+        "id": "server_error",
+        "value": "Se produjo un error inesperado al procesar la solicitud"
+      }
+    ]
+  }
+  ```
 </ResponseExample>

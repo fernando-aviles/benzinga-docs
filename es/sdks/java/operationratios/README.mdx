@@ -1,9 +1,9 @@
 ---
-title: "Ratios de operación"
+title: "Ratios operativos"
 description: operationRatios()
 ---
 
-[&lt; ATRÁS](/es/sdks/languages/java#operationratios)
+[&lt; VOLVER](/es/sdks/languages/java#operationratios)
 
 <div id="overview">
   ## Descripción general
@@ -19,7 +19,7 @@ description: operationRatios()
   ## obtener
 </div>
 
-Obtener ratios operativos para una lista de símbolos
+Obtiene los ratios operativos de una lista de symbols
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -58,12 +58,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                       | Tipo                            | Obligatorio                     | Descripción                                      |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------------------------ |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | Lista de símbolos separados por comas            |
-| `asOf`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Fecha de referencia                              |
-| `period`                        | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Período                                          |
-| `reportType`                    | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Tipo de informe                                  |
+| Parámetro    | Tipo                     | Obligatorio                | Descripción                         |
+| ------------ | ------------------------ | -------------------------- | ----------------------------------- |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | Lista de symbols separada por comas |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de referencia                 |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Período                             |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                     |
 
 <div id="response">
   ### Respuesta
@@ -75,6 +75,6 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado           | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/APIException | 4XX, 5XX         | */*               |

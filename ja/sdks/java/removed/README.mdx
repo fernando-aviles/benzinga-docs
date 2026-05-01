@@ -13,13 +13,13 @@ description: removed()
   ### 利用可能な操作
 </div>
 
-* [get](#get) - 削除済みデータを取得 (v2)
+* [取得](#get) - 削除済みデータを取得 (v2)
 
 <div id="get">
-  ## get
+  ## 取得
 </div>
 
-v2 エンドポイントから Removed を取得します
+v2 エンドポイントで削除済み項目を取得します
 
 <div id="example-usage">
   ### 使用例
@@ -56,15 +56,15 @@ public class Application {
 ```
 
 <div id="parameters">
-  ### パラメーター
+  ### パラメータ
 </div>
 
-| Parameter                                          | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `page`                                             | *Optional&lt;Long&gt;*                                  | :heavy&#95;minus&#95;sign:                                 | ページ番号                                         |
-| `pageSize`                                         | *Optional&lt;Long&gt;*                                  | :heavy&#95;minus&#95;sign:                                 | ページサイズ                                       |
-| `type`                                             | [Optional&lt;Type&gt;](../../models/operations/Type.md) | :heavy&#95;minus&#95;sign:                                 | 種別                                               |
-| `updated`                                          | *Optional&lt;Long&gt;*                                  | :heavy&#95;minus&#95;sign:                                 | Unix 形式の更新日時                                |
+| Parameter  | Type                                                    | Required                   | Description |
+| ---------- | ------------------------------------------------------- | -------------------------- | ----------- |
+| `page`     | *Optional&lt;Long&gt;*                                  | :heavy&#95;minus&#95;sign: | ページ番号       |
+| `pageSize` | *Optional&lt;Long&gt;*                                  | :heavy&#95;minus&#95;sign: | 1ページあたりの件数  |
+| `type`     | [Optional&lt;Type&gt;](../../models/operations/Type.md) | :heavy&#95;minus&#95;sign: | 種別          |
+| `updated`  | *Optional&lt;Long&gt;*                                  | :heavy&#95;minus&#95;sign: | Unix形式の更新時刻 |
 
 <div id="response">
   ### レスポンス
@@ -76,6 +76,6 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                 | ステータスコード           | Content-Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| エラー種別                      | ステータスコード | コンテンツタイプ |
+| -------------------------- | -------- | -------- |
+| models/errors/APIException | 4XX, 5XX | */*      |

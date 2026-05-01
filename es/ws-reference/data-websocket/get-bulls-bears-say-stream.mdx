@@ -1,5 +1,5 @@
 ---
-title: "Bulls/Bears Say Stream"
+title: "Stream de escenarios alcistas/bajistas"
 description: "Escenarios alcistas y bajistas en tiempo real para valores."
 asyncapi: "/asyncapi/bulls-bears-say-stream.yml bullsBearsSay"
 ---
@@ -8,31 +8,31 @@ asyncapi: "/asyncapi/bulls-bears-say-stream.yml bullsBearsSay"
   ## Descripción general
 </div>
 
-Suscríbete para recibir análisis en tiempo real de escenarios alcistas y bajistas para valores. Obtén perspectivas equilibradas sobre escenarios positivos (alcistas) y negativos (bajistas) para acciones.
+Suscríbase a análisis en tiempo real de escenarios alcistas y bajistas para valores. Obtenga perspectivas equilibradas sobre escenarios positivos (alcistas) y negativos (bajistas) para acciones.
 
 <div id="key-features">
-  ### Funciones clave
+  ### Funcionalidades clave
 </div>
 
-- **Análisis equilibrado**: Reciba tanto escenarios alcistas como bajistas para obtener una visión completa del mercado
-- **Actualizaciones en tiempo real**: Reciba notificaciones instantáneas cuando se creen, actualicen o eliminen escenarios
-- **Filtrar por valor**: Suscríbase a tickers o ISIN específicos
-- **Sentimiento de mercado**: Comprenda tanto las perspectivas optimistas como las pesimistas
+* **Análisis equilibrado**: Reciba tanto escenarios alcistas como bajistas para obtener una visión completa del mercado
+* **Actualizaciones en tiempo real**: Reciba notificaciones instantáneas cuando se creen, se actualicen o se eliminen casos
+* **Filtrar por valor**: Suscríbase a tickers o ISIN específicos
+* **Sentimiento del mercado**: Comprenda tanto los puntos de vista optimistas como los pesimistas
 
 <div id="use-cases">
   ### Casos de uso
 </div>
 
-- Crear paneles de análisis de sentimiento que muestren ambos lados de la discusión
-- Hacer seguimiento de los cambios en el sentimiento alcista/bajista a lo largo del tiempo
-- Alertar a los usuarios sobre cambios significativos en la perspectiva del mercado
-- Proporcionar análisis de inversión equilibrado a los clientes
+* Crear dashboards de análisis de sentimiento que muestren ambas posturas
+* Realizar un seguimiento de los cambios en el sentimiento alcista/bajista a lo largo del tiempo
+* Alertar a los usuarios sobre cambios significativos en la percepción del mercado
+* Proporcionar a los clientes análisis de inversión equilibrados
 
 <div id="quick-start">
   ## Inicio rápido
 </div>
 
-Usa la herramienta de prueba interactiva de WebSocket de arriba para conectarte y probar la transmisión en tiempo real.
+Usa el probador interactivo de WebSocket que aparece arriba para conectarte y probar el flujo en tiempo real.
 
 <div id="connection-url">
   ### URL de conexión
@@ -42,16 +42,15 @@ Usa la herramienta de prueba interactiva de WebSocket de arriba para conectarte 
 wss://api.benzinga.com/api/v1/bulls_bears_say/stream?token=YOUR_TOKEN
 ```
 
-
 <div id="query-parameters">
   ### Parámetros de consulta
 </div>
 
-| Parámetro | Obligatorio | Descripción |
-|-----------|-------------|-------------|
-| `token` | Sí | Tu token de la API WebSocket de Benzinga (bz.production***) |
-| `tickers` | No | Lista separada por comas de símbolos ticker (p. ej., `AAPL,TSLA`) |
-| `isins` | No | Lista separada por comas de códigos ISIN para filtrar |
+| Parámetro | Obligatorio | Descripción                                                       |
+| --------- | ----------- | ----------------------------------------------------------------- |
+| `token`   | Sí          | Tu token de la API WebSocket de Benzinga (bz.production***)       |
+| `tickers` | No          | Lista de símbolos ticker separada por comas (p. ej., `AAPL,TSLA`) |
+| `isins`   | No          | Lista de ISIN separados por comas para filtrar                    |
 
 <div id="message-example">
   ## Ejemplo de mensaje
@@ -76,31 +75,30 @@ wss://api.benzinga.com/api/v1/bulls_bears_say/stream?token=YOUR_TOKEN
 }
 ```
 
-
 <div id="message-actions">
-  ### Acciones de mensaje
+  ### Acciones del mensaje
 </div>
 
-| Acción | Descripción |
-|--------|-------------|
-| `created` / `Created` | Nuevo caso alcista o bajista publicado |
-| `updated` / `Updated` | Caso existente modificado |
-| `deleted` / `Deleted` | Caso eliminado |
+| Acción                | Descripción                          |
+| --------------------- | ------------------------------------ |
+| `created` / `Created` | Nuevo caso alcista/bajista publicado |
+| `updated` / `Updated` | Caso existente modificado            |
+| `deleted` / `Deleted` | Caso eliminado                       |
 
 <div id="interactive-commands">
   ## Comandos interactivos
 </div>
 
-| Comando | Descripción |
-|---------|-------------|
-| `ping` | Mantiene la conexión activa (responde con `pong`) |
-| `replay` | Reproduce hasta los últimos 100 mensajes almacenados en caché |
+| Comando  | Descripción                                                 |
+| -------- | ----------------------------------------------------------- |
+| `ping`   | Mantiene activa la conexión (responde con `pong`)           |
+| `replay` | Reenvía hasta los últimos 100 mensajes almacenados en caché |
 
 <div id="best-practices">
-  ## Mejores prácticas
+  ## Prácticas recomendadas
 </div>
 
-- **Eliminación de duplicados**: Usa el campo `id` para evitar procesar mensajes duplicados
-- **Heartbeat**: Envía comandos de `ping` cada 30-60 segundos
-- **Presentación equilibrada**: Muestra tanto los casos alcistas como los bajistas para ofrecer un análisis imparcial
-- **Seguimiento de actualizaciones**: Supervisa la marca de tiempo `updated` para identificar cambios recientes
+* **Eliminación de duplicados**: Use el campo `id` para evitar procesar mensajes duplicados
+* **Heartbeat**: Envíe comandos `ping` cada 30-60 segundos
+* **Presentación equilibrada**: Muestre tanto los casos alcistas como los bajistas para ofrecer un análisis equilibrado
+* **Seguimiento de actualizaciones**: Supervise la marca de tiempo `updated` para identificar cambios recientes

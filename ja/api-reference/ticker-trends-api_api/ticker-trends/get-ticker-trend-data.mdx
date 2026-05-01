@@ -1,43 +1,43 @@
 ---
-title: "ティッカー・トレンド・データ"
+title: "ティッカートレンドデータ"
 openapi: /ja/openapi/ticker-trends-api_api.spec.yml GET /api/v1/trending-tickers
 ---
 
 <ResponseExample>
-```json レスポンス (200 OK)
-{
-  "ok": true,
-  "data": [
-    {
-      "ticker": "AAPL",
-      "exchange": "NASDAQ",
-      "metrics": [
-        {
-          "time_bucket": "2025-12-30T11:00:00Z",
-          "count": 36,
-          "count_mavg": 738,
-          "scaled_count": 0.008905160240828991,
-          "scaled_count_mavg": 0.18255577981472015,
-          "market_count_average": 0.8544670939445496
-        }
-      ]
-    }
-  ]
-}
-```
+  ```json レスポンス (200 OK)
+  {
+    "ok": true,
+    "data": [
+      {
+        "ticker": "AAPL",
+        "exchange": "NASDAQ",
+        "metrics": [
+          {
+            "time_bucket": "2025-12-30T11:00:00Z",
+            "count": 36,
+            "count_mavg": 738,
+            "scaled_count": 0.008905160240828991,
+            "scaled_count_mavg": 0.18255577981472015,
+            "market_count_average": 0.8544670939445496
+          }
+        ]
+      }
+    ]
+  }
+  ```
 </ResponseExample>
 
 <ResponseExample>
-```json レスポンス (401 Unauthorized)
-{
-    "ok": false,
-    "errors": [
-        {
-            "id": "hbiGJjhsSpnfhM8aBePyTB",
-            "code": "auth_failed",
-            "value": "認証に失敗しました"
-        }
-    ]
-}
-```
+  ```json レスポンス（401 認証されていません）
+  {
+      "ok": false,
+      "errors": [
+          {
+              "id": "hbiGJjhsSpnfhM8aBePyTB",
+              "code": "auth_failed",
+              "value": "認証に失敗しました"
+          }
+      ]
+  }
+  ```
 </ResponseExample>
