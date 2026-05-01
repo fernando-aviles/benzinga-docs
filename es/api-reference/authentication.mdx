@@ -3,10 +3,10 @@ title: "Autenticación"
 description: "Cómo autenticar tus solicitudes a la API de Benzinga"
 ---
 
-La API de Benzinga usa **claves de API (API Keys)** para autenticar las solicitudes. Tu clave de API es un identificador único que otorga acceso a datos y funciones específicas según tu suscripción.
+La API de Benzinga utiliza **claves de API** para autenticar las solicitudes. Tu clave de API es un identificador único que otorga acceso a datos y funciones específicos según tu suscripción.
 
 > [!IMPORTANT]
-> **Mantén tu clave de API segura.** No la compartas en lugares de acceso público como GitHub, código del lado del cliente o comunicaciones no seguras. Si crees que tu clave se ha visto comprometida, ponte en contacto con el equipo de soporte de inmediato.
+> **Mantén segura tu clave de API.** No la compartas en lugares de acceso público, como GitHub, código del lado del cliente o canales de comunicación no seguros. Si crees que tu clave se ha visto comprometida, contacta con soporte de inmediato.
 
 Puedes ver y administrar tu clave de API en la [Consola para desarrolladores de Benzinga](https://www.api.benzinga.com/token).
 
@@ -14,159 +14,155 @@ Puedes ver y administrar tu clave de API en la [Consola para desarrolladores de 
   ## Métodos de autenticación
 </div>
 
-La API de Benzinga admite dos métodos de autenticación. Recomendamos encarecidamente utilizar el método de **encabezado HTTP** para aplicaciones en producción, ya que es más seguro y evita que tu clave de API aparezca en los logs de URL.
+La API de Benzinga admite dos métodos de autenticación. Recomendamos encarecidamente utilizar el método de **encabezado HTTP** para aplicaciones de producción, ya que es más seguro y evita que su clave aparezca en los registros de las URL.
 
 <div id="1-http-header-recommended">
-  ### 1. Encabezado HTTP (Recomendado)
+  ### 1. Encabezado HTTP (recomendado)
 </div>
 
-Para autenticar mediante el encabezado, incluye el encabezado `Authorization` con el valor `token <YOUR_API_KEY>`.
+Para autenticarse mediante el encabezado, incluya el encabezado `Authorization` con el valor `token <YOUR_API_KEY>`.
 
 ```http
 Authorization: token <YOUR_API_KEY>
 ```
 
-
 <div id="2-query-parameter">
   ### 2. Parámetro de consulta
 </div>
 
-Para pruebas rápidas o cuando no sea posible modificar los encabezados, puedes pasar tu clave de API como un parámetro de consulta llamado `token`.
+Para pruebas rápidas o cuando no sea posible modificar el encabezado, puedes enviar tu clave como parámetro de consulta llamado `token`.
 
 ```http
 https://api.benzinga.com/api/v2/news?token=<YOUR_API_KEY>
 ```
 
-
 <div id="code-examples">
   ## Ejemplos de código
 </div>
 
-A continuación se muestran ejemplos listos para producción para conectarse a la API de Benzinga en lenguajes de uso común.
+Aquí tienes ejemplos aptos para producción para conectarte a la API de Benzinga en lenguajes habituales.
 
 <CodeGroup>
+  ```bash cURL
+  # Recomendado: autenticación mediante encabezado
+  curl -L 'https://api.benzinga.com/api/v2/news?pageSize=1' \
+  -H 'Authorization: token YOUR_API_KEY' \
+  -H 'Accept: application/json'
 
-```bash cURL
-# Recomendado: Autenticación mediante encabezados
-curl -L 'https://api.benzinga.com/api/v2/news?pageSize=1' \
--H 'Authorization: token YOUR_API_KEY' \
--H 'Accept: application/json'
+  # Alternativa: parámetro de consulta
+  curl -L 'https://api.benzinga.com/api/v2/news?pageSize=1&token=YOUR_API_KEY'
+  ```
 
-# Alternativa: Parámetro de consulta
-curl -L 'https://api.benzinga.com/api/v2/news?pageSize=1&token=YOUR_API_KEY'
-```
+  ```python Python
+  import requests
 
-```python Python
-import requests
+  url = "https://api.benzinga.com/api/v2/news"
 
-url = "https://api.benzinga.com/api/v2/news"
+  # Recomendado: autenticación mediante encabezado
+  headers = {
+      "Authorization": "token YOUR_API_KEY",
+      "Accept": "application/json"
+  }
 
-# Recomendado: Autenticación mediante encabezados
-headers = {
-    "Authorization": "token YOUR_API_KEY",
-    "Accept": "application/json"
-}
+  params = {
+      "pageSize": 1
+  }
 
-params = {
-    "pageSize": 1
-}
+  try:
+      response = requests.get(url, headers=headers, params=params)
+      response.raise_for_status() # Genera un error detallado para respuestas 4xx/5xx
+      data = response.json()
+      print(data)
+  except requests.exceptions.RequestException as e:
+      print(f"Error al obtener los datos: {e}")
+  ```
 
-try:
-    response = requests.get(url, headers=headers, params=params)
-    response.raise_for_status() # Lanza un error detallado para respuestas 4xx/5xx
-    data = response.json()
-    print(data)
-except requests.exceptions.RequestException as e:
-    print(f"Error al obtener datos: {e}")
-```
+  ```javascript Node.js
+  const axios = require('axios');
 
-```javascript Node.js
-const axios = require('axios');
+  const url = 'https://api.benzinga.com/api/v2/news';
+  const apiKey = 'YOUR_API_KEY';
 
-const url = 'https://api.benzinga.com/api/v2/news';
-const apiKey = 'YOUR_API_KEY';
-
-async function getNews() {
-  try {
-    const response = await axios.get(url, {
-      headers: {
-        'Authorization': `token ${apiKey}`,
-        'Accept': 'application/json'
-      },
-      params: {
-        pageSize: 1
+  async function getNews() {
+    try {
+      const response = await axios.get(url, {
+        headers: {
+          'Authorization': `token ${apiKey}`,
+          'Accept': 'application/json'
+        },
+        params: {
+          pageSize: 1
+        }
+      });
+      
+      console.log(response.data);
+    } catch (error) {
+      if (error.response) {
+        // La solicitud se realizó y el servidor respondió con un código de estado
+        // fuera del rango 2xx
+        console.error('Estado del error:', error.response.status);
+        console.error('Datos del error:', error.response.data);
+      } else {
+        console.error('Mensaje de error:', error.message);
       }
-    });
-    
-    console.log(response.data);
-  } catch (error) {
-    if (error.response) {
-      // La solicitud se realizó y el servidor respondió con un código de estado
-      // que está fuera del rango de 2xx
-      console.error('Error Status:', error.response.status);
-      console.error('Error Data:', error.response.data);
-    } else {
-      console.error('Error Message:', error.message);
     }
   }
-}
 
-getNews();
-```
+  getNews();
+  ```
 
-```go Go
-package main
+  ```go Go
+  package main
 
-import (
-	"fmt"
-	"io/ioutil"
-	"net/http"
-)
+  import (
+  	"fmt"
+  	"io/ioutil"
+  	"net/http"
+  )
 
-func main() {
-	url := "https://api.benzinga.com/api/v2/news?pageSize=1"
-	apiKey := "YOUR_API_KEY"
+  func main() {
+  	url := "https://api.benzinga.com/api/v2/news?pageSize=1"
+  	apiKey := "YOUR_API_KEY"
 
-	req, err := http.NewRequest("GET", url, nil)
-	if err != nil {
-		panic(err)
-	}
+  	req, err := http.NewRequest("GET", url, nil)
+  	if err != nil {
+  		panic(err)
+  	}
 
-	// Recomendado: Autenticación mediante encabezados
-	req.Header.Add("Authorization", fmt.Sprintf("token %s", apiKey))
-	req.Header.Add("Accept", "application/json")
+  	// Recomendado: autenticación mediante encabezado
+  	req.Header.Add("Authorization", fmt.Sprintf("token %s", apiKey))
+  	req.Header.Add("Accept", "application/json")
 
-	client := &http.Client{}
-	resp, err := client.Do(req)
-	if err != nil {
-		panic(err)
-	}
-	defer resp.Body.Close()
+  	client := &http.Client{}
+  	resp, err := client.Do(req)
+  	if err != nil {
+  		panic(err)
+  	}
+  	defer resp.Body.Close()
 
-	if resp.StatusCode >= 400 {
-		fmt.Printf("Error: Código de estado %d\n", resp.StatusCode)
-		return
-	}
+  	if resp.StatusCode >= 400 {
+  		fmt.Printf("Error: código de estado %d\n", resp.StatusCode)
+  		return
+  	}
 
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		panic(err)
-	}
+  	body, err := ioutil.ReadAll(resp.Body)
+  	if err != nil {
+  		panic(err)
+  	}
 
-	fmt.Println(string(body))
-}
-```
-
+  	fmt.Println(string(body))
+  }
+  ```
 </CodeGroup>
 
 <div id="troubleshooting">
   ## Solución de problemas
 </div>
 
-Errores de autenticación comunes y cómo resolverlos.
+Errores comunes de autenticación y cómo resolverlos.
 
-| Código de estado | Mensaje | Posible causa | Solución |
-| :--- | :--- | :--- | :--- |
-| **401** | `Unauthorized` | Clave de API no válida | Verifica que tu clave de API sea correcta y que no haya sido regenerada. Asegúrate de que no se hayan copiado espacios adicionales. |
-| **401** | `Unauthorized` | Falta la clave de API | Asegúrate de que el encabezado `Authorization` esté formateado correctamente como `token <KEY>` o de que el parámetro `token` esté presente. |
-| **403** | `Forbidden` | Permisos insuficientes | Tu clave de API es válida, pero tu plan no incluye acceso al endpoint solicitado. Ponte en contacto con el equipo de ventas o de soporte para actualizar tu plan. |
+| Código de estado | Mensaje        | Posible causa          | Resolución                                                                                                                                              |
+| :--------------- | :------------- | :--------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **401**          | `Unauthorized` | Clave de API no válida | Verifique que su clave de API sea correcta y que no se haya regenerado. Asegúrese de no haber copiado espacios adicionales.                             |
+| **401**          | `Unauthorized` | Falta la clave de API  | Asegúrese de que el encabezado `Authorization` tenga el formato correcto: `token <KEY>`, o de que el parámetro `token` esté presente.                   |
+| **403**          | `Forbidden`    | Permisos insuficientes | Su clave de API es válida, pero su plan no incluye acceso al endpoint solicitado. Póngase en contacto con ventas o con soporte para actualizar su plan. |

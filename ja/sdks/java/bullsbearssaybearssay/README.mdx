@@ -1,5 +1,5 @@
 ---
-title: "強気派コメント・弱気派コメント"
+title: "強気派の見方・弱気派の見方"
 description: bullsBearsSayBearsSay()
 ---
 
@@ -13,13 +13,13 @@ description: bullsBearsSayBearsSay()
   ### 利用可能な操作
 </div>
 
-* [get](#get) - Bulls Say Bears Say V1 を取得する
+* [get](#get) - 強気派の見方・弱気派の見方 V1を取得
 
 <div id="get">
   ## get
 </div>
 
-Bulls Say Bears Say V1 の取得
+強気派の見方・弱気派の見方を取得 V1
 
 <div id="example-usage">
   ### 使用例
@@ -56,9 +56,9 @@ public class Application {
   ### パラメータ
 </div>
 
-| パラメータ           | 型                  | 必須                | 説明                                       |
-| ------------------- | ------------------- | ------------------- | ------------------------------------------ |
-| `symbols`           | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign:  | シンボル（カンマ区切りのシンボルのリスト） |
+| パラメータ     | 型                        | 必須                         | 説明     |
+| --------- | ------------------------ | -------------------------- | ------ |
+| `symbols` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 銘柄シンボル |
 
 <div id="response">
   ### レスポンス
@@ -70,7 +70,7 @@ public class Application {
   ### エラー
 </div>
 
-| エラータイプ                   | ステータスコード              | Content Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| models/errors/ApiErrorResponse | 400, 500                       | application/json               |
-| models/errors/APIException     | 4XX, 5XX                       | */*                          |
+| エラー種別                          | ステータスコード | Content Type     |
+| ------------------------------ | -------- | ---------------- |
+| models/errors/ApiErrorResponse | 400, 500 | application/json |
+| models/errors/APIException     | 4XX, 5XX | */*              |

@@ -8,36 +8,36 @@ icon: "node"
   ## 概要
 </div>
 
-Benzinga TypeScript/JavaScript SDK は、Benzinga API と対話するためのモジュール化されたイベントベースのインターフェースを提供します。TypeScript で実装されており、ブラウザと Node.js の両方の環境でシームレスに動作し、キャッシュや詳細な比較などの高度な機能を備えた強化された実装を提供します。
+Benzinga TypeScript/JavaScript SDK は、Benzinga APIs と連携するための、モジュール型のイベントベースインターフェースを提供します。TypeScript で記述されたこの SDK は、ブラウザ環境と Node.js 環境の両方でシームレスに動作し、キャッシュやディープ比較などの高度な機能を備えています。
 
 <div id="key-features">
   ## 主な機能
 </div>
 
-- **TypeScript Support** - 完全な TypeScript の型定義とインターフェースを提供
-- **Universal** - ブラウザと Node.js の両方の環境で動作
-- **Modular Architecture** - 必要なモジュールだけをインストール可能
-- **Event-Based** - リアルタイムデータ向けのリアクティブプログラミングパターンを採用
-- **Advanced Features** - キャッシュ、ディープコンパリソン、および各種最適化機能を内蔵
-- **Modern** - async/await に対応した ES6+ 構文を採用
+* **TypeScript Support** - TypeScript の型定義とインターフェースを完全にサポート
+* **Universal** - ブラウザ環境と Node.js 環境の両方で動作
+* **Modular Architecture** - 必要なモジュールだけをインストール可能
+* **Event-Based** - リアルタイムデータ向けのリアクティブなプログラミングパターン
+* **Advanced Features** - キャッシュ、ディープ比較、最適化機能を標準搭載
+* **Modern** - async/await をサポートした ES6+ 構文
 
 <div id="requirements">
-  ## 必要条件
+  ## 要件
 </div>
 
-- **Node.js 14 以降**
+* **Node.js 14 以降**
 
 <div id="installation">
   ## インストール
 </div>
 
-SDKはモジュール型アーキテクチャを採用しています。まずはコアのセッションモジュールをインストールしてください。
+SDK はモジュール構成を採用しています。まず、コアセッションモジュールをインストールします。
 
 ```bash
 npm install @benzinga/session
 ```
 
-次に、必要に応じて追加モジュールをインストールします。
+次に、必要に応じて追加のモジュールをインストールします。
 
 ```bash
 # 例: 特定のモジュールをインストールする
@@ -46,136 +46,132 @@ npm install @benzinga/quotes
 npm install @benzinga/news-data
 ```
 
-
 <div id="getting-started">
   ## はじめに
 </div>
 
 <div id="session-setup">
-  ### セッションのセットアップ
+  ### Sessionのセットアップ
 </div>
 
-`@benzinga/session` モジュールは、Benzinga API に対する認証の基盤となります。他のすべてのモジュールは、この Session オブジェクトに依存します。
+`@benzinga/session` モジュールは、Benzinga APIs で認証を行うための基盤となるモジュールです。ほかのすべてのモジュールは、このSessionオブジェクトに依存します。
 
 ```typescript
 import { Session } from '@benzinga/session';
 
-// APIキーでセッションを初期化
+// APIキーでセッションを初期化する
 const session = new Session({
   apiKey: 'YOUR_API_KEY'
 });
 ```
 
-
 <div id="configuration-options">
   ### 設定オプション
 </div>
 
-`Session` オブジェクトには、動作をカスタマイズするためのさまざまな設定オプションを指定できます。
+Session オブジェクトでは、動作をカスタマイズするためのさまざまな設定オプションを使用できます。
 
 ```typescript
 const session = new Session({
   apiKey: 'YOUR_API_KEY',
   environment: 'production', // または 'sandbox'
-  timeout: 30000,            // リクエストタイムアウト (ミリ秒)
+  timeout: 30000,            // リクエストタイムアウト（ミリ秒）
   // 追加の設定オプション
 });
 ```
-
 
 <div id="core-concepts">
   ## 基本概念
 </div>
 
 <div id="modular-design">
-  ### モジュール化設計
+  ### モジュール型設計
 </div>
 
-各 Benzinga API ドメインは、個別の npm モジュールとしてパッケージ化されています。これにより、次のことが可能になります。
+各 Benzinga API ドメインは、個別の npm モジュールとしてパッケージ化されています。これにより、次のことが可能です。
 
-- 必要なものだけをインストールできる
-- バンドルサイズを削減できる
-- 関心事の分離を明確に保てる
-- モジュールを個別に更新できる
+* 必要なものだけをインストールする
+* バンドルサイズを削減する
+* 関心の分離を明確に保つ
+* モジュールを個別に更新する
 
 <div id="event-based-architecture">
-  ### イベント駆動アーキテクチャ
+  ### イベントベースのアーキテクチャ
 </div>
 
-SDK は、リアルタイムのデータストリームや更新を処理するために、イベント駆動パターンを使用します。
+SDKは、リアルタイムのデータストリームや更新を処理するために、イベント駆動型のパターンを採用しています。
 
 ```typescript
-// 例: データ更新を購読する
+// 例: データ更新のサブスクライブ
 dataManager.subscribe((data) => {
   console.log('New data received:', data);
 });
 
-// Example: Handle events
+// 例: イベントの処理
 dataManager.on('update', (event) => {
   console.log('Data updated:', event);
 });
 ```
 
-
 <div id="caching-performance">
   ### キャッシュとパフォーマンス
 </div>
 
-SDK には組み込みのキャッシュ機構があり、次の目的で使用されます。
+SDK には、次のことを実現する組み込みのキャッシュ機能が含まれています。
 
-- 不要な API コールを削減する
-- レスポンス時間を短縮する
-- 帯域幅の使用を最適化する
-- オフライン時のフォールバック手段を提供する
+* 不要な API 呼び出しを削減する
+* レスポンス時間を短縮する
+* 帯域幅の使用を最適化する
+* オフライン時の代替手段を提供する
 
 <div id="deep-comparison">
   ### ディープ比較
 </div>
 
-高度なデータ比較機能により、次のことが可能になります：
+高度なデータ比較機能により、以下が可能になります。
 
-- ネストされたオブジェクトの変更検出
-- 効率的な状態管理
-- スマートな更新トリガー
-- UI アプリケーションでの再レンダリング回数の削減
+* ネストされたオブジェクト内の変更検出
+* 効率的な状態管理
+* 適切な更新トリガー
+* UIアプリケーションでの再レンダリングの削減
 
 <div id="available-modules">
   ## 利用可能なモジュール
 </div>
 
-このSDKは、各種APIドメインごとに特化したモジュールに整理されています。
+SDKは、各APIドメインに対応したモジュールで構成されています。
 
 <div id="core-modules">
-  ### コアモジュール
+  ### 主要モジュール
 </div>
 
-- **`@benzinga/session`** - 認証およびセッション管理（必須）
-- **`@benzinga/calendar-data`** - カレンダー関連イベントおよびコーポレートアクション
-- **`@benzinga/news-data`** - ニュース記事および市場インテリジェンス
-- **`@benzinga/quotes`** - リアルタイム株価およびディレイ株価
-- **`@benzinga/fundamentals`** - 企業のファンダメンタルズおよび財務データ
+* **`@benzinga/session`** - 認証とセッション管理 (必須) 
+* **`@benzinga/calendar-data`** - カレンダーイベントとコーポレートアクション
+* **`@benzinga/news-data`** - ニュース記事と市場インテリジェンス
+* **`@benzinga/quotes`** - リアルタイムおよび遅延のクオート
+* **`@benzinga/fundamentals`** - 企業ファンダメンタルズと財務データ
 
 <div id="specialized-modules">
-  ### 特化モジュール
+  ### 専用モジュール
 </div>
 
-- **`@benzinga/ratings`** - アナリストレーティングと目標株価
-- **`@benzinga/options`** - オプション取引動向と分析
-- **`@benzinga/transcripts`** - 決算説明会の書き起こし
-- **`@benzinga/logos`** - 企業ロゴとブランディング
-- **`@benzinga/signals`** - トレーディングシグナルとインジケーター
+* **`@benzinga/ratings`** - アナリストのレーティングと目標株価
+* **`@benzinga/options`** - オプション取引アクティビティと分析
+* **`@benzinga/transcripts`** - 決算説明会のトランスクリプト
+* **`@benzinga/logos`** - 企業ロゴとブランディング
+* **`@benzinga/signals`** - 売買シグナルと指標
 
 <div id="typescript-support">
   ## TypeScript サポート
 </div>
 
-SDK は TypeScript で記述されており、完全な型定義を提供します。
+この SDK は TypeScript で記述されており、完全な型定義が用意されています。
 
 ```typescript
 import { Session } from '@benzinga/session';
 import { CalendarData, DividendEvent } from '@benzinga/calendar-data';
 
-// TypeScriptによる自動補完と型チェックが利用可能
+// TypeScriptはオートコンプリートと型チェックを提供します
 const session = new Session({ apiKey: 'YOUR_API_KEY' });
 const calendar = new CalendarData(session);
 
@@ -187,13 +183,12 @@ const dividends: DividendEvent[] = await calendar.getDividends({
 });
 ```
 
-
 <div id="usage-examples">
   ## 使用例
 </div>
 
 <div id="basic-data-fetching">
-  ### 基本的なデータの取得
+  ### 基本データの取得
 </div>
 
 ```typescript
@@ -212,9 +207,8 @@ const articles = await news.getNews({
 console.log(articles);
 ```
 
-
 <div id="real-time-data-streams">
-  ### リアルタイム・データストリーム
+  ### リアルタイムデータストリーム
 </div>
 
 ```typescript
@@ -224,15 +218,14 @@ import { QuoteStream } from '@benzinga/quotes';
 const session = new Session({ apiKey: 'YOUR_API_KEY' });
 const quoteStream = new QuoteStream(session);
 
-// リアルタイム株価の購読
+// リアルタイムクオートを購読する
 quoteStream.subscribe(['AAPL', 'MSFT', 'GOOGL'], (quote) => {
   console.log('Quote update:', quote);
 });
 
-// 完了時に購読解除
+// 完了したら購読を解除する
 quoteStream.unsubscribe(['AAPL']);
 ```
-
 
 <div id="calendar-events">
   ### カレンダーイベント
@@ -245,11 +238,11 @@ import { CalendarData } from '@benzinga/calendar-data';
 const session = new Session({ apiKey: 'YOUR_API_KEY' });
 const calendar = new CalendarData(session);
 
-// 今後の決算を取得
+// 直近の決算を取得
 const earnings = await calendar.getEarnings({
   dateFrom: '2024-01-01',
   dateTo: '2024-01-31',
-  importance: 3  // 重要度の高いもののみ
+  importance: 3  // 重要度が高いもののみ
 });
 
 // 配当を取得
@@ -257,7 +250,6 @@ const dividends = await calendar.getDividends({
   ticker: 'AAPL'
 });
 ```
-
 
 <div id="company-fundamentals">
   ### 企業のファンダメンタルズ
@@ -270,25 +262,24 @@ import { Fundamentals } from '@benzinga/fundamentals';
 const session = new Session({ apiKey: 'YOUR_API_KEY' });
 const fundamentals = new Fundamentals(session);
 
-// 企業プロファイルを取得
+// 会社プロファイルを取得
 const profile = await fundamentals.getCompanyProfile('AAPL');
 
-// バリュエーションレシオを取得
+// バリュエーション比率を取得
 const valuationRatios = await fundamentals.getValuationRatios('AAPL');
 
 // 財務諸表を取得
 const financials = await fundamentals.getFinancials('AAPL');
 ```
 
-
 <div id="browser-usage">
-  ## ブラウザでの使用
+  ## ブラウザでの利用
 </div>
 
-SDK は、Webpack、Rollup、Vite などのバンドラーを用いたブラウザ環境でも動作します。
+このSDKは、Webpack、Rollup、Vite などのバンドラーを使用するブラウザ環境でも利用できます。
 
 ```typescript
-// React、Vue、またはAngularアプリケーション内
+// React、Vue、またはAngularアプリケーションで使用する場合
 import { Session } from '@benzinga/session';
 import { NewsData } from '@benzinga/news-data';
 
@@ -296,7 +287,7 @@ export function NewsComponent() {
   const session = new Session({ apiKey: process.env.BENZINGA_API_KEY });
   const news = new NewsData(session);
 
-  // コンポーネントロジック内で使用
+  // コンポーネントのロジック内で使用する
   useEffect(() => {
     news.getNews({ pageSize: 5 }).then(articles => {
       setNewsData(articles);
@@ -305,12 +296,11 @@ export function NewsComponent() {
 }
 ```
 
-
 <div id="error-handling">
   ## エラー処理
 </div>
 
-`try-catch` ブロックを使用して、エラーを適切に処理します。
+try-catch ブロックを使用して、エラーを適切に処理してください。
 
 ```typescript
 import { Session } from '@benzinga/session';
@@ -324,21 +314,20 @@ try {
   console.log(articles);
 } catch (error) {
   if (error.code === 'UNAUTHORIZED') {
-    console.error('無効なAPIキー');
+    console.error('Invalid API key');
   } else if (error.code === 'RATE_LIMIT') {
-    console.error('レート制限を超過しました');
+    console.error('Rate limit exceeded');
   } else {
-    console.error('エラーが発生しました:', error.message);
+    console.error('An error occurred:', error.message);
   }
 }
 ```
-
 
 <div id="pagination">
   ## ページネーション
 </div>
 
-ページネーションされた結果を効率的に処理する：
+ページ分割された結果を効率的に扱います:
 
 ```typescript
 import { Session } from '@benzinga/session';
@@ -366,12 +355,11 @@ while (page < 5) {
 console.log(`Fetched ${allArticles.length} articles`);
 ```
 
-
 <div id="caching-strategy">
   ## キャッシュ戦略
 </div>
 
-組み込みキャッシュを活用して、パフォーマンスを向上させます。
+パフォーマンス向上のため、組み込みキャッシュを活用してください。
 
 ```typescript
 import { Session } from '@benzinga/session';
@@ -387,42 +375,40 @@ const session = new Session({
 
 const calendar = new CalendarData(session);
 
-// 最初の呼び出しでAPIにアクセス
+// 最初の呼び出しはAPIにアクセス
 const earnings1 = await calendar.getEarnings({ ticker: 'AAPL' });
 
-// 2回目の呼び出しではキャッシュされたデータを使用(TTL内の場合)
+// 2回目の呼び出しはキャッシュされたデータを使用（TTL以内の場合）
 const earnings2 = await calendar.getEarnings({ ticker: 'AAPL' });
 ```
-
 
 <div id="best-practices">
   ## ベストプラクティス
 </div>
 
 <div id="1-reuse-session-objects">
-  ### 1. セッションオブジェクトを再利用する
+  ### 1. Session オブジェクトを再利用する
 </div>
 
-アプリケーション全体でセッションインスタンスを 1 つ作成し、それを再利用します。
+セッションインスタンスを 1 つ作成し、アプリケーション全体で再利用します。
 
 ```typescript
 // session.ts
 export const globalSession = new Session({ apiKey: process.env.BENZINGA_API_KEY });
 
-// 他のファイルで
+// 他のファイルから使用する場合
 import { globalSession } from './session';
 const news = new NewsData(globalSession);
 ```
-
 
 <div id="2-environment-variables">
   ### 2. 環境変数
 </div>
 
-API キーは環境変数として安全に管理してください：
+API キーは環境変数に安全に保存してください。
 
 ```typescript
-// .env ファイル
+// .envファイル
 BENZINGA_API_KEY=your_api_key_here
 
 // コード内
@@ -431,12 +417,11 @@ const session = new Session({
 });
 ```
 
-
 <div id="3-type-safety">
   ### 3. 型安全性
 </div>
 
-型安全な API 操作のために TypeScript を活用する：
+型安全なAPI連携には、TypeScriptを活用してください：
 
 ```typescript
 import type { NewsArticle, NewsParams } from '@benzinga/news-data';
@@ -450,12 +435,11 @@ const params: NewsParams = {
 const articles: NewsArticle[] = await news.getNews(params);
 ```
 
-
 <div id="4-error-boundaries">
-  ### 4. エラーバウンダリ
+  ### 4. エラーバウンダリー
 </div>
 
-本番環境ではエラーバウンダリを実装すること:
+本番環境ではエラーバウンダリーを実装してください。
 
 ```typescript
 const safeApiCall = async (fn: () => Promise<any>) => {
@@ -463,7 +447,7 @@ const safeApiCall = async (fn: () => Promise<any>) => {
     return await fn();
   } catch (error) {
     console.error('API Error:', error);
-    // エラートラッキングサービスにログを記録
+    // エラー追跡サービスにログを記録
     return null;
   }
 };
@@ -471,37 +455,36 @@ const safeApiCall = async (fn: () => Promise<any>) => {
 const articles = await safeApiCall(() => news.getNews({ pageSize: 10 }));
 ```
 
-
 <div id="resources">
   ## リソース
 </div>
 
-- **リポジトリ**: [github.com/Benzinga/benzinga-javascript-client](https://github.com/Benzinga/benzinga-javascript-client)
-- **NPM パッケージ**: [@benzinga/session](https://www.npmjs.com/package/@benzinga/session)
-- **API キー**: [cloud.benzinga.com](https://cloud.benzinga.com)
-- **TypeScript**: バージョン 4.0 以上
-- **Node.js**: バージョン 14 以上
+* **リポジトリ**: [github.com/Benzinga/benzinga-javascript-client](https://github.com/Benzinga/benzinga-javascript-client)
+* **NPM パッケージ**: [@benzinga/session](https://www.npmjs.com/package/@benzinga/session)
+* **API キー**: [cloud.benzinga.com](https://cloud.benzinga.com)
+* **TypeScript**: バージョン 4.0 以降
+* **Node.js**: バージョン 14 以降
 
 <div id="module-documentation">
   ## モジュールのドキュメント
 </div>
 
-特定のモジュールに関する詳細なドキュメントは、各パッケージの README を参照してください：
+特定のモジュールに関する詳細なドキュメントについては、各パッケージの README を参照してください。
 
-- `@benzinga/session` - コア認証および設定
-- `@benzinga/calendar-data` - カレンダーイベント API
-- `@benzinga/news-data` - ニュースおよび記事 API
-- `@benzinga/quotes` - リアルタイム気配値 API
-- `@benzinga/fundamentals` - ファンダメンタルズおよび財務データ API
+* `@benzinga/session` - コア認証と設定
+* `@benzinga/calendar-data` - カレンダーイベント API
+* `@benzinga/news-data` - ニュースおよび記事の API
+* `@benzinga/quotes` - リアルタイムクオート API
+* `@benzinga/fundamentals` - ファンダメンタルズおよび財務データ API
 
 <div id="support">
   ## サポート
 </div>
 
-技術サポートおよび API キーの提供については、Benzinga のサイト [cloud.benzinga.com](https://cloud.benzinga.com) からお問い合わせください。
+技術サポートおよびAPIキーの発行については、Benzinga の [cloud.benzinga.com](https://cloud.benzinga.com) までお問い合わせください。
 
 <div id="contributing">
-  ## コントリビューション
+  ## 貢献
 </div>
 
-Benzinga JavaScript SDK はオープンソースです。ぜひご貢献ください。詳細については [GitHub リポジトリ](https://github.com/Benzinga/benzinga-javascript-client) を参照してください。
+Benzinga JavaScript SDK はオープンソースです。コントリビューションを歓迎します。詳細は、[GitHub repository](https://github.com/Benzinga/benzinga-javascript-client) をご覧ください。

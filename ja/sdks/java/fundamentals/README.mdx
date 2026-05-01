@@ -21,19 +21,19 @@ description: fundamentals()
 * [getShareClassProfile](#getshareclassprofile) - 株式クラスのプロフィール V2.1 を取得
 * [get](#get) - ファンダメンタルズ V2 を取得
 * [getAssetClassification](#getassetclassification) - 資産分類 V2.1 を取得
-* [getEarningsReports](#getearningsreports) - 決算報告書 V2.1 を取得
-* [getFinancialsV21](#getfinancialsv21) - 財務諸表 V2.1 を取得
+* [getEarningsReports](#getearningsreports) - 決算レポート V2.1 を取得
+* [getFinancialsV21](#getfinancialsv21) - 財務データ V2.1 を取得
 * [getV3](#getv3) - ファンダメンタルズ V3 を取得
-* [getBalanceSheetV3](#getbalancesheetv3) - バランスシート V3 を取得
+* [getBalanceSheetV3](#getbalancesheetv3) - 貸借対照表 V3 を取得
 * [getCashFlowV3](#getcashflowv3) - キャッシュフロー V3 を取得
 * [getIncomeStatement](#getincomestatement) - 損益計算書 V3 を取得
-* [getSharePriceRatios](#getsharepriceratios) - 株価比率 V3 を取得
+* [getSharePriceRatios](#getsharepriceratios) - 株価指標 V3 を取得
 
 <div id="getv21">
   ## getV21
 </div>
 
-ファンダメンタルズ v2.1 の取得
+ファンダメンタルズ V2.1 の取得
 
 <div id="example-usage">
   ### 使用例
@@ -62,20 +62,22 @@ public class Application {
                 .call();
 
         if (res.string().isPresent()) {
-            // レスポンスを処理
+            // レスポンスを処理する
         }
     }
 }
 ```
 
-### パラメータ
+<div id="parameters">
+  ### パラメータ
+</div>
 
-| パラメータ                      | 型                              | 必須                             | 説明                                 |
-| ------------------------------- | ------------------------------- | -------------------------------- | ------------------------------------ |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | カンマ区切りのシンボル一覧           |
-| `asOf`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 基準日                               |
-| `period`                        | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 会計期間                             |
-| `reportType`                    | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | レポート種別                         |
+| パラメータ        | 種別                       | 必須                         | 説明             |
+| ------------ | ------------------------ | -------------------------- | -------------- |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | シンボルのカンマ区切りリスト |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 基準日            |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 期間             |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | レポート種別         |
 
 <div id="response">
   ### レスポンス
@@ -87,15 +89,15 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                 | ステータスコード          | コンテンツタイプ           |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| エラー種別                      | ステータスコード | コンテンツタイプ |
+| -------------------------- | -------- | -------- |
+| models/errors/APIException | 4XX, 5XX | */*      |
 
 <div id="getalphabeta">
   ## getAlphaBeta
 </div>
 
-Alpha Beta の取得
+Alpha Betaを取得
 
 <div id="example-usage">
   ### 使用例
@@ -130,14 +132,16 @@ public class Application {
 }
 ```
 
-### パラメータ
+<div id="parameters">
+  ### パラメータ
+</div>
 
-| パラメータ                      | 型                              | 必須                            | 説明                               |
-| ------------------------------- | ------------------------------- | ------------------------------- | ---------------------------------- |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | カンマ区切りのシンボル一覧         |
-| `asOf`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 基準日                             |
-| `period`                        | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 会計期間                           |
-| `reportType`                    | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | レポートタイプ                     |
+| パラメータ        | 種別                       | 必須                         | 説明             |
+| ------------ | ------------------------ | -------------------------- | -------------- |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | シンボルのカンマ区切りリスト |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 基準日            |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 期間             |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | レポート種別         |
 
 <div id="response">
   ### レスポンス
@@ -149,9 +153,9 @@ public class Application {
   ### エラー
 </div>
 
-| エラータイプ               | ステータスコード          | コンテンツタイプ           |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| エラー種別                      | ステータスコード | コンテンツタイプ |
+| -------------------------- | -------- | -------- |
+| models/errors/APIException | 4XX, 5XX | */*      |
 
 <div id="getcompanyv21">
   ## getCompanyV21
@@ -192,14 +196,16 @@ public class Application {
 }
 ```
 
-### パラメーター
+<div id="parameters">
+  ### パラメータ
+</div>
 
-| Parameter                       | Type                            | Required                        | Description                                   |
-| ------------------------------- | ------------------------------- | ------------------------------- | --------------------------------------------- |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | シンボルのカンマ区切りリスト                  |
-| `asOf`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 基準日                                        |
-| `period`                        | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 会計期間                                      |
-| `reportType`                    | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | レポート種別                                  |
+| パラメータ        | 種別                       | 必須                         | 説明            |
+| ------------ | ------------------------ | -------------------------- | ------------- |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | カンマ区切りのシンボル一覧 |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 時点の日付         |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 対象期間          |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | レポート種別       |
 
 <div id="response">
   ### レスポンス
@@ -211,15 +217,15 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                 | ステータスコード           | コンテンツタイプ           |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| エラー種別                      | ステータスコード | コンテンツタイプ |
+| -------------------------- | -------- | -------- |
+| models/errors/APIException | 4XX, 5XX | */*      |
 
 <div id="getcompanyprofilev21">
   ## getCompanyProfileV21
 </div>
 
-企業プロフィールを取得します
+企業プロフィールを取得
 
 <div id="example-usage">
   ### 使用例
@@ -254,14 +260,16 @@ public class Application {
 }
 ```
 
-### パラメータ
+<div id="parameters">
+  ### パラメータ
+</div>
 
-| Parameter                       | Type                            | Required                        | Description                     |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | カンマ区切りのシンボル一覧      |
-| `asOf`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 基準日                          |
-| `period`                        | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 会計期間                        |
-| `reportType`                    | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | レポート種別                    |
+| パラメータ        | 種別                       | 必須                         | 説明            |
+| ------------ | ------------------------ | -------------------------- | ------------- |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | カンマ区切りのシンボル一覧 |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 基準日           |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 対象期間          |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | レポート種別        |
 
 <div id="response">
   ### レスポンス
@@ -273,9 +281,9 @@ public class Application {
   ### エラー
 </div>
 
-| エラータイプ               | ステータスコード           | コンテンツタイプ           |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| エラー種別                      | ステータスコード | コンテンツタイプ |
+| -------------------------- | -------- | ------------ |
+| models/errors/APIException | 4XX, 5XX | */*          |
 
 <div id="getshareclass">
   ## getShareClass
@@ -316,14 +324,16 @@ public class Application {
 }
 ```
 
-### パラメータ
+<div id="parameters">
+  ### パラメータ
+</div>
 
-| パラメータ                       | 型                             | 必須                             | 説明                              |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | シンボルのカンマ区切り一覧        |
-| `asOf`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 基準日                            |
-| `period`                        | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 会計期間                          |
-| `reportType`                    | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | レポートタイプ                    |
+| パラメータ        | 種別                        | 必須                         | 説明             |
+| ------------ | ------------------------ | -------------------------- | -------------- |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | シンボルのカンマ区切りリスト |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 基準日            |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 期間             |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | レポート種別        |
 
 <div id="response">
   ### レスポンス
@@ -335,15 +345,15 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                 | ステータスコード           | コンテンツタイプ           |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| エラー種別                      | ステータスコード | コンテンツタイプ |
+| -------------------------- | -------- | ------------ |
+| models/errors/APIException | 4XX, 5XX | */*          |
 
 <div id="getshareclassprofile">
   ## getShareClassProfile
 </div>
 
-株式クラスのプロファイルを取得
+株式クラス プロファイルを取得
 
 <div id="example-usage">
   ### 使用例
@@ -378,14 +388,16 @@ public class Application {
 }
 ```
 
-### パラメータ
+<div id="parameters">
+  ### パラメータ
+</div>
 
-| Parameter                       | Type                            | Required                        | Description                     |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | カンマ区切りのシンボルのリスト   |
-| `asOf`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 基準日                          |
-| `period`                        | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 会計期間                        |
-| `reportType`                    | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | レポートタイプ                  |
+| パラメータ        | 型                        | 必須                         | 説明             |
+| ------------ | ------------------------ | -------------------------- | -------------- |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | シンボルのカンマ区切りリスト |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 基準日            |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 期間             |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | レポート種別         |
 
 <div id="response">
   ### レスポンス
@@ -397,15 +409,15 @@ public class Application {
   ### エラー
 </div>
 
-| エラータイプ               | ステータスコード              | Content-Type              |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| エラー種別                      | ステータスコード | コンテンツタイプ |
+| -------------------------- | -------- | -------- |
+| models/errors/APIException | 4XX, 5XX | */*      |
 
 <div id="get">
   ## get
 </div>
 
-Fundamentals v2 の取得
+ファンダメンタルズV2を取得
 
 <div id="example-usage">
   ### 使用例
@@ -440,14 +452,16 @@ public class Application {
 }
 ```
 
-### パラメータ
+<div id="parameters">
+  ### パラメータ
+</div>
 
-| Parameter                       | Type                            | Required                        | Description                                   |
-| ------------------------------- | ------------------------------- | ------------------------------- | --------------------------------------------- |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | カンマ区切りのシンボル一覧                    |
-| `asOf`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 基準日                                        |
-| `period`                        | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 会計期間                                      |
-| `reportType`                    | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | レポートタイプ                                |
+| パラメータ        | 種別                       | 必須                         | 説明             |
+| ------------ | ------------------------ | -------------------------- | -------------- |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | シンボルのカンマ区切りリスト |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 基準日            |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 期間             |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | レポート種別         |
 
 <div id="response">
   ### レスポンス
@@ -459,15 +473,15 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                 | ステータスコード           | コンテンツタイプ           |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| エラー種別                      | ステータスコード | コンテンツタイプ |
+| -------------------------- | -------- | -------- |
+| models/errors/APIException | 4XX, 5XX | */*      |
 
 <div id="getassetclassification">
   ## getAssetClassification
 </div>
 
-資産分類の取得
+資産分類を取得
 
 <div id="example-usage">
   ### 使用例
@@ -502,14 +516,16 @@ public class Application {
 }
 ```
 
-### パラメーター
+<div id="parameters">
+  ### パラメータ
+</div>
 
-| パラメーター                   | 型                              | 必須                            | 説明                                     |
-| ------------------------------- | ------------------------------- | ------------------------------- | ---------------------------------------- |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | カンマ区切りのシンボル一覧               |
-| `asOf`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 基準日                                   |
-| `period`                        | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 会計期間                                 |
-| `reportType`                    | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | レポート種別                             |
+| パラメータ        | 種別                       | 必須                         | 説明            |
+| ------------ | ------------------------ | -------------------------- | ------------- |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | カンマ区切りのシンボル一覧 |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 基準日           |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 期間            |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | レポート種別        |
 
 <div id="response">
   ### レスポンス
@@ -521,15 +537,15 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                 | ステータスコード           | Content-Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| エラー種別                      | ステータスコード | コンテンツタイプ |
+| -------------------------- | -------- | -------- |
+| models/errors/APIException | 4XX, 5XX | */*      |
 
 <div id="getearningsreports">
   ## getEarningsReports
 </div>
 
-決算レポートを取得します
+決算レポートを取得
 
 <div id="example-usage">
   ### 使用例
@@ -558,20 +574,22 @@ public class Application {
                 .call();
 
         if (res.string().isPresent()) {
-            // レスポンスを処理
+            // レスポンスを処理する
         }
     }
 }
 ```
 
-### パラメータ
+<div id="parameters">
+  ### パラメータ
+</div>
 
-| Parameter                       | Type                            | Required                        | Description                         |
-| ------------------------------- | ------------------------------- | ------------------------------- | ----------------------------------- |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | シンボルのカンマ区切り一覧          |
-| `asOf`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 基準日                             |
-| `period`                        | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 会計期間                           |
-| `reportType`                    | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | レポートタイプ                     |
+| パラメータ        | 種別                       | 必須                         | 説明             |
+| ------------ | ------------------------ | -------------------------- | -------------- |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | シンボルのカンマ区切りリスト |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 基準日            |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 期間             |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | レポート種別         |
 
 <div id="response">
   ### レスポンス
@@ -583,15 +601,15 @@ public class Application {
   ### エラー
 </div>
 
-| エラータイプ               | ステータスコード           | コンテンツタイプ           |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| エラー種別                      | ステータスコード | コンテンツタイプ |
+| -------------------------- | -------- | -------- |
+| models/errors/APIException | 4XX, 5XX | */*      |
 
 <div id="getfinancialsv21">
   ## getFinancialsV21
 </div>
 
-Financials v2.1 を取得
+財務データの取得 V2.1
 
 <div id="example-usage">
   ### 使用例
@@ -627,14 +645,16 @@ public class Application {
 }
 ```
 
-### パラメータ
+<div id="parameters">
+  ### パラメータ
+</div>
 
-| Parameter                       | Type                            | Required                        | Description                                      |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------------------------ |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | カンマ区切りのシンボル一覧                        |
-| `asOf`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 基準日                                           |
-| `period`                        | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 会計期間                                         |
-| `reportType`                    | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | レポートタイプ                                   |
+| パラメータ        | 種別                     | Required                   | Description   |
+| ------------ | ------------------------ | -------------------------- | ------------- |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | カンマ区切りのシンボル一覧 |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 基準日           |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 対象期間          |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | レポート種別       |
 
 <div id="response">
   ### レスポンス
@@ -646,16 +666,16 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                 | ステータスコード           | Content-Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/BzhttpResp   | 400, 500                   | application/json           |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| エラー種別                      | ステータスコード | コンテンツタイプ         |
+| -------------------------- | -------- | ---------------- |
+| models/errors/BzhttpResp   | 400, 500 | application/json |
+| models/errors/APIException | 4XX, 5XX | */*              |
 
 <div id="getv3">
   ## getV3
 </div>
 
-ファンダメンタルズ v3 を取得します
+ファンダメンタルズV3を取得
 
 <div id="example-usage">
   ### 使用例
@@ -690,14 +710,16 @@ public class Application {
 }
 ```
 
-### パラメータ
+<div id="parameters">
+  ### パラメータ
+</div>
 
-| パラメータ名                   | 型                              | 必須                            | 説明                                   |
-| ------------------------------- | ------------------------------- | ------------------------------- | -------------------------------------- |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | シンボルをカンマ区切りで指定           |
-| `from`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 開始日                                 |
-| `to`                            | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 終了日                                 |
-| `date`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | レポート種別                           |
+| パラメータ     | 種別                       | 必須                         | 説明            |
+| --------- | ------------------------ | -------------------------- | ------------- |
+| `symbols` | *String*                 | :heavy&#95;check&#95;mark: | カンマ区切りのシンボル一覧 |
+| `from`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 開始日           |
+| `to`      | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 終了日           |
+| `date`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | レポート種別        |
 
 <div id="response">
   ### レスポンス
@@ -709,15 +731,15 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                 | ステータスコード          | Content-Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| エラー種別                      | ステータスコード | コンテンツタイプ |
+| -------------------------- | -------- | -------- |
+| models/errors/APIException | 4XX, 5XX | */*      |
 
 <div id="getbalancesheetv3">
   ## getBalanceSheetV3
 </div>
 
-貸借対照表 v3 を取得する
+貸借対照表 V3 を取得
 
 <div id="example-usage">
   ### 使用例
@@ -754,15 +776,15 @@ public class Application {
 ```
 
 <div id="parameters">
-  ### Parameters
+  ### パラメータ
 </div>
 
-| Parameter           | Type                | Required            | Description                           |
-| ------------------- | ------------------- | ------------------- | ------------------------------------- |
-| `symbols`           | *String*            | :heavy&#95;check&#95;mark:  | シンボル（カンマ区切りのシンボル一覧） |
-| `from`              | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign:  | 開始日                                |
-| `to`                | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign:  | 終了日                                |
-| `date`              | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign:  | レポート種別                          |
+| パラメータ     | 種別                       | 必須                         | 説明     |
+| --------- | ------------------------ | -------------------------- | ------ |
+| `symbols` | *String*                 | :heavy&#95;check&#95;mark: | 銘柄シンボル |
+| `from`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 開始日    |
+| `to`      | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 終了日    |
+| `date`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | レポート種別 |
 
 <div id="response">
   ### レスポンス
@@ -774,16 +796,16 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                  | ステータスコード           | Content-Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/BzhttpResp   | 400                        | application/json           |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| エラー種別                      | ステータスコード | コンテンツタイプ         |
+| -------------------------- | -------- | ---------------- |
+| models/errors/BzhttpResp   | 400      | application/json |
+| models/errors/APIException | 4XX, 5XX | */*              |
 
 <div id="getcashflowv3">
   ## getCashFlowV3
 </div>
 
-キャッシュフロー v3 を取得
+キャッシュフローV3を取得
 
 <div id="example-usage">
   ### 使用例
@@ -819,14 +841,16 @@ public class Application {
 }
 ```
 
-### パラメータ
+<div id="parameters">
+  ### パラメータ
+</div>
 
-| Parameter                       | Type                            | Required                        | Description                     |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | カンマ区切りのシンボルのリスト |
-| `from`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 開始日                          |
-| `to`                            | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 終了日                          |
-| `date`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | レポート種別                    |
+| パラメータ     | 種別                       | 必須                         | 説明             |
+| --------- | ------------------------ | -------------------------- | -------------- |
+| `symbols` | *String*                 | :heavy&#95;check&#95;mark: | シンボルのカンマ区切りリスト |
+| `from`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 開始日            |
+| `to`      | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 終了日            |
+| `date`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | レポート種別         |
 
 <div id="response">
   ### レスポンス
@@ -838,16 +862,16 @@ public class Application {
   ### エラー
 </div>
 
-| エラータイプ               | ステータスコード          | Content-Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/BzhttpResp   | 400, 500                   | application/json           |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| エラー種別                      | ステータスコード | コンテンツタイプ         |
+| -------------------------- | -------- | ---------------- |
+| models/errors/BzhttpResp   | 400, 500 | application/json |
+| models/errors/APIException | 4XX, 5XX | */*              |
 
 <div id="getincomestatement">
   ## getIncomeStatement
 </div>
 
-損益計算書 v3 の取得
+損益計算書V3を取得
 
 <div id="example-usage">
   ### 使用例
@@ -882,14 +906,16 @@ public class Application {
 }
 ```
 
-### パラメータ
+<div id="parameters">
+  ### パラメータ
+</div>
 
-| Parameter                       | Type                            | Required                        | Description                          |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------------ |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | カンマ区切りのシンボルの一覧         |
-| `from`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 開始日                               |
-| `to`                            | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 終了日                               |
-| `date`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | レポートタイプ                       |
+| パラメータ     | 種別                       | 必須                         | 説明             |
+| --------- | ------------------------ | -------------------------- | -------------- |
+| `symbols` | *String*                 | :heavy&#95;check&#95;mark: | シンボルのカンマ区切りリスト |
+| `from`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 開始日            |
+| `to`      | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 終了日            |
+| `date`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | レポート種別        |
 
 <div id="response">
   ### レスポンス
@@ -901,9 +927,9 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                 | ステータスコード           | コンテンツタイプ           |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| エラー種別                      | ステータスコード | コンテンツタイプ |
+| -------------------------- | -------- | ------------ |
+| models/errors/APIException | 4XX, 5XX | */*          |
 
 <div id="getsharepriceratios">
   ## getSharePriceRatios
@@ -945,14 +971,16 @@ public class Application {
 }
 ```
 
-### パラメータ
+<div id="parameters">
+  ### パラメータ
+</div>
 
-| Parameter                       | Type                            | Required                        | Description                                   |
-| ------------------------------- | ------------------------------- | ------------------------------- | --------------------------------------------- |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | シンボルのカンマ区切りリスト                  |
-| `from`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 開始日                                        |
-| `to`                            | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 終了日                                        |
-| `date`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | レポート種別                                  |
+| パラメータ     | 種別                       | 必須                         | 説明             |
+| --------- | ------------------------ | -------------------------- | -------------- |
+| `symbols` | *String*                 | :heavy&#95;check&#95;mark: | シンボルのカンマ区切りリスト |
+| `from`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 開始日            |
+| `to`      | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 終了日            |
+| `date`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | レポート種別         |
 
 <div id="response">
   ### レスポンス
@@ -964,7 +992,7 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                 | ステータスコード           | Content-Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/BzhttpResp   | 400, 500                   | application/json           |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| エラー種別                      | ステータスコード | コンテンツタイプ         |
+| -------------------------- | -------- | ---------------- |
+| models/errors/BzhttpResp   | 400, 500 | application/json |
+| models/errors/APIException | 4XX, 5XX | */*              |

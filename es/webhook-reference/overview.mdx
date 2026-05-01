@@ -1,44 +1,44 @@
 ---
-title: "Descripción general de webhooks"
-description: "Envía datos de mercado de Benzinga a tus sistemas con webhooks resilientes y filtrables."
+title: "Descripción general del Webhook"
+description: "Envía datos de mercado de Benzinga a tus sistemas con webhooks resilientes y con filtros."
 ---
 
-Los webhooks de Benzinga eliminan el sondeo al publicar eventos de mercado en tiempo real directamente en tu endpoint HTTP. Las entregas son solicitudes `POST` con JSON que incluyen un encabezado único `X-BZ-Delivery` para evitar duplicados y utilizan una estrategia de reintentos escalonada para maximizar la fiabilidad.
+Los webhooks de Benzinga eliminan la necesidad de hacer polling al enviar eventos de mercado en tiempo real directamente a tu endpoint HTTP. Las entregas son solicitudes JSON `POST` que incluyen un encabezado `X-BZ-Delivery` único para evitar duplicados y utilizan una estrategia de reintentos por niveles para maximizar la confiabilidad.
 
 <div id="available-webhook-services">
   ## Servicios de webhook disponibles
 </div>
 
-* **Data Webhook Engine**: Datos de calendar y señales en tiempo real (earnings, dividends, ratings, option activity, WIIMs y más) con filtros configurables y transformaciones opcionales del payload. Lea la guía completa en [Data Webhook Engine](./webhook-engine).
-* Pueden configurarse webhooks adicionales específicos para su cuenta. Póngase en contacto con su representante de Benzinga para habilitar conjuntos de datos específicos o registrar nuevas URL de webhook.
+* **Data Webhook Engine**: Datos de calendario y señales en tiempo real (resultados, dividendos, calificaciones, actividad de opciones, WIIMs y más), con filtros configurables y transformaciones de payload opcionales. Lea la guía completa en [Data Webhook Engine](./webhook-engine).
+* Se pueden habilitar configuraciones adicionales de webhook para su cuenta. Póngase en contacto con su representante de Benzinga para habilitar conjuntos de datos específicos o registrar nuevas URL de webhook.
 
 <div id="integration-flow">
   ## Flujo de integración
 </div>
 
 <Steps>
-  <Step title="Comparta su endpoint y filtros">
-    Proporcione un endpoint HTTPS accesible públicamente, además de cualquier filtro por tipo de dato o geografía que necesite. Benzinga configurará el webhook con esos ajustes.
+  <Step title="Comparte tu endpoint y tus filtros">
+    Proporciona un endpoint HTTPS accesible públicamente, junto con los filtros de tipo de datos o geografía que necesites. Benzinga configurará el webhook con esos ajustes.
   </Step>
 
-  <Step title="Pruebe su integración">
-    Use el endpoint [Test Webhook Delivery](/es/api-reference/webhook_api/test-webhook-delivery) para verificar que su endpoint de webhook esté correctamente configurado y pueda recibir entregas.
+  <Step title="Prueba tu integración">
+    Usa el endpoint [Test Webhook Delivery](/es/api-reference/webhook_api/test-webhook-delivery) para verificar que tu endpoint de webhook esté correctamente configurado y pueda recibir entregas.
   </Step>
 
-  <Step title="Gestione las entregas de forma idempotente">
-    Analice el payload JSON, use los valores `id` y `X-BZ-Delivery` para evitar duplicados y responda rápidamente con un estado 2xx para confirmar la recepción.
+  <Step title="Gestiona las entregas de forma idempotente">
+    Analiza el payload JSON, usa los valores `id` y `X-BZ-Delivery` para evitar duplicados y responde rápidamente con un código 2xx para confirmar la recepción.
   </Step>
 
-  <Step title="Supervise e itere">
-    Haga un seguimiento de errores, timeouts y reintentos en sus registros. Ajuste los filtros o las transformaciones del payload con su contacto en Benzinga si sus sistemas downstream tienen nuevos requisitos.
+  <Step title="Supervisa e itera">
+    Haz seguimiento de los fallos, tiempos de espera y reintentos en tus registros. Ajusta los filtros o las transformaciones del payload con tu contacto de Benzinga si tus sistemas de destino tienen nuevos requisitos.
   </Step>
 </Steps>
 
 <div id="best-practices">
-  ## Mejores prácticas
+  ## Buenas prácticas
 </div>
 
 * Usa HTTPS y autenticación en tu endpoint de webhook.
-* Procesa el trabajo de forma asíncrona para que las respuestas se devuelvan en un máximo de 30 segundos.
-* Almacena los IDs de entrega procesados para garantizar la idempotencia en los reintentos.
-* Prueba contra endpoints que no sean de producción antes de pasar a la entrega en producción.
+* Procesa el trabajo de forma asíncrona para que las respuestas se devuelvan en un plazo de 30 segundos.
+* Almacena los ID de entrega procesados para garantizar la idempotencia en los reintentos.
+* Haz pruebas en endpoints que no sean de producción antes de pasar a la entrega en vivo.

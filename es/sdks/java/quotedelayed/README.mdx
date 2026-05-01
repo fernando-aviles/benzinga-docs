@@ -1,9 +1,9 @@
 ---
-title: "Cotización en diferido"
+title: "Cotización retrasada"
 description: quotedelayed()
 ---
 
-[&lt; VOLVER](/es/sdks/languages/java#quotedelayed)
+[&lt; ATRÁS](/es/sdks/languages/java#quotedelayed)
 
 <div id="overview">
   ## Descripción general
@@ -19,7 +19,7 @@ description: quotedelayed()
   ## getV1
 </div>
 
-Obtener cotizaciones diferidas para una lista de símbolos, ISIN o CIK
+Obtiene cotizaciones diferidas de una lista de símbolos, ISIN o CIK
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -47,7 +47,7 @@ public class Application {
                 .call();
 
         if (res.string().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -57,11 +57,11 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                       | Tipo                            | Obligatorio                     | Descripción                                   |
-| ------------------------------- | ------------------------------- | ------------------------------- | --------------------------------------------- |
-| `symbols`                       | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Lista de símbolos, separados por comas        |
-| `isin`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | ISIN del valor                                |
-| `cik`                           | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | CIK del valor                                 |
+| Parámetro | Tipo                     | Obligatorio                | Descripción                          |
+| --------- | ------------------------ | -------------------------- | ------------------------------------ |
+| `symbols` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Lista de símbolos separada por comas |
+| `isin`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | ISIN del valor                       |
+| `cik`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | CIK del valor                        |
 
 <div id="response">
   ### Respuesta
@@ -73,6 +73,6 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado           | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/APIException | 4XX, 5XX         | */*               |

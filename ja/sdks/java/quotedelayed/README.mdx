@@ -1,5 +1,5 @@
 ---
-title: "遅延気配"
+title: "遅延株価"
 description: quotedelayed()
 ---
 
@@ -13,13 +13,13 @@ description: quotedelayed()
   ### 利用可能な操作
 </div>
 
-* [getV1](#getv1) - 遅延気配値 V1 を取得
+* [getV1](#getv1) - V1の遅延クオートを取得
 
 <div id="getv1">
   ## getV1
 </div>
 
-シンボル、ISIN（国際証券識別番号）、またはCIKのリストに対する遅延クォートを取得します。
+シンボル、ISIN、またはCIKのリストの遅延クオートを取得します
 
 <div id="example-usage">
   ### 使用例
@@ -54,14 +54,14 @@ public class Application {
 ```
 
 <div id="parameters">
-  ### Parameters
+  ### パラメータ
 </div>
 
-| Parameter                       | Type                            | Required                        | Description                                |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------------------ |
-| `symbols`                       | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | カンマ区切りのシンボル（銘柄コード）の一覧 |
-| `isin`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 証券のISIN（国際証券識別番号）             |
-| `cik`                           | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 証券のCIK（SEC企業識別子）                 |
+| パラメータ     | 型                        | 必須                         | 説明            |
+| --------- | ------------------------ | -------------------------- | ------------- |
+| `symbols` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | カンマ区切りのシンボル一覧 |
+| `isin`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 対象証券のISIN     |
+| `cik`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 対象証券のCIK      |
 
 <div id="response">
   ### レスポンス
@@ -73,6 +73,6 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                 | ステータスコード                | コンテンツタイプ               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| エラー種別                      | ステータスコード | コンテンツタイプ |
+| -------------------------- | -------- | -------- |
+| models/errors/APIException | 4XX, 5XX | */*      |

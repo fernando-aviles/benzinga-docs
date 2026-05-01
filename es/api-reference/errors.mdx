@@ -1,46 +1,46 @@
 ---
 title: "Errores"
-description: "Cómo manejar errores y códigos de estado de la API de Benzinga"
+description: "Cómo gestionar los errores y códigos de estado de la API de Benzinga"
 ---
 
-La API de Benzinga usa códigos de respuesta HTTP convencionales para indicar el éxito o el error de una solicitud de API. En general:
+La API de Benzinga utiliza códigos de respuesta HTTP convencionales para indicar si una solicitud a la API se ha realizado correctamente o ha fallado. En general:
 
-- **2xx**: Éxito.
-- **4xx**: Error del cliente (por ejemplo, parámetro ausente, clave de API no válida).
-- **5xx**: Error del servidor (algo salió mal del lado de Benzinga).
+* **2xx**: Éxito.
+* **4xx**: Error del cliente (p. ej., falta un parámetro o la clave no es válida).
+* **5xx**: Error del servidor (algo salió mal del lado de Benzinga).
 
 > [!TIP]
-> **Mejor práctica**: Verifica siempre primero el **código de estado HTTP** para determinar si una solicitud fue exitosa. No confíes únicamente en el cuerpo de la respuesta, ya que el formato puede variar entre diferentes endpoints de la API.
+> **Buena práctica**: Compruebe siempre primero el **código de estado HTTP** para determinar si una solicitud se ha realizado correctamente. No confíe únicamente en el cuerpo de la respuesta, ya que el formato puede variar entre distintos endpoints de la API.
 
 <div id="http-status-codes">
   ## Códigos de estado HTTP
 </div>
 
-La siguiente tabla enumera los códigos de estado estándar que podrás encontrar.
+La siguiente tabla enumera los códigos de estado estándar con los que puede encontrarse.
 
-| Código | Estado | Descripción |
-| :--- | :--- | :--- |
-| **200** | `OK` | La solicitud se realizó correctamente. |
-| **400** | `Bad Request` | La solicitud no fue aceptada, a menudo debido a un parámetro ausente o no válido. |
-| **401** | `Unauthorized` | No se proporcionó una API Key válida. Verifica tu encabezado `Authorization` o el parámetro `token`. |
-| **402** | `Request Failed` | Los parámetros eran válidos, pero la solicitud falló por razones de lógica de negocio. |
-| **403** | `Forbidden` | La API Key es válida, pero no tienes permiso para acceder a este recurso. |
-| **404** | `Not Found` | El recurso solicitado (por ejemplo, ID, endpoint) no existe. |
-| **429** | `Too Many Requests` | Has excedido tu límite de solicitudes. |
-| **500** | `Internal Server Error` | Algo salió mal en los servidores de Benzinga. Estos casos son poco frecuentes. |
-| **503** | `Service Unavailable` | El servicio no está disponible temporalmente (por ejemplo, por mantenimiento). |
+| Código  | Estado                  | Descripción                                                                                                |
+| :------ | :---------------------- | :--------------------------------------------------------------------------------------------------------- |
+| **200** | `OK`                    | La solicitud se realizó correctamente.                                                                     |
+| **400** | `Bad Request`           | La solicitud no era válida, a menudo debido a un parámetro faltante o no válido.                           |
+| **401** | `Unauthorized`          | No se proporcionó una clave de API válida. Verifique el encabezado `Authorization` o el parámetro `token`. |
+| **402** | `Request Failed`        | Los parámetros eran válidos, pero la solicitud falló por motivos de lógica de negocio.                     |
+| **403** | `Forbidden`             | La clave de API es válida, pero no tiene permiso para acceder a este recurso.                              |
+| **404** | `Not Found`             | El recurso solicitado (p. ej., ID, endpoint) no existe.                                                    |
+| **429** | `Too Many Requests`     | Ha superado su límite de solicitudes.                                                                      |
+| **500** | `Internal Server Error` | Algo salió mal en los servidores de Benzinga. Estos casos son poco frecuentes.                             |
+| **503** | `Service Unavailable`   | El servicio no está disponible temporalmente (p. ej., por mantenimiento).                                  |
 
 <div id="error-response-bodies">
   ## Cuerpos de respuesta de error
 </div>
 
-Si bien el código de estado HTTP es el indicador principal de un error, el cuerpo de la respuesta a menudo contiene detalles que pueden ayudarte a depurar. El formato de este cuerpo puede variar según la API que utilices.
+Aunque el código de estado HTTP es el principal indicador de un error, el cuerpo de la respuesta suele incluir detalles que ayudan a depurar el problema. El formato de este cuerpo puede variar según la API que se esté utilizando.
 
 <div id="format-1-simple-error-message">
   ### Formato 1: Mensaje de error simple
 </div>
 
-Muchos endpoints (como la API de noticias) devuelven un `string` sencillo o un objeto JSON simple con un mensaje.
+Muchos endpoints (como la API de Noticias) devuelven una cadena simple o un objeto JSON plano con un mensaje.
 
 ```json
 "Invalid or Missing Query Parameters"
@@ -54,12 +54,11 @@ O
 }
 ```
 
-
 <div id="format-2-structured-error-object">
   ### Formato 2: Objeto de error estructurado
 </div>
 
-Las APIs más recientes (como Data API Proxy o Fundamentals) devuelven un objeto estructurado que contiene una lista de errores.
+Las API más recientes (como Data API Proxy / Fundamentales) devuelven un objeto estructurado con una lista de errores.
 
 ```json
 {
@@ -68,20 +67,19 @@ Las APIs más recientes (como Data API Proxy o Fundamentals) devuelven un objeto
     {
       "code": "database_query_error",
       "id": "ERR_12345",
-      "value": "No se pueden obtener datos para el símbolo: INVALID"
+      "value": "Unable to fetch data for symbol: INVALID"
     }
   ],
   "ok": false
 }
 ```
 
-
 <div id="handling-errors-programmatically">
-  ### Manejo de errores de forma programática
+  ### Gestión programática de errores
 </div>
 
-Debido a la posible variación en los cuerpos de respuesta, recomendamos una estrategia sólida de manejo de errores:
+Debido a la posible variabilidad de los cuerpos de respuesta, recomendamos una estrategia sólida de manejo de errores:
 
-1.  **Verificar el código de estado HTTP.** Si es `>= 400`, trátalo como un error.
-2.  **Registrar el cuerpo de la respuesta.** Registra el cuerpo completo en tus logs para fines de depuración.
-3.  **Mostrar un mensaje genérico.** A menos que estés integrado con un endpoint específico y conozcas su formato de error exacto, muestra un mensaje genérico como "Se ha producido un error" a tus usuarios finales junto con el código de estado.
+1. **Compruebe el código de estado HTTP.** Si es `>= 400`, trátelo como un error.
+2. **Registre el cuerpo de la respuesta.** Vuelque el cuerpo completo en sus registros para fines de depuración.
+3. **Muestre un mensaje genérico.** A menos que esté integrado con un endpoint específico y conozca su formato de error exacto, muestre a sus usuarios finales un mensaje genérico como &quot;Algo salió mal&quot;, junto con el código de estado.

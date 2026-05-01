@@ -13,10 +13,10 @@ description: insiderTransaction()
   ### 利用可能な操作
 </div>
 
-* [get](#get) - インサイダー取引情報を取得
+* [get](#get) - インサイダー取引を取得
 
 <div id="get">
-  ## 取得
+  ## get
 </div>
 
 インサイダー取引の取得
@@ -62,9 +62,9 @@ public class Application {
   ### パラメータ
 </div>
 
-| パラメータ                                                                              | 型                                                                                      | 必須                                                                                    | 説明                                                                                     |
-| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `request`                                                                               | [GetInsiderTransactionRequest](../../models/operations/GetInsiderTransactionRequest.md) | :heavy&#95;check&#95;mark:                                                                      | このリクエストで使用するリクエストオブジェクト。                                        |
+| パラメータ     | 型                                                                                       | 必須                         | 説明                       |
+| --------- | --------------------------------------------------------------------------------------- | -------------------------- | ------------------------ |
+| `request` | [GetInsiderTransactionRequest](../../models/operations/GetInsiderTransactionRequest.md) | :heavy&#95;check&#95;mark: | リクエストで使用するリクエストオブジェクトです。 |
 
 <div id="response">
   ### レスポンス
@@ -76,7 +76,7 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                     | ステータスコード               | Content-Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| models/errors/ApiErrorResponse | 400, 500                       | application/json               |
-| models/errors/APIException     | 4XX, 5XX                       | */*                          |
+| エラー種別                          | ステータスコード | コンテンツタイプ         |
+| ------------------------------ | -------- | ---------------- |
+| models/errors/ApiErrorResponse | 400, 500 | application/json |
+| models/errors/APIException     | 4XX, 5XX | */*              |

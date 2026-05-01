@@ -1,6 +1,6 @@
 ---
 title: 'Sintaxis de Markdown'
-description: 'Texto, títulos y estilo en Markdown estándar'
+description: 'Texto, títulos y estilos en Markdown estándar'
 icon: 'text-size'
 ---
 
@@ -8,21 +8,17 @@ icon: 'text-size'
   ## Títulos
 </div>
 
-Lo mejor es usarlos para encabezados de sección.
+Se usa principalmente para encabezados de sección.
 
 ```md
-<div id="titles">
-  ## Títulos
-</div>
-
+## Titles
 ```
-
 
 <div id="subtitles">
   ### Subtítulos
 </div>
 
-Lo mejor es usarlos para encabezados de subsecciones.
+Se usan principalmente para encabezados de subsecciones.
 
 ```md
 <div id="subtitles">
@@ -32,72 +28,69 @@ Lo mejor es usarlos para encabezados de subsecciones.
 ```
 
 <Tip>
-  Cada **título** y **subtítulo** crea un ancla y también aparece en la tabla de contenidos de la derecha.
+  Cada **título** y **subtítulo** genera un ancla y también aparece en la tabla de contenidos de la derecha.
 </Tip>
-
 
 <div id="text-formatting">
   ## Formato de texto
 </div>
 
-Admitimos la mayoría del formato de Markdown. Simplemente agrega `**`, `_` o `~` alrededor del texto para darle formato.
+Admitimos la mayoría de los formatos de Markdown. Solo tienes que añadir `**`, `_` o `~` alrededor del texto para darle formato.
 
-| Estilo       | Cómo escribirlo     | Resultado        |
-| ------------ | ------------------- | ---------------- |
-| Negrita      | `**bold**`          | **bold**         |
-| Cursiva      | `_italic_`          | _italic_         |
-| Tachado      | `~strikethrough~`   | ~strikethrough~  |
+| Estilo  | Cómo escribirlo | Resultado   |
+| ------- | --------------- | ----------- |
+| Negrita | `**negrita**`   | **negrita** |
+| Cursiva | `_cursiva_`     | *cursiva*   |
+| Tachado | `~tachado~`     | ~~tachado~~ |
 
-Puedes combinarlos. Por ejemplo, escribe `**_bold and italic_**` para obtener texto **_bold and italic_**.
+Puedes combinarlos. Por ejemplo, escribe `**_negrita y cursiva_**` para obtener texto en ***negrita y cursiva***.
 
-Debes usar HTML para escribir texto en superíndice y subíndice. Es decir, agrega `<sup>` o `<sub>` alrededor de tu texto.
+Debes usar HTML para escribir texto en superíndice y subíndice. Es decir, añade `<sup>` o `<sub>` alrededor del texto.
 
-| Tamaño de texto | Cómo escribirlo              | Resultado                 |
-| --------------- | ---------------------------- | ------------------------- |
-| Superíndice     | `<sup>superscript</sup>`     | <sup>superscript</sup>    |
-| Subíndice       | `<sub>subscript</sub>`       | <sub>subscript</sub>      |
+| Tamaño del texto | Cómo escribirlo          | Resultado              |
+| ---------------- | ------------------------ | ---------------------- |
+| Superíndice      | `<sup>superíndice</sup>` | <sup>superíndice</sup> |
+| Subíndice        | `<sub>subíndice</sub>`   | <sub>subíndice</sub>   |
 
 <div id="linking-to-pages">
-  ## Enlazar a páginas
+  ## Enlaces a páginas
 </div>
 
-Puedes agregar un enlace envolviendo el texto en `[]()`. Escribirías `[enlace a Google](https://google.com)` para [enlazar a Google](https://google.com).
+Puedes añadir un enlace poniendo el texto entre `[]()`. Por ejemplo, escribirías `[link to google](https://google.com)` para crear [link to google](https://google.com).
 
-Los enlaces a páginas en tu documentación deben ser relativos a la raíz. Básicamente, deberías incluir toda la ruta de la carpeta. Por ejemplo, `[enlace a texto](/writing-content/text)` enlaza a la página "Text" en nuestra sección de componentes.
+Los enlaces a páginas de tu documentación deben ser relativos a la raíz. Básicamente, debes incluir la ruta completa de la carpeta. Por ejemplo, `[link to text](/writing-content/text)` enlaza a la página &quot;Text&quot; de nuestra sección de componentes.
 
-Los enlaces relativos como `[enlace a texto](../text)` se abrirán más lentamente porque no podemos optimizarlos tan fácilmente.
+Los enlaces relativos como `[link to text](../text)` se abrirán más lentamente porque no podemos optimizarlos con la misma facilidad.
 
 <div id="blockquotes">
   ## Citas en bloque
 </div>
 
 <div id="singleline">
-  ### De una línea
+  ### Una sola línea
 </div>
 
-Para crear una cita en bloque, agrega un `>` delante de un párrafo.
+Para crear una cita en bloque, coloca un `>` al principio de un párrafo.
 
 > Dorothy la siguió por muchas de las hermosas habitaciones de su castillo.
 
 ```md
-> Dorothy la siguió a través de muchas de las hermosas habitaciones de su castillo.
+> Dorothy followed her through many of the beautiful rooms in her castle.
 ```
-
 
 <div id="multiline">
-  ### Varias líneas
+  ### Multilínea
 </div>
 
 > Dorothy la siguió por muchas de las hermosas habitaciones de su castillo.
 >
-> La Bruja le ordenó limpiar las ollas y los calderos, barrer el suelo y avivar el fuego con leña.
+> La Bruja le ordenó limpiar las ollas y los calderos, barrer el suelo y mantener el fuego encendido con leña.
 
 ```md
 > Dorothy la siguió a través de muchas de las hermosas habitaciones de su castillo.
 >
-> La Bruja le ordenó limpiar las ollas y las teteras, barrer el suelo y mantener el fuego alimentado con leña.
+> La Bruja le ordenó limpiar las ollas y los calderos, barrer el suelo y mantener el fuego alimentado con leña.
 ```
-
 
 <div id="latex">
   ### LaTeX

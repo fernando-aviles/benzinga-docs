@@ -1,6 +1,6 @@
 ---
 title: 'Markdown 構文'
-description: '標準的な Markdown におけるテキスト、タイトル、書式設定'
+description: '標準的なMarkdownでのテキスト、タイトル、スタイル'
 icon: 'text-size'
 ---
 
@@ -8,21 +8,17 @@ icon: 'text-size'
   ## タイトル
 </div>
 
-セクション見出しとして使うのが最適です。
+セクション見出しに適しています。
 
 ```md
-<div id="titles">
-  ## タイトル
-</div>
-
+## Titles
 ```
-
 
 <div id="subtitles">
   ### サブタイトル
 </div>
 
-セクション内の小見出しに最適です。
+小見出しに適しています。
 
 ```md
 <div id="subtitles">
@@ -32,40 +28,39 @@ icon: 'text-size'
 ```
 
 <Tip>
-  各 **title** と **subtitle** からアンカーが作成され、右側の目次にも表示されます。
+  各**タイトル**と**サブタイトル**にはアンカーが作成され、右側の目次にも表示されます。
 </Tip>
-
 
 <div id="text-formatting">
   ## テキストの書式設定
 </div>
 
-ほとんどの Markdown 記法による書式設定をサポートしています。テキストを `**`、`_`、`~` で囲むことで装飾できます。
+ほとんどの Markdown 書式に対応しています。書式を設定するには、テキストの前後に `**`、`_`、または `~` を付けるだけです。
 
-| スタイル        | 書き方               | 結果                |
-| ------------- | ----------------- | --------------- |
-| 太字           | `**bold**`        | **bold**        |
-| 斜体           | `_italic_`        | _italic_        |
-| 取り消し線        | `~strikethrough~` | ~strikethrough~ |
+| スタイル  | 書き方               | 結果        |
+| ----- | ----------------- | --------- |
+| 太字    | `**bold**`        | **太字**    |
+| 斜体    | `_italic_`        | *斜体*      |
+| 取り消し線 | `~strikethrough~` | ~~取り消し線~~ |
 
-これらを組み合わせることもできます。たとえば、`**_bold and italic_**` と書くと、**_bold and italic_** のようなテキストになります。
+これらは組み合わせて使うこともできます。たとえば、`**_bold and italic_**` と書くと、***太字かつ斜体*** のテキストになります。
 
-上付き文字と下付き文字を記述するには HTML を使用する必要があります。テキストの前後を `<sup>` または `<sub>` で囲んでください。
+上付き文字と下付き文字を記述するには HTML を使用する必要があります。つまり、テキストの前後に `<sup>` または `<sub>` を追加します。
 
-| 文字種別       | 書き方                        | 結果                      |
-| ----------- | ------------------------ | ---------------------- |
-| 上付き文字      | `<sup>superscript</sup>` | <sup>superscript</sup> |
-| 下付き文字      | `<sub>subscript</sub>`   | <sub>subscript</sub>   |
+| テキストサイズ | 書き方                      | 結果               |
+| ------- | ------------------------ | ---------------- |
+| 上付き文字   | `<sup>superscript</sup>` | <sup>上付き文字</sup> |
+| 下付き文字   | `<sub>subscript</sub>`   | <sub>下付き文字</sub> |
 
 <div id="linking-to-pages">
   ## ページへのリンク
 </div>
 
-リンクにしたいテキストを `[]()` で囲むことでリンクを追加できます。たとえば、`[link to google](https://google.com)` と書くと [link to google](https://google.com) になります。
+`[]()` でテキストを囲むと、リンクを追加できます。たとえば、Google へのリンクは `[link to google](https://google.com)` のように記述します。たとえば、[link to google](https://google.com)。
 
-ドキュメント内のページへのリンクはルート相対パスにする必要があります。基本的には、フォルダーのパス全体を含めてください。たとえば、`[link to text](/writing-content/text)` はコンポーネントセクション内の "Text" ページへのリンクになります。
+ドキュメント内のページへのリンクは、ルート相対にする必要があります。つまり、フォルダーパス全体を含めてください。たとえば、`[link to text](/writing-content/text)` は、components セクションの「Text」ページへのリンクになります。
 
-`[link to text](../text)` のような相対リンクは、最適化がしづらいため表示が遅くなります。
+`[link to text](../text)` のような相対リンクは、最適化しにくいため、表示が遅くなります。
 
 <div id="blockquotes">
   ## 引用ブロック
@@ -75,35 +70,33 @@ icon: 'text-size'
   ### 1行
 </div>
 
-ブロック引用を作成するには、段落の先頭に `>` を付けます。
+引用ブロックを作成するには、段落の先頭に `>` を追加します。
 
-> ドロシーは、彼女の城にある多くの美しい部屋を、彼女のあとについて歩いて回った。
+> ドロシーは城の美しい部屋をいくつも通り抜けながら、彼女のあとについていった。
 
 ```md
-> ドロシーは彼女の後について、城の美しい部屋をいくつも通り抜けた。
+> Dorothy followed her through many of the beautiful rooms in her castle.
 ```
-
 
 <div id="multiline">
   ### 複数行
 </div>
 
-> ドロシーは、魔女のあとについて、彼女の城のいくつもの美しい部屋を通って歩いていった。
+> ドロシーは、城の中の美しい部屋をいくつも通りながら、あとについていった。
 >
-> 魔女は、鍋ややかんをきれいにし、床を掃き、薪をくべて火を絶やさないようにするよう彼女に命じた。
+> 魔女はドロシーに、鍋ややかんを洗い、床を掃き、火が絶えないよう薪をくべるよう言いつけた。
 
 ```md
-> ドロシーは彼女の後について城の美しい部屋を数多く通り抜けた。
+> Dorothy followed her through many of the beautiful rooms in her castle.
 >
-> 魔女は彼女に鍋や釜を洗い、床を掃き、薪で火を絶やさないよう命じた。
+> The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
 ```
-
 
 <div id="latex">
   ### LaTeX
 </div>
 
-Mintlify では、Latex コンポーネントを通じて [LaTeX](https://www.latex-project.org) をサポートしています。
+Mintlify は、Latex コンポーネントを介して [LaTeX](https://www.latex-project.org) をサポートしています。
 
 <Latex>8 x (vk x H1 - H2) = (0,1)</Latex>
 

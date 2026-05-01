@@ -1,5 +1,5 @@
 ---
-title: "ティッカー・トレンド"
+title: "ティッカートレンド"
 description: tickerTrends()
 ---
 
@@ -13,14 +13,14 @@ description: tickerTrends()
   ### 利用可能な操作
 </div>
 
-* [get](#get) - ティッカー・トレンドデータを取得
-* [getList](#getlist) - ティッカー・トレンドリストデータを取得
+* [get](#get) - ティッカーのトレンドデータを取得
+* [getList](#getlist) - ティッカートレンドの一覧データを取得
 
 <div id="get">
   ## get
 </div>
 
-ticker のトレンドデータを取得
+ティッカーのトレンドデータを取得します
 
 <div id="example-usage">
   ### 使用例
@@ -65,9 +65,9 @@ public class Application {
   ### パラメータ
 </div>
 
-| パラメータ                                                                        | 型                                                                                | 必須                                                                              | 説明                                                                              |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `request`                                                                         | [GetTickerTrendDataRequest](../../models/operations/GetTickerTrendDataRequest.md) | :heavy&#95;check&#95;mark:                                                                | このリクエストに使用するリクエストオブジェクト。                                  |
+| パラメータ     | 型                                                                                 | 必須                         | 説明                       |
+| --------- | --------------------------------------------------------------------------------- | -------------------------- | ------------------------ |
+| `request` | [GetTickerTrendDataRequest](../../models/operations/GetTickerTrendDataRequest.md) | :heavy&#95;check&#95;mark: | リクエストに使用するリクエストオブジェクトです。 |
 
 <div id="response">
   ### レスポンス
@@ -79,17 +79,17 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                                  | ステータスコード                            | コンテンツタイプ                            |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| models/errors/BzhttpResp                    | 400                                         | application/json                            |
-| models/errors/HttpapiTickerTrendAPIResponse | 500                                         | application/json                            |
-| models/errors/APIException                  | 4XX, 5XX                                    | */*                                       |
+| エラー種別                                       | ステータスコード | コンテンツタイプ         |
+| ------------------------------------------- | -------- | ---------------- |
+| models/errors/BzhttpResp                    | 400      | application/json |
+| models/errors/HttpapiTickerTrendAPIResponse | 500      | application/json |
+| models/errors/APIException                  | 4XX, 5XX | */*              |
 
 <div id="getlist">
   ## getList
 </div>
 
-tickerトレンドリストのデータを取得します
+ティッカートレンド一覧データを取得します
 
 <div id="example-usage">
   ### 使用例
@@ -134,9 +134,9 @@ public class Application {
   ### パラメータ
 </div>
 
-| パラメータ                                                                                 | 型                                                                                         | 必須                                                                                      | 説明                                                                                       |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `request`                                                                                 | [GetTickerTrendListDataRequest](../../models/operations/GetTickerTrendListDataRequest.md) | :heavy&#95;check&#95;mark:                                                                        | リクエストで使用するリクエストオブジェクト。                                               |
+| パラメータ | Type                                                                                      | Required                   | Description               |
+| --------- | ----------------------------------------------------------------------------------------- | -------------------------- | ------------------------- |
+| `request` | [GetTickerTrendListDataRequest](../../models/operations/GetTickerTrendListDataRequest.md) | :heavy&#95;check&#95;mark: | リクエストに使用するリクエスト オブジェクトです。 |
 
 <div id="response">
   ### レスポンス
@@ -148,8 +148,8 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                                           | ステータスコード                                    | コンテンツタイプ                                    |
-| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| models/errors/BzhttpResp                            | 400                                                 | application/json                                    |
-| models/errors/HttpapiTrendingTickersListAPIResponse | 500                                                 | application/json                                    |
-| models/errors/APIException                          | 4XX, 5XX                                            | */*                                               |
+| エラー種別                                              | ステータスコード | コンテンツタイプ         |
+| --------------------------------------------------- | -------- | ---------------- |
+| models/errors/BzhttpResp                            | 400      | application/json |
+| models/errors/HttpapiTrendingTickersListAPIResponse | 500      | application/json |
+| models/errors/APIException                          | 4XX, 5XX | */*              |

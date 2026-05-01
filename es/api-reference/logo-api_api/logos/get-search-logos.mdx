@@ -44,7 +44,7 @@ openapi: /es/openapi/logo-api_api.spec.yml GET /logos/search
             "country": "US",
             "figi_share_class": "BBG001SQKGD7",
             "figi": "BBG000N9MNX3",
-            "security_type": "Acción Común"
+            "security_type": "Common Stock"
           },
           {
             "symbol": "TL0",
@@ -58,7 +58,7 @@ openapi: /es/openapi/logo-api_api.spec.yml GET /logos/search
             "country": "DE",
             "figi_share_class": "BBG001SQKGD7",
             "figi": "BBG000WGWVP7",
-            "security_type": "Acción Común"
+            "security_type": "Common Stock"
           }
         ]
       }
@@ -73,7 +73,7 @@ openapi: /es/openapi/logo-api_api.spec.yml GET /logos/search
       {
         "code": "bad_request",
         "id": "invalid_parameter",
-        "value": "Parámetro search_keys_type no válido"
+        "value": "Invalid search_keys_type parameter"
       }
     ]
   }
@@ -86,7 +86,7 @@ openapi: /es/openapi/logo-api_api.spec.yml GET /logos/search
       {
         "code": "auth_failed",
         "id": "unauthorized",
-        "value": "Token de autenticación inválido o ausente"
+        "value": "Invalid or missing authentication token"
       }
     ]
   }
@@ -99,7 +99,7 @@ openapi: /es/openapi/logo-api_api.spec.yml GET /logos/search
       {
         "code": "no_data_found",
         "id": "not_found",
-        "value": "No se encontraron logos para la clave de búsqueda especificada"
+        "value": "No logos found for the specified search key"
       }
     ]
   }
@@ -112,7 +112,7 @@ openapi: /es/openapi/logo-api_api.spec.yml GET /logos/search
       {
         "code": "internal_server_error",
         "id": "server_error",
-        "value": "Ocurrió un error inesperado al procesar tu solicitud"
+        "value": "An unexpected error occurred while processing your request"
       }
     ]
   }

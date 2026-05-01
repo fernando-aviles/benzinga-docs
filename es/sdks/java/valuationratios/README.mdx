@@ -13,13 +13,13 @@ description: valuationRatios()
   ### Operaciones disponibles
 </div>
 
-* [get](#get) - Obtener ratios de valoración v2.1
+* [get](#get) - Obtiene ratios de valoración V2.1
 
 <div id="get">
   ## get
 </div>
 
-Obtén ratios de valoración para una lista de símbolos, ISIN o CIK
+Obtiene ratios de valoración para una lista de símbolos, ISIN o CIK
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -48,7 +48,7 @@ public class Application {
                 .call();
 
         if (res.string().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -58,12 +58,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                       | Tipo                            | Obligatorio                     | Descripción                     |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `symbols`                       | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Lista de símbolos, separados por comas |
-| `asOf`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Fecha de referencia             |
-| `period`                        | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Período                         |
-| `reportType`                    | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | Tipo de informe                 |
+| Parámetro    | Tipo                     | Obligatorio                | Descripción                           |
+| ------------ | ------------------------ | -------------------------- | ------------------------------------- |
+| `symbols`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Lista de símbolos separados por comas |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de referencia                   |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Período                               |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                       |
 
 <div id="response">
   ### Respuesta
@@ -75,6 +75,6 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado           | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/APIException | 4XX, 5XX         | */*               |

@@ -49,7 +49,7 @@ public class Application {
                 .call();
 
         if (res.responseBodies().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -59,12 +59,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro           | Tipo                | Obligatorio         | Descripción                         |
-| ------------------- | ------------------- | ------------------- | ----------------------------------- |
-| `symbols`           | *String*            | :heavy&#95;check&#95;mark:  | Símbolos (lista separada por comas) |
-| `from`              | *String*            | :heavy&#95;check&#95;mark:  | Desde                               |
-| `to`                | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign:  | Hasta                               |
-| `interval`          | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign:  | Intervalo                           |
+| Parámetro  | Tipo                     | Obligatorio                | Descripción |
+| ---------- | ------------------------ | -------------------------- | ----------- |
+| `symbols`  | *String*                 | :heavy&#95;check&#95;mark: | Símbolos    |
+| `from`     | *String*                 | :heavy&#95;check&#95;mark: | Desde       |
+| `to`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Hasta       |
+| `interval` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Intervalo   |
 
 <div id="response">
   ### Respuesta
@@ -76,7 +76,7 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error              | Código de estado           | Tipo de contenido          |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/BzhttpResp   | 400, 500                   | application/json           |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| Tipo de error              | Código de estado | Tipo de contenido |
+| -------------------------- | ---------------- | ----------------- |
+| models/errors/BzhttpResp   | 400, 500         | application/json  |
+| models/errors/APIException | 4XX, 5XX         | */*               |

@@ -1,6 +1,6 @@
 ---
-title: "Flujo de calificaciones de analistas"
-description: "Calificaciones de analistas y cambios en el precio objetivo en tiempo real."
+title: "Stream de calificaciones"
+description: "Calificaciones de analistas en tiempo real y cambios en los precios objetivo."
 asyncapi: "/asyncapi/calendar-ratings-stream.yml calendarRatings"
 ---
 
@@ -8,33 +8,33 @@ asyncapi: "/asyncapi/calendar-ratings-stream.yml calendarRatings"
   ## Descripción general
 </div>
 
-Suscríbase a los cambios de calificación de analistas en tiempo real y a las actualizaciones de precios objetivo. Supervise mejoras, rebajas, inicios de cobertura y ajustes de precios objetivo en el momento en que se produzcan.
+Suscríbase a cambios en tiempo real en las calificaciones de analistas y a actualizaciones de precios objetivo. Supervise mejoras y rebajas de calificación, inicios de cobertura y ajustes de precios objetivo en cuanto se produzcan.
 
 <div id="key-features">
   ### Características clave
 </div>
 
-- **Calificaciones en tiempo real**: Recibe notificaciones instantáneas sobre cambios en las calificaciones de los analistas
-- **Precios objetivo**: Haz seguimiento de los precios objetivo actuales y anteriores, incluidos sus ajustes
-- **Detalles del analista**: Incluye el nombre del analista, la firma y métricas de precisión histórica
-- **Clasificación de la acción de rating**: Mejoras, rebajas, mantiene, inicia, reitera
-- **Filtrar por valor**: Suscríbete a símbolos bursátiles o ISIN específicos
+* **Calificaciones en tiempo real**: Reciba notificaciones instantáneas sobre cambios en las calificaciones de analistas
+* **Precios objetivo**: Realice un seguimiento de los precios objetivo actuales y anteriores, junto con sus ajustes
+* **Detalles del analista**: Incluye el nombre del analista, la firma y métricas de precisión histórica
+* **Clasificación de cambios**: Mejoras, rebajas, mantenimiento, inicio, reiteración
+* **Filtrar por valor**: Suscríbase a tickers o ISIN específicos
 
 <div id="use-cases">
   ### Casos de uso
 </div>
 
-- Crear alertas y notificaciones en tiempo real sobre cambios de calificación
-- Hacer seguimiento al desempeño y la precisión de las firmas de analistas
-- Supervisar cambios en el consenso de precio objetivo
-- Crear paneles de mejoras y rebajas de calificación
-- Automatizar estrategias de trading basadas en las acciones de los analistas
+* Crear alertas y notificaciones en tiempo real sobre cambios de calificación
+* Hacer seguimiento del rendimiento y la precisión de las firmas de análisis
+* Supervisar los cambios en el consenso de precios objetivo
+* Crear dashboards de mejoras/rebajas de calificación
+* Automatizar estrategias de trading basadas en acciones de analistas
 
 <div id="quick-start">
   ## Inicio rápido
 </div>
 
-Usa la herramienta interactiva de prueba de WebSocket que aparece arriba para conectarte y probar el stream en tiempo real.
+Usa la herramienta interactiva de prueba de WebSocket de arriba para conectarte y probar el stream en tiempo real.
 
 <div id="connection-url">
   ### URL de conexión
@@ -44,16 +44,15 @@ Usa la herramienta interactiva de prueba de WebSocket que aparece arriba para co
 wss://api.benzinga.com/api/v2.1/calendar/ratings/stream?token=YOUR_TOKEN
 ```
 
-
 <div id="query-parameters">
   ### Parámetros de consulta
 </div>
 
-| Parámetro | Obligatorio | Descripción |
-|-----------|-------------|-------------|
-| `token` | Sí | Tu token de la API WebSocket de Benzinga (bz.production***) |
-| `tickers` | No | Lista de símbolos bursátiles separados por comas (p. ej., `AAPL,TSLA`) |
-| `isins` | No | Lista de códigos ISIN separados por comas para filtrar |
+| Parámetro | Obligatorio | Descripción                                                 |
+| --------- | ----------- | ----------------------------------------------------------- |
+| `token`   | Sí          | Su token de la API WebSocket de Benzinga (bz.production***) |
+| `tickers` | No          | Lista separada por comas de tickers (p. ej., `AAPL,TSLA`)   |
+| `isins`   | No          | Lista separada por comas de ISIN para filtrar               |
 
 <div id="message-example">
   ## Ejemplo de mensaje
@@ -87,43 +86,42 @@ wss://api.benzinga.com/api/v2.1/calendar/ratings/stream?token=YOUR_TOKEN
 }
 ```
 
-
 <div id="rating-actions">
-  ### Acciones de recomendación
+  ### Acciones de calificación
 </div>
 
-| Acción | Descripción |
-|--------|-------------|
-| `Upgrades` | Recomendación mejorada (p. ej., Neutral → Buy) |
-| `Downgrades` | Recomendación rebajada (p. ej., Buy → Hold) |
-| `Maintains` | Recomendación sin cambios |
-| `Initiates` | Primera recomendación (inicio de cobertura) |
-| `Reiterates` | Reitera la recomendación existente |
+| Acción       | Descripción                                  |
+| ------------ | -------------------------------------------- |
+| `Upgrades`   | Calificación mejorada (p. ej., Neutral → Buy) |
+| `Downgrades` | Calificación rebajada (p. ej., Buy → Hold)    |
+| `Maintains`  | Calificación sin cambios                      |
+| `Initiates`  | Inicio de cobertura                           |
+| `Reiterates` | Confirma la calificación existente            |
 
 <div id="message-actions">
-  ### Acciones de mensajes
+  ### Acciones del mensaje
 </div>
 
-| Acción | Descripción |
-|--------|-------------|
+| Acción                | Descripción                  |
+| --------------------- | ---------------------------- |
 | `created` / `Created` | Nueva calificación publicada |
-| `updated` / `Updated` | Calificación modificada |
-| `deleted` / `Deleted` | Calificación eliminada |
+| `updated` / `Updated` | Calificación modificada      |
+| `deleted` / `Deleted` | Calificación eliminada       |
 
 <div id="interactive-commands">
   ## Comandos interactivos
 </div>
 
-| Comando | Descripción |
-|---------|-------------|
-| `ping` | Mantiene la conexión activa (responde con `pong`) |
-| `replay` | Reenvía hasta los últimos 100 mensajes en caché |
+| Comando  | Descripción                                                   |
+| -------- | ------------------------------------------------------------- |
+| `ping`   | Mantiene la conexión activa (responde con `pong`)             |
+| `replay` | Reproduce hasta los últimos 100 mensajes almacenados en caché |
 
 <div id="best-practices">
   ## Mejores prácticas
 </div>
 
-- **Seguimiento de cambios**: compare `rating_current` vs `rating_prior` para detectar subidas o bajadas de calificación
-- **Movimiento del precio objetivo**: supervise `pt_current` vs `pt_prior` para detectar cambios en el precio objetivo
-- **Reputación del analista**: tenga en cuenta el peso de la firma y su historial de precisión
-- **Filtro de importancia**: concéntrese en calificaciones de alta importancia (4-5) por su mayor impacto
+* **Seguimiento de cambios**: Compare `rating_current` vs `rating_prior` para detectar mejoras o rebajas de calificación
+* **Movimiento del precio objetivo**: Supervise `pt_current` vs `pt_prior` para detectar cambios en el precio objetivo
+* **Reputación del analista**: Considere la importancia de la firma y su precisión histórica
+* **Filtro de importancia**: Céntrese en las calificaciones de alta importancia (4-5) para identificar las de mayor impacto

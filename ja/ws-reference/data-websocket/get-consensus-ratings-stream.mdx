@@ -1,6 +1,6 @@
 ---
-title: "Consensus Ratings ストリーム"
-description: "リアルタイムのコンセンサス・レーティングおよび目標株価の集約データ。"
+title: "コンセンサスレーティング・ストリーム"
+description: "集計されたコンセンサスレーティングと目標株価をリアルタイムで配信します。"
 asyncapi: "/asyncapi/consensus-ratings-stream.yml consensusRatings"
 ---
 
@@ -8,54 +8,53 @@ asyncapi: "/asyncapi/consensus-ratings-stream.yml consensusRatings"
   ## 概要
 </div>
 
-複数アナリストの見解を集約したリアルタイムのコンセンサス・レーティングを購読し、統一されたレーティングと目標株価を取得できます。市場全体のセンチメントやアナリスト・コンセンサスの変化を追跡します。
+複数のアナリストの意見を集約して単一のレーティングと目標株価にまとめた、リアルタイムのコンセンサスレーティングを購読できます。市場全体のセンチメントや、アナリストコンセンサスの変化を追跡できます。
 
 <div id="key-features">
   ### 主な機能
 </div>
 
-- **コンセンサス集約**: 特定銘柄に対するすべてのアナリスト・レーティングを統合したビュー
-- **目標株価コンセンサス**: 平均・高値・安値の目標株価
-- **レーティング分布**: Strong Buy、Buy、Hold、Sell、Strong Sell ごとの内訳
-- **アナリスト数**: アナリストの総数および重複を除いたカバレッジ数を追跡
-- **柔軟な集計**: 件数または割合として表示
+* **コンセンサス集計**: 銘柄に対する全アナリストのレーティングをまとめて表示
+* **目標株価コンセンサス**: 目標株価の平均・最高・最低
+* **レーティング分布**: Strong Buy、Buy、Hold、Sell、Strong Sellごとの内訳
+* **アナリスト数**: カバレッジするアナリストの総数とユニーク数を把握
+* **柔軟な集計**: 件数または割合で表示
 
 <div id="use-cases">
   ### ユースケース
 </div>
 
-- コンセンサス・レーティングのダッシュボードやウィジェットを構築する
-- アナリスト全体のセンチメントの変化を追跡する
-- 個別レーティングをコンセンサスと比較する
-- 目標株価レンジ（高値・安値・平均）を監視する
-- コンセンサスが改善／悪化している銘柄を特定する
+* コンセンサスレーティングのダッシュボードやウィジェットを作成する
+* アナリスト全体のセンチメントの変化を追跡する
+* 個別のレーティングをコンセンサスと比較する
+* 目標株価のレンジ (高値、安値、平均) を監視する
+* コンセンサスが改善または悪化している銘柄を特定する
 
 <div id="quick-start">
   ## クイックスタート
 </div>
 
-上部のインタラクティブなウェブソケットテスターを使用して接続し、リアルタイムでストリームをテストしてください。
+上のインタラクティブなウェブソケットテスターを使用して接続し、ストリームをリアルタイムでテストします。
 
 <div id="connection-url">
-  ### 接続 URL
+  ### 接続URL
 </div>
 
 ```
 wss://api.benzinga.com/api/v1/consensus-ratings/stream?token=YOUR_TOKEN
 ```
 
-
 <div id="query-parameters">
   ### クエリパラメータ
 </div>
 
-| Parameter | Required | Description |
-|-----------|----------|-------------|
-| `token` | Yes | Benzinga の WebSocket API トークン（bz.production***） |
-| `tickers` | No | ティッカーシンボルのカンマ区切りリスト（例: `AAPL,MSFT`） |
-| `isins` | No | フィルタ用の ISIN（国際証券識別番号）のカンマ区切りリスト |
-| `simplify` | No | レーティングを Buy／Hold／Sell に簡略化 |
-| `aggregate_type` | No | 集計種別: `number` または `percentage` |
+| パラメータ            | 必須  | 説明                                                    |
+| ---------------- | --- | ----------------------------------------------------- |
+| `token`          | はい  | お使いの Benzinga ウェブソケット API token (bz.production***)  |
+| `tickers`        | いいえ | ティッカーシンボルのカンマ区切りリスト (例: `AAPL,MSFT`)                  |
+| `isins`          | いいえ | 絞り込み対象の ISIN のカンマ区切りリスト                               |
+| `simplify`       | いいえ | レーティングを Buy、Hold、Sell に簡略化します                         |
+| `aggregate_type` | いいえ | 集計タイプ: `number` または `percentage`                      |
 
 <div id="message-example">
   ## メッセージ例
@@ -87,48 +86,47 @@ wss://api.benzinga.com/api/v1/consensus-ratings/stream?token=YOUR_TOKEN
 }
 ```
 
-
 <div id="consensus-ratings">
-  ### コンセンサス・レーティング
+  ### コンセンサスレーティング
 </div>
 
-| Rating | Numeric Value | Description |
-|--------|---------------|-------------|
-| `STRONG_BUY` | 5.0 | 非常に強気のコンセンサス |
-| `BUY` | 4.0 - 4.9 | 強気のコンセンサス |
-| `HOLD` | 3.0 - 3.9 | 中立的なコンセンサス |
-| `SELL` | 2.0 - 2.9 | 弱気のコンセンサス |
-| `STRONG_SELL` | 1.0 - 1.9 | 非常に弱気のコンセンサス |
+| レーティング        | 数値        | 説明           |
+| ------------- | --------- | ------------ |
+| `STRONG_BUY`  | 5.0       | 非常に強気なコンセンサス |
+| `BUY`         | 4.0 - 4.9 | 強気なコンセンサス    |
+| `HOLD`        | 3.0 - 3.9 | 中立的なコンセンサス   |
+| `SELL`        | 2.0 - 2.9 | 弱気なコンセンサス    |
+| `STRONG_SELL` | 1.0 - 1.9 | 非常に弱気なコンセンサス |
 
 <div id="key-metrics">
   ### 主要指標
 </div>
 
-| Field | Description |
-|-------|-------------|
-| `consensus_rating` | 総合レーティング（BUY、HOLD、SELL） |
-| `consensus_rating_val` | レーティング値の数値表現（1.0〜5.0） |
-| `consensus_price_target` | アナリスト全体の平均目標株価 |
-| `high_price_target` | 目標株価の最高値 |
-| `low_price_target` | 目標株価の最低値 |
-| `total_analyst_count` | レーティングの総数 |
-| `unique_analyst_count` | 重複を除いたアナリスト数 |
+| フィールド                    | 説明                        |
+| ------------------------ | ------------------------- |
+| `consensus_rating`       | 総合レーティング (BUY、HOLD、SELL)  |
+| `consensus_rating_val`   | レーティングの数値 (1.0～5.0)       |
+| `consensus_price_target` | アナリスト全体の平均目標株価            |
+| `high_price_target`      | 最高目標株価                    |
+| `low_price_target`       | 最低目標株価                    |
+| `total_analyst_count`    | レーティングの総件数                |
+| `unique_analyst_count`   | 重複を除くアナリスト数               |
 
 <div id="interactive-commands">
   ## 対話型コマンド
 </div>
 
-| Command | 説明 |
-|---------|-------------|
-| `ping` | 接続を維持します（`pong` で応答します） |
-| `replay` | キャッシュされた直近最大100件のメッセージを再送信します |
+| コマンド     | 説明                            |
+| -------- | ----------------------------- |
+| `ping`   | 接続を維持します (`pong` で応答)         |
+| `replay` | 直近のキャッシュ済みメッセージを最大100件まで再送します |
 
 <div id="best-practices">
   ## ベストプラクティス
 </div>
 
-- **コンセンサスの変化**: 時系列で `consensus_rating_val` の変化を監視する
-- **目標株価レンジ**: 現在株価を高値/安値目標と比較してバリュエーションの判断材料とする
-- **カバレッジの深さ**: アナリスト数が多いほどコンセンサスの信頼性が高いと判断できる
-- **分布分析**: センチメントのニュアンスを把握するために `aggregate_ratings` の内訳を確認する
-- **パーセンテージ表示**: 正規化された比較には `aggregate_type=percentage` を使用する
+* **コンセンサスの変化**: `consensus_rating_val` の推移を継続的に監視します
+* **目標株価レンジ**: バリュエーションの判断材料として、現在価格を目標株価の上限値/下限値と比較します
+* **カバレッジの厚み**: アナリスト数が多いほど、コンセンサスの信頼性が高い傾向があります
+* **分布分析**: センチメントの違いをより詳しく把握するため、`aggregate_ratings` の内訳を確認します
+* **割合表示**: 正規化された比較には `aggregate_type=percentage` を使用します

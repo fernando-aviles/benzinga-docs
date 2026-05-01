@@ -13,13 +13,13 @@ description: derivedFiguresAndRatios()
   ### 利用可能な操作
 </div>
 
-* [get](#get) - 派生指標および比率の取得 v3
+* [取得](#get) - 派生指標と比率を取得 V3
 
 <div id="get">
-  ## get
+  ## 取得
 </div>
 
-シンボルのリストに対して派生指標および各種比率を取得します
+シンボルの一覧に対する派生指標と比率を取得します
 
 <div id="example-usage">
   ### 使用例
@@ -48,7 +48,7 @@ public class Application {
                 .call();
 
         if (res.string().isPresent()) {
-            // レスポンスを処理
+            // レスポンスを処理する
         }
     }
 }
@@ -58,12 +58,12 @@ public class Application {
   ### パラメータ
 </div>
 
-| パラメータ                      | 型                              | 必須                            | 説明                             |
-| ------------------------------- | ------------------------------- | ------------------------------- | -------------------------------- |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | シンボルのカンマ区切りリスト     |
-| `from`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 開始日                           |
-| `to`                            | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 終了日                           |
-| `date`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | レポート種別                     |
+| パラメータ     | 型                        | 必須                         | 説明             |
+| --------- | ------------------------ | -------------------------- | -------------- |
+| `symbols` | *String*                 | :heavy&#95;check&#95;mark: | シンボルをカンマ区切りで指定 |
+| `from`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 開始日            |
+| `to`      | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 終了日            |
+| `date`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | レポートタイプ        |
 
 <div id="response">
   ### レスポンス
@@ -75,6 +75,6 @@ public class Application {
   ### エラー
 </div>
 
-| エラータイプ               | ステータスコード           | Content-Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| エラー種別                      | ステータスコード | コンテンツタイプ |
+| -------------------------- | -------- | -------- |
+| models/errors/APIException | 4XX, 5XX | */*      |

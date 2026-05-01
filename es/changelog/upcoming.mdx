@@ -2,29 +2,124 @@
 title: "Próximamente"
 ---
 
-Estos son los próximos lanzamientos y las acciones previstas para las próximas actualizaciones.
+Estos son los próximos lanzamientos y las acciones previstas para las siguientes actualizaciones.
 
-<div id="december-2024">
-  ## Diciembre de 2024
+<div id="in-progress">
+  ## En progreso
 </div>
 
-- **Lanzamiento planificado de la [Dynamic Event Feedback API](https://calendarapi.com/docs/event-feedback)** para permitir a los usuarios calificar y opinar sobre eventos directamente desde la interfaz del calendario.
-- **Mejora del rendimiento de la creación masiva de eventos**, con el objetivo de reducir el tiempo de respuesta de la API en un 20%.
-- **Incorporación de compatibilidad con conmutación por error multirregional** en el panel de la API para mejorar la confiabilidad del servicio.
-- **Desarrollo de analíticas de asistencia en tiempo real**, con actualizaciones por WebSocket para supervisar en vivo las tendencias de asistentes.
-- **Lanzamiento de la [seguridad avanzada de Webhooks](https://calendarapi.com/docs/webhooks/security)**, que incluye verificación de firmas y listas blancas de IP.
-- **Implementación de CalendarAPI Premium Managed Services** para clientes empresariales, con soporte 24/7 y SLAs personalizados.
-- **Optimización de la integración de CDN** para mejorar los tiempos de carga de recursos como archivos ICS e imágenes de eventos.
+Elementos actualmente en desarrollo o revisión.
 
----
-
-<div id="january-2025">
-  ## Enero de 2025
+<div id="in-development">
+  ### En desarrollo
 </div>
 
-- **Incorporación de compatibilidad con recomendaciones de eventos impulsadas por IA**, adaptadas a las preferencias del usuario y a la actividad del calendario.
-- **Presentación de una herramienta de depuración de sincronización de Calendar** para ayudar a los desarrolladores a identificar y resolver problemas de sincronización con mayor eficiencia.
-- **Ampliación de las herramientas de administración de claves de API**, incluyendo controles de acceso granulares y políticas de caducidad automatizadas.
-- **Implementación de la [Event Cloning API](https://calendarapi.com/docs/event-cloning)** para la duplicación rápida de configuraciones de eventos complejos.
-- **Lanzamiento del entorno Sandbox de CalendarAPI**, que permite a los desarrolladores probar APIs sin afectar los datos en producción.
-- **Mejora de la documentación** con guías adicionales de casos de uso y recorridos interactivos de la API.
+* **Servicios de la plataforma**: Investigando operaciones de opciones de alto impacto que no aparecen en las respuestas de la API
+* **Servicios de la plataforma**: Resolviendo problemas de autenticación 401 en los endpoints Halt/Resume
+* **Servicios de la plataforma**: Añadiendo compatibilidad con todos los tipos de webhook (actualmente solo admite Noticias)
+* **Servicios de la plataforma**: Procesando y completando retroactivamente datos de contenido de Fastly
+* **Servicios de la plataforma**: Automatizando la generación futura de filas para el calendario de previsiones
+* **Servicios de la plataforma**: Investigando la gestión de calificaciones para empresas inactivas
+* **API de calendario**: Añadiendo los campos period y Año al calendario de conferencia telefónica
+* **API de calendario**: Simplificando los parámetros de la API en todos los servicios de calendario
+* **Transcripciones**: Añadiendo los campos period y Año a las consultas de transcripciones
+* **Transcripciones**: Mejorando la compatibilidad de la búsqueda por ticker (p. ej., formato MOG/A)
+* **Transcripciones**: Añadiendo la función Change Titles para incluir period y Año
+
+<div id="in-review">
+  ### En revisión
+</div>
+
+* **Servicios de la plataforma**: Actualización de las clasificaciones del tipo de contenido «Press Release»
+
+<div id="pending-deployment">
+  ### Despliegue pendiente
+</div>
+
+* **Servicios de la plataforma**: Implementación de reglas de caducidad del contenido (no enviar contenido después de X días)
+* **Transcripts**: Corrección del problema por el que las ediciones de las transcripciones no se guardan correctamente
+
+<div id="coming-soon">
+  ## Próximamente
+</div>
+
+Elementos previstos para los próximos sprints.
+
+<div id="platform-services">
+  ### Servicios de la plataforma
+</div>
+
+**Nuevas funciones**
+
+* Se añade el diccionario &quot;Conference Call Topics&quot; para mejorar la categorización
+* Compatibilidad de Logos V2 con imágenes SVG composite&#95;auto
+* Especificaciones de la API para la Calendar API de Halts/Resumes
+* Implementación de &quot;Hedge Message&quot; para la lógica de doble reversión
+* Mejoras en la limitación de tasa y la mensajería en todos los servicios
+* Se añaden alertas de Corologix para supervisar las conexiones
+
+**Mejoras**
+
+* Se añade monitoreo para la entrega de noticias en S3
+* Se elimina el campo heredado &quot;Benzinga Attribution&quot; de TDA
+* Se añade el campo &#39;Active&#39; al diccionario de analistas (opciones Sí/No)
+* Compatibilidad con consultas por ISIN en todos los endpoints de SoFi
+* Se añade la URL de la imagen a la carga útil de WebSocket de Noticias
+* Se resuelven problemas en el cálculo de Upside de JPMC relacionados con desdoblamientos de acciones
+* Gestión de actualizaciones de la Government Trade API
+* Relleno retroactivo de datos de period/year en el calendario de conference calls
+
+**Corrección de errores**
+
+* Se corrigen problemas del widget dinámico de CIBC
+* Se resuelve el problema del endpoint de Consensus Ratings que devolvía ceros en consultas de una sola fecha
+* Se corrige la lógica de deduplicación en el endpoint /sync
+* Se investigan logotipos faltantes de acciones preferentes de Morgan Stanley
+
+<div id="calendar-api">
+  ### API de calendario
+</div>
+
+**Nuevas funciones**
+
+* Uso de CAGR para calcular proyecciones de dividendos futuros
+* Creación de un endpoint de API para actualizar las operaciones gubernamentales desde Newsdesk Tools
+
+<div id="news-api">
+  ### API de Noticias
+</div>
+
+**Nuevas funciones**
+
+* Compatibilidad con varios tipos de contenido en una sola consulta
+* Se añadió un parámetro de consulta basado en sectores
+* Se añadió compatibilidad con consultas basadas en GICS
+
+**Correcciones de errores**
+
+* Se añadió compatibilidad con la consulta updatedSince en el endpoint news-removed
+
+<div id="transcripts">
+  ### Transcripciones
+</div>
+
+**Mejoras**
+
+* Mostrar todas las transcripciones programadas para fechas futuras
+* Añadir compatibilidad con direcciones de correo electrónico personalizadas para conferencias telefónicas
+* Añadir compatibilidad con enlaces de llamadas de Zoom
+* Mejorar la interfaz de usuario del frontend con opciones de filtro ampliadas
+* Rediseñar la interfaz de usuario a una vista de calendario en cuadrícula (en sustitución del modo manual/en vivo)
+* Añadir un historial de revisiones para cada registro de transcripción
+* Añadir una función para crear manualmente registros de transcripción
+
+**Correcciones de errores**
+
+* Mejorar la gestión del inicio de sesión de Edge Media
+* Mejorar la fiabilidad del agente Webvoyager
+
+***
+
+*Última actualización: enero de 2026*
+
+*Nota: Los plazos y las funcionalidades pueden cambiar según las prioridades y dependencias.*

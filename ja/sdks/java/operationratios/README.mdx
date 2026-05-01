@@ -13,13 +13,13 @@ description: operationRatios()
   ### 利用可能な操作
 </div>
 
-* [get](#get) - オペレーション比率 v2.1 を取得
+* [get](#get) - V2.1 の営業比率を取得
 
 <div id="get">
   ## get
 </div>
 
-指定したシンボルリストのオペレーション比率を取得します
+シンボル一覧の営業比率を取得します
 
 <div id="example-usage">
   ### 使用例
@@ -48,7 +48,7 @@ public class Application {
                 .call();
 
         if (res.string().isPresent()) {
-            // レスポンスを処理
+            // レスポンスを処理する
         }
     }
 }
@@ -58,12 +58,12 @@ public class Application {
   ### パラメータ
 </div>
 
-| Parameter                       | Type                            | Required                        | Description                     |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `symbols`                       | *String*                        | :heavy&#95;check&#95;mark:              | カンマ区切りのシンボル一覧      |
-| `asOf`                          | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 基準日                          |
-| `period`                        | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | 会計期間                        |
-| `reportType`                    | *Optional&lt;String&gt;*             | :heavy&#95;minus&#95;sign:              | レポート種別                    |
+| パラメータ        | 型                        | 必須                         | 説明             |
+| ------------ | ------------------------ | -------------------------- | -------------- |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | カンマ区切りのシンボルの一覧 |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 基準日            |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 期間             |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | レポートタイプ        |
 
 <div id="response">
   ### レスポンス
@@ -75,6 +75,6 @@ public class Application {
   ### エラー
 </div>
 
-| エラータイプ               | ステータスコード           | コンテンツタイプ           |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | */*                      |
+| エラー種別                      | ステータスコード | コンテンツタイプ |
+| -------------------------- | -------- | -------- |
+| models/errors/APIException | 4XX, 5XX | */*      |

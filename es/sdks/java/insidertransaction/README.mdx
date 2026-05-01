@@ -1,5 +1,5 @@
 ---
-title: "Transacción de iniciado"
+title: "transacción de persona con información privilegiada"
 description: insiderTransaction()
 ---
 
@@ -13,13 +13,13 @@ description: insiderTransaction()
   ### Operaciones disponibles
 </div>
 
-* [get](#get) - Obtener transacción de insider
+* [get](#get) - Obtener una transacción de persona con información privilegiada
 
 <div id="get">
   ## get
 </div>
 
-Obtener transacción de insider
+Obtener transacción de una persona con información privilegiada
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -52,7 +52,7 @@ public class Application {
                 .call();
 
         if (res.modelsInsiderTransactionFilingJSON().isPresent()) {
-            // gestionar respuesta
+            // manejar respuesta
         }
     }
 }
@@ -62,9 +62,9 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro                                                                               | Tipo                                                                                    | Obligatorio                                                                             | Descripción                                                                             |
-| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `request`                                                                               | [GetInsiderTransactionRequest](../../models/operations/GetInsiderTransactionRequest.md) | :heavy&#95;check&#95;mark:                                                                      | El objeto de solicitud que se utilizará para la operación.                              |
+| Parámetro | Tipo                                                                                    | Obligatorio                | Descripción                                               |
+| --------- | --------------------------------------------------------------------------------------- | -------------------------- | --------------------------------------------------------- |
+| `request` | [GetInsiderTransactionRequest](../../models/operations/GetInsiderTransactionRequest.md) | :heavy&#95;check&#95;mark: | El objeto de solicitud que se utilizará para la petición. |
 
 <div id="response">
   ### Respuesta
@@ -76,7 +76,7 @@ public class Application {
   ### Errores
 </div>
 
-| Tipo de error                  | Código de estado               | Tipo de contenido              |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| models/errors/ApiErrorResponse | 400, 500                       | application/json               |
-| models/errors/APIException     | 4XX, 5XX                       | */*                          |
+| Tipo de error                  | Código de estado | Tipo de contenido |
+| ------------------------------ | ---------------- | ----------------- |
+| models/errors/ApiErrorResponse | 400, 500         | application/json  |
+| models/errors/APIException     | 4XX, 5XX         | */*               |
