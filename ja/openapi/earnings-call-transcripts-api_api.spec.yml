@@ -8,11 +8,11 @@ info:
 paths:
   /api/v1/earnings-call-transcripts:
     get:
-      description: 指定した企業またはコールIDの決算説明会トランスクリプトを取得します。質疑応答、話者情報、タイムスタンプを含む、四半期および通期の決算説明会の全文トランスクリプトを返します。dateフィルターを使用して特定の報告期間のトランスクリプトを取得したり、ティッカーシンボルで絞り込んで企業ごとの決算説明会を検索したりできます。
+      description: 指定した会社またはコールIDの決算説明会トランスクリプトを取得します。Q&Aセッション、話者情報、タイムスタンプを含む、四半期および年次の決算説明会の全文トランスクリプトを返します。日付フィルターを使用して特定の報告期間のトランスクリプトを取得したり、ティッカーシンボルで絞り込んで会社ごとの決算説明会を対象に検索したりできます。
       operationId: get-earnings-call-transcripts
       parameters:
-        - description: "決算説明会トランスクリプトを絞り込むための、株式ティッカーシンボルのカンマ区切りリストです（例:
-            AAPL,MSFT,GOOGL）。これらの企業のすべてのトランスクリプトを返します。"
+        - description: "決算説明会トランスクリプトを絞り込むための、株式ティッカーシンボルのカンマ区切りリスト（例:
+            AAPL,MSFT,GOOGL）。これらの会社のすべてのトランスクリプトを返します。"
           in: query
           name: tickers
           style: form
@@ -21,7 +21,7 @@ paths:
             type: array
             items:
               type: string
-        - description: 取得対象の特定のコールIDのカンマ区切りリストです。既知の決算説明会識別子に対応するトランスクリプトを取得するために使用します。ティッカーによる絞り込みより優先されます。
+        - description: 取得対象の特定のコールIDのカンマ区切りリストです。既知の決算説明会識別子に対応するトランスクリプトを取得するために使用します。ティッカーによるフィルタリングより優先されます。
           in: query
           name: call_id
           style: form
@@ -30,31 +30,29 @@ paths:
             type: array
             items:
               type: string
-        - description: "ページネーション用のページ番号です。0始まりです（0 = 1ページ目、1 = 2ページ目、以降同様）。デフォルト: 0"
+        - description: "ページネーション用のページ番号。ゼロ始まりです（0 = 1ページ目、1 = 2ページ目、など）。デフォルト: 0"
           in: query
           name: page
           schema:
             type: integer
-        - description: "1ページあたりの結果件数です。デフォルト: 5。最大: 1000。一括データ取得には大きめのページサイズを使用してください。"
+        - description: "1ページあたりの結果数。デフォルト: 5。最大: 1000。一括データ取得には大きめのページサイズを使用してください。"
           in: query
           name: pagesize
           schema:
             type: integer
-        - description: "YYYY-MM-DD形式の開始dateフィルターです（例:
-            2024-01-01）。この日付以降の決算説明会トランスクリプトを返します。"
+        - description: "YYYY-MM-DD形式の開始日フィルター（例: 2024-01-01）。この日付以降の決算説明会トランスクリプトを返します。"
           in: query
           name: date_from
           schema:
             type: string
-        - description: "YYYY-MM-DD形式の終了dateフィルターです（例:
-            2024-12-31）。この日付以前の決算説明会トランスクリプトを返します。"
+        - description: "YYYY-MM-DD形式の終了日フィルター（例: 2024-12-31）。この日付以前の決算説明会トランスクリプトを返します。"
           in: query
           name: date_to
           schema:
             type: string
       responses:
         "200":
-          description: 全文テキストとメタデータを含む決算説明会トランスクリプト要約の配列
+          description: 全文テキストおよびメタデータを含む決算説明会トランスクリプトの概要配列
           content:
             application/json:
               schema:
@@ -84,11 +82,11 @@ paths:
         - Earnings Call Transcripts
   /api/v1/earnings-call-transcripts/audio:
     get:
-      description: 決算説明会録音のダウンロード用音声ファイルURLを取得します。四半期および通期の決算説明会の完全な音声録音にアクセスするための署名付きURLを返します。音声ファイルには、決算説明全体と質疑応答セッションが含まれます。URLには有効期限があり、認可されたアクセス用に安全に署名されています。
+      description: 決算説明会録音のダウンロード可能な音声ファイルURLを取得します。四半期および年次の決算説明会の完全な音声録音にアクセスするための署名付きURLを返します。音声ファイルには、決算説明全体とQ&Aセッションが含まれます。URLには有効期限があり、認可されたアクセス用に安全に署名されています。
       operationId: get-earnings-call-transcript-audio-files
       parameters:
-        - description: "音声ファイルを絞り込むための、株式ティッカーシンボルのカンマ区切りリストです（例:
-            AAPL,MSFT,GOOGL）。これらの企業のすべての決算説明会の音声ファイルを返します。"
+        - description: "音声ファイルを絞り込むための、株式ティッカーシンボルのカンマ区切りリスト（例:
+            AAPL,MSFT,GOOGL）。これらの会社のすべての決算説明会の音声ファイルを返します。"
           in: query
           name: tickers
           style: form
@@ -97,7 +95,7 @@ paths:
             type: array
             items:
               type: string
-        - description: 音声ファイルを取得する対象の特定のコールIDのカンマ区切りリストです。既知の決算説明会識別子に対応する音声を取得するために使用します。
+        - description: 音声ファイルの取得対象となる特定のコールIDのカンマ区切りリストです。既知の決算説明会識別子に対応する音声を取得するために使用します。
           in: query
           name: call_id
           style: form
@@ -106,12 +104,12 @@ paths:
             type: array
             items:
               type: string
-        - description: "ページネーション用のページ番号です。0始まりです（0 = 1ページ目、1 = 2ページ目、以降同様）。デフォルト: 0"
+        - description: "ページネーション用のページ番号。ゼロ始まりです（0 = 1ページ目、1 = 2ページ目、など）。デフォルト: 0"
           in: query
           name: page
           schema:
             type: integer
-        - description: "1ページあたりの結果件数です。デフォルト: 5。最大: 1000"
+        - description: "1ページあたりの結果数。デフォルト: 5。最大: 1000"
           in: query
           name: pagesize
           schema:

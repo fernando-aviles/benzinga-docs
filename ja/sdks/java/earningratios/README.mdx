@@ -1,5 +1,5 @@
 ---
-title: "収益比率"
+title: "収益関連比率"
 description: earningRatios()
 ---
 
@@ -13,13 +13,13 @@ description: earningRatios()
   ### 利用可能な操作
 </div>
 
-* [get](#get) - 収益比率 V2.1を取得
+* [get](#get) - 収益関連比率 V2.1 を取得
 
 <div id="get">
   ## get
 </div>
 
-シンボル、ISIN、またはCIKの一覧に対する収益比率を取得します
+シンボル、ISIN、または CIK のリストに対する収益関連比率を取得します
 
 <div id="example-usage">
   ### 使用例
@@ -62,7 +62,7 @@ public class Application {
 | ------------ | ------------------------ | -------------------------- | -------------- |
 | `symbols`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | シンボルのカンマ区切りリスト |
 | `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 基準日            |
-| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 対象期間           |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 期間             |
 | `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | レポート種別         |
 
 <div id="response">
@@ -75,6 +75,6 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                      | ステータスコード | コンテンツタイプ |
+| エラータイプ                     | ステータスコード | コンテンツタイプ |
 | -------------------------- | -------- | -------- |
 | models/errors/APIException | 4XX, 5XX | */*      |

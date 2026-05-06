@@ -3,13 +3,13 @@ title: 'はじめに'
 description: 'Benzinga API の概要を簡単に紹介します。'
 ---
 
-Benzinga API ドキュメントへようこそ。このガイドでは、HTTP リクエストを通じて Benzinga のリソースを作成、取得、更新、削除するための、Benzinga API との基本的なやり取りについて説明します。
+Benzinga API ドキュメントへようこそ。このガイドでは、HTTP リクエストを通じて Benzinga API を使用し、Benzinga のリソースを作成、取得、更新、削除する方法を説明します。
 
 <div id="base-url">
   ## ベースURL
 </div>
 
-ドキュメント内で参照されるすべてのURLのベースは、次のとおりです。
+ドキュメント内で参照されるすべてのURLは、以下のベースURLを使用します。
 
 ```
 https://api.benzinga.com
@@ -20,22 +20,22 @@ https://api.benzinga.com
 </div>
 
 Benzinga API ではベアラー認証を使用します。リクエストを送信する際は、`token`
-クエリパラメータに `token: <token>` 形式で API token を含める必要があります。詳しくは、[認証](./authentication) ページを参照してください。
+クエリパラメータに `token: <token>` の形式で API トークンを指定する必要があります。詳細については、[認証](./authentication) ページを参照してください。
 
 <div id="errors">
   ## エラー
 </div>
 
-エラーが発生した場合、Benzinga API は標準的な HTTP レスポンスコードと、エラーの詳細情報を含む JSON オブジェクトを返します。詳しくは、[エラー](./errors) ページを参照してください。
+エラーが発生した場合、Benzinga API は一般的な HTTP レスポンスコードと、エラーの詳細を含む JSON オブジェクトを返します。詳細については、[エラー](./errors) ページを参照してください。
 
 <div id="rate-limiting">
   ## レート制限
 </div>
 
 不正利用の防止とサービスの安定性確保のため、Benzinga API にはレート制限が設けられています。これらの制限を超えると、
-リクエストは制限され、`429 Too Many Requests` レスポンスが返されます。
+リクエストはスロットリングされ、`429 Too Many Requests` レスポンスが返されます。
 
 ***
 
-このガイドが、Benzinga API の利用開始にお役立ていただければ幸いです。ご不明な点がありましたら、お気軽に
+このガイドが Benzinga API の利用開始に役立てば幸いです。ご不明な点がございましたら、お気軽に
 サポートチームまでお問い合わせください。

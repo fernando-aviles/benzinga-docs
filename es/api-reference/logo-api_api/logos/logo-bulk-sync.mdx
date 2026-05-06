@@ -1,10 +1,10 @@
 ---
-title: "Sincronizar logotipos de forma masiva"
+title: "Sincronizar logotipos en bloque"
 openapi: /es/openapi/logo-api_api.spec.yml GET /logos/sync
 ---
 
 <ResponseExample>
-  ```json Respuesta (200 OK)
+  ```json Response (200 OK)
   {
     "ok": true,
     "data": [
@@ -62,7 +62,7 @@ openapi: /es/openapi/logo-api_api.spec.yml GET /logos/sync
   }
   ```
 
-  ```json Respuesta (400 Solicitud incorrecta)
+  ```json Response (400 Bad Request)
   {
     "ok": false,
     "errors": [
@@ -75,7 +75,7 @@ openapi: /es/openapi/logo-api_api.spec.yml GET /logos/sync
   }
   ```
 
-  ```json Respuesta (401 No autorizado)
+  ```json Response (401 Unauthorized)
   {
     "ok": false,
     "errors": [
@@ -88,7 +88,7 @@ openapi: /es/openapi/logo-api_api.spec.yml GET /logos/sync
   }
   ```
 
-  ```json Respuesta (404 No encontrado)
+  ```json Response (404 Not Found)
   {
     "ok": false,
     "errors": [
@@ -101,7 +101,7 @@ openapi: /es/openapi/logo-api_api.spec.yml GET /logos/sync
   }
   ```
 
-  ```json Respuesta (500 Error interno del servidor)
+  ```json Response (500 Internal Server Error)
   {
     "ok": false,
     "errors": [

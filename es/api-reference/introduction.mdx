@@ -3,14 +3,14 @@ title: 'Introducción'
 description: 'Una breve introducción a la API de Benzinga.'
 ---
 
-Le damos la bienvenida a la documentación de la API de Benzinga. Esta guía le ayudará a comprender cómo interactuar con la API de Benzinga para crear,
-consultar, actualizar y eliminar recursos de Benzinga mediante solicitudes HTTP.
+Bienvenido a la documentación de la API de Benzinga. Esta guía te ayudará a entender cómo interactuar con la API de Benzinga para crear,
+obtener, actualizar y eliminar recursos de Benzinga mediante solicitudes HTTP.
 
 <div id="base-url">
   ## URL base
 </div>
 
-Todas las URL a las que se hace referencia en la documentación tienen la siguiente base:
+Todas las URL mencionadas en la documentación tienen la siguiente base:
 
 ```
 https://api.benzinga.com
@@ -20,24 +20,24 @@ https://api.benzinga.com
   ## Autenticación
 </div>
 
-La API de Benzinga utiliza autenticación de portador. Al realizar solicitudes, debe incluir su token de API en el parámetro de consulta `token`
-con el formato `token: <token>`. Para obtener más información, consulte la página de [Autenticación](./authentication).
+La API de Benzinga usa autenticación de tipo bearer. Al realizar solicitudes, debes incluir tu token de API en el parámetro de consulta `token`
+con el formato `token: <token>`. Para obtener más detalles, consulta la página de [Autenticación](./authentication).
 
 <div id="errors">
   ## Errores
 </div>
 
-Cuando se produce un error, la API de Benzinga responde con un código de estado HTTP estándar y un objeto JSON que contiene más
+Cuando se produce un error, la API de Benzinga responde con un código de estado HTTP convencional y un objeto JSON que contiene más
 detalles sobre el error. Para obtener más información, consulta la página de [Errores](./errors).
 
 <div id="rate-limiting">
-  ## Límites de tasa
+  ## Limitación de velocidad
 </div>
 
-Tenga en cuenta que la API de Benzinga tiene límites de tasa para evitar abusos y garantizar la estabilidad del servicio. Si supera estos límites,
-sus solicitudes se restringirán y recibirá una respuesta `429 Too Many Requests`.
+Ten en cuenta que la API de Benzinga tiene límites de velocidad para evitar abusos y garantizar la estabilidad del servicio. Si superas estos límites,
+tus solicitudes se restringirán y recibirás una respuesta `429 Too Many Requests`.
 
 ***
 
-Esperamos que esta guía le ayude a empezar a usar la API de Benzinga. Si tiene alguna pregunta, no dude en ponerse en contacto
+Esperamos que esta guía te ayude a empezar a usar la API de Benzinga. Si tienes alguna pregunta, no dudes en ponerte en contacto
 con nuestro equipo de soporte.

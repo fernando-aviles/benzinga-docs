@@ -1,6 +1,6 @@
 ---
 title: "Flujo de transcripciones de conferencias telefónicas"
-description: "Este endpoint de WebSocket permite suscribirse a transcripciones en tiempo real de conferencias telefónicas."
+description: "Este punto final de WebSocket le permite suscribirse a transcripciones en tiempo real de conferencias telefónicas."
 ---
 
 <div id="websocket-websocketv1">
@@ -17,14 +17,14 @@ wss://api.benzinga.com/api/v1/earnings-call-transcripts/stream
 
 | Nombre    | Ubicación |  Tipo  | Obligatorio |                                                        Descripción |
 | :-------- | :-------: | :----: | ----------: | -----------------------------------------------------------------: |
-| `token`   |   query   | string |          Sí |                 token de WebSocket de Benzinga (bz.production***). |
-| `tickers` |   query   | string |    Opcional | Lista de tickers a los que desea suscribirse, separados por comas. |
+| `token`   |   query   | string |          Sí |                 Token de WebSocket de Benzinga (bz.production***). |
+| `tickers` |   query   | string |    Opcional | Lista de tíkeres a los que desea suscribirse. Separados por comas. |
 
 <div id="stream-response">
   ### Respuesta del flujo:
 </div>
 
-Al suscribirse al flujo, recibirá actualizaciones sobre las transcripciones de conferencias telefónicas en el siguiente formato:
+Al suscribirte al flujo, recibirás actualizaciones sobre las transcripciones de conferencias telefónicas en el siguiente formato:
 
 ```json
 {
@@ -54,7 +54,7 @@ Al suscribirse al flujo, recibirá actualizaciones sobre las transcripciones de 
 </div>
 
 * **200 OK**
-* **Descripción**: Éxito
+* **Descripción**: Correcto
 * **Tipo de contenido**: `application/json`
 * **Esquema**: [EarningsCallTranscriptsWSResp](#earningscalltranscriptswsresp)
 
@@ -62,30 +62,30 @@ Al suscribirse al flujo, recibirá actualizaciones sobre las transcripciones de 
   ### EarningsCallTranscriptsWSResp
 </div>
 
-| Property        | Type   | Description                                                        |
-| --------------- | ------ | ------------------------------------------------------------------ |
-| api&#95;version | string | Versión de la API de WebSocket: `EarningsCallTranscripts/v1`.      |
-| kind            | string | Tipo de flujo de la conexión WebSocket.                            |
-| data            | object | Contiene detalles de los datos de WebSocket.                       |
-| - type          | string | Tipo de mensaje (p. ej., `transcript_chunk`, `transcription_end`). |
-| - content       | object | Referencia al esquema `EarningsCallTranscripts`.                   |
+| Propiedad       | Tipo   | Descripción                                                            |
+| --------------- | ------ | ---------------------------------------------------------------------- |
+| api&#95;version | string | Versión de la API de WebSocket: `EarningsCallTranscripts/v1`.          |
+| kind            | string | Tipo de flujo de la conexión WebSocket.                                |
+| data            | object | Contiene detalles sobre los datos de WebSocket.                        |
+| - type          | string | Tipo de mensaje (p. ej., transcript&#95;chunk, transcription&#95;end). |
+| - content       | object | Referencia al esquema `EarningsCallTranscripts`.                       |
 
 <div id="earningscalltranscripts">
   ### EarningsCallTranscripts
 </div>
 
-| Property             | Type    | Description                                                                              |
-| -------------------- | ------- | ---------------------------------------------------------------------------------------- |
-| call&#95;id          | string  | ID único de la llamada.                                                                  |
-| transcript&#95;chunk | string  | Fragmento transcrito de la conferencia telefónica.                                       |
-| security             | object  | Contiene los detalles del valor para el que se proporciona la información.               |
-| - cik                | string  | Central Index Key del valor.                                                             |
-| - exchange           | string  | Bolsa donde cotiza el valor.                                                             |
-| - isin               | string  | Número Internacional de Identificación de Valores (ISIN).                                |
-| - name               | string  | Nombre del valor.                                                                        |
-| - symbol             | string  | Ticker del valor.                                                                        |
-| time                 | integer | Marca temporal en la que se crea un fragmento de la transcripción (con formato float64). |
-| index                | integer | Índice del fragmento de la transcripción (con formato int).                              |
+| Property             | Type    | Description                                                                               |
+| -------------------- | ------- | ----------------------------------------------------------------------------------------- |
+| call&#95;id          | string  | id único de la llamada.                                                                   |
+| transcript&#95;chunk | string  | Fragmento transcrito de la conferencia telefónica.                                        |
+| security             | object  | Contiene los detalles del valor al que corresponde la información.                        |
+| - cik                | string  | Central Index Key del valor.                                                              |
+| - exchange           | string  | Bolsa en la que cotiza el valor.                                                          |
+| - isin               | string  | Número Internacional de Identificación de Valores.                                        |
+| - name               | string  | Nombre del valor.                                                                         |
+| - symbol             | string  | Símbolo del tíker del valor.                                                              |
+| time                 | integer | Marca de tiempo en la que se crea un fragmento de la transcripción (con formato float64). |
+| index                | integer | Índice del fragmento de la transcripción (con formato int).                               |
 
 <div id="success-response">
   ## Respuesta exitosa
@@ -121,7 +121,7 @@ Al suscribirse al flujo, recibirá actualizaciones sobre las transcripciones de 
   </div>
 
   <div style={{ marginBottom: '4px' }}>
-    <span><strong>URL de la solicitud:</strong> </span>
+    <span><strong>URL de solicitud:</strong> </span>
 
     <p style={{ color: 'blue' }}>
       &quot;https://api.benzinga.com/api.benzinga.com/api/v1/earnings-call-transcripts/stream?token=bz&quot;
@@ -133,7 +133,7 @@ Al suscribirse al flujo, recibirá actualizaciones sobre las transcripciones de 
   </div>
 
   <div style={{ marginBottom: '4px' }}>
-    <span> <strong>Código de estado:</strong> </span><span style={{ color: 'blue' }}>&quot;101 Cambio de protocolos&quot;</span>
+    <span> <strong>Código de estado:</strong> </span><span style={{ color: 'blue' }}>&quot;101 Switching Protocols&quot;</span>
   </div>
 </div>
 
@@ -141,7 +141,7 @@ Al suscribirse al flujo, recibirá actualizaciones sobre las transcripciones de 
   ## Respuesta de error
 </div>
 
-* No autorizado `401` - El token no es válido; compruebe el token proporcionado.
+* No autorizado `401` - El token no es válido; verifique el token proporcionado.
 
 <div
   style={{
@@ -183,7 +183,7 @@ Al suscribirse al flujo, recibirá actualizaciones sobre las transcripciones de 
   </div>
 </div>
 
-* Bad Gateway `502` - La ruta no es válida o hay un error del servidor.
+* Bad Gateway `502` - Ruta no válida o error del servidor.
 
 <div
   style={{

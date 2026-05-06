@@ -13,7 +13,7 @@ description: economics()
   ### 利用可能な操作
 </div>
 
-* [get](#get) - 経済指標を取得
+* [get](#get) - 経済データを取得
 
 <div id="get">
   ## get
@@ -59,7 +59,7 @@ public class Application {
   ### パラメータ
 </div>
 
-| パラメータ     | Type                                                                  | Required                   | Description              |
+| パラメータ     | 型                                                                     | 必須                         | 説明                       |
 | --------- | --------------------------------------------------------------------- | -------------------------- | ------------------------ |
 | `request` | [GetEconomicsRequest](../../models/operations/GetEconomicsRequest.md) | :heavy&#95;check&#95;mark: | リクエストに使用するリクエストオブジェクトです。 |
 
@@ -73,6 +73,6 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                      | ステータスコード | コンテンツタイプ |
+| エラータイプ                     | ステータスコード | コンテンツタイプ |
 | -------------------------- | -------- | -------- |
 | models/errors/APIException | 4XX, 5XX | */*      |

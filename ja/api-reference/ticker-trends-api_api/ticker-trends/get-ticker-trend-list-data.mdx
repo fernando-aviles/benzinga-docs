@@ -1,10 +1,10 @@
 ---
-title: "ティッカートレンドの一覧データ"
+title: "ティッカーのトレンド一覧データ"
 openapi: /ja/openapi/ticker-trends-api_api.spec.yml GET /api/v1/trending-tickers/list
 ---
 
 <ResponseExample>
-  ```json レスポンス (200 OK)
+  ```json Response (200 OK)
   {
     "ok": true,
     "data": [
@@ -23,14 +23,14 @@ openapi: /ja/openapi/ticker-trends-api_api.spec.yml GET /api/v1/trending-tickers
 </ResponseExample>
 
 <ResponseExample>
-  ```json レスポンス（400 不正なリクエスト）
+  ```json Response (400 Bad Request)
   {
       "ok": false,
       "errors": [
           {
               "id": "hbiGJjhsSpnfhM8aBePyTB",
               "code": "400",
-              "value": "不正なリクエスト"
+              "value": "Bad Request"
           }
       ]
   }
@@ -38,14 +38,14 @@ openapi: /ja/openapi/ticker-trends-api_api.spec.yml GET /api/v1/trending-tickers
 </ResponseExample>
 
 <ResponseExample>
-  ```json レスポンス（500 内部サーバーエラー）
+  ```json Response (500 Internal Server Error)
   {
       "ok": false,
       "errors": [
           {
               "id": "hbiGJjhsSpnfhM8aBePyTB",
               "code": "500",
-              "value": "問題が発生しました"
+              "value": "Something went wrong"
           }
       ]
   }

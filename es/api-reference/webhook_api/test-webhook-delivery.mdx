@@ -7,41 +7,41 @@ openapi: /es/openapi/webhook_api.spec.yml GET /api/v1/webhook/test
   ## Descripción general
 </div>
 
-Use este endpoint para desencadenar una entrega de prueba de webhook a su endpoint configurado. Esto le permite verificar que su integración de webhook funcione correctamente antes de recibir datos reales de producción.
+Use este punto final para activar una entrega de prueba del webhook a su punto final configurado. Esto le permite verificar que su integración de webhook funcione correctamente antes de recibir datos de producción en tiempo real.
 
 <div id="testing-your-integration">
   ## Prueba de la integración
 </div>
 
-Cuando llame a este endpoint, Benzinga enviará un payload de prueba del webhook a la URL `destination` configurada. Esta entrega de prueba sigue el mismo formato y la misma lógica de reintento que las entregas de webhooks en producción.
+Cuando hagas una llamada a este punto final, Benzinga enviará una carga útil de webhook de prueba a la URL `destination` que hayas configurado. Esta entrega de prueba sigue el mismo formato y la misma lógica de reintentos que las entregas de webhooks en producción.
 
 <div id="what-to-expect">
-  ### Qué puedes esperar
+  ### Qué esperar
 </div>
 
-1. **Respuesta inmediata**: La API devuelve un código de estado `200` si la entrega de prueba se activó correctamente.
-2. **Payload de prueba**: Tu endpoint de webhook recibe un payload de prueba con el mismo formato que los datos de producción.
-3. **Encabezados de entrega**: La entrega de prueba incluye el encabezado `X-BZ-Delivery`, igual que las entregas de producción.
+1. **Respuesta inmediata**: La API devuelve un código de estado `200` si la entrega de prueba se activó correctamente
+2. **Carga útil de prueba**: El punto final del webhook recibe una carga útil de prueba con el mismo formato que los datos de producción
+3. **Encabezados de entrega**: La entrega de prueba incluye el encabezado `X-BZ-Delivery`, igual que las entregas de producción
 
 <div id="verify-your-integration">
   ### Verifique su integración
 </div>
 
-Use este endpoint para confirmar:
+Use este punto final para comprobar:
 
-* Que su endpoint de webhook sea accesible públicamente
-* Que su endpoint pueda procesar correctamente el formato del payload del webhook
-* Que su endpoint responda con los códigos de estado adecuados (2xx para indicar éxito)
-* Que su endpoint responda dentro del tiempo de espera de 30 segundos
-* Que su lógica de idempotencia gestione correctamente el encabezado `X-BZ-Delivery` y el campo `id` del payload
+* Su punto final de webhook es accesible públicamente
+* Su punto final puede procesar correctamente el formato de carga útil del webhook
+* Su punto final responde con los códigos de estado adecuados (2xx en caso de éxito)
+* Su punto final responde dentro del tiempo de espera de 30 segundos
+* Su lógica de idempotencia gestiona correctamente el encabezado `X-BZ-Delivery` y el campo `id` de la carga útil
 
 <div id="best-practices">
   ## Mejores prácticas
 </div>
 
-* Pruebe primero con endpoints de webhook que no sean de producción
-* Verifique que su endpoint responda con los códigos de estado `200` o `204`
-* Confirme que sus sistemas de registro y monitoreo capturen la entrega de prueba
+* Pruebe primero con puntos finales de webhook que no sean de producción
+* Verifique que su punto final responda con los códigos de estado `200` o `204`
+* Confirme que sus registros y su monitoreo capturen la entrega de prueba
 * Compruebe que su lógica de deduplicación funcione con el ID de la entrega de prueba
 * Pruebe escenarios de error devolviendo temporalmente códigos de estado de error
 
@@ -53,12 +53,12 @@ Use este endpoint para confirmar:
   ### 424 Error de entrega
 </div>
 
-Si recibe un código de estado `424`, el sistema no pudo entregar la payload de prueba al endpoint de destino. Causas comunes:
+Si recibes un código de estado `424`, el sistema no pudo entregar la carga útil de prueba a tu punto final de destino. Causas comunes:
 
 * La URL de destino no es accesible públicamente
-* El endpoint de destino devuelve códigos de estado de error
+* El punto final de destino devuelve códigos de estado de error
 * Problemas de conectividad de red
-* Errores del certificado SSL/TLS en el endpoint de destino
+* Errores en el certificado SSL/TLS del punto final de destino
 
 <div id="400-invalid-request">
   ### 400 Solicitud no válida
@@ -71,58 +71,58 @@ Verifica que se proporcionen todos los parámetros obligatorios y que tengan el 
 * `kind` debe ser `News/v1`
 
 <ResponseExample>
-  ```json Respuesta (200 OK)
+  ```json Response (200 OK)
   {
     "status": "success"
   }
   ```
 
-  ```json Respuesta (400 Solicitud incorrecta)
+  ```json Response (400 Bad Request)
   {
-    "error": "URL de destino no válida"
+    "error": "Invalid destination URL"
   }
   ```
 
-  ```json Respuesta (424 Dependencia fallida)
+  ```json Response (424 Failed Dependency)
   {
-    "error": "No se pudo entregar la payload de prueba al destino"
+    "error": "Failed to deliver test payload to destination"
   }
   ```
 
-  ```json Respuesta (401 No autorizado)
+  ```json Response (401 Unauthorized)
   {
     "ok": false,
     "errors": [
       {
         "code": "auth_failed",
         "id": "unauthorized",
-        "value": "Token de autenticación no válido o ausente"
+        "value": "Invalid or missing authentication token"
       }
     ]
   }
   ```
 
-  ```json Respuesta (404 No encontrado)
+  ```json Response (404 Not Found)
   {
     "ok": false,
     "errors": [
       {
         "code": "no_data_found",
         "id": "not_found",
-        "value": "No se encontraron datos para los parámetros especificados"
+        "value": "No data found for the specified parameters"
       }
     ]
   }
   ```
 
-  ```json Respuesta (500 Error interno del servidor)
+  ```json Response (500 Internal Server Error)
   {
     "ok": false,
     "errors": [
       {
         "code": "internal_server_error",
         "id": "server_error",
-        "value": "Se produjo un error inesperado al procesar su solicitud"
+        "value": "An unexpected error occurred while processing your request"
       }
     ]
   }

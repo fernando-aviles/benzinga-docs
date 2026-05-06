@@ -8,13 +8,13 @@ icon: "python"
   ## Descripción general
 </div>
 
-El SDK de Python de Benzinga proporciona acceso completo a las API de datos financieros y de Noticias de Benzinga para el análisis cuantitativo y la inteligencia de mercado. El SDK ofrece dos módulos principales, uno para datos financieros y otro para datos de Noticias, lo que permite a los desarrolladores crear aplicaciones financieras sofisticadas.
+El SDK de Python de Benzinga proporciona acceso completo a las API de datos financieros y noticias de Benzinga para el análisis cuantitativo y la inteligencia de mercado. El SDK ofrece dos módulos principales, uno para datos financieros y otro para noticias, lo que permite a los desarrolladores crear aplicaciones financieras avanzadas.
 
 <div id="installation">
   ## Instalación
 </div>
 
-Instale el SDK con pip mediante SSH:
+Instala el SDK con pip usando SSH:
 
 ```bash
 pip install git+ssh://git@github.com/Benzinga/benzinga-python-client.git
@@ -32,13 +32,13 @@ Todas las clases del SDK requieren una clave de API para autenticarse. Para obte
 
 El SDK consta de dos módulos principales:
 
-* **Financial Data** - Análisis financiero cuantitativo y datos de mercado
+* **Financial Data** - Análisis cuantitativo financiero y datos de mercado
 * **News Data** - Noticias financieras, titulares y sentimiento del mercado
 
 ***
 
 <div id="financial-data-module">
-  ## Módulo de Financial Data
+  ## Módulo de datos financieros
 </div>
 
 <div id="initialization">
@@ -59,7 +59,7 @@ fin = financial_data.Benzinga(api_key='YOUR_API_KEY')
   #### Historial de precios
 </div>
 
-Obtenga velas diarias históricas para un intervalo de fechas específico.
+Obtén velas diarias históricas para un intervalo de fechas especificado.
 
 ```python
 data = fin.price_history(
@@ -71,7 +71,7 @@ data = fin.price_history(
 
 **Parámetros:**
 
-* `company_ticker` (obligatorio) - Ticker de la acción
+* `company_ticker` (obligatorio) - Tíker bursátil
 * `start_date` (obligatorio) - Fecha de inicio en formato YYYY-MM-DD
 * `end_date` (obligatorio) - Fecha de fin en formato YYYY-MM-DD
 
@@ -79,13 +79,13 @@ data = fin.price_history(
   #### Cotización
 </div>
 
-Obtenga datos de cotización en tiempo real, incluidos OHLC, bid/ask, volumen y variación porcentual.
+Obtén datos de cotización en tiempo real, incluidos OHLC, bid/ask, volumen y porcentaje de variación.
 
 ```python
 quote = fin.quote(company_ticker='AAPL')
 ```
 
-**Devuelve:** symbol, exchange, tipo, nombre, apertura, máximo, mínimo, cierre, precio de compra, precio de venta, volumen, porcentaje de variación
+**Devuelve:** símbolo, bolsa, type, nombre, apertura, máximo, mínimo, cierre, precio de compra, precio de venta, volumen, porcentaje de variación
 
 <div id="chart">
   #### Gráfico
@@ -102,13 +102,13 @@ chart = fin.chart(
 )
 ```
 
-**Intervalos disponibles:** `1MONTH`, `1W`, `1D`, `1H`, `15M`
+**Opciones de intervalo:** `1MONTH`, `1W`, `1D`, `1H`, `15M`
 
 <div id="auto-complete">
-  #### Autocompletado
+  #### Autocompletar
 </div>
 
-Busque tickers de empresas con métodos de búsqueda flexibles.
+Busca tíkers de empresas con métodos de búsqueda flexibles.
 
 ```python
 results = fin.auto_complete(
@@ -125,7 +125,7 @@ results = fin.auto_complete(
   #### Fundamentales
 </div>
 
-Obtenga datos fundamentales completos de una empresa.
+Obtén datos fundamentales completos de una empresa.
 
 ```python
 fundamentals = fin.fundamentals(
@@ -140,7 +140,7 @@ fundamentals = fin.fundamentals(
   #### Estados financieros
 </div>
 
-Consulte estados financieros detallados.
+Acceda a estados financieros detallados.
 
 ```python
 financials = fin.financials(
@@ -167,10 +167,10 @@ valuation = fin.valuation_ratios(
 ```
 
 <div id="earning-ratios">
-  #### Ratios de rentabilidad
+  #### Ratios de resultados
 </div>
 
-Obtenga ratios y métricas relacionados con la rentabilidad.
+Obtenga ratios y métricas relacionados con los resultados.
 
 ```python
 earning_ratios = fin.earning_ratios(
@@ -185,7 +185,7 @@ earning_ratios = fin.earning_ratios(
   #### Ratios operativos
 </div>
 
-Obtiene ratios de eficiencia operativa.
+Obtén los ratios de eficiencia operativa.
 
 ```python
 operation_ratios = fin.operation_ratios(
@@ -197,10 +197,10 @@ operation_ratios = fin.operation_ratios(
 ```
 
 <div id="corporate-events-calendar-data">
-  ### Eventos corporativos y datos de calendario
+  ### Eventos corporativos y datos del calendario
 </div>
 
-Todos los métodos de calendario admiten paginación y filtrado:
+Todos los métodos del calendario admiten paginación y filtrado:
 
 ```python
 # Dividendos
@@ -233,7 +233,7 @@ earnings = fin.earnings(
     importance=None
 )
 
-# Splits de acciones
+# Desdoblamientos
 splits = fin.splits(
     page=0,
     pagesize=100,
@@ -252,7 +252,7 @@ economics = fin.economics(
     importance=None
 )
 
-# Proyecciones
+# Perspectivas
 guidance = fin.guidance(
     page=0,
     pagesize=100,
@@ -301,7 +301,7 @@ conference_calls = fin.conference_calls(
   #### Perfil de la empresa
 </div>
 
-Obtenga información detallada sobre el perfil de la empresa.
+Obtén información detallada sobre el perfil de la empresa.
 
 ```python
 profile = fin.company_profile(company_ticker='AAPL')
@@ -311,17 +311,17 @@ profile = fin.company_profile(company_ticker='AAPL')
   #### Empresa
 </div>
 
-Obtiene información básica de la empresa.
+Obtén información básica sobre la empresa.
 
 ```python
 company = fin.company(company_ticker='AAPL')
 ```
 
 <div id="share-class">
-  #### Clase de acciones
+  #### Clase de acción
 </div>
 
-Obtenga detalles de la clase de acciones.
+Obtén los detalles de la clase de acción.
 
 ```python
 share_class = fin.share_class(company_ticker='AAPL')
@@ -331,17 +331,17 @@ share_class = fin.share_class(company_ticker='AAPL')
   #### Informes de resultados
 </div>
 
-Obtenga informes históricos de resultados.
+Obtén informes históricos de resultados.
 
 ```python
 earning_reports = fin.earning_reports(company_ticker='AAPL')
 ```
 
 <div id="logos">
-  #### Logos
+  #### Logotipos
 </div>
 
-Obtenga logos de empresas con filtros opcionales.
+Obtén logotipos de empresas con filtros opcionales.
 
 ```python
 logos = fin.logos(
@@ -351,14 +351,14 @@ logos = fin.logos(
 ```
 
 <div id="screening-analysis">
-  ### Filtrado y análisis
+  ### Selección y análisis
 </div>
 
 <div id="instruments">
   #### Instrumentos
 </div>
 
-Filtre valores por sector y capitalización de mercado.
+Filtre valores usando filtros de sector y capitalización bursátil.
 
 ```python
 instruments = fin.instruments(
@@ -371,17 +371,17 @@ instruments = fin.instruments(
   #### Valor
 </div>
 
-Obtenga los detalles del valor, incluidos symbol, exchange, moneda y CUSIP.
+Obtén los datos del valor, incluidos el símbolo, la bolsa, la moneda y el CUSIP.
 
 ```python
 security = fin.security(company_ticker='AAPL')
 ```
 
 <div id="movers">
-  #### Mayores subidas y bajadas
+  #### Mayores alzas y bajas
 </div>
 
-Obtenga los valores con mayores subidas y bajadas.
+Obtén los valores con mayores alzas y bajas.
 
 ```python
 movers = fin.movers(
@@ -391,10 +391,10 @@ movers = fin.movers(
 ```
 
 <div id="ticker-detail">
-  #### Detalle del ticker
+  #### Detalle del tíker
 </div>
 
-Obtenga estadísticas clave, información de empresas comparables y datos de percentiles.
+Obtén estadísticas clave, información de empresas comparables y datos de percentiles.
 
 ```python
 detail = fin.ticker_detail(company_ticker='AAPL')
@@ -408,7 +408,7 @@ detail = fin.ticker_detail(company_ticker='AAPL')
   #### Actividad de opciones
 </div>
 
-Obtiene la actividad de negociación de opciones.
+Recupera la actividad de negociación de opciones.
 
 ```python
 options = fin.options_activity(
@@ -423,7 +423,7 @@ options = fin.options_activity(
 ***
 
 <div id="news-data-module">
-  ## Módulo News Data
+  ## Módulo de datos de noticias
 </div>
 
 <div id="initialization">
@@ -444,7 +444,7 @@ news = news_data.News(api_key='YOUR_API_KEY')
   #### Noticias
 </div>
 
-Obtenga artículos de noticias con opciones flexibles de filtrado y visualización.
+Obtén artículos de noticias con opciones de filtrado y visualización flexibles.
 
 ```python
 articles = news.news(
@@ -466,7 +466,7 @@ articles = news.news(
   #### Noticias destacadas
 </div>
 
-Obtenga artículos de noticias en tendencia.
+Obtén artículos de noticias de actualidad.
 
 ```python
 top = news.top_news(
@@ -480,7 +480,7 @@ top = news.top_news(
   #### Canales
 </div>
 
-Obtenga la lista de canales de noticias disponibles.
+Obtén la lista de canales de noticias disponibles.
 
 ```python
 channels = news.channels()
@@ -492,7 +492,7 @@ channels = news.channels()
   #### Noticias cuantitativas
 </div>
 
-Obtenga noticias con métricas cuantitativas.
+Obtén datos de noticias con métricas cuantitativas.
 
 ```python
 quantified = news.quantified_news(
@@ -503,7 +503,7 @@ quantified = news.quantified_news(
 )
 ```
 
-**Devuelve:** Titulares, volumen, gap de apertura, métricas de rango y otros datos cuantitativos
+**Devuelve:** titulares, volumen, gap de apertura, métricas de rango y otros datos cuantitativos
 
 ***
 
@@ -511,7 +511,7 @@ quantified = news.quantified_news(
   ## Formato de salida
 </div>
 
-Ambos módulos admiten el método `.output()` para mejorar la visualización del JSON:
+Ambos módulos admiten el método `.output()` para una mejor visualización del JSON:
 
 ```python
 # Salida de datos financieros
@@ -558,10 +558,10 @@ news.output(articles)
 
 * **Repositorio**: [github.com/Benzinga/benzinga-python-client](https://github.com/Benzinga/benzinga-python-client)
 * **Licencia**: MIT
-* **Clave de la API**: [cloud.benzinga.com](https://cloud.benzinga.com)
+* **Clave de API**: [cloud.benzinga.com](https://cloud.benzinga.com)
 
 <div id="support">
   ## Soporte
 </div>
 
-Para obtener soporte técnico y provisión de claves de API, comuníquese con Benzinga en [cloud.benzinga.com](https://cloud.benzinga.com).
+Para obtener soporte técnico y la provisión de claves API, comuníquese con Benzinga en [cloud.benzinga.com](https://cloud.benzinga.com).

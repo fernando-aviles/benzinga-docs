@@ -4,7 +4,7 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/economics
 ---
 
 <ResponseExample>
-  ```json レスポンス (200 OK)
+  ```json Response (200 OK)
   {
     "economics": [
       {
@@ -14,8 +14,8 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/economics
         "consensus_t": "",
         "country": "USA",
         "date": "2026-03-08",
-        "description": "Challenger Job Cuts (YoY) report tracks the percentage change in layoffs reported by employers during a given month compared to the same month of the previous year. This report is used by investors and analysts to gauge the strength of the labor market and make informed decisions about their investments. The data in this report can also impact the value of the US dollar, with higher than expected numbers being seen as negative and lower than expected numbers being seen as positive.",
-        "event_category": "Employment",
+        "description": "Challenger Job Cuts (YoY) レポートは、ある月に雇用主から報告された人員削減数が、前年同月と比べて何％増減したかを追跡するものです。このレポートは、投資家やアナリストが労働市場の強さを判断し、投資判断を行うために利用されます。また、このレポートのデータは米ドルの価値にも影響を与える可能性があり、予想を上回る数値はネガティブ、予想を下回る数値はポジティブと見なされます。",
+        "event_category": "雇用",
         "event_name": "Challenger Job Cuts (YoY)",
         "event_period": "",
         "id": "6745790147f2830001365a27",
@@ -31,33 +31,33 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/economics
   }
   ```
 
-  ```json レスポンス（401 認証されていません）
+  ```json Response (401 Unauthorized)
   {
     "ok": false,
     "errors": [
       {
         "code": "auth_failed",
         "id": "unauthorized",
-        "value": "無効な認証トークン、または認証トークンがありません"
+        "value": "認証tokenが無効であるか、指定されていません"
       }
     ]
   }
   ```
 
-  ```json レスポンス（404 見つかりません）
+  ```json Response (404 Not Found)
   {
     "ok": false,
     "errors": [
       {
         "code": "no_data_found",
         "id": "not_found",
-        "value": "指定したパラメータに一致するデータが見つかりません"
+        "value": "指定されたパラメータに一致するデータが見つかりません"
       }
     ]
   }
   ```
 
-  ```json レスポンス（500 内部サーバーエラー）
+  ```json Response (500 Internal Server Error)
   {
     "ok": false,
     "errors": [

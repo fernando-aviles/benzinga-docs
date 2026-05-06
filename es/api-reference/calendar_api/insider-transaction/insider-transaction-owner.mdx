@@ -1,10 +1,10 @@
 ---
-title: "Titular de transacción con información privilegiada"
+title: "Titular de transacción de insider"
 openapi: /openapi/calendar_api.spec.yml GET /sec/insider_transactions/owners
 ---
 
 <ResponseExample>
-  ```json Respuesta (200 OK)
+  ```json Response (200 OK)
   {
     "data": [
       {
@@ -15,7 +15,7 @@ openapi: /openapi/calendar_api.spec.yml GET /sec/insider_transactions/owners
   }
   ```
 
-  ```json Respuesta (401 No autorizado)
+  ```json Response (401 Unauthorized)
   {
     "ok": false,
     "errors": [
@@ -28,7 +28,7 @@ openapi: /openapi/calendar_api.spec.yml GET /sec/insider_transactions/owners
   }
   ```
 
-  ```json Respuesta (404 No encontrado)
+  ```json Response (404 Not Found)
   {
     "ok": false,
     "errors": [
@@ -41,7 +41,7 @@ openapi: /openapi/calendar_api.spec.yml GET /sec/insider_transactions/owners
   }
   ```
 
-  ```json Respuesta (500 Error interno del servidor)
+  ```json Response (500 Internal Server Error)
   {
     "ok": false,
     "errors": [

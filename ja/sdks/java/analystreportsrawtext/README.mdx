@@ -1,5 +1,5 @@
 ---
-title: "アナリストレポートのプレーンテキスト"
+title: "アナリストレポートの生テキスト"
 description: analystReportsRawText()
 ---
 
@@ -13,13 +13,13 @@ description: analystReportsRawText()
   ### 利用可能な操作
 </div>
 
-* [get](#get) - アナリストレポートのプレーンテキストデータを取得
+* [get](#get) - アナリストレポートの生テキストを取得
 
 <div id="get">
   ## get
 </div>
 
-アナリストレポートのプレーンテキストデータを取得
+アナリストレポートの生テキストデータを取得
 
 <div id="example-usage">
   ### 使用例
@@ -56,7 +56,7 @@ public class Application {
   ### パラメータ
 </div>
 
-| パラメータ      | 種別                     | 必須                         | 説明         |
+| パラメータ      | 型                      | 必須                         | 説明         |
 | ---------- | ---------------------- | -------------------------- | ---------- |
 | `page`     | *Optional&lt;Long&gt;* | :heavy&#95;minus&#95;sign: | ページ番号      |
 | `pagesize` | *Optional&lt;Long&gt;* | :heavy&#95;minus&#95;sign: | 1ページあたりの件数 |
@@ -71,6 +71,6 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                      | ステータスコード | コンテンツタイプ |
+| エラータイプ                     | ステータスコード | コンテンツタイプ |
 | -------------------------- | -------- | -------- |
 | models/errors/APIException | 4XX, 5XX | */*      |

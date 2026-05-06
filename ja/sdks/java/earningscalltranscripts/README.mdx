@@ -65,7 +65,7 @@ public class Application {
 | パラメータ      | 型                      | 必須                         | 説明     |
 | ---------- | ---------------------- | -------------------------- | ------ |
 | `tickers`  | List&lt;*String*&gt;   | :heavy&#95;minus&#95;sign: | ティッカー  |
-| `callId`   | List&lt;*String*&gt;   | :heavy&#95;minus&#95;sign: | コール ID |
+| `callId`   | List&lt;*String*&gt;   | :heavy&#95;minus&#95;sign: | コールID  |
 | `page`     | *Optional&lt;Long&gt;* | :heavy&#95;minus&#95;sign: | ページ    |
 | `pagesize` | *Optional&lt;Long&gt;* | :heavy&#95;minus&#95;sign: | ページサイズ |
 
@@ -79,7 +79,7 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                      | ステータスコード | コンテンツタイプ |
+| エラータイプ                     | ステータスコード | コンテンツタイプ |
 | -------------------------- | -------- | -------- |
 | models/errors/APIException | 4XX, 5XX | */*      |
 
@@ -87,7 +87,7 @@ public class Application {
   ## getAudio
 </div>
 
-決算説明会トランスクリプトの音声ファイルを取得する
+決算説明会トランスクリプトの音声ファイルを取得
 
 <div id="example-usage">
   ### 使用例
@@ -133,7 +133,7 @@ public class Application {
 | ---------- | ---------------------- | -------------------------- | ------ |
 | `tickers`  | List&lt;*String*&gt;   | :heavy&#95;minus&#95;sign: | ティッカー  |
 | `callId`   | List&lt;*String*&gt;   | :heavy&#95;minus&#95;sign: | コールID  |
-| `page`     | *Optional&lt;Long&gt;* | :heavy&#95;minus&#95;sign: | ページ番号  |
+| `page`     | *Optional&lt;Long&gt;* | :heavy&#95;minus&#95;sign: | ページ    |
 | `pagesize` | *Optional&lt;Long&gt;* | :heavy&#95;minus&#95;sign: | ページサイズ |
 
 <div id="response">
@@ -146,6 +146,6 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                      | ステータスコード | コンテンツタイプ |
+| エラータイプ                     | ステータスコード | コンテンツタイプ |
 | -------------------------- | -------- | -------- |
 | models/errors/APIException | 4XX, 5XX | */*      |

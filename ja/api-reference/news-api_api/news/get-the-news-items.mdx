@@ -1,17 +1,17 @@
 ---
-title: "ニュース (WIIMS)"
+title: "ニュース（WIIMS）"
 openapi: /ja/openapi/news-api_api.spec.yml GET /api/v2/news
 ---
 
 <ResponseExample>
-  ```json レスポンス (200 OK)
+  ```json Response (200 OK)
   [
     {
       "id": 36444586,
       "author": "Benzinga Insights",
       "created": "Mon, 01 Jan 2024 13:35:14 -0400",
       "updated": "Mon, 01 Jan 2024 13:35:15 -0400",
-      "title": "本日の取引でクジラアラートが発生した情報技術セクターの10銘柄",
+      "title": "10 Information Technology Stocks With Whale Alerts In Today's Session",
       "teaser": "",
       "body": "",
       "url": "https://www.benzinga.com/markets/options/24/01/36444586/10-information-technology-stocks-with-whale-alerts-in-todays-session",
@@ -31,7 +31,7 @@ openapi: /ja/openapi/news-api_api.spec.yml GET /api/v2/news
       ],
       "channels": [
         {
-          "name": "オプション"
+          "name": "Options"
         }
       ],
       "stocks": [
@@ -75,40 +75,40 @@ openapi: /ja/openapi/news-api_api.spec.yml GET /api/v2/news
   ]
   ```
 
-  ```json レスポンス（401 認証されていません）
+  ```json Response (401 Unauthorized)
   {
     "ok": false,
     "errors": [
       {
         "code": "auth_failed",
         "id": "unauthorized",
-        "value": "認証トークンが無効であるか、指定されていません"
+        "value": "Invalid or missing authentication token"
       }
     ]
   }
   ```
 
-  ```json レスポンス（404 見つかりません）
+  ```json Response (404 Not Found)
   {
     "ok": false,
     "errors": [
       {
         "code": "no_data_found",
         "id": "not_found",
-        "value": "指定されたパラメータに一致するデータが見つかりません"
+        "value": "No data found for the specified parameters"
       }
     ]
   }
   ```
 
-  ```json レスポンス（500 内部サーバーエラー）
+  ```json Response (500 Internal Server Error)
   {
     "ok": false,
     "errors": [
       {
         "code": "internal_server_error",
         "id": "server_error",
-        "value": "リクエストの処理中に予期しないエラーが発生しました"
+        "value": "An unexpected error occurred while processing your request"
       }
     ]
   }

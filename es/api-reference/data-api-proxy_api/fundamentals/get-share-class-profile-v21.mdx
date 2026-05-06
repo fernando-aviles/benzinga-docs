@@ -1,11 +1,11 @@
 ---
-title: "Perfil de la clase de acción"
+title: "Perfil de la clase de acciones"
 openapi: /es/openapi/data-api-proxy_api.spec.yml GET
   /api/v2.1/fundamentals/shareClassProfile
 ---
 
 <ResponseExample>
-  ```json Respuesta (200 OK)
+  ```json Response (200 OK)
   {
     "result": [
       {
@@ -38,7 +38,7 @@ openapi: /es/openapi/data-api-proxy_api.spec.yml GET
   }
   ```
 
-  ```json Respuesta (401 No autorizado)
+  ```json Response (401 Unauthorized)
   {
     "ok": false,
     "errors": [
@@ -51,7 +51,7 @@ openapi: /es/openapi/data-api-proxy_api.spec.yml GET
   }
   ```
 
-  ```json Respuesta (404 No encontrado)
+  ```json Response (404 Not Found)
   {
     "ok": false,
     "errors": [
@@ -64,7 +64,7 @@ openapi: /es/openapi/data-api-proxy_api.spec.yml GET
   }
   ```
 
-  ```json Respuesta (500 Error interno del servidor)
+  ```json Response (500 Internal Server Error)
   {
     "ok": false,
     "errors": [

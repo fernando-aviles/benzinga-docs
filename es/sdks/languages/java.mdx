@@ -8,7 +8,7 @@ icon: "java"
   # BZ-Java-Client
 </div>
 
-SDK de Java fácil de usar para desarrolladores y con tipado seguro, diseñado específicamente para aprovechar la API de *openapi*.
+SDK de Java intuitivo para desarrolladores y con tipado seguro, diseñado específicamente para aprovechar la API de *openapi*.
 
 <div style={{ textAlign: "left" }}>
   <a href="https://www.speakeasy.com/?utm_source=openapi&utm_campaign=java">
@@ -24,10 +24,10 @@ SDK de Java fácil de usar para desarrolladores y con tipado seguro, diseñado e
   ## Resumen
 </div>
 
-APIs de Benzinga: Esta API REST proporciona endpoints para acceder a todas las APIs de Benzinga.
+APIs de Benzinga: Esta API REST proporciona puntos finales para todas las APIs de Benzinga.
 
 <div id="table-of-contents">
-  ## Tabla de contenido
+  ## Tabla de contenidos
 </div>
 
 * [BZ-Java-Client](#bz-java-client)
@@ -36,8 +36,8 @@ APIs de Benzinga: Esta API REST proporciona endpoints para acceder a todas las A
 * [Autenticación](#authentication)
 * [Recursos y operaciones disponibles](#available-resources-and-operations)
 * [Reintentos](#retries)
-* [Manejo de errores](#error-handling)
-* [Selección del servidor](#server-selection)
+* [manejo de errores](#error-handling)
+* [Selección de servidor](#server-selection)
 * [Desarrollo](#development)
 * [Madurez](#maturity)
 * [Contribuciones](#contributions)
@@ -74,9 +74,9 @@ Maven:
   ### Cómo compilar
 </div>
 
-Después de clonar el repositorio de Git en tu sistema de archivos, puedes compilar el artefacto del SDK a partir del código fuente en el directorio `build` ejecutando `./gradlew build` en sistemas *nix o `gradlew.bat` en sistemas Windows.
+Después de clonar el repositorio de git en tu sistema de archivos, puedes compilar el artefacto del SDK a partir del código fuente en el directorio `build` ejecutando `./gradlew build` en sistemas *nix o `gradlew.bat` en sistemas Windows.
 
-Si deseas compilar desde el código fuente y publicar el artefacto del SDK en tu repositorio local de Maven (en tu sistema de archivos), utiliza el siguiente comando (después de clonar localmente el repositorio de Git):
+Si deseas compilar desde el código fuente y publicar el artefacto del SDK en tu repositorio local de Maven (en tu sistema de archivos), usa el siguiente comando (después de clonar localmente el repositorio de git):
 
 En *nix:
 
@@ -131,11 +131,11 @@ public class Application {
   ### Esquemas de seguridad por cliente
 </div>
 
-Este SDK admite el siguiente esquema de seguridad a nivel global:
+Este SDK admite globalmente el siguiente esquema de seguridad:
 
-| Nombre       | Tipo   | Esquema   |
-| ------------ | ------ | --------- |
-| `apiKeyAuth` | apiKey | clave API |
+| Nombre       | Tipo   | Esquema      |
+| ------------ | ------ | ------------ |
+| `apiKeyAuth` | apiKey | Clave de API |
 
 Para autenticarse con la API, se debe configurar el parámetro `apiKeyAuth` al inicializar la instancia del cliente del SDK. Por ejemplo:
 
@@ -160,7 +160,7 @@ public class Application {
                 .call();
 
         if (res.modelsAnalystReportRawTexts().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -174,25 +174,25 @@ public class Application {
   ### [analystInsights()](/es/sdks/java/analystinsights/README)
 </div>
 
-* [obtener](/es/sdks/java/analystinsights/README#get) - Obtener Analyst Insights V1
+* [get](/es/sdks/java/analystinsights/README#get) - Obtener Analyst Insights V1
 
 <div id="analystreportsrawtext">
   ### [analystReportsRawText()](/es/sdks/java/analystreportsrawtext/README)
 </div>
 
-* [get](/es/sdks/java/analystreportsrawtext/README#get) - Obtener datos de texto sin formato de informes de analistas
+* [get](/es/sdks/java/analystreportsrawtext/README#get) - Obtener el texto sin procesar de los informes de analistas
 
 <div id="bars">
   ### [bars()](/es/sdks/java/bars/README)
 </div>
 
-* [obtener](/es/sdks/java/bars/README#get) - Obtener barras V2
+* [get](/es/sdks/java/bars/README#get) - Obtener barras V2
 
 <div id="bullsbearssaybearssay">
   ### [bullsBearsSayBearsSay()](/es/sdks/java/bullsbearssaybearssay/README)
 </div>
 
-* [obtener](/es/sdks/java/bullsbearssaybearssay/README#get) - Obtener Bulls Say Bears Say V1
+* [get](/es/sdks/java/bullsbearssaybearssay/README#get) - Obtiene Bulls Say Bears Say V1
 
 <div id="conferencecalls">
   ### [conferenceCalls()](/es/sdks/java/conferencecalls/README)
@@ -210,7 +210,7 @@ public class Application {
   ### [derivedFiguresAndRatios()](/es/sdks/java/derivedfiguresandratios/README)
 </div>
 
-* [obtener](/es/sdks/java/derivedfiguresandratios/README#get) - Obtener cifras y ratios derivados V3
+* [get](/es/sdks/java/derivedfiguresandratios/README#get) - Obtener cifras y ratios derivados V3
 
 <div id="dividends">
   ### [dividends()](/es/sdks/java/dividends/README)
@@ -223,7 +223,7 @@ public class Application {
   ### [earningRatios()](/es/sdks/java/earningratios/README)
 </div>
 
-* [get](/es/sdks/java/earningratios/README#get) - Obtener ratios de rentabilidad V2.1
+* [get](/es/sdks/java/earningratios/README#get) - Obtener ratios de beneficios V2.1
 
 <div id="earnings">
   ### [earnings()](/es/sdks/java/earnings/README)
@@ -235,14 +235,14 @@ public class Application {
   ### [earningsCallTranscripts()](/es/sdks/java/earningscalltranscripts/README)
 </div>
 
-* [get](/es/sdks/java/earningscalltranscripts/README#get) - Obtener las transcripciones de llamadas de resultados
-* [getAudio](/es/sdks/java/earningscalltranscripts/README#getaudio) - Obtener los archivos de audio de las transcripciones de llamadas de resultados
+* [get](/es/sdks/java/earningscalltranscripts/README#get) - Obtener transcripciones de llamadas de resultados
+* [getAudio](/es/sdks/java/earningscalltranscripts/README#getaudio) - Obtener archivos de audio de las transcripciones de llamadas de resultados
 
 <div id="economics">
   ### [economics()](/es/sdks/java/economics/README)
 </div>
 
-* [get](/es/sdks/java/economics/README#get) - Obtener datos económicos
+* [get](/es/sdks/java/economics/README#get) - Consultar datos económicos
 
 <div id="events">
   ### [events()](/es/sdks/java/events/README)
@@ -254,64 +254,64 @@ public class Application {
   ### [fda()](/es/sdks/java/fda/README)
 </div>
 
-* [get](/es/sdks/java/fda/README#get) - Obtener datos de la FDA
+* [get](/es/sdks/java/fda/README#get) - Obtener FDA
 
 <div id="fundamentals">
   ### [fundamentals()](/es/sdks/java/fundamentals/README)
 </div>
 
-* [getV21](/es/sdks/java/fundamentals/README#getv21) - obtener Fundamentales V2.1
-* [getAlphaBeta](/es/sdks/java/fundamentals/README#getalphabeta) - obtener alfa beta V2.1
-* [getCompanyV21](/es/sdks/java/fundamentals/README#getcompanyv21) - obtener datos de la empresa V2.1
-* [getCompanyProfileV21](/es/sdks/java/fundamentals/README#getcompanyprofilev21) - obtener el perfil de la empresa V2.1
-* [getShareClass](/es/sdks/java/fundamentals/README#getshareclass) - obtener clase de acciones V2.1
-* [getShareClassProfile](/es/sdks/java/fundamentals/README#getshareclassprofile) - obtener el perfil de la clase de acciones V2.1
-* [get](/es/sdks/java/fundamentals/README#get) - obtener Fundamentales V2
-* [getAssetClassification](/es/sdks/java/fundamentals/README#getassetclassification) - obtener clasificación de activos V2.1
-* [getEarningsReports](/es/sdks/java/fundamentals/README#getearningsreports) - obtener informes de resultados V2.1
-* [getFinancialsV21](/es/sdks/java/fundamentals/README#getfinancialsv21) - obtener datos financieros V2.1
-* [getV3](/es/sdks/java/fundamentals/README#getv3) - obtener Fundamentales V3
-* [getBalanceSheetV3](/es/sdks/java/fundamentals/README#getbalancesheetv3) - obtener balance general V3
-* [getCashFlowV3](/es/sdks/java/fundamentals/README#getcashflowv3) - obtener flujo de caja V3
-* [getIncomeStatement](/es/sdks/java/fundamentals/README#getincomestatement) - obtener estado de resultados V3
-* [getSharePriceRatios](/es/sdks/java/fundamentals/README#getsharepriceratios) - obtener ratios del precio de la acción V3
+* [getV21](/es/sdks/java/fundamentals/README#getv21) - Obtener fundamentales V2.1
+* [getAlphaBeta](/es/sdks/java/fundamentals/README#getalphabeta) - Obtener Alpha Beta V2.1
+* [getCompanyV21](/es/sdks/java/fundamentals/README#getcompanyv21) - Obtener datos de la empresa v2.1
+* [getCompanyProfileV21](/es/sdks/java/fundamentals/README#getcompanyprofilev21) - Obtener perfil de la empresa v2.1
+* [getShareClass](/es/sdks/java/fundamentals/README#getshareclass) - Obtener clase de acciones V2.1
+* [getShareClassProfile](/es/sdks/java/fundamentals/README#getshareclassprofile) - Obtener perfil de la clase de acciones V2.1
+* [get](/es/sdks/java/fundamentals/README#get) - Obtener fundamentales V2
+* [getAssetClassification](/es/sdks/java/fundamentals/README#getassetclassification) - Obtener clasificación de activos V2.1
+* [getEarningsReports](/es/sdks/java/fundamentals/README#getearningsreports) - Obtener informes de resultados V2.1
+* [getFinancialsV21](/es/sdks/java/fundamentals/README#getfinancialsv21) - Obtener estados financieros V2.1
+* [getV3](/es/sdks/java/fundamentals/README#getv3) - Obtener fundamentales V3
+* [getBalanceSheetV3](/es/sdks/java/fundamentals/README#getbalancesheetv3) - Obtener balance general V3
+* [getCashFlowV3](/es/sdks/java/fundamentals/README#getcashflowv3) - Obtener flujo de caja V3
+* [getIncomeStatement](/es/sdks/java/fundamentals/README#getincomestatement) - Obtener estado de resultados V3
+* [getSharePriceRatios](/es/sdks/java/fundamentals/README#getsharepriceratios) - Obtener ratios del precio de la acción V3
 
 <div id="governmenttradereports">
   ### [governmentTradeReports()](/es/sdks/java/governmenttradereports/README)
 </div>
 
-* [obtener](/es/sdks/java/governmenttradereports/README#get) - Obtener informes de operaciones gubernamentales
+* [get](/es/sdks/java/governmenttradereports/README#get) - Obtener informes de transacciones gubernamentales
 
 <div id="governmenttrades">
   ### [governmentTrades()](/es/sdks/java/governmenttrades/README)
 </div>
 
-* [get](/es/sdks/java/governmenttrades/README#get) - obtener transacciones gubernamentales
+* [get](/es/sdks/java/governmenttrades/README#get) - Obtener transacciones gubernamentales
 
 <div id="guidance">
   ### [guidance()](/es/sdks/java/guidance/README)
 </div>
 
-* [obtener](/es/sdks/java/guidance/README#get) - Obtener previsiones
+* [get](/es/sdks/java/guidance/README#get) - Obtener previsiones
 
 <div id="insidertransaction">
   ### [insiderTransaction()](/es/sdks/java/insidertransaction/README)
 </div>
 
-* [get](/es/sdks/java/insidertransaction/README#get) - obtener operación de insider
+* [get](/es/sdks/java/insidertransaction/README#get) - Obtener una transacción con información privilegiada
 
 <div id="insidertransactions">
   ### [insiderTransactions()](/es/sdks/java/insidertransactions/README)
 </div>
 
-* [getOwner](/es/sdks/java/insidertransactions/README#getowner) - Obtener el titular de la transacción de insider
+* [getOwner](/es/sdks/java/insidertransactions/README#getowner) - Obtener el titular de la transacción con información privilegiada
 
 <div id="ipos">
   ### [ipos()](/es/sdks/java/ipos/README)
 </div>
 
-* [getV21](/es/sdks/java/ipos/README#getv21) - obtener IPOs V2.1
-* [get](/es/sdks/java/ipos/README#get) - obtener IPOs V2
+* [getV21](/es/sdks/java/ipos/README#getv21) - Obtener IPOs V2.1
+* [get](/es/sdks/java/ipos/README#get) - Obtener IPOs V2
 
 <div id="logos">
   ### [logos()](/es/sdks/java/logos/README)
@@ -324,38 +324,38 @@ public class Application {
   ### [ma()](/es/sdks/java/ma/README)
 </div>
 
-* [obtener](/es/sdks/java/ma/README#get) - Obtener fusiones y adquisiciones
+* [get](/es/sdks/java/ma/README#get) - Obtiene fusiones y adquisiciones
 
 <div id="news">
   ### [news()](/es/sdks/java/news/README)
 </div>
 
-* [get](/es/sdks/java/news/README#get) - obtener noticias
-* [getRemoved](/es/sdks/java/news/README#getremoved) - obtener noticias eliminadas
+* [get](/es/sdks/java/news/README#get) - Obtener noticias
+* [getRemoved](/es/sdks/java/news/README#getremoved) - Obtener noticias eliminadas
 
 <div id="newsquantified">
   ### [newsquantified()](/es/sdks/java/newsquantified/README)
 </div>
 
-* [get](/es/sdks/java/newsquantified/README#get) - obtener datos de Newsquantified
+* [get](/es/sdks/java/newsquantified/README#get) - Obtener datos de Newsquantified
 
 <div id="offerings">
   ### [offerings()](/es/sdks/java/offerings/README)
 </div>
 
-* [get](/es/sdks/java/offerings/README#get) - obtener ofertas
+* [get](/es/sdks/java/offerings/README#get) - Obtener ofertas
 
 <div id="operationratios">
   ### [operationRatios()](/es/sdks/java/operationratios/README)
 </div>
 
-* [obtener](/es/sdks/java/operationratios/README#get) - Obtener los ratios operativos V2.1
+* [get](/es/sdks/java/operationratios/README#get) - Obtener ratios operativos V2.1
 
 <div id="optionactivity">
   ### [optionActivity()](/es/sdks/java/optionactivity/README)
 </div>
 
-* [get](/es/sdks/java/optionactivity/README#get) - obtener OptionActivity V1
+* [get](/es/sdks/java/optionactivity/README#get) - Consultar OptionActivity V1
 
 ### [quotedelayed()](/es/sdks/java/quotedelayed/README)
 
@@ -365,58 +365,58 @@ public class Application {
   ### [quoteDelayed()](/es/sdks/java/bzclientquotedelayed/README)
 </div>
 
-* [obtener](/es/sdks/java/bzclientquotedelayed/README#get) - Obtener cotizaciones con retraso V2
+* [get](/es/sdks/java/bzclientquotedelayed/README#get) - Obtener cotización con retraso V2
 
 <div id="ratings">
   ### [ratings()](/es/sdks/java/ratings/README)
 </div>
 
-* [obtener](/es/sdks/java/ratings/README#get) - Obtener ratings
+* [get](/es/sdks/java/ratings/README#get) - Obtener calificaciones
 
 <div id="ratingsanalysts">
   ### [ratingsAnalysts()](/es/sdks/java/ratingsanalysts/README)
 </div>
 
-* [get](/es/sdks/java/ratingsanalysts/README#get) - obtener analistas de calificación
+* [get](/es/sdks/java/ratingsanalysts/README#get) - Obtener analistas de calificación
 
 <div id="ratingsfirms">
   ### [ratingsFirms()](/es/sdks/java/ratingsfirms/README)
 </div>
 
-* [get](/es/sdks/java/ratingsfirms/README#get) - obtener entidades de calificación
+* [get](/es/sdks/java/ratingsfirms/README#get) - Obtener proveedores de calificaciones
 
 <div id="removed">
   ### [removed()](/es/sdks/java/removed/README)
 </div>
 
-* [get](/es/sdks/java/removed/README#get) - obtener elementos eliminados (v2)
+* [get](/es/sdks/java/removed/README#get) - Obtener elementos eliminados (v2)
 
 <div id="splits">
   ### [splits()](/es/sdks/java/splits/README)
 </div>
 
-* [obtener](/es/sdks/java/splits/README#get) - Obtener desdoblamientos de acciones
+* [get](/es/sdks/java/splits/README#get) - Obtener desdoblamientos
 
 <div id="tickertrends">
   ### [tickerTrends()](/es/sdks/java/tickertrends/README)
 </div>
 
-* [get](/es/sdks/java/tickertrends/README#get) - obtener datos de tendencia del ticker
-* [getList](/es/sdks/java/tickertrends/README#getlist) - obtener la lista de datos de tendencias del ticker
+* [get](/es/sdks/java/tickertrends/README#get) - Obtener datos de tendencias de tíker
+* [getList](/es/sdks/java/tickertrends/README#getlist) - Obtener datos de la lista de tendencias de tíker
 
 <div id="valuationratios">
   ### [valuationRatios()](/es/sdks/java/valuationratios/README)
 </div>
 
-* [get](/es/sdks/java/valuationratios/README#get) - obtener ratios de valoración V2.1
+* [get](/es/sdks/java/valuationratios/README#get) - Obtiene los ratios de valoración V2.1
 
 <div id="retries">
   ## Reintentos
 </div>
 
-Algunos de los endpoints de este SDK admiten reintentos. Si usa el SDK sin ninguna configuración, se utilizará la estrategia de reintento predeterminada proporcionada por la API. Sin embargo, la estrategia de reintento predeterminada puede reemplazarse para cada operación o en todo el SDK.
+Algunos de los puntos finales de este SDK admiten reintentos. Si usa el SDK sin ninguna configuración, se usará la estrategia de reintentos predeterminada que proporciona la API. Sin embargo, la estrategia de reintentos predeterminada puede sustituirse para una operación concreta o para todo el SDK.
 
-Para cambiar la estrategia de reintento predeterminada para una sola llamada a la API, puede proporcionar un objeto `RetryConfig` mediante el método builder `retryConfig`:
+Para cambiar la estrategia de reintentos predeterminada para una sola llamada a la API, puede proporcionar un objeto `RetryConfig` mediante el método builder `retryConfig`:
 
 ```java
 package hello.world;
@@ -458,7 +458,7 @@ public class Application {
 }
 ```
 
-Si quieres sobrescribir la estrategia de reintento predeterminada para todas las operaciones que admiten reintentos, puedes proporcionar una configuración al inicializar el SDK:
+Si quieres reemplazar la estrategia de reintento predeterminada para todas las operaciones compatibles con reintentos, puedes proporcionar una configuración durante la inicialización del SDK:
 
 ```java
 package hello.world;
@@ -504,9 +504,9 @@ public class Application {
   ## Manejo de errores
 </div>
 
-El manejo de errores en este SDK debería ajustarse, en líneas generales, a lo esperado. Todas las operaciones devuelven un objeto de respuesta o lanzan una excepción.
+El manejo de errores en este SDK debería ajustarse en gran medida a lo esperado. Todas las operaciones devuelven un objeto de respuesta o generan una excepción.
 
-De forma predeterminada, un error de la API lanzará una excepción `models/errors/APIException`. Cuando se especifican respuestas de error personalizadas para una operación, el SDK también puede lanzar la excepción asociada. Puede consultar las tablas respectivas de *Errores* en la documentación del SDK para obtener más información sobre los posibles tipos de excepción de cada operación. Por ejemplo, el método `get` lanza las siguientes excepciones:
+De forma predeterminada, un error de la API lanza una excepción `models/errors/APIException`. Cuando se especifican respuestas de error personalizadas para una operación, el SDK también puede lanzar la excepción asociada. Puede consultar las tablas de *Errores* correspondientes en la documentación del SDK para obtener más información sobre los posibles tipos de excepción de cada operación. Por ejemplo, el método `get` lanza las siguientes excepciones:
 
 | Tipo de error                  | Código de estado | Tipo de contenido |
 | ------------------------------ | ---------------- | ----------------- |
@@ -547,14 +547,14 @@ public class Application {
 ```
 
 <div id="server-selection">
-  ## Selección de servidor
+  ## Selección del servidor
 </div>
 
 <div id="select-server-by-index">
-  ### Seleccionar el servidor por índice
+  ### Seleccione el servidor por índice
 </div>
 
-Puede sobrescribir globalmente el servidor predeterminado mediante el método builder `.serverIndex(int serverIdx)` al inicializar la instancia del cliente SDK. El servidor seleccionado se usará después como predeterminado en las operaciones que lo utilicen. Esta tabla enumera los índices asociados a los servidores disponibles:
+Puede sobrescribir globalmente el servidor predeterminado mediante el método del builder `.serverIndex(int serverIdx)` al inicializar la instancia del cliente SDK. El servidor seleccionado se usará luego como predeterminado en las operaciones que lo utilicen. Esta tabla enumera los índices asociados a los servidores disponibles:
 
 | # | Servidor                            |
 | - | ----------------------------------- |
@@ -600,7 +600,7 @@ public class Application {
   ### Sobrescribir la URL del servidor para cada cliente
 </div>
 
-La URL del servidor predeterminada también se puede sobrescribir de forma global mediante el método del builder `.serverURL(String serverUrl)` al inicializar la instancia del cliente del SDK. Por ejemplo:
+El servidor predeterminado también puede sobrescribirse globalmente mediante el método del builder `.serverURL(String serverUrl)` al inicializar la instancia del cliente del SDK. Por ejemplo:
 
 ```java
 package hello.world;
@@ -638,16 +638,16 @@ public class Application {
   ## Madurez
 </div>
 
-Este SDK está en beta y puede haber cambios incompatibles entre versiones sin una actualización de la versión principal. Por lo tanto, recomendamos fijar una versión específica
-del paquete. De este modo, puede instalar siempre la misma versión sin cambios incompatibles, a menos que esté buscando intencionadamente
+Este SDK está en beta y puede haber cambios incompatibles entre versiones sin que haya una actualización de la versión principal. Por lo tanto, recomendamos fijarlo
+a una versión específica del paquete. De este modo, podrá instalar siempre la misma versión sin cambios incompatibles, salvo que esté buscando intencionalmente
 la versión más reciente.
 
 <div id="contributions">
   ## Contribuciones
 </div>
 
-Aunque valoramos las contribuciones de código abierto a este SDK, esta biblioteca se genera automáticamente. Cualquier cambio manual añadido a archivos internos se sobrescribirá en el próximo proceso de generación.
-Agradecemos tus comentarios. No dudes en abrir un PR o un issue con una prueba de concepto, y haremos todo lo posible por incluirlo en una versión futura.
+Aunque valoramos las contribuciones de código abierto a este SDK, esta biblioteca se genera automáticamente. Cualquier cambio manual que se agregue a los archivos internos se sobrescribirá en la siguiente generación.
+Agradecemos sus comentarios. No dude en abrir un PR o un issue con una prueba de concepto, y haremos todo lo posible por incluirlo en una futura versión.
 
 <div id="sdk-created-by-speakeasy">
   ### SDK creado por [Speakeasy](https://www.speakeasy.com/?utm_source=openapi\&utm_campaign=java)

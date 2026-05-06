@@ -1,5 +1,5 @@
 ---
-title: "Analyst Insights"
+title: "アナリストインサイト"
 description: analystInsights()
 ---
 
@@ -13,13 +13,13 @@ description: analystInsights()
   ### 利用可能な操作
 </div>
 
-* [取得](#get) - Analyst Insights V1 を取得
+* [get](#get) - アナリストインサイト V1を取得
 
 <div id="get">
-  ## 取得
+  ## get
 </div>
 
-Analyst Insights V1を取得
+アナリストインサイト V1を取得
 
 <div id="example-usage">
   ### 使用例
@@ -60,9 +60,9 @@ public class Application {
   ### パラメータ
 </div>
 
-| パラメータ     | 種別                                                                                    | 必須                         | 説明                       |
-| --------- | ------------------------------------------------------------------------------------- | -------------------------- | ------------------------ |
-| `request` | [GetAnalystInsightsV1Request](../../models/operations/GetAnalystInsightsV1Request.md) | :heavy&#95;check&#95;mark: | リクエストに使用するリクエストオブジェクトです。 |
+| パラメータ     | 型                                                                                     | 必須                         | 説明               |
+| --------- | ------------------------------------------------------------------------------------- | -------------------------- | ---------------- |
+| `request` | [GetAnalystInsightsV1Request](../../models/operations/GetAnalystInsightsV1Request.md) | :heavy&#95;check&#95;mark: | 使用するリクエストオブジェクト。 |
 
 <div id="response">
   ### レスポンス
@@ -74,7 +74,7 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                          | ステータスコード | コンテンツタイプ         |
+| エラータイプ                         | ステータスコード | コンテンツタイプ         |
 | ------------------------------ | -------- | ---------------- |
 | models/errors/ApiErrorResponse | 400, 500 | application/json |
 | models/errors/APIException     | 4XX, 5XX | */*              |

@@ -1,9 +1,9 @@
 ---
-title: "Ratios operativos"
+title: "Operación Ratios"
 description: operationRatios()
 ---
 
-[&lt; VOLVER](/es/sdks/languages/java#operationratios)
+[&lt; ATRÁS](/es/sdks/languages/java#operationratios)
 
 <div id="overview">
   ## Descripción general
@@ -13,13 +13,13 @@ description: operationRatios()
   ### Operaciones disponibles
 </div>
 
-* [get](#get) - Obtener ratios operativos V2.1
+* [get](#get) - Operación GET de ratios operativos V2.1
 
 <div id="get">
-  ## obtener
+  ## get
 </div>
 
-Obtiene los ratios operativos de una lista de symbols
+Obtiene los ratios operativos para una lista de símbolos
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -48,7 +48,7 @@ public class Application {
                 .call();
 
         if (res.string().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -58,12 +58,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro    | Tipo                     | Obligatorio                | Descripción                         |
-| ------------ | ------------------------ | -------------------------- | ----------------------------------- |
-| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | Lista de symbols separada por comas |
-| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de referencia                 |
-| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Período                             |
-| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                     |
+| Parámetro    | Tipo                     | Requerido                  | Descripción                           |
+| ------------ | ------------------------ | -------------------------- | ------------------------------------- |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separados por comas |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de referencia                   |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Período                               |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                       |
 
 <div id="response">
   ### Respuesta

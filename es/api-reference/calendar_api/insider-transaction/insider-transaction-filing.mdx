@@ -1,10 +1,10 @@
 ---
-title: "Transacción de persona con información privilegiada"
+title: "Transacción de insider"
 openapi: /openapi/calendar_api.spec.yml GET /api/v1/sec/insider_transactions/filings
 ---
 
 <ResponseExample>
-  ```json Respuesta (200 OK)
+  ```json Response (200 OK)
   {
     "data": [
       {
@@ -57,20 +57,20 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v1/sec/insider_transactions/fil
   }
   ```
 
-  ```json Respuesta (401 No autorizado)
+  ```json Response (401 Unauthorized)
   {
     "ok": false,
     "errors": [
       {
         "code": "auth_failed",
         "id": "unauthorized",
-        "value": "Token de autenticación no válido o faltante"
+        "value": "Token de autenticación no válido o ausente"
       }
     ]
   }
   ```
 
-  ```json Respuesta (404 No encontrado)
+  ```json Response (404 Not Found)
   {
     "ok": false,
     "errors": [
@@ -83,7 +83,7 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v1/sec/insider_transactions/fil
   }
   ```
 
-  ```json Respuesta (500 Error interno del servidor)
+  ```json Response (500 Internal Server Error)
   {
     "ok": false,
     "errors": [

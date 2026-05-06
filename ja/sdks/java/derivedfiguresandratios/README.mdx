@@ -13,10 +13,10 @@ description: derivedFiguresAndRatios()
   ### 利用可能な操作
 </div>
 
-* [取得](#get) - 派生指標と比率を取得 V3
+* [get](#get) - 派生指標と比率 V3 を取得
 
 <div id="get">
-  ## 取得
+  ## get
 </div>
 
 シンボルの一覧に対する派生指標と比率を取得します
@@ -60,7 +60,7 @@ public class Application {
 
 | パラメータ     | 型                        | 必須                         | 説明             |
 | --------- | ------------------------ | -------------------------- | -------------- |
-| `symbols` | *String*                 | :heavy&#95;check&#95;mark: | シンボルをカンマ区切りで指定 |
+| `symbols` | *String*                 | :heavy&#95;check&#95;mark: | シンボルのカンマ区切りリスト |
 | `from`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 開始日            |
 | `to`      | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 終了日            |
 | `date`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | レポートタイプ        |
@@ -75,6 +75,6 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                      | ステータスコード | コンテンツタイプ |
+| エラータイプ                     | ステータスコード | コンテンツタイプ |
 | -------------------------- | -------- | -------- |
 | models/errors/APIException | 4XX, 5XX | */*      |

@@ -1,35 +1,35 @@
 ---
 title: "Descripción general"
-description: "Guía completa para buscar y recuperar logotipos de empresas, fondos y criptomonedas mediante varios identificadores"
+description: "Guía completa para buscar y obtener logotipos de empresas, fondos y criptomonedas mediante varios identificadores"
 ---
 
 <div id="introduction">
   ## Introducción
 </div>
 
-La API de logos de Benzinga proporciona acceso a logos de alta calidad de empresas, fondos y criptomonedas. Puede buscar logos mediante varios tipos de identificadores, incluidos symbols, números CIK, códigos ISIN, CUSIP, FIGI y más.
+La API de Logos de Benzinga proporciona acceso a logotipos de alta calidad de empresas, fondos y criptomonedas. Puede buscar logotipos con varios tipos de identificadores, incluidos símbolos, números CIK, códigos ISIN, CUSIP, FIGI, entre otros.
 
 <div id="available-endpoints">
-  ## Endpoints disponibles
+  ## Puntos finales disponibles
 </div>
 
 <div id="logossearch">
   ### `/logos/search`
 </div>
 
-Busca logotipos mediante varios identificadores. Devuelve las URL de los logotipos, detalles de los valores y metadatos.
+Busque logotipos mediante varios identificadores. Devuelve URL de logotipos, detalles del valor y metadatos.
 
 <div id="logossync">
   ### `/logos/sync`
 </div>
 
-Endpoint de sincronización masiva para obtener varios logotipos con soporte de paginación.
+Punto final de sincronización masiva para obtener varios logotipos con soporte de paginación.
 
 <div id="search-filters">
   ## Filtros de búsqueda
 </div>
 
-La API permite realizar búsquedas flexibles mediante dos parámetros principales:
+La API admite búsquedas flexibles mediante dos parámetros principales:
 
 * `search_keys` - El valor del identificador que desea buscar
 * `search_keys_type` - El tipo de identificador (opcional; el valor predeterminado es `symbol`)
@@ -38,12 +38,12 @@ La API permite realizar búsquedas flexibles mediante dos parámetros principale
   ### 1. Filtrar por símbolo
 </div>
 
-Busque logotipos usando symbols de acciones.
+Busque logotipos usando símbolos bursátiles.
 
 **Parámetros:**
 
 * `search_keys`: Símbolo (p. ej., `AAPL`, `TSLA`, `MSFT`)
-* `search_keys_type`: `symbol` (opcional; este es el valor predeterminado)
+* `search_keys_type`: `symbol` (opcional, este es el valor predeterminado)
 
 **Ejemplo:**
 
@@ -55,7 +55,7 @@ GET /api/v2/logos/search?search_keys=AAPL&search_keys_type=symbol&fields=logo_li
   ### 2. Filtrar por CIK
 </div>
 
-Busque mediante el Central Index Key (CIK) de la SEC. Admite valores con y sin ceros a la izquierda.
+Busque usando el Central Index Key de la SEC. Admite valores con y sin ceros a la izquierda.
 
 **Parámetros:**
 
@@ -68,7 +68,7 @@ Busque mediante el Central Index Key (CIK) de la SEC. Admite valores con y sin c
 GET /api/v2/logos/search?search_keys=320193&search_keys_type=cik&fields=logo_light,logo_dark
 ```
 
-**Ejemplo con CIK con ceros a la izquierda:**
+**Ejemplo con CIK rellenado con ceros:**
 
 ```
 GET /api/v2/logos/search?search_keys=0000320193&search_keys_type=cik&fields=logo_light,logo_dark
@@ -78,7 +78,7 @@ GET /api/v2/logos/search?search_keys=0000320193&search_keys_type=cik&fields=logo
   ### 3. Filtrar por ISIN
 </div>
 
-Busque usando el Número Internacional de Identificación de Valores (ISIN).
+Busque usando el número internacional de identificación de valores.
 
 **Parámetros:**
 
@@ -95,7 +95,7 @@ GET /api/v2/logos/search?search_keys=US0378331005&search_keys_type=isin&fields=l
   ### 4. Filtrar por clase de acción FIGI
 </div>
 
-Busque usando el Identificador Global de Instrumentos Financieros de Bloomberg para clases de acciones.
+Busque usando el Financial Instrument Global Identifier de Bloomberg para clases de acciones.
 
 **Parámetros:**
 
@@ -112,7 +112,7 @@ GET /api/v2/logos/search?search_keys=BBG001SQKGD7&search_keys_type=figi_share_cl
   ### 5. Filtrar por CUSIP
 </div>
 
-Busque usando el número CUSIP.
+Busque usando el número CUSIP (Committee on Uniform Securities Identification Procedures).
 
 **Parámetros:**
 
@@ -129,7 +129,7 @@ GET /api/v2/logos/search?search_keys=88160R101&search_keys_type=cusip&fields=log
   ### 6. Filtrar por símbolo con moneda y país
 </div>
 
-Especifique los symbols con códigos de país o moneda usando dos puntos (`:`) o punto (`.`) como delimitador.
+Especifique los símbolos con códigos de país o moneda usando dos puntos (`:`) o punto (`.`) como delimitador.
 
 **Parámetros:**
 
@@ -148,14 +148,14 @@ GET /api/v2/logos/search?search_keys=AAPL.US&search_keys_type=symbol&fields=logo
   ### 7. Filtrar por bolsa y símbolo
 </div>
 
-Busque combinando el código de la bolsa con el símbolo. Admite formatos tanto de estilo Bloomberg (heredado) como de estilo LSEG.
+Busque combinando el código de la bolsa con el símbolo. Admite formatos de estilo Bloomberg (heredado) y de estilo LSEG.
 
-**Correspondencia de estilo Bloomberg (heredado):**
+**Mapeo de estilo Bloomberg (heredado):**
 
 * `search_keys`: Bolsa y símbolo (p. ej., `NASDAQ:AAPL`)
 * `search_keys_type`: `symbol`
 
-**Código LSEG de 3 caracteres (actual):**
+**Código LSEG actual de 3 caracteres:**
 
 * `search_keys`: Código de bolsa y símbolo (p. ej., `NSQ:AAPL`)
 * `search_keys_type`: `symbol`
@@ -168,10 +168,10 @@ GET /api/v2/logos/search?search_keys=NSQ:AAPL&search_keys_type=symbol&fields=log
 ```
 
 <div id="8-filter-by-iso-mic-and-symbol">
-  ### 8. Filtrar por MIC ISO y símbolo
+  ### 8. Filtrar por ISO MIC y símbolo
 </div>
 
-Busque usando el código ISO de identificación de mercado combinado con el símbolo.
+Busque por código ISO MIC combinado con el símbolo.
 
 **Parámetros:**
 
@@ -185,10 +185,10 @@ GET /api/v2/logos/search?search_keys=XYNS:AAPL&search_keys_type=symbol&fields=lo
 ```
 
 <div id="9-crypto-logo-filters">
-  ### 9. Filtros de logos de criptomonedas
+  ### 9. Filtros de logotipos de criptomonedas
 </div>
 
-Busque logos de criptomonedas en varios formatos. La API reconoce automáticamente los formatos de criptomonedas incluso cuando no se especifica `search_keys_type`.
+Busque logotipos de criptomonedas en varios formatos. La API reconoce automáticamente los formatos de criptomonedas incluso cuando no se especifica `search_keys_type`.
 
 **Formatos admitidos:**
 
@@ -210,7 +210,7 @@ GET /api/v2/logos/search?search_keys=BTC/USD&fields=logo_light,logo_dark
   ## Campos disponibles
 </div>
 
-Puede solicitar tipos de logotipo específicos con el parámetro `fields`. Los campos disponibles incluyen:
+Puedes solicitar tipos específicos de logotipo mediante el parámetro `fields`. Los campos disponibles incluyen:
 
 * `logo_light` - Logotipo para tema claro (PNG)
 * `logo_dark` - Logotipo para tema oscuro (PNG)
@@ -241,8 +241,8 @@ GET /api/v2/logos/search?search_keys=TSLA&fields=logo_light,logo_dark,mark_vecto
 
 * `scale` - Escala de la imagen (p. ej., `100x100`, `300x300`)
 * `max_width` - Ancho máximo de la imagen devuelta
-* `composite_radius` - Radio del borde de las imágenes compuestas (entero, intervalo `0-50`)
-* `composite_auto` - Genera imágenes compuestas automáticamente (booleano)
+* `composite_radius` - Radio del borde de las imágenes compuestas (entero, rango `0-50`)
+* `composite_auto` - Genera automáticamente imágenes compuestas (booleano)
 
 <div id="pagination-bulk-sync-only">
   ### Paginación (solo para bulk-sync)
@@ -250,20 +250,20 @@ GET /api/v2/logos/search?search_keys=TSLA&fields=logo_light,logo_dark,mark_vecto
 
 * `page` - Número de página (entero)
 * `pagesize` - Número de resultados por página (entero)
-* `updated_since` - Filtrar por marca temporal de actualización (formato ISO 8601)
+* `updated_since` - Filtrar por la marca de tiempo de actualización (formato ISO 8601)
 
 <div id="security-details">
   ### Detalles de los valores
 </div>
 
-* `securities` - Incluye información detallada de los valores en la respuesta (boolean)
+* `securities` - Incluye información detallada de los valores en la respuesta (booleano)
 
 <div id="response-examples">
   ## Ejemplos de respuesta
 </div>
 
 <div id="200-success-response">
-  ### Respuesta correcta 200
+  ### Respuesta 200 exitosa
 </div>
 
 ```json
@@ -301,7 +301,7 @@ GET /api/v2/logos/search?search_keys=TSLA&fields=logo_light,logo_dark,mark_vecto
 ```
 
 <div id="401-unauthorized-response">
-  ### Respuesta 401: No autorizado
+  ### Respuesta 401 no autorizada
 </div>
 
 ```json
@@ -318,7 +318,7 @@ GET /api/v2/logos/search?search_keys=TSLA&fields=logo_light,logo_dark,mark_vecto
 ```
 
 <div id="404-not-found-response">
-  ### Respuesta 404 No se encontró
+  ### Respuesta 404 No encontrada
 </div>
 
 ```json
@@ -335,7 +335,7 @@ GET /api/v2/logos/search?search_keys=TSLA&fields=logo_light,logo_dark,mark_vecto
 ```
 
 <div id="500-internal-server-error-response">
-  ### Respuesta 500: error interno del servidor
+  ### Respuesta de error interno del servidor 500
 </div>
 
 ```json
@@ -355,7 +355,7 @@ GET /api/v2/logos/search?search_keys=TSLA&fields=logo_light,logo_dark,mark_vecto
   ## Autenticación
 </div>
 
-Todos los endpoints de la API de Logos requieren autenticación mediante una clave de API. Incluya su token como parámetro de consulta:
+Todos los puntos finales de la API de Logos requieren autenticación mediante una clave de API. Incluya su token como parámetro de consulta:
 
 ```
 ?token=YOUR_API_KEY
@@ -365,20 +365,20 @@ Todos los endpoints de la API de Logos requieren autenticación mediante una cla
   ## Mejores prácticas
 </div>
 
-1. **Especifique search&#95;keys&#95;type** - Aunque la API usa `symbol` de forma predeterminada, especificar explícitamente el tipo mejora la claridad y el rendimiento
-2. **Solicite solo los campos necesarios** - Solicite únicamente los tipos de logo que necesite para minimizar el tamaño de la respuesta y mejorar el rendimiento
-3. **Use bulk-sync para conjuntos de datos grandes** - Al recuperar varios logos, use el endpoint `/logos/bulk-sync` con paginación
-4. **Almacene en caché las respuestas** - Las URL de los logos incluyen marcas de tiempo de expiración; aplique el almacenamiento en caché según corresponda para reducir las llamadas a la API
-5. **Gestione los errores correctamente** - Verifique siempre el campo `ok` en las respuestas y gestione adecuadamente los casos de error
+1. **Especifique search&#95;keys&#95;type** - Aunque la API usa `symbol` de forma predeterminada, especificar el tipo explícitamente mejora la claridad y el rendimiento
+2. **Solicite solo los campos necesarios** - Solicite únicamente los tipos de logotipo que necesite para minimizar el tamaño de la respuesta y mejorar el rendimiento
+3. **Use bulk-sync para conjuntos de datos grandes** - Al recuperar varios logotipos, use el punto final `/logos/bulk-sync` con paginación
+4. **Almacene en caché las respuestas** - Las URL de los logotipos incluyen marcas de tiempo de expiración; use la caché de forma adecuada para reducir las llamadas a la API
+5. **Gestione los errores correctamente** - Compruebe siempre el campo `ok` en las respuestas y gestione adecuadamente los casos de error
 
 <div id="rate-limits">
-  ## Límites de solicitudes
+  ## Límites de velocidad
 </div>
 
-Consulta los detalles de los límites de solicitudes en tu plan de suscripción de la API. Ponte en contacto con el equipo de soporte si necesitas límites más altos para tu aplicación.
+Consulta los detalles de los límites de velocidad en tu plan de suscripción de la API. Ponte en contacto con el equipo de soporte si necesitas límites de velocidad más altos para tu aplicación.
 
 <div id="support">
   ## Soporte
 </div>
 
-Para obtener ayuda adicional o si tiene preguntas sobre la API de Logos, comuníquese con el soporte de la API de Benzinga o consulte la documentación detallada del endpoint.
+Para obtener ayuda adicional o si tienes preguntas sobre la API de Logos, ponte en contacto con el soporte de la API de Benzinga o consulta la documentación detallada del punto final.

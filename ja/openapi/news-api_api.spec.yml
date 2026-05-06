@@ -7,7 +7,7 @@ info:
 paths:
   /api/v2.1/news/channels:
     get:
-      description: ニュース項目の絞り込みに使用できる、利用可能なすべてのニュースチャンネルの一覧を返します。チャンネルにはサブチャンネルを含めることができますが、それぞれ個別の項目として一覧に表示されます。
+      description: ニュース項目の絞り込みに使用できる、利用可能なすべてのニュースチャネルの一覧を返します。チャネルにはサブチャネルが存在する場合がありますが、それぞれ個別の項目として一覧に表示されます。
       operationId: get-channels
       responses:
         "200":
@@ -24,14 +24,14 @@ paths:
               schema:
                 additionalProperties: true
                 type: object
-      summary: 利用可能なニュースチャンネルを取得
+      summary: 利用可能なニュースチャネルを取得
       tags:
         - Channels
   /api/v2/news:
     get:
-      description: このREST APIは、ニュースの構造化データを返します。パフォーマンスを最適化するには、tickers、date、channels
-        などのパラメータを使用してクエリ範囲を制限するか、差分取得には updatedSince を使用してください。page オフセットは
-        0～100000 に制限されています。
+      description: このREST APIは、ニュースの構造化データを返します。最適なパフォーマンスを得るには、tickers、date、channels
+        などのパラメータを使用してクエリ範囲を絞り込むか、差分取得には updatedSince を使用してください。ページオフセットは 0 ～
+        100000 の範囲に制限されています。
       operationId: get-news
       parameters:
         - description: 返却形式を指定
@@ -44,21 +44,21 @@ paths:
               - application/json
               - application/xml
             default: application/json
-        - description: page オフセット。最適化、パフォーマンス、および技術的な理由により、page オフセットは 0～100000
-            に制限されています。date などの他のパラメータでクエリ結果を絞り込んでください。
+        - description: ページオフセット。最適化、パフォーマンス、および技術的な理由により、ページオフセットは 0 ～ 100000
+            の範囲に制限されています。date などのほかのパラメータでクエリ結果を絞り込んでください。
           in: query
           name: page
           schema:
             type: integer
             default: 0
-        - description: 返される結果の件数。最大 100。
+        - description: 返される結果数。最大100件。
           in: query
           name: pageSize
           schema:
             type: integer
             maximum: 100
             default: 15
-        - description: 見出しのみ（headline）、見出し + 要約（abstract）、または見出し + 本文全体（full）を指定
+        - description: 見出しのみ（headline）、見出し + 要約（abstract）、または見出し + 本文全文（full）を指定
           in: query
           name: displayOutput
           schema:
@@ -73,27 +73,27 @@ paths:
           name: date
           schema:
             type: string
-        - description: "照会開始日。公開日でソートされます。形式: yyyy-mm-dd"
+        - description: "この時点以降を照会する日付。公開日順で並び替えられます。形式: yyyy-mm-dd"
           in: query
           name: dateFrom
           schema:
             type: string
-        - description: "照会終了日。公開日でソートされます。形式: yyyy-mm-dd"
+        - description: "この時点までを照会する日付。公開日順で並び替えられます。形式: yyyy-mm-dd"
           in: query
           name: dateTo
           schema:
             type: string
-        - description: 取得およびソートの基準となる最終更新 Unix タイムスタンプ（UTC）
+        - description: 取得および並び替えの基準となる最終更新のUnixタイムスタンプ（UTC）
           in: query
           name: updatedSince
           schema:
             type: integer
-        - description: 取得およびソートの基準となる最終公開 Unix タイムスタンプ（UTC）
+        - description: 取得および並び替えの基準となる最終公開のUnixタイムスタンプ（UTC）
           in: query
           name: publishedSince
           schema:
             type: integer
-        - description: "結果のソート順を制御できます。デフォルトは created, DESC です。形式:
+        - description: "結果の並び順を制御できます。デフォルトは created, DESC です。形式:
             field:direction。ソート対象フィールド: id, created, updated。ソート順:
             asc（昇順）、desc（降順）"
           in: query
@@ -107,38 +107,37 @@ paths:
               - created:desc
               - updated:asc
               - updated:desc
-        - description: "カンマ区切りの 1 つ以上の ISIN。最大 50。形式: csv"
+        - description: "カンマ区切りの1つ以上のISIN。最大50件。形式: csv"
           in: query
           name: isin
           schema:
             type: string
-        - description: "カンマ区切りの 1 つ以上の CUSIP。最大 50。ライセンス契約が必要です。形式: csv"
+        - description: "カンマ区切りの1つ以上のCUSIP。最大50件。ライセンス契約が必要です。形式: csv"
           in: query
           name: cusips
           schema:
             type: string
-        - description: "カンマ区切りの 1 つ以上のティッカーシンボル。最大 50。形式: csv"
+        - description: "カンマ区切りの1つ以上のティッカーシンボル。最大50件。形式: csv"
           in: query
           name: tickers
           schema:
             type: string
-        - description: "カンマ区切りの 1 つ以上のプライマリティッカーシンボル。プライマリティッカーとの関連付けのみで絞り込みます。形式: csv"
+        - description: "カンマ区切りの1つ以上のプライマリティッカーシンボル。プライマリティッカーとの関連付けでのみ絞り込みます。形式: csv"
           in: query
           name: primaryTickers
           schema:
             type: string
-        - description: "カンマ区切りの 1 つ以上のチャンネル名または ID。形式: csv"
+        - description: "カンマ区切りの1つ以上のチャネル名またはID。形式: csv"
           in: query
           name: channels
           schema:
             type: string
-        - description: "カンマ区切りの 1 つ以上の単語またはフレーズ。優先順位に従って Title、Tags、Body を検索します。形式: csv"
+        - description: "カンマ区切りの1つ以上の単語またはフレーズ。優先順位順に Title、Tags、Body を検索します。形式: csv"
           in: query
           name: topics
           schema:
             type: string
-        - description: topics クエリの論理演算子。すべての topics を必須にするには 'and'、いずれか 1 つ以上の topic
-            を必須にするには 'or' を使用します
+        - description: topics クエリの論理演算子。すべてのトピックを必須にするには 'and'、いずれかのトピックを必須にするには 'or' を使用します
           in: query
           name: topic_group_by
           schema:
@@ -147,17 +146,17 @@ paths:
               - and
               - or
             default: or
-        - description: "カンマ区切りの 1 人以上の著者。形式: csv"
+        - description: "カンマ区切りの1つ以上の著者。形式: csv"
           in: query
           name: authors
           schema:
             type: string
-        - description: "カンマ区切りの 1 つ以上のコンテンツタイプ。形式: csv"
+        - description: "カンマ区切りの1つ以上のコンテンツタイプ。形式: csv"
           in: query
           name: content_types
           schema:
             type: string
-        - description: API レスポンスの形式を指定
+        - description: APIレスポンスの形式を指定
           in: query
           name: format
           schema:
@@ -193,7 +192,7 @@ paths:
                   $ref: "#/components/schemas/api.NewsItem"
                 type: array
         "400":
-          description: 無効または不足しているクエリパラメータ
+          description: クエリパラメータが無効または不足しています
           content:
             application/json:
               schema:
@@ -226,7 +225,7 @@ paths:
         - News
   /api/v2/news-removed:
     get:
-      description: 削除済みのニュースデータを返します。結果は、指定したタイムスタンプ以降に更新された項目のみに絞り込まれます。
+      description: 削除済みのニュースデータを返します。指定したタイムスタンプ以降に更新された項目のみが結果に含まれるように絞り込みます。
       operationId: get-removed-news
       parameters:
         - description: 返却形式を指定します
@@ -238,21 +237,21 @@ paths:
             enum:
               - application/json
             default: application/json
-        - description: ページオフセット。最適化、パフォーマンス、および技術上の理由により、ページオフセットは 0～100000 に制限されています。date
-            などの他のパラメータでクエリ結果を絞り込んでください。
+        - description: ページオフセット。最適化、パフォーマンス、および技術上の理由により、ページオフセットは 0～100000
+            の範囲に制限されています。date などの他のパラメータでクエリ結果を絞り込んでください。
           in: query
           name: page
           schema:
             type: integer
             default: 0
-        - description: 返される結果の件数。最大 100 件。
+        - description: 返される結果数。最大 100 件。
           in: query
           name: pageSize
           schema:
             type: integer
             maximum: 100
             default: 15
-        - description: 結果を、指定した Unix タイムスタンプ（UTC）以降に更新された項目のみに絞り込みます
+        - description: 指定した Unix タイムスタンプ（UTC）以降に更新された項目のみが結果に含まれるように絞り込みます
           in: query
           name: updatedSince
           schema:
@@ -269,7 +268,7 @@ paths:
                   type: array
                 type: object
         "400":
-          description: 無効または不足しているクエリパラメータ
+          description: クエリパラメータが無効または不足しています
           content:
             application/json:
               schema:
@@ -300,7 +299,7 @@ components:
       type: apiKey
   schemas:
     api.ChannelTag:
-      description: チャンネル名またはタグ名
+      description: チャネル名またはタグ名
       properties:
         name:
           example: Technology
@@ -317,7 +316,7 @@ components:
           type: string
       type: object
     api.NewsItem:
-      description: 完全なメタデータを含むニュース記事
+      description: 完全なメタデータを含むニュース記事項目
       properties:
         author:
           example: Benzinga Newsdesk

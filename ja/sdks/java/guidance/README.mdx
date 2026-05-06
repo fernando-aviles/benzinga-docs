@@ -13,13 +13,13 @@ description: guidance()
   ### 利用可能な操作
 </div>
 
-* [取得](#get) - ガイダンス取得
+* [get](#get) - ガイダンスの取得
 
 <div id="get">
-  ## 取得
+  ## get
 </div>
 
-ガイダンスデータを返します
+ガイダンス情報を返します
 
 <div id="example-usage">
   ### 使用例
@@ -59,9 +59,9 @@ public class Application {
   ### パラメータ
 </div>
 
-| パラメータ     | 型                                                                   | 必須                         | 説明                  |
-| --------- | ------------------------------------------------------------------- | -------------------------- | ------------------- |
-| `request` | [GetGuidanceRequest](../../models/operations/GetGuidanceRequest.md) | :heavy&#95;check&#95;mark: | リクエストに使用するオブジェクトです。 |
+| パラメータ     | Type                                                                | Required                   | 説明                     |
+| --------- | ------------------------------------------------------------------- | -------------------------- | ---------------------- |
+| `request` | [GetGuidanceRequest](../../models/operations/GetGuidanceRequest.md) | :heavy&#95;check&#95;mark: | リクエストで使用するリクエストオブジェクト。 |
 
 <div id="response">
   ### レスポンス
@@ -73,6 +73,6 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                      | ステータスコード | コンテンツタイプ |
+| エラータイプ                     | ステータスコード | コンテンツタイプ |
 | -------------------------- | -------- | -------- |
 | models/errors/APIException | 4XX, 5XX | */*      |

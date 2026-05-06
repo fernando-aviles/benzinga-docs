@@ -1,32 +1,33 @@
 openapi: 3.0.0
 info:
   contact: {}
-  description: このREST APIは、ファンダメンタルズの検索と詳細取得のためのエンドポイントを提供します。
+  description: この REST API は、ファンダメンタルズを検索し、その詳細を取得するためのエンドポイントを提供します。
   termsOfService: http://swagger.io/terms/
   title: Data API Proxy
   version: 2.0.0
 paths:
   /api/v1/market/movers:
     get:
-      description: 指定したフィルターに基づいて、値動きの大きい銘柄のデータを取得します。指定したセッションおよび時間範囲内で大きく値動きした株式を返します。高度なフィルタリング向けに、カスタムスクリーナークエリおよびmoversクエリをサポートしています。
+      description: 指定したフィルターに基づいて値動き銘柄データを取得します。指定したセッションと時間範囲内で大きく変動した銘柄を返します。高度なフィルタリングのために、カスタムのスクリーナークエリと
+        movers クエリをサポートしています。
       operationId: get-movers
       parameters:
-        - description: 返される結果の最大件数です。レスポンスのサイズを制御します。
+        - description: 返す結果の最大件数です。レスポンスのサイズを制御します。
           in: query
           name: maxResults
           schema:
             type: integer
-        - description: "moversデータの開始日/時刻です。形式: YYYY-MM-DD または YYYY-MM-DDTHH:MM:SS"
+        - description: "movers データの開始日時です。形式: YYYY-MM-DD または YYYY-MM-DDTHH:MM:SS"
           in: query
           name: from
           schema:
             type: string
-        - description: "moversデータの終了日/時刻です。形式: YYYY-MM-DD または YYYY-MM-DDTHH:MM:SS"
+        - description: "movers データの終了日時です。形式: YYYY-MM-DD または YYYY-MM-DDTHH:MM:SS"
           in: query
           name: to
           schema:
             type: string
-        - description: "moversを絞り込む取引セッションです。例: PRE_MARKET、REGULAR、AFTER_MARKET"
+        - description: "movers を絞り込むための取引セッションです。例: PRE_MARKET、REGULAR、AFTER_MARKET"
           in: query
           name: session
           schema:
@@ -36,14 +37,14 @@ paths:
           name: screenerQuery
           schema:
             type: string
-        - description: 特定の値動きパターンまたはしきい値を定義するためのカスタム値動きクエリ文字列
+        - description: 特定の値動きパターンまたはしきい値を定義するためのカスタム movers クエリ文字列
           in: query
           name: moversQuery
           schema:
             type: string
       responses:
         "200":
-          description: 値動き銘柄データ
+          description: マーケットムーバーのデータ
           content:
             application/json:
               schema:
@@ -62,32 +63,32 @@ paths:
                 type: object
       security:
         - ApiKeyAuth: []
-      summary: 値動きの大きい銘柄
+      summary: 値動き銘柄
       tags:
         - Market Data
   /api/v1/quoteDelayed:
     get:
-      description: シンボル、ISIN、またはCIKのリストに対する遅延クオートを取得します
+      description: シンボル、ISIN、または CIK のリストに対する遅延クオートを取得します
       operationId: get-quote-delayed-v1
       parameters:
-        - description: 株式ティッカーシンボルのカンマ区切りリスト。symbols、isin、またはcikのいずれか1つ以上が必要です。
+        - description: 株式ティッカーシンボルのカンマ区切りリスト。symbols、isin、または cik のいずれか 1 つ以上が必要です。
           in: query
           name: symbols
           schema:
             type: string
-        - description: ISIN識別子のカンマ区切りリスト。最大50件。symbols、isin、またはcikのいずれか1つ以上が必要です。
+        - description: ISIN 識別子のカンマ区切りリスト。最大 50 件。symbols、isin、または cik のいずれか 1 つ以上が必要です。
           in: query
           name: isin
           schema:
             type: string
-        - description: CIK識別子のカンマ区切りリスト。symbols、isin、またはcikのいずれか1つ以上が必要です。
+        - description: CIK 識別子のカンマ区切りリスト。symbols、isin、または cik のいずれか 1 つ以上が必要です。
           in: query
           name: cik
           schema:
             type: string
       responses:
         "200":
-          description: 遅延クオートを含むJSONオブジェクトを返します
+          description: 遅延クオートを含む JSON オブジェクトを返します
           content:
             application/json:
               schema:
@@ -106,31 +107,32 @@ paths:
                 type: string
       security:
         - ApiKeyAuth: []
-      summary: 遅延クオートを取得 V1
+      summary: 遅延クオート V1 を取得
       tags:
         - QuoteDelayed
   /api/v1/shortinterest:
     get:
-      description: 指定された証券の空売り残高データを取得します。空売り株数、買い戻し日数、空売り比率に関する情報が含まれます。FINRAレポートデータの追加や日付範囲によるフィルタリングにも対応しています。
+      description: 指定した証券の空売り残高データを取得します。空売り株数、買い戻し日数、空売り比率に関する情報が含まれます。FINRA
+        のレポートデータおよび日付範囲フィルタリングに任意で対応しています。
       operationId: get-short-interest
       parameters:
-        - description: "株式ティッカーシンボルのカンマ区切りリスト（例: AAPL,MSFT,TSLA）。必須。"
+        - description: "株式ティッカーシンボルのカンマ区切りリスト（例: AAPL,MSFT,TSLA）。必須です。"
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: "FINRAの空売り残高レポートデータを含めます。デフォルト: false"
+        - description: "FINRA の空売り残高レポートデータを含めます。デフォルト: false"
           in: query
           name: finraReport
           schema:
             type: boolean
-        - description: ページネーション用のページ番号。pageSizeパラメータと併用します。
+        - description: ページネーション用のページ番号。pageSize パラメータとともに使用します。
           in: query
           name: page
           schema:
             type: integer
-        - description: 1ページあたりの結果数。デフォルト値はエンドポイントの設定によって異なります。
+        - description: 1 ページあたりの結果数。デフォルト値はエンドポイントの設定によって異なります。
           in: query
           name: pageSize
           schema:
@@ -147,13 +149,13 @@ paths:
             type: string
       responses:
         "200":
-          description: リクエストされたsymbolsの空売り残高データ
+          description: 要求された symbols の空売り残高データ
           content:
             application/json:
               schema:
                 type: object
         "400":
-          description: 不正なリクエスト - symbolsパラメータが不足しているか無効です
+          description: 不正なリクエスト - symbols パラメータが不足しているか無効です
           content:
             application/json:
               schema:
@@ -171,40 +173,41 @@ paths:
         - Market Data
   /api/v2.1/fundamentals:
     get:
-      description: 指定された証券の拡張ファンダメンタルズデータを取得します。これは、追加のデータフィールドと優れたパフォーマンスを備えたV2エンドポイントの改良版です。更新済みのデータソースから、包括的な財務指標、各種比率、および企業情報を返します。
+      description: 指定した証券の拡張ファンダメンタルズデータを取得します。これは v2
+        エンドポイントの改良版で、追加のデータフィールドとより高いパフォーマンスを備えています。更新されたデータソースから、包括的な財務指標、各種比率、会社情報を返します。
       operationId: get-fundamentals-v21
       parameters:
-        - description: "株式ティッカーシンボルのカンマ区切りリスト（例: AAPL,MSFT,GOOGL）。必須。"
+        - description: "株式ティッカーシンボルのカンマ区切りリスト（例: AAPL,MSFT,GOOGL）。必須です。"
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: "この日付以降の結果に絞り込みます。形式: YYYY-MM-DD（例: 2024-01-01）"
+        - description: "この日付以降の結果でフィルタリングします。形式: YYYY-MM-DD（例: 2024-01-01）"
           in: query
           name: asOf
           schema:
             type: string
-        - description: "財務報告期間のperiodフィルタ。サポートされる値:
-            Q1（第1四半期）、Q2（第2四半期）、Q3（第3四半期）、Q4（第4四半期）、FY（会計年度）、TTM（直近12か月）"
+        - description: "財務報告期間の期間フィルタ。サポートされる値: Q1（第 1 四半期）、Q2（第 2 四半期）、Q3（第 3 四半期）、Q4（第 4
+            四半期）、FY（会計年度）、TTM（直近 12 か月）"
           in: query
           name: period
           schema:
             type: string
-        - description: "取得する財務レポートの種別。サポートされる値: TTM（直近12か月）、A（当初報告値）、R（修正再表示値）、P（速報値）"
+        - description: "取得する財務レポートの種類。サポートされる値: TTM（直近 12 か月）、A（当初報告値）、R（修正後の値）、P（暫定発表値）"
           in: query
           name: reportType
           schema:
             type: string
       responses:
         "200":
-          description: 追加の指標および比率を含む拡張ファンダメンタルズデータ
+          description: 追加の指標と比率を含む拡張ファンダメンタルズデータ
           content:
             application/json:
               schema:
                 type: object
         "400":
-          description: 不正なリクエスト - symbolsパラメータが不足しているか無効です
+          description: 不正なリクエスト - symbols パラメータが不足しているか無効です
           content:
             application/json:
               schema:
@@ -217,21 +220,22 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: 企業ファンダメンタルズ V2.1
+      summary: 会社ファンダメンタルズ V2.1
       tags:
         - Fundamentals
   /api/v2.1/fundamentals/alphaBeta:
     get:
-      description: 指定されたsymbolsのアルファおよびベータ指標を取得します。これらの指標は、市場に対する相対的なボラティリティとパフォーマンスを示します。
+      description: 指定した symbols の Alpha および Beta
+        指標を取得します。これらの指標は、市場に対するボラティリティとパフォーマンスを示します。
       operationId: get-alpha-beta-v21
       parameters:
-        - description: "symbolsのカンマ区切りリスト（例: AAPL, MSFT）"
+        - description: "symbols のカンマ区切りリスト（例: AAPL, MSFT）"
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: このパラメータで指定した日付以上の結果を返します（YYYY-MM-DD）
+        - description: このパラメータで指定した日付以降の結果を返します（YYYY-MM-DD）
           in: query
           name: asOf
           schema:
@@ -241,7 +245,7 @@ paths:
           name: period
           schema:
             type: string
-        - description: "レポート種別: TTM（直近12か月）、A（当初報告）、R（修正報告）、P（速報値）"
+        - description: "レポートタイプ: TTM（過去12か月累計）、A（当初報告値）、R（修正再表示）、P（速報値）"
           in: query
           name: reportType
           schema:
@@ -267,7 +271,7 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: アルファ・ベータを取得 V2.1
+      summary: アルファ・ベータ V2.1 を取得
       tags:
         - Fundamentals
   /api/v2.1/fundamentals/assetClassification:
@@ -275,13 +279,13 @@ paths:
       description: 指定したsymbolsについて、セクター、業種、その他の分類メタデータを含む資産分類の詳細を取得します。ポートフォリオの分類や分析に役立ちます。
       operationId: get-asset-classification-v21
       parameters:
-        - description: "symbolsのカンマ区切りリスト（例: AAPL, MSFT）"
+        - description: "シンボルのカンマ区切りリスト（例: AAPL, MSFT）"
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: このパラメータで指定したdate以上の日付の結果を返します（YYYY-MM-DD）
+        - description: このパラメータで指定した日付以上の結果を返します（YYYY-MM-DD）
           in: query
           name: asOf
           schema:
@@ -291,7 +295,7 @@ paths:
           name: period
           schema:
             type: string
-        - description: "レポート種別: TTM（直近12か月）、A（当初報告）、R（修正報告）、P（速報値）"
+        - description: "レポートタイプ: TTM（過去12か月累計）、A（当初報告値）、R（修正再表示）、P（速報値）"
           in: query
           name: reportType
           schema:
@@ -317,31 +321,31 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: 資産分類を取得 V2.1
+      summary: 資産分類 V2.1 を取得
       tags:
         - Fundamentals
   /api/v2.1/fundamentals/company:
     get:
-      description: 主要指標、業務統計、過去の財務実績を含む、企業固有の詳細な財務データを取得します。基本的なファンダメンタルズを超える、包括的な企業財務の全体像を提供します。
+      description: 主要指標、業務統計、過去の財務実績を含む、企業固有の詳細な財務データを取得します。基本的なファンダメンタルズを超えて、企業の財務状況を包括的に把握できます。
       operationId: get-company-v21
       parameters:
-        - description: "株式ティッカーのカンマ区切りリスト（例: AAPL,MSFT,GOOGL）。必須です。"
+        - description: "株式ティッカーシンボルのカンマ区切りリスト（例: AAPL,MSFT,GOOGL）。必須です。"
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: "このdate以降の日付で結果を絞り込みます。形式: YYYY-MM-DD（例: 2024-01-01）"
+        - description: "この日付以降の結果で絞り込みます。形式: YYYY-MM-DD（例: 2024-01-01）"
           in: query
           name: asOf
           schema:
             type: string
-        - description: "財務報告期間のフィルター。対応値: Q1、Q2、Q3、Q4（四半期）、FY（会計年度）、TTM（直近12か月）"
+        - description: "財務報告期間のフィルターです。サポートされる値: Q1、Q2、Q3、Q4（四半期）、FY（会計年度）、TTM（過去12か月累計）"
           in: query
           name: period
           schema:
             type: string
-        - description: "財務レポートの種別。対応値: TTM（直近12か月）、A（当初報告）、R（修正値）、P（速報）"
+        - description: "財務レポートの種類です。サポートされる値: TTM（過去12か月累計）、A（当初報告値）、R（修正再表示値）、P（速報値）"
           in: query
           name: reportType
           schema:
@@ -367,31 +371,31 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: 企業財務データ V2.1
+      summary: 会社金融データ V2.1
       tags:
         - Fundamentals
   /api/v2.1/fundamentals/companyProfile:
     get:
-      description: 事業内容、業種分類、セクターの詳細、本社所在地、主要役員、その他の企業メタデータを含む包括的な企業プロフィール情報を取得します。企業の背景や組織構造を把握するうえで重要です。
+      description: 事業内容、業種分類、セクターの詳細、本社所在地、主要経営陣、その他の企業メタデータを含む包括的な企業プロフィール情報を取得します。企業の背景や組織構造を理解するうえで重要です。
       operationId: get-company-profile-v21
       parameters:
-        - description: "株式ティッカーのカンマ区切りリスト（例: AAPL,MSFT,GOOGL）。必須です。"
+        - description: "株式ティッカーシンボルのカンマ区切りリスト（例: AAPL,MSFT,GOOGL）。必須です。"
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: "このdate以降の日付で結果を絞り込みます。形式: YYYY-MM-DD（例: 2024-01-01）"
+        - description: "この日付以降の結果で絞り込みます。形式: YYYY-MM-DD（例: 2024-01-01）"
           in: query
           name: asOf
           schema:
             type: string
-        - description: "財務報告期間のフィルター。対応値: Q1、Q2、Q3、Q4（四半期）、FY（会計年度）、TTM（直近12か月）"
+        - description: "財務報告期間のフィルターです。サポートされる値: Q1、Q2、Q3、Q4（四半期）、FY（会計年度）、TTM（過去12か月累計）"
           in: query
           name: period
           schema:
             type: string
-        - description: "財務レポートの種別。対応値: TTM（直近12か月）、A（当初報告）、R（修正値）、P（速報）"
+        - description: "財務レポートの種類です。サポートされる値: TTM（過去12か月累計）、A（当初報告値）、R（修正再表示値）、P（速報値）"
           in: query
           name: reportType
           schema:
@@ -417,21 +421,21 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: 企業プロフィール情報 V2.1
+      summary: 会社プロフィール情報 V2.1
       tags:
         - Fundamentals
   /api/v2.1/fundamentals/earningRatios:
     get:
-      description: シンボルのリストに対する収益比率を取得します。PER、EPS、そのほかの収益関連比率などの指標が含まれます。
+      description: シンボルのリストに対する収益性比率を取得します。株価収益率、EPS、その他の収益関連の比率指標が含まれます。
       operationId: get-earning-ratios-v21
       parameters:
-        - description: "シンボルをカンマ区切りで指定したリスト（例: AAPL, MSFT）"
+        - description: "symbols のカンマ区切りリスト（例: AAPL, MSFT）"
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: このパラメータで指定した日付（YYYY-MM-DD）以降の結果を返します
+        - description: このパラメータで指定した日付以上の結果を返します（YYYY-MM-DD）
           in: query
           name: asOf
           schema:
@@ -441,14 +445,14 @@ paths:
           name: period
           schema:
             type: string
-        - description: "レポート種別: TTM（直近12か月）、A（当初報告値）、R（修正再表示値）、P（暫定値）"
+        - description: "レポート種別: TTM（直近12か月）, A（当初報告値）, R（修正再表示値）, P（速報値）"
           in: query
           name: reportType
           schema:
             type: string
       responses:
         "200":
-          description: 収益比率データ
+          description: 収益性比率データ
           content:
             application/json:
               schema:
@@ -467,15 +471,15 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: 収益比率を取得 V2.1
+      summary: 収益比率 V2.1 を取得
       tags:
         - Fundamentals
   /api/v2.1/fundamentals/earningReports:
     get:
-      description: 指定した証券の詳細な決算レポートを取得します。四半期報告書および年次報告書に基づく売上高、1株当たり利益（EPS）、EBITDA、純利益、そのほかの主要な財務実績が含まれます。企業の財務パフォーマンスや、時系列での業績トレンドの分析に不可欠です。
+      description: 指定した証券の詳細な決算レポートを取得します。四半期および年次レポートから、売上高、1株当たり利益（EPS）、EBITDA、純利益、その他の主要な財務実績データが含まれます。企業の財務実績や収益トレンドを時系列で分析するうえで重要です。
       operationId: get-earnings-reports-v21
       parameters:
-        - description: "株式ティッカーシンボルをカンマ区切りで指定したリスト（例: AAPL,MSFT,GOOGL）。必須です。"
+        - description: "株式ティッカーシンボルのカンマ区切りリスト（例: AAPL,MSFT,GOOGL）。必須。"
           in: query
           name: symbols
           required: true
@@ -486,12 +490,12 @@ paths:
           name: asOf
           schema:
             type: string
-        - description: "財務報告期間で絞り込みます。サポートされる値: Q1、Q2、Q3、Q4（四半期）、FY（会計年度）、TTM（直近12か月）"
+        - description: "財務報告期間のフィルター。対応値: Q1, Q2, Q3, Q4（四半期）, FY（会計年度）, TTM（直近12か月）"
           in: query
           name: period
           schema:
             type: string
-        - description: "財務レポートの種別です。サポートされる値: TTM（直近12か月）、A（当初報告値）、R（修正再表示値）、P（暫定発表）"
+        - description: "財務レポートの種別。対応値: TTM（直近12か月）, A（当初報告値）, R（修正再表示値）, P（速報発表）"
           in: query
           name: reportType
           schema:
@@ -504,7 +508,7 @@ paths:
               schema:
                 type: object
         "400":
-          description: 不正なリクエスト - symbols パラメータが不足しているか無効です
+          description: 不正なリクエスト - symbols パラメータが指定されていないか無効です
           content:
             application/json:
               schema:
@@ -517,20 +521,20 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: 四半期および年次の収益レポート V2.1
+      summary: 四半期および年次の業績レポート V2.1
       tags:
         - Fundamentals
   /api/v2.1/fundamentals/financials:
     get:
       description: 指定したシンボルの財務諸表を取得します。貸借対照表、損益計算書、キャッシュフロー計算書のデータが含まれます。
       parameters:
-        - description: "シンボルをカンマ区切りで指定したリスト（例: AAPL, MSFT）"
+        - description: "symbols のカンマ区切りリスト（例: AAPL, MSFT）"
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: このパラメータで指定した日付（YYYY-MM-DD）以降の結果を返します
+        - description: このパラメータで指定した日付以上の結果を返します（YYYY-MM-DD）
           in: query
           name: asOf
           schema:
@@ -540,7 +544,7 @@ paths:
           name: period
           schema:
             type: string
-        - description: "レポート種別: TTM（直近12か月）、A（当初報告値）、R（修正再表示値）、P（暫定値）"
+        - description: "レポート種別: TTM（直近12か月）, A（当初報告値）, R（修正再表示値）, P（速報値）"
           in: query
           name: reportType
           schema:
@@ -568,21 +572,21 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: 財務データを取得 V2.1
+      summary: 財務データ V2.1 を取得
       tags:
         - Fundamentals
   /api/v2.1/fundamentals/operationRatios:
     get:
-      description: シンボルのリストに対する営業比率を取得します。営業利益率、利益率、ROA、ROE、そのほかの指標が含まれます。
+      description: シンボルのリストに対する業績関連比率を取得します。営業利益率、利益率、ROA、ROE、その他の指標が含まれます。
       operationId: get-operation-ratios-v21
       parameters:
-        - description: "シンボルをカンマ区切りで指定したリスト（例: AAPL, MSFT）"
+        - description: "symbols のカンマ区切りリスト（例: AAPL, MSFT）"
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: このパラメータで指定した日付（YYYY-MM-DD）以降の結果を返します
+        - description: このパラメータで指定した日付以上の結果を返します（YYYY-MM-DD）
           in: query
           name: asOf
           schema:
@@ -592,14 +596,14 @@ paths:
           name: period
           schema:
             type: string
-        - description: "レポート種別: TTM（直近12か月）、A（当初報告値）、R（修正再表示値）、P（暫定値）"
+        - description: "レポート種別: TTM（直近12か月）, A（当初報告値）, R（修正再表示値）, P（速報値）"
           in: query
           name: reportType
           schema:
             type: string
       responses:
         "200":
-          description: 営業比率データ
+          description: 業績関連比率データ
           content:
             application/json:
               schema:
@@ -618,30 +622,30 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: 業務比率を取得 V2.1
+      summary: 業務比率 V2.1 を取得
       tags:
         - Fundamentals
   /api/v2.1/fundamentals/shareClass:
     get:
-      description: 指定したsymbolsの株式クラス情報を取得します。株式クラスID、通貨、そのほかの関連メタデータを含む詳細な株式構造データを返します。
+      description: 特定のsymbolsに対応する株式クラス情報を取得します。株式クラスID、通貨、その他の関連メタデータを含む詳細な株式構成データを返します。
       parameters:
-        - description: "カンマ区切りのsymbolsリスト（例: AAPL, MSFT）"
+        - description: "symbolsのカンマ区切りリスト（例: AAPL, MSFT）"
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: このパラメータで指定したdate（YYYY-MM-DD）以降の結果を返します
+        - description: このパラメータで指定した日付（YYYY-MM-DD）以降の結果を返します
           in: query
           name: asOf
           schema:
             type: string
-        - description: "返される結果のperiodを指定します（例: Q1, 2023）"
+        - description: "返される結果の期間を指定します（例: Q1, 2023）"
           in: query
           name: period
           schema:
             type: string
-        - description: "レポート種別: TTM（過去12か月）, A（当初報告値）, R（修正後）, P（速報値）"
+        - description: "レポート種別: TTM（直近12か月）、A（当初報告値）、R（修正再表示）、P（速報値）"
           in: query
           name: reportType
           schema:
@@ -667,30 +671,30 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: 株式クラスを取得 V2.1
+      summary: 株式クラス V2.1 を取得
       tags:
         - Fundamentals
   /api/v2.1/fundamentals/shareClassProfile:
     get:
-      description: 株式クラスのプロファイル情報を取得します。株式クラスの特性および関連メタデータの詳細が含まれます。
+      description: 株式クラスのプロファイル情報を取得します。株式クラスの特性および関連メタデータの詳細が提供されます。
       parameters:
-        - description: "カンマ区切りのsymbolsリスト（例: AAPL, MSFT）"
+        - description: "symbolsのカンマ区切りリスト（例: AAPL, MSFT）"
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: このパラメータで指定したdate（YYYY-MM-DD）以降の結果を返します
+        - description: このパラメータで指定した日付（YYYY-MM-DD）以降の結果を返します
           in: query
           name: asOf
           schema:
             type: string
-        - description: "返される結果のperiodを指定します（例: Q1, 2023）"
+        - description: "返される結果の期間を指定します（例: Q1, 2023）"
           in: query
           name: period
           schema:
             type: string
-        - description: "レポート種別: TTM（過去12か月）, A（当初報告値）, R（修正後）, P（速報値）"
+        - description: "レポート種別: TTM（直近12か月）、A（当初報告値）、R（修正再表示）、P（速報値）"
           in: query
           name: reportType
           schema:
@@ -716,32 +720,32 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: 株式クラスのプロフィールを取得 V2.1
+      summary: 株式クラスのプロフィール V2.1 を取得
       tags:
         - Fundamentals
   /api/v2.1/fundamentals/valuationRatios:
     get:
-      description: symbolsのリストに対するバリュエーション比率を取得します。PER、P/B、P/S
+      description: symbolsのリストに対応するバリュエーション比率を取得します。P/E、P/B、P/S
         など、投資分析に不可欠な各種バリュエーション指標が含まれます。
       operationId: get-valuation-ratios-v21
       parameters:
-        - description: "カンマ区切りのsymbolsリスト（例: AAPL, MSFT）"
+        - description: "symbolsのカンマ区切りリスト（例: AAPL, MSFT）"
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: このパラメータで指定したdate（YYYY-MM-DD）以降の結果を返します
+        - description: このパラメータで指定した日付（YYYY-MM-DD）以降の結果を返します
           in: query
           name: asOf
           schema:
             type: string
-        - description: "返される結果のperiodを指定します（例: Q1, 2023）"
+        - description: "返される結果の期間を指定します（例: Q1, 2023）"
           in: query
           name: period
           schema:
             type: string
-        - description: "レポート種別: TTM（過去12か月）, A（当初報告値）, R（修正後）, P（速報値）"
+        - description: "レポート種別: TTM（直近12か月）、A（当初報告値）、R（修正再表示）、P（速報値）"
           in: query
           name: reportType
           schema:
@@ -767,12 +771,12 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: バリュエーション比率を取得 V2.1
+      summary: バリュエーション比率 V2.1 を取得
       tags:
         - Fundamentals
   /api/v2/bars:
     get:
-      description: 指定した証券の過去のOHLCV（始値、高値、安値、終値、出来高）価格バーデータを取得します。指定した間隔に基づいて集計された価格データを返します。複数のティッカーシンボルと、相対日付を含むさまざまな期間に対応しています。
+      description: 指定された証券の過去のOHLCV（始値、高値、安値、終値、出来高）価格バーデータを取得します。指定した間隔に基づいて集計された価格データを返します。複数のティッカーシンボル、および相対日付を含むさまざまな期間範囲に対応しています。
       operationId: get-bars-v2
       parameters:
         - description: "株式ティッカーシンボルのカンマ区切りリスト（例: AAPL,MSFT,TSLA）。必須です。"
@@ -781,27 +785,27 @@ paths:
           required: true
           schema:
             type: string
-        - description: "バーの開始date/time。形式: YYYY-MM-DD、YYYY-MM-DDTHH:MM:SS、YTD（年初来）、または
-            1MONTH/1m/1M、1WEEK/1w/1W、1DAY/1d/1D のような相対値。必須です。"
+        - description: "バーの開始日/時刻。形式: YYYY-MM-DD、YYYY-MM-DDTHH:MM:SS、YTD（年初来）、または
+            1MONTH/1m/1M、1WEEK/1w/1W、1DAY/1d/1D などの相対値。必須です。"
           in: query
           name: from
           required: true
           schema:
             type: string
-        - description: "バーの終了date/time。形式: YYYY-MM-DD または
-            YYYY-MM-DDTHH:MM:SS。指定しない場合は、現在のdate/timeがデフォルトで使用されます。"
+        - description: "バーの終了日/時刻。形式: YYYY-MM-DD または
+            YYYY-MM-DDTHH:MM:SS。指定しない場合は現在の日付/時刻がデフォルトで使用されます。"
           in: query
           name: to
           schema:
             type: string
-        - description: "価格バー集計用の時間バケット間隔。対応値:
+        - description: "価格バー集計用の時間バケット間隔。対応する値:
             1m（1分）、5m（5分）、15m（15分）、30m（30分）、1h（1時間）、1d（1日）、1w（1週間）、1M（1か月）。デフォル\
             ト: 1d"
           in: query
           name: interval
           schema:
             type: string
-        - description: "取引セッションのフィルター。対応値:
+        - description: "取引セッションのフィルター。対応する値:
             ANY（すべてのセッション）、PRE_MARKET（プレマーケット取引）、REGULAR（通常取引時間）、AFTER_MARKET（時\
             間外取引）。デフォルト: ANY"
           in: query
@@ -836,34 +840,34 @@ paths:
         - Market Data
   /api/v2/fundamentals:
     get:
-      description: 指定した証券の包括的な財務ファンダメンタルズデータを取得します。Morningstarのデータソースから、主要な財務指標、各種比率、企業情報を返します。損益計算書、貸借対照表、キャッシュフロー計算書のデータにアクセスするには、このエンドポイントを使用します。
+      description: 指定した証券の包括的なファンダメンタルズデータを取得します。MorningStarのデータソースから、主要な財務指標、各種比率、および会社情報を返します。このエンドポイントを使用すると、損益計算書、貸借対照表、キャッシュフロー計算書のデータにアクセスできます。
       operationId: get-fundamentals-v2
       parameters:
-        - description: "株式ティッカーのカンマ区切りリスト（例: AAPL,MSFT,GOOGL）。必須。"
+        - description: "株式のティッカーシンボルをカンマ区切りで指定するリスト（例: AAPL,MSFT,GOOGL）。必須。"
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: "この日付以降の結果で絞り込みます。形式: YYYY-MM-DD（例: 2024-01-01）"
+        - description: "この日付以降の結果に絞り込みます。形式: YYYY-MM-DD（例: 2024-01-01）"
           in: query
           name: asOf
           schema:
             type: string
-        - description: "財務報告期間のフィルター。対応値:
+        - description: "財務報告期間の期間フィルター。対応する値:
             Q1（第1四半期）、Q2（第2四半期）、Q3（第3四半期）、Q4（第4四半期）、FY（会計年度）、TTM（直近12か月）"
           in: query
           name: period
           schema:
             type: string
-        - description: "取得する財務レポートの種別。対応値: TTM（直近12か月）、A（当初報告値）、R（修正再表示値）、P（暫定発表）"
+        - description: "取得する財務報告の種別。対応する値: TTM（直近12か月）、A（当初報告値）、R（修正値）、P（速報値）"
           in: query
           name: reportType
           schema:
             type: string
       responses:
         "200":
-          description: 財務諸表および指標を含むファンダメンタルズデータ
+          description: 財務諸表および各種指標を含むファンダメンタルズデータ
           content:
             application/json:
               schema:
@@ -882,44 +886,44 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: 企業ファンダメンタルズ V2
+      summary: 会社ファンダメンタルズ V2
       tags:
         - Fundamentals
   /api/v2/fundamentals/operationRatios:
     get:
-      description: 指定した証券の業務効率に関する各種比率および指標を取得します。資産回転率、棚卸資産回転率、売上債権回転率、買掛金支払期間などの主要指標に加え、企業が資産をどれだけ効率的に活用し、事業運営を管理しているかを測定するその他の業務指標も含まれます。
+      description: 指定した証券の業務効率性に関する各種比率および指標を取得します。総資産回転率、棚卸資産回転率、売上債権回転率、買入債務回転期間など、会社が資産をどれだけ効率的に活用し、事業運営を管理しているかを測定する主要業績評価指標やその他の業務指標を含みます。
       operationId: get-operation-ratios-v2
       parameters:
-        - description: "株式ティッカーのカンマ区切りリスト（例: AAPL,MSFT,GOOGL）。必須。"
+        - description: "株式のティッカーシンボルをカンマ区切りで指定するリスト（例: AAPL,MSFT,GOOGL）。必須。"
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: "この日付以降の結果で絞り込みます。形式: YYYY-MM-DD（例: 2024-01-01）"
+        - description: "この日付以降の結果に絞り込みます。形式: YYYY-MM-DD（例: 2024-01-01）"
           in: query
           name: asOf
           schema:
             type: string
-        - description: "財務報告期間のフィルター。対応値: Q1、Q2、Q3、Q4（四半期）、FY（会計年度）、TTM（直近12か月）"
+        - description: "財務報告期間の期間フィルター。対応する値: Q1、Q2、Q3、Q4（四半期）、FY（会計年度）、TTM（直近12か月）"
           in: query
           name: period
           schema:
             type: string
-        - description: "財務レポートの種別。対応値: TTM（直近12か月）、A（当初報告値）、R（修正再表示値）、P（暫定発表）"
+        - description: "財務報告の種別。対応する値: TTM（直近12か月）、A（当初報告値）、R（修正値）、P（速報値）"
           in: query
           name: reportType
           schema:
             type: string
       responses:
         "200":
-          description: 業務効率に関する各種比率および指標
+          description: 業務効率性に関する各種比率および指標
           content:
             application/json:
               schema:
                 type: object
         "400":
-          description: 不正なリクエスト - symbols パラメータが不足しているか、無効です
+          description: 不正なリクエスト - symbols パラメータが不足しているか無効です
           content:
             application/json:
               schema:
@@ -937,20 +941,20 @@ paths:
         - Fundamentals
   /api/v2/quoteDelayed:
     get:
-      description: シンボル一覧の遅延クオートを取得します
+      description: シンボルのリストに対する遅延クオートを取得します
       operationId: get-quote-delayed-v2
       parameters:
-        - description: 株式ティッカーシンボルのカンマ区切りリスト。symbols、isin、または cik のいずれか1つ以上が必要です。
+        - description: 株式ティッカーシンボルのカンマ区切りリスト。symbols、isin、または cik のうち少なくとも 1 つが必要です。
           in: query
           name: symbols
           schema:
             type: string
-        - description: ISIN 識別子のカンマ区切りリスト。最大50件。symbols、isin、または cik のいずれか1つ以上が必要です。
+        - description: ISIN 識別子のカンマ区切りリスト。最大 50 件。symbols、isin、または cik のうち少なくとも 1 つが必要です。
           in: query
           name: isin
           schema:
             type: string
-        - description: CIK 識別子のカンマ区切りリスト。symbols、isin、または cik のいずれか1つ以上が必要です。
+        - description: CIK 識別子のカンマ区切りリスト。symbols、isin、または cik のうち少なくとも 1 つが必要です。
           in: query
           name: cik
           schema:
@@ -976,13 +980,13 @@ paths:
                 type: string
       security:
         - ApiKeyAuth: []
-      summary: 遅延クオートを取得 V2
+      summary: 遅延クオート V2 を取得
       tags:
         - QuoteDelayed
   /api/v3/fundamentals:
     get:
       description: Benzinga
-        の強化されたデータパイプラインを基盤とする、最新世代の財務ファンダメンタルズデータを取得します。データ品質とカバレッジが向上した包括的な財務諸表、指標、各種比率を提供します。柔軟な日付範囲クエリと相対日付指定に対応しています。
+        の強化データパイプラインを基盤とした最新世代のファンダメンタルズデータを取得します。データ品質とカバレッジが向上した包括的な財務諸表、各種メトリクス、および比率を提供します。柔軟な日付範囲クエリと相対日付指定に対応しています。
       operationId: get-fundamentals-v3
       parameters:
         - description: "株式ティッカーシンボルのカンマ区切りリスト（例: AAPL,MSFT,GOOGL）。必須です。"
@@ -991,20 +995,20 @@ paths:
           required: true
           schema:
             type: string
-        - description: "クエリの開始日。複数の形式をサポートします: YYYY-MM-DD（例:
-            2024-01-01）、YTD（1月1日からの年初来）、または
-            1MONTH/1m/1M（1か月前）、1WEEK/1w/1W（1週間前）、1DAY/1d/1D（1日前）などの相対日付"
+        - description: "クエリの開始日。複数の形式に対応しています: YYYY-MM-DD（例: 2024-01-01）、YTD（1 月 1
+            日からの年初来）、または 1MONTH/1m/1M（1 か月前）、1WEEK/1w/1W（1 週間前）、1DAY/1d/1D（1
+            日前）などの相対日付"
           in: query
           name: from
           schema:
             type: string
         - description: "クエリの終了日。形式: YYYY-MM-DD（例:
-            2024-12-31）。この日付を含む、それまでのデータを返します。指定しない場合は現在日付がデフォルトになります。"
+            2024-12-31）。この日付を含むデータを返します。指定しない場合は現在の日付が使用されます。"
           in: query
           name: to
           schema:
             type: string
-        - description: "財務諸表のレポート種別フィルター。サポートされる値: TTM（過去12か月累計）、A（当初報告値）、R（修正再表示値）、P（速報値）"
+        - description: "財務諸表のレポート種別フィルター。対応する値: TTM（直近 12 か月）、A（当初報告値）、R（修正再表示値）、P（暫定発表値）"
           in: query
           name: date
           schema:
@@ -1017,7 +1021,7 @@ paths:
               schema:
                 type: object
         "400":
-          description: 不正なリクエスト - symbols パラメータが不足しているか、無効です
+          description: 不正なリクエスト - symbols パラメータが不足しているか無効です
           content:
             application/json:
               schema:
@@ -1030,7 +1034,7 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: 企業ファンダメンタルズ V3
+      summary: 会社ファンダメンタルズ V3
       tags:
         - Fundamentals
   /api/v3/fundamentals/balance-sheet:
@@ -1044,17 +1048,18 @@ paths:
           required: true
           schema:
             type: string
-        - description: "YYYY-MM-DD 形式のクエリ開始日。サポート形式: YYYY-MM-DD、YTD（年初来）、1MONTH/1m/1M（1か月前）"
+        - description: "YYYY-MM-DD 形式で指定するクエリの開始日。対応形式: YYYY-MM-DD、YTD（年初来）、1MONTH/1m/1M（1
+            か月前）"
           in: query
           name: from
           schema:
             type: string
-        - description: YYYY-MM-DD 形式のクエリ終了日。この日付を含む、それまでのデータを返します。
+        - description: YYYY-MM-DD 形式で指定するクエリの終了日。この日付を含むデータを返します。
           in: query
           name: to
           schema:
             type: string
-        - description: "レポート種別フィルター。値: TTM（過去12か月累計）、A（報告値）、R（修正再表示）、P（速報値）"
+        - description: "レポート種別フィルター。値: TTM（直近 12 か月）、A（報告値）、R（修正再表示値）、P（暫定値）"
           in: query
           name: date
           schema:
@@ -1082,7 +1087,7 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: 貸借対照表を取得 V3
+      summary: 貸借対照表 V3 を取得
       tags:
         - Fundamentals
   /api/v3/fundamentals/cash-flow:
@@ -1095,17 +1100,17 @@ paths:
           required: true
           schema:
             type: string
-        - description: "クエリの開始日。形式は YYYY-MM-DD。対応形式: YYYY-MM-DD、YTD（年初来）、1MONTH/1m/1M（1か月前）"
+        - description: "クエリの開始日。形式: YYYY-MM-DD。対応形式: YYYY-MM-DD、YTD（年初来）、1MONTH/1m/1M（1か月前）"
           in: query
           name: from
           schema:
             type: string
-        - description: クエリの終了日。形式は YYYY-MM-DD。この日付を含むデータを返します。
+        - description: "クエリの終了日。形式: YYYY-MM-DD。この日付を含むデータまで返されます。"
           in: query
           name: to
           schema:
             type: string
-        - description: "レポート種別フィルター。値: TTM（直近12か月）、A（報告値）、R（修正後）、P（暫定）"
+        - description: "レポートタイプのフィルター。値: TTM（直近12か月）、A（報告値）、R（修正再表示値）、P（暫定値）"
           in: query
           name: date
           schema:
@@ -1131,38 +1136,38 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/bzhttp.Resp"
-      summary: キャッシュフローを取得 V3
+      summary: キャッシュフロー V3 を取得
       tags:
         - Fundamentals
   /api/v3/fundamentals/derived:
     get:
-      description: 指定したシンボルの一覧について、派生財務指標および比率を取得します。財務分析に不可欠な計算済みメトリクスが含まれます。
+      description: 指定したsymbolsのリストに対する派生財務指標および比率を取得します。財務分析に不可欠な計算済み指標が含まれます。
       operationId: get-derived-figures-and-ratios-v3
       parameters:
-        - description: "symbols のカンマ区切りリスト（例: AAPL, MSFT）"
+        - description: "symbolsのカンマ区切りリスト（例: AAPL, MSFT）"
           in: query
           name: symbols
           required: true
           schema:
             type: string
-        - description: "クエリの開始日。形式は YYYY-MM-DD。対応形式: YYYY-MM-DD、YTD（年初来）、1MONTH/1m/1M（1か月前）"
+        - description: "クエリの開始日。形式: YYYY-MM-DD。対応形式: YYYY-MM-DD、YTD（年初来）、1MONTH/1m/1M（1か月前）"
           in: query
           name: from
           schema:
             type: string
-        - description: クエリの終了日。形式は YYYY-MM-DD。この日付を含むデータを返します。
+        - description: "クエリの終了日。形式: YYYY-MM-DD。この日付を含むデータまで返されます。"
           in: query
           name: to
           schema:
             type: string
-        - description: "レポート種別フィルター。値: TTM（直近12か月）、A（報告値）、R（修正後）、P（暫定）"
+        - description: "レポートタイプのフィルター。値: TTM（直近12か月）、A（報告値）、R（修正再表示値）、P（暫定値）"
           in: query
           name: date
           schema:
             type: string
       responses:
         "200":
-          description: 派生指標および比率データ
+          description: 派生財務指標および比率データ
           content:
             application/json:
               schema:
@@ -1181,12 +1186,12 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: 派生指標および比率を取得 V3
+      summary: 派生指標および比率 V3 を取得
       tags:
         - Fundamentals
   /api/v3/fundamentals/income-statement:
     get:
-      description: 指定した証券の包括的な損益計算書データを取得します。売上高、売上原価、営業費用、営業利益、支払利息、税金、純利益、1株当たり利益が含まれます。企業の収益性や事業パフォーマンスの推移を分析するうえで重要です。
+      description: 指定した証券の包括的な損益計算書データを取得します。売上高、売上原価、営業費用、営業利益、支払利息、税金、当期純利益、1株当たり利益が含まれます。企業の収益性と事業パフォーマンスを時系列で分析するうえで重要です。
       operationId: get-income-statement-v3
       parameters:
         - description: "株式ティッカーシンボルのカンマ区切りリスト（例: AAPL,MSFT,GOOGL）。必須です。"
@@ -1196,17 +1201,17 @@ paths:
           schema:
             type: string
         - description: "クエリの開始日。複数の形式に対応しています: YYYY-MM-DD（例:
-            2024-01-01）、YTD（1月1日からの年初来）、または 1MONTH/1m/1M（1か月前）などの相対日付"
+            2024-01-01）、YTD（1月1日からの年初来）、または1MONTH/1m/1M（1か月前）などの相対日付"
           in: query
           name: from
           schema:
             type: string
-        - description: "クエリの終了日。形式: YYYY-MM-DD（例: 2024-12-31）。この日付を含むデータを返します。"
+        - description: "クエリの終了日。形式: YYYY-MM-DD（例: 2024-12-31）。この日付を含むデータまで返されます。"
           in: query
           name: to
           schema:
             type: string
-        - description: "財務諸表のレポート種別フィルター。対応値: TTM（直近12か月）、A（当初報告値）、R（修正値）、P（暫定発表値）"
+        - description: "財務諸表のレポートタイプフィルター。対応する値: TTM（直近12か月）、A（当初報告値）、R（修正再表示値）、P（暫定公表値）"
           in: query
           name: date
           schema:
@@ -1219,7 +1224,7 @@ paths:
               schema:
                 type: object
         "400":
-          description: 不正なリクエスト - symbols パラメータが不足しているか無効です
+          description: 不正なリクエスト - symbolsパラメータが不足しているか無効です
           content:
             application/json:
               schema:
@@ -1237,7 +1242,7 @@ paths:
         - Fundamentals
   /api/v3/fundamentals/share-price-ratios:
     get:
-      description: 指定したシンボルの株価比率を取得します。PER、PSR、その他の株価ベースの比率指標が含まれます。
+      description: 指定したシンボルの株価関連比率を取得します。株価収益率、株価売上高倍率、その他の株価ベースの比率などの指標が含まれます。
       operationId: get-share-price-ratios-v3
       parameters:
         - description: "株式ティッカーシンボルのカンマ区切りリスト（例: AAPL, MSFT）"
@@ -1246,17 +1251,17 @@ paths:
           required: true
           schema:
             type: string
-        - description: "クエリの開始日。形式は YYYY-MM-DD。対応形式: YYYY-MM-DD、YTD（年初来）、1MONTH/1m/1M（1か月前）"
+        - description: "クエリの開始日。形式: YYYY-MM-DD。対応形式: YYYY-MM-DD、YTD（年初来）、1MONTH/1m/1M（1か月前）"
           in: query
           name: from
           schema:
             type: string
-        - description: YYYY-MM-DD形式のクエリ終了日。この日付を含む、この日付までのデータを返します。
+        - description: YYYY-MM-DD形式のクエリ終了日です。この日付を含む、それ以前のデータを返します。
           in: query
           name: to
           schema:
             type: string
-        - description: "レポート種別フィルター。値: TTM（直近12か月）、A（報告時点）、R（修正再表示）、P（暫定値）"
+        - description: "レポート種別フィルター。値: TTM（過去12か月）, A（報告値）, R（修正版）, P（暫定値）"
           in: query
           name: date
           schema:
@@ -1284,7 +1289,7 @@ paths:
                 $ref: "#/components/schemas/bzhttp.Resp"
       security:
         - ApiKeyAuth: []
-      summary: 株価関連比率を取得 V3
+      summary: 株価比率 V3 を取得
       tags:
         - Fundamentals
 components:

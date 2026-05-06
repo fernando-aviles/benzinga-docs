@@ -13,13 +13,13 @@ description: quoteDelayed()
   ### Operaciones disponibles
 </div>
 
-* [get](#get) - Obtiene cotizaciones diferidas V2
+* [get](#get) - Obtener cotizaciones con retraso V2
 
 <div id="get">
   ## get
 </div>
 
-Obtiene cotizaciones diferidas para una lista de símbolos
+Obtiene cotizaciones con retraso de una lista de símbolos
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -57,11 +57,11 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro | Tipo                     | Requerido                  | Descripción                           |
-| --------- | ------------------------ | -------------------------- | ------------------------------------- |
-| `symbols` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Lista de símbolos separados por comas |
-| `isin`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | ISIN del instrumento                  |
-| `cik`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | CIK del instrumento                   |
+| Parámetro | Tipo                     | Obligatorio                | Descripción                          |
+| --------- | ------------------------ | -------------------------- | ------------------------------------ |
+| `symbols` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Lista de símbolos separada por comas |
+| `isin`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | ISIN del instrumento financiero      |
+| `cik`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | CIK del instrumento financiero       |
 
 <div id="response">
   ### Respuesta

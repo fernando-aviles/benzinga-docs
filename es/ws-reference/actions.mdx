@@ -1,26 +1,26 @@
 ---
 title: "Acciones admitidas"
-description: "Detalles sobre las acciones disponibles para mantener y reproducir sesiones de WebSocket."
+description: "Detalles sobre las acciones disponibles para mantener y hacer replay de sesiones de WebSocket."
 ---
 
-Esta página enumera las acciones admitidas que puede usar para interactuar con la API WebSocket de Benzinga. Estas acciones ayudan a mantener el estado de la sesión y a acceder al historial reciente de mensajes.
+Esta página enumera las acciones admitidas que puede utilizar para interactuar con la API WebSocket de Benzinga. Estas acciones ayudan a mantener la sesión en buen estado y a acceder al historial reciente de mensajes.
 
-> **Nota:** No puede controlar la cantidad de mensajes devueltos por la acción `list`. El número real depende de cuántos mensajes estén almacenados actualmente en caché para una clave determinada.
+> **Nota:** No se puede controlar la cantidad de mensajes devueltos por la acción `list`. La cantidad real depende del número de mensajes almacenados actualmente en caché para una clave determinada.
 
 <div id="available-actions">
   ## Acciones disponibles
 </div>
 
-| Acción   | Descripción                                                                                                                            | Ejemplo  |
-| -------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `replay` | Reenvía hasta los últimos 100 mensajes. La cantidad de mensajes devueltos puede variar según la disponibilidad en caché para la clave. | `replay` |
-| `ping`   | Mantiene activa la sesión de WebSocket enviando una señal de latido.                                                                   | `ping`   |
+| Acción   | Descripción                                                                                                                               | Ejemplo  |
+| -------- | ----------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `replay` | Hace replay de hasta los últimos 100 mensajes. La cantidad de mensajes devueltos puede variar según la disponibilidad de caché para la clave. | `replay` |
+| `ping`   | Mantiene activa la sesión de WebSocket enviando una señal de latido.                                                                      | `ping`   |
 
 <div id="example-usage">
   ## Ejemplo de uso
 </div>
 
-**Envíe una acción a través de su cliente WebSocket con el siguiente formato:**
+**Envía una acción a través de tu cliente WebSocket con el siguiente formato:**
 Ejemplo de uso de ping:
 
 ```bash

@@ -14,20 +14,20 @@ description: fundamentals()
 </div>
 
 * [getV21](#getv21) - Obtener Fundamentales V2.1
-* [getAlphaBeta](#getalphabeta) - Obtener alfa beta V2.1
-* [getCompanyV21](#getcompanyv21) - Obtener datos de la empresa V2.1
-* [getCompanyProfileV21](#getcompanyprofilev21) - Obtener el perfil de la empresa V2.1
-* [getShareClass](#getshareclass) - Obtener la clase de acciones V2.1
-* [getShareClassProfile](#getshareclassprofile) - Obtener el perfil de la clase de acciones V2.1
+* [getAlphaBeta](#getalphabeta) - Obtener Alfa Beta V2.1
+* [getCompanyV21](#getcompanyv21) - Obtener datos de la empresa v2.1
+* [getCompanyProfileV21](#getcompanyprofilev21) - Obtener el perfil de la empresa v2.1
+* [getShareClass](#getshareclass) - Obtener clase de acción V2.1
+* [getShareClassProfile](#getshareclassprofile) - Obtener el perfil de la clase de acción V2.1
 * [get](#get) - Obtener Fundamentales V2
-* [getAssetClassification](#getassetclassification) - Obtener la clasificación de activos V2.1
+* [getAssetClassification](#getassetclassification) - Obtener clasificación de activos V2.1
 * [getEarningsReports](#getearningsreports) - Obtener informes de resultados V2.1
 * [getFinancialsV21](#getfinancialsv21) - Obtener estados financieros V2.1
 * [getV3](#getv3) - Obtener Fundamentales V3
 * [getBalanceSheetV3](#getbalancesheetv3) - Obtener balance general V3
 * [getCashFlowV3](#getcashflowv3) - Obtener flujo de caja V3
 * [getIncomeStatement](#getincomestatement) - Obtener estado de resultados V3
-* [getSharePriceRatios](#getsharepriceratios) - Obtener ratios de cotización V3
+* [getSharePriceRatios](#getsharepriceratios) - Obtener ratios del precio de la acción V3
 
 <div id="getv21">
   ## getV21
@@ -136,12 +136,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro    | Tipo                     | Obligatorio                | Descripción                           |
-| ------------ | ------------------------ | -------------------------- | ------------------------------------- |
-| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separados por comas |
-| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de referencia                   |
-| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Período                               |
-| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                       |
+| Parámetro    | Tipo                     | Obligatorio                | Descripción                          |
+| ------------ | ------------------------ | -------------------------- | ------------------------------------ |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separada por comas |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de referencia                  |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Período                              |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                      |
 
 <div id="response">
   ### Respuesta
@@ -264,12 +264,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro    | Tipo                     | Obligatorio                | Descripción                          |
-| ------------ | ------------------------ | -------------------------- | ------------------------------------ |
-| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separada por comas |
-| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de referencia                  |
-| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Período                              |
-| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                      |
+| Parámetro    | Type                     | Requerido                  | Descripción                           |
+| ------------ | ------------------------ | -------------------------- | ------------------------------------- |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separados por comas |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de referencia                   |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Período                               |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                       |
 
 <div id="response">
   ### Respuesta
@@ -289,7 +289,7 @@ public class Application {
   ## getShareClass
 </div>
 
-Obtener la clase de acciones
+Obtener clase de acción
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -353,7 +353,7 @@ public class Application {
   ## getShareClassProfile
 </div>
 
-Obtener el perfil de la clase de acciones
+Obtener el perfil de la clase de acción
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -392,12 +392,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro    | Tipo                     | Obligatorio                | Descripción                           |
-| ------------ | ------------------------ | -------------------------- | ------------------------------------- |
-| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separados por comas |
-| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de referencia                   |
-| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Período                               |
-| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                       |
+| Parámetro    | Type                     | Requerido                  | Descripción                          |
+| ------------ | ------------------------ | -------------------------- | ------------------------------------ |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separada por comas |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de referencia                  |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Período                              |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                      |
 
 <div id="response">
   ### Respuesta
@@ -414,7 +414,7 @@ public class Application {
 | models/errors/APIException | 4XX, 5XX         | */*               |
 
 <div id="get">
-  ## obtener
+  ## get
 </div>
 
 Obtener Fundamentales V2
@@ -510,7 +510,7 @@ public class Application {
                 .call();
 
         if (res.string().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -520,12 +520,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro    | Tipo                     | Obligatorio                | Descripción                          |
-| ------------ | ------------------------ | -------------------------- | ------------------------------------ |
-| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separada por comas |
-| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de referencia                  |
-| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Período                              |
-| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                      |
+| Parámetro    | Tipo                     | Requerido                  | Descripción                           |
+| ------------ | ------------------------ | -------------------------- | ------------------------------------- |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separados por comas |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de referencia                   |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Período                               |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                       |
 
 <div id="response">
   ### Respuesta
@@ -584,12 +584,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro    | Tipo                     | Obligatorio                | Descripción                           |
-| ------------ | ------------------------ | -------------------------- | ------------------------------------- |
-| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separados por comas |
-| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de referencia                   |
-| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Período                               |
-| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                       |
+| Parámetro    | Tipo                     | Obligatorio                | Descripción                          |
+| ------------ | ------------------------ | -------------------------- | ------------------------------------ |
+| `symbols`    | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separada por comas |
+| `asOf`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de referencia                  |
+| `period`     | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Período                              |
+| `reportType` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                      |
 
 <div id="response">
   ### Respuesta
@@ -609,7 +609,7 @@ public class Application {
   ## getFinancialsV21
 </div>
 
-Obtener estados financieros V2.1
+Obtener datos financieros v2.1
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -769,7 +769,7 @@ public class Application {
                 .call();
 
         if (res.strings().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -845,12 +845,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro | Tipo                     | Obligatorio                | Descripción                           |
-| --------- | ------------------------ | -------------------------- | ------------------------------------- |
-| `symbols` | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separados por comas |
-| `from`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de inicio                       |
-| `to`      | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de fin                          |
-| `date`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                       |
+| Parámetro | Tipo                     | Obligatorio                | Descripción                          |
+| --------- | ------------------------ | -------------------------- | ------------------------------------ |
+| `symbols` | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separada por comas |
+| `from`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de inicio                      |
+| `to`      | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de fin                         |
+| `date`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                      |
 
 <div id="response">
   ### Respuesta
@@ -935,7 +935,7 @@ public class Application {
   ## getSharePriceRatios
 </div>
 
-Obtener ratios de cotización
+Obtener ratios del precio de la acción
 
 <div id="example-usage">
   ### Ejemplo de uso

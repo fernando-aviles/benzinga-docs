@@ -2,42 +2,42 @@
 title: "今後の予定"
 ---
 
-以下は、次回の更新に向けた今後のリリース予定と対応予定項目です。
+以下は、次回以降の更新に向けたリリース予定と計画中の対応項目です。
 
 <div id="in-progress">
   ## 進行中
 </div>
 
-現在、開発またはレビューが進行中の項目です。
+現在開発中またはレビュー中の項目です。
 
 <div id="in-development">
   ### 開発中
 </div>
 
-* **Platform Services**: APIレスポンスに表示されない影響度の高いオプション取引を調査中
+* **Platform Services**: APIレスポンスに含まれない高インパクトのオプション取引を調査中
 * **Platform Services**: Halt/Resumeエンドポイントの401認証エラーを解決中
-* **Platform Services**: すべてのWebhook種別のサポートを追加中 (現在はニュースのみ対応) 
-* **Platform Services**: Fastlyのコンテンツデータを処理し、バックフィルを実施中
+* **Platform Services**: すべてのWebhookタイプへの対応を追加中 (現在はNewsのみ対応) 
+* **Platform Services**: Fastlyコンテンツデータの処理およびバックフィルを実施中
 * **Platform Services**: Guidance Calendarの将来分の行生成を自動化中
-* **Platform Services**: 非アクティブ企業のレーティングの扱いを調査中
-* **Calendar API**: カンファレンスコールカレンダーにPeriodフィールドとYearフィールドを追加中
-* **Calendar API**: すべてのカレンダーサービスでAPIパラメータを簡素化中
-* **トランスクリプト**: トランスクリプトのコールにPeriodフィールドとYearフィールドを追加中
+* **Platform Services**: 非アクティブな企業のレーティング処理を調査中
+* **カレンダーAPI**: Conference Callカレンダーに期間フィールドと年フィールドを追加中
+* **カレンダーAPI**: すべてのカレンダーサービスでAPIパラメータを簡素化中
+* **トランスクリプト**: トランスクリプト呼び出しに期間フィールドと年フィールドを追加中
 * **トランスクリプト**: ティッカー検索のサポートを改善中 (例: MOG/A形式) 
-* **トランスクリプト**: PeriodとYearを含めるための「Change Titles」機能を追加中
+* **トランスクリプト**: 期間と年を含めるタイトル変更機能を追加中
 
 <div id="in-review">
   ### レビュー中
 </div>
 
-* **Platform Services**: 「Press Release」コンテンツ種別の分類を更新中
+* **Platform Services**: 「プレスリリース」コンテンツタイプの分類を更新
 
 <div id="pending-deployment">
   ### デプロイ予定
 </div>
 
 * **Platform Services**: コンテンツの有効期限ルールを実装中 (X日経過後はコンテンツを送信しない) 
-* **トランスクリプト**: トランスクリプトの編集内容が正しく保存されない不具合を修正中
+* **トランスクリプト**: トランスクリプトの編集内容が正しく保存されない問題を修正中
 
 <div id="coming-soon">
   ## 近日公開
@@ -51,49 +51,49 @@ title: "今後の予定"
 
 **新機能**
 
-* 分類精度向上のため、「Conference Call Topics」辞書を追加
-* composite&#95;auto SVG 画像の Logos V2 対応
+* より適切な分類のため、「Conference Call Topics」辞書を追加
+* composite&#95;auto の SVG 画像に対応した Logos V2 サポート
 * Halts/Resumes Calendar API の API 仕様を追加
 * 二重反転ロジック向けの「Hedge Message」を実装
 * すべてのサービスでレート制限とメッセージングを改善
-* 接続監視用の Coralogix アラートを追加
+* 接続監視用の Corologix アラートを追加
 
 **改善**
 
 * S3 ニュース配信の監視を追加
-* 旧来の TDA「Benzinga Attribution」フィールドを削除
+* 従来の TDA「Benzinga Attribution」フィールドを削除
 * Analyst Dictionary に「Active」フィールドを追加 (Yes/No オプション) 
 * すべての SoFi エンドポイントで ISIN クエリをサポート
-* ニュースのウェブソケットペイロードに画像 URL を追加
-* 株式分割に伴う JPMC Upside 計算の問題を解消
+* News WebSocket ペイロードに画像 URL を追加
+* 株式分割に伴う JPMC のアップサイド計算の問題を解消
 * Government Trade API の更新に対応
-* カンファレンスコールカレンダーに period/year データをバックフィル
+* カンファレンスコールカレンダーに期間/年データを補完
 
 **バグ修正**
 
 * CIBC の動的ウィジェットに関する問題を修正
-* 単一 date クエリで Consensus Ratings エンドポイントがゼロを返す問題を解消
-* /sync エンドポイントの重複排除ロジックを修正
+* 単一日付クエリで Consensus Ratings エンドポイントがゼロを返す問題を解消
+* `/sync` エンドポイントの重複排除ロジックを修正
 * Morgan Stanley の優先株ロゴ欠落を調査
 
 <div id="calendar-api">
-  ### Calendar API
+  ### カレンダーAPI
 </div>
 
 **新機能**
 
-* 今後の配当予測の計算にCAGRを使用
-* Newsdesk Toolsから政府関係者取引を更新するためのAPIエンドポイントを追加
+* 今後の配当予測の算出にCAGRを使用
+* Newsdesk ToolsからGovernment Tradesを更新するためのAPIエンドポイントを作成
 
 <div id="news-api">
-  ### ニュース API
+  ### News API
 </div>
 
 **新機能**
 
-* 1 回のクエリで複数の content-type をサポート
-* セクターベースのクエリパラメータを追加
-* GICS ベースのクエリをサポート
+* 1回のクエリで複数の content-types を指定可能に
+* セクター指定のクエリパラメータを追加
+* GICS ベースのクエリに対応
 
 **不具合修正**
 
@@ -105,18 +105,18 @@ title: "今後の予定"
 
 **改善点**
 
-* 今後の日付で予定されているすべてのトランスクリプトを表示
-* カンファレンスコール向けにカスタムメール ID のサポートを追加
-* Zoom 会議リンクのサポートを追加
-* フィルターオプションを強化し、フロントエンド UI を改善
-* UI をカレンダーグリッドビューに再設計 (manual/live モードを置き換え) 
+* 今後の日付に予定されているすべてのトランスクリプトを表示
+* カンファレンスコール向けのカスタムメールID対応を追加
+* Zoomコールリンク対応を追加
+* フィルターオプションを強化したフロントエンドUIの改善
+* UIをカレンダーのグリッド表示に再設計 (手動/ライブモードを廃止) 
 * 各トランスクリプトレコードに改訂履歴を追加
 * トランスクリプトレコードを手動で作成する機能を追加
 
-**不具合修正**
+**バグ修正**
 
-* Edge Media のログイン処理を改善
-* Webvoyager エージェントの信頼性を向上
+* Edge Mediaのログイン処理を改善
+* Webvoyagerエージェントの信頼性を向上
 
 ***
 

@@ -4,7 +4,7 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/dividends
 ---
 
 <ResponseExample>
-  ```json Respuesta (200 OK)
+  ```json Response (200 OK)
   {
       "dividends": [
   {
@@ -13,7 +13,7 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/dividends
       "date": "2026-05-17",
       "dividend": "",
       "dividend_prior": "",
-      "dividend_type": "Cash",
+      "dividend_type": "Efectivo",
       "dividend_yield": "",
       "end_regular_dividend": false,
       "ex_dividend_date": "",
@@ -33,7 +33,7 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/dividends
   }
   ```
 
-  ```json Respuesta (401 No autorizado)
+  ```json Response (401 Unauthorized)
   {
     "ok": false,
     "errors": [
@@ -46,7 +46,7 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/dividends
   }
   ```
 
-  ```json Respuesta (404 No encontrado)
+  ```json Response (404 Not Found)
   {
     "ok": false,
     "errors": [
@@ -59,14 +59,14 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/dividends
   }
   ```
 
-  ```json Respuesta (500 Error interno del servidor)
+  ```json Response (500 Internal Server Error)
   {
     "ok": false,
     "errors": [
       {
         "code": "internal_server_error",
         "id": "server_error",
-        "value": "Se produjo un error inesperado al procesar la solicitud"
+        "value": "Se produjo un error inesperado al procesar su solicitud"
       }
     ]
   }

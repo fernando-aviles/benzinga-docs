@@ -3,21 +3,21 @@ title: "認証"
 description: "Benzinga API へのリクエストを認証する方法"
 ---
 
-Benzinga API では、リクエストの認証に **APIキー** を使用します。APIキーは一意の識別子であり、サブスクリプションに応じて特定のデータや機能へのアクセスが許可されます。
+Benzinga API では、リクエストの認証に **API キー** を使用します。API キーは一意の識別子であり、契約内容に応じて特定のデータや機能へのアクセス権を付与します。
 
 > [!IMPORTANT]
-> **APIキーは厳重に管理してください。** GitHub、クライアントサイドのコード、保護されていない通信など、一般公開された場所で共有しないでください。キーが漏えいした可能性がある場合は、直ちにサポートまでご連絡ください。
+> **API キーは厳重に管理してください。** GitHub、クライアントサイドのコード、暗号化されていない通信など、公開された場所で共有しないでください。キーが漏えいした可能性がある場合は、直ちにサポートへ連絡してください。
 
-APIキーは [Benzinga Developer Console](https://www.api.benzinga.com/token) で確認および管理できます。
+API キーは [Benzinga Developer Console](https://www.api.benzinga.com/token) で確認および管理できます。
 
 <div id="authentication-methods">
   ## 認証方法
 </div>
 
-Benzinga API では、認証方法として 2 つの方式をサポートしています。**HTTP Header** 方式は、より安全で、URL ログにキーが表示されるのを防げるため、本番環境のアプリケーションではこの方式の使用を強く推奨します。
+Benzinga API は、認証方式として 2 つの方法をサポートしています。より安全で、URL ログにキーが表示されるのを防げるため、本番環境のアプリケーションでは **HTTP ヘッダー** 方式の使用を強く推奨します。
 
 <div id="1-http-header-recommended">
-  ### 1. HTTP Header (推奨)
+  ### 1. HTTP ヘッダー (推奨)
 </div>
 
 ヘッダーで認証するには、`Authorization` ヘッダーに `token <YOUR_API_KEY>` を指定します。
@@ -30,7 +30,7 @@ Authorization: token <YOUR_API_KEY>
   ### 2. クエリパラメータ
 </div>
 
-手早くテストしたい場合や、ヘッダーを変更できない場合は、`token` という名前のクエリパラメータでキーを渡せます。
+手早くテストしたい場合や、ヘッダーを変更できない場合は、`token` という名前のクエリパラメータとしてキーを渡すことができます。
 
 ```http
 https://api.benzinga.com/api/v2/news?token=<YOUR_API_KEY>
@@ -40,7 +40,7 @@ https://api.benzinga.com/api/v2/news?token=<YOUR_API_KEY>
   ## コード例
 </div>
 
-以下は、一般的な言語で Benzinga API に接続するための本番環境向けの例です。
+一般的な言語で Benzinga API に接続するための、本番環境ですぐに使える例を以下に示します。
 
 <CodeGroup>
   ```bash cURL
@@ -98,8 +98,8 @@ https://api.benzinga.com/api/v2/news?token=<YOUR_API_KEY>
       console.log(response.data);
     } catch (error) {
       if (error.response) {
-        // リクエストは送信され、サーバーからステータスコードが返されました
-        // そのコードは 2xx の範囲外です
+        // リクエストは送信され、サーバーから
+        // 2xx の範囲外のステータスコードが返された
         console.error('Error Status:', error.response.status);
         console.error('Error Data:', error.response.data);
       } else {
@@ -159,10 +159,10 @@ https://api.benzinga.com/api/v2/news?token=<YOUR_API_KEY>
   ## トラブルシューティング
 </div>
 
-よくある認証エラーと、その解決方法を示します。
+よくある認証エラーと、その対処方法です。
 
-| ステータスコード | メッセージ          | 考えられる原因   | 対処方法                                                                                     |
-| :------- | :------------- | :-------- | :--------------------------------------------------------------------------------------- |
-| **401**  | `Unauthorized` | 無効なAPIキー  | APIキーが正しく、再生成されていないことを確認してください。余分な空白が含まれていないことも確認してください。                                 |
-| **401**  | `Unauthorized` | APIキーの未指定 | `Authorization` ヘッダーが `token <KEY>` の形式で正しく指定されているか、または `token` パラメータが含まれていることを確認してください。 |
-| **403**  | `Forbidden`    | 権限不足      | APIキーは有効ですが、ご利用のプランには要求されたエンドポイントへのアクセス権が含まれていません。プランのアップグレードについては、営業またはサポートにお問い合わせください。 |
+| Status Code | Message        | Possible Cause | Resolution                                                                               |
+| :---------- | :------------- | :------------- | :--------------------------------------------------------------------------------------- |
+| **401**     | `Unauthorized` | 無効なAPIキー       | APIキーが正しいこと、および再発行されていないことを確認してください。余分な空白が含まれていないことも確認してください。                            |
+| **401**     | `Unauthorized` | APIキーの欠落       | `Authorization` ヘッダーが `token <KEY>` の形式で正しく設定されているか、または `token` パラメータが含まれていることを確認してください。 |
+| **403**     | `Forbidden`    | 権限不足           | APIキーは有効ですが、ご利用のプランには要求されたエンドポイントへのアクセス権が含まれていません。プランをアップグレードするには、営業またはサポートにお問い合わせください。  |

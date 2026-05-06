@@ -1,10 +1,10 @@
 ---
-title: "Actividad inusual de opciones"
+title: "Actividad inusual en opciones"
 openapi: /openapi/calendar_api.spec.yml GET /api/v1/signal/option_activity
 ---
 
 <ResponseExample>
-  ```json Respuesta (200 OK)
+  ```json Response (200 OK)
   {
     "option_activity": [
       {
@@ -14,8 +14,8 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v1/signal/option_activity
         "cost_basis": "336000.0",
         "date": "2025-12-29",
         "date_expiration": "2026-09-18",
-        "description": "Alerta de opciones sobre Freeport-McMoRan: puts de $50 con vencimiento el 18 de sep al ask: 600 vs 636 OI; resultados 1/22 antes de la apertura [est] ",
-        "description_extended": "Alerta de opciones sobre Freeport-McMoRan: puts de $50 con vencimiento el 18 de sep al ask: 600 @ $5.6 vs 636 OI; resultados 1/22 antes de la apertura [est] Ref=$51.4",
+        "description": "Freeport-McMoRan Option Alert: Sep 18 $50 Puts at the Ask: 600 vs 636 OI; Earnings 1/22 Before Open [est] ",
+        "description_extended": "Freeport-McMoRan Option Alert: Sep 18 $50 Puts at the Ask: 600 @ $5.6 vs 636 OI; Earnings 1/22 Before Open [est] Ref=$51.4",
         "exchange": "NYSE",
         "execution_estimate": "AT_ASK",
         "id": "6952ef7b6ab0a40001b39586",
@@ -40,7 +40,7 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v1/signal/option_activity
   }
   ```
 
-  ```json Respuesta (401 No autorizado)
+  ```json Response (401 Unauthorized)
   {
     "ok": false,
     "errors": [
@@ -53,7 +53,7 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v1/signal/option_activity
   }
   ```
 
-  ```json Respuesta (404 No encontrado)
+  ```json Response (404 Not Found)
   {
     "ok": false,
     "errors": [
@@ -66,7 +66,7 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v1/signal/option_activity
   }
   ```
 
-  ```json Respuesta (500 Error interno del servidor)
+  ```json Response (500 Internal Server Error)
   {
     "ok": false,
     "errors": [

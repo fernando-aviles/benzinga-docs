@@ -4,7 +4,7 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/ma
 ---
 
 <ResponseExample>
-  ```json Respuesta (200 OK)
+  ```json Response (200 OK)
   {
     "ma": [
       {
@@ -19,9 +19,9 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/ma
         "date_expected": "",
         "deal_payment_type": "",
         "deal_size": "",
-        "deal_status": "Completada",
-        "deal_terms_extra": "No se están divulgando los términos de la transacción.",
-        "deal_type": "Adquisición",
+        "deal_status": "Completed",
+        "deal_terms_extra": "Terms of the transaction are not being disclosed.",
+        "deal_type": "Acquisition",
         "id": "695bc1b183cac20001bec44e",
         "importance": 2,
         "notes": "",
@@ -34,20 +34,20 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/ma
   }
   ```
 
-  ```json Respuesta (401 No autorizado)
+  ```json Response (401 Unauthorized)
   {
     "ok": false,
     "errors": [
       {
         "code": "auth_failed",
         "id": "unauthorized",
-        "value": "Token de autenticación no válido o ausente"
+        "value": "Token de autenticación no válido o faltante"
       }
     ]
   }
   ```
 
-  ```json Respuesta (404 No encontrado)
+  ```json Response (404 Not Found)
   {
     "ok": false,
     "errors": [
@@ -60,7 +60,7 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/ma
   }
   ```
 
-  ```json Respuesta (500 Error interno del servidor)
+  ```json Response (500 Internal Server Error)
   {
     "ok": false,
     "errors": [

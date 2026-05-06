@@ -1,5 +1,5 @@
 ---
-title: "オプションアクティビティ"
+title: "OptionActivity"
 description: optionActivity()
 ---
 
@@ -13,7 +13,7 @@ description: optionActivity()
   ### 利用可能な操作
 </div>
 
-* [get](#get) - OptionActivity V1 の取得
+* [get](#get) - OptionActivity V1を取得
 
 <div id="get">
   ## get
@@ -60,9 +60,9 @@ public class Application {
   ### パラメータ
 </div>
 
-| パラメータ     | 型                                                                                   | 必須                         | 説明                     |
-| --------- | ----------------------------------------------------------------------------------- | -------------------------- | ---------------------- |
-| `request` | [GetOptionActivityV1Request](../../models/operations/GetOptionActivityV1Request.md) | :heavy&#95;check&#95;mark: | リクエストに使用するリクエストオブジェクト。 |
+| パラメータ     | 型                                                                                   | 必須                         | 説明                       |
+| --------- | ----------------------------------------------------------------------------------- | -------------------------- | ------------------------ |
+| `request` | [GetOptionActivityV1Request](../../models/operations/GetOptionActivityV1Request.md) | :heavy&#95;check&#95;mark: | リクエストに使用するリクエストオブジェクトです。 |
 
 <div id="response">
   ### レスポンス
@@ -74,7 +74,7 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                          | ステータスコード | コンテンツタイプ         |
+| エラータイプ                         | ステータスコード | コンテンツタイプ         |
 | ------------------------------ | -------- | ---------------- |
 | models/errors/ApiErrorResponse | 400, 500 | application/json |
 | models/errors/APIException     | 4XX, 5XX | */*              |

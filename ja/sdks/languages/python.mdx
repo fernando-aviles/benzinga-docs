@@ -8,7 +8,7 @@ icon: "python"
   ## 概要
 </div>
 
-Benzinga Python SDK は、定量分析や市場インテリジェンスに活用できる、Benzinga の金融データ API およびニュース API への包括的なアクセスを提供します。SDK には金融データ用とニュースデータ用の 2 つの主要モジュールが用意されており、開発者は高度な金融アプリケーションを構築できます。
+Benzinga Python SDK は、定量分析や市場インテリジェンス向けに、Benzinga の金融データ API とニュース API へ包括的にアクセスするための機能を提供します。この SDK には、金融データ用とニュースデータ用の 2 つの主要モジュールがあり、開発者は高度な金融アプリケーションを構築できます。
 
 <div id="installation">
   ## インストール
@@ -24,21 +24,21 @@ pip install git+ssh://git@github.com/Benzinga/benzinga-python-client.git
   ## 認証
 </div>
 
-すべてのSDKクラスで認証にAPIキーが必要です。APIキーを取得するには、[cloud.benzinga.com](https://cloud.benzinga.com)にアクセスしてください。
+すべてのSDKクラスで、認証にAPIキーが必要です。APIキーを取得するには、[cloud.benzinga.com](https://cloud.benzinga.com) にアクセスしてください。
 
 <div id="modules">
   ## モジュール
 </div>
 
-SDKは、主に2つのモジュールで構成されています。
+このSDKは、主に次の2つのモジュールで構成されています。
 
-* **財務データ** - 定量的な財務分析と市場データ
-* **ニュースデータ** - 金融ニュース、見出し、市場センチメント
+* **金融データ** - 定量的な財務分析および市場データ
+* **ニュースデータ** - 金融ニュース、見出し、マーケットセンチメント
 
 ***
 
 <div id="financial-data-module">
-  ## 財務データモジュール
+  ## 金融データモジュール
 </div>
 
 <div id="initialization">
@@ -52,14 +52,14 @@ fin = financial_data.Benzinga(api_key='YOUR_API_KEY')
 ```
 
 <div id="price-market-data">
-  ### 価格と市場データ
+  ### 価格・市場データ
 </div>
 
 <div id="price-history">
   #### 価格履歴
 </div>
 
-指定した期間の日次の過去ローソク足データを取得します。
+指定した日付範囲の日次ローソク足データを取得します。
 
 ```python
 data = fin.price_history(
@@ -71,44 +71,44 @@ data = fin.price_history(
 
 **パラメータ:**
 
-* `company_ticker` (必須) - 株式ティッカー
-* `start_date` (必須) - YYYY-MM-DD形式の開始日
-* `end_date` (必須) - YYYY-MM-DD形式の終了日
+* `company_ticker` (required) - 株式ティッカーシンボル
+* `start_date` (required) - YYYY-MM-DD 形式の開始日
+* `end_date` (required) - YYYY-MM-DD 形式の終了日
 
 <div id="quote">
-  #### クオート
+  #### Quote
 </div>
 
-OHLC、売気配/買気配、出来高、騰落率を含むリアルタイムのクオートデータを取得します。
+OHLC、買値/売値、出来高、騰落率を含むリアルタイムのクオートデータを取得します。
 
 ```python
 quote = fin.quote(company_ticker='AAPL')
 ```
 
-**戻り値:** シンボル、取引所、種別、名称、始値、高値、安値、終値、買い気配値、売り気配値、出来高、騰落率
+**戻り値:** シンボル、取引所、type、銘柄名、始値、高値、安値、終値、買気配値、売気配値、出来高、騰落率
 
 <div id="chart">
   #### チャート
 </div>
 
-時間間隔を指定してチャートデータを取得します。
+任意の時間間隔を指定してチャートデータを取得します。
 
 ```python
 chart = fin.chart(
     company_ticker='AAPL',
     start_date='2024-01-01',
     end_date='2024-12-31',
-    interval='1D'  # オプション: 1MONTH, 1W, 1D, 1H, 15M
+    interval='1D'  # 省略可能: 1MONTH, 1W, 1D, 1H, 15M
 )
 ```
 
-**間隔オプション:** `1MONTH`, `1W`, `1D`, `1H`, `15M`
+**時間間隔オプション:** `1MONTH`, `1W`, `1D`, `1H`, `15M`
 
 <div id="auto-complete">
   #### オートコンプリート
 </div>
 
-柔軟な検索方法で企業のティッカーを検索できます。
+さまざまな方法で企業のティッカーを検索できます。
 
 ```python
 results = fin.auto_complete(
@@ -125,14 +125,14 @@ results = fin.auto_complete(
   #### ファンダメンタルズ
 </div>
 
-企業の包括的なファンダメンタルズ情報を取得します。
+会社のファンダメンタルズデータを包括的に取得します。
 
 ```python
 fundamentals = fin.fundamentals(
     company_ticker='AAPL',
-    isin=None,  # 省略可
-    cik=None,   # 省略可
-    date=None   # 省略可: YYYY-MM-DD
+    isin=None,  # 任意
+    cik=None,   # 任意
+    date=None   # 任意: YYYY-MM-DD
 )
 ```
 
@@ -155,7 +155,7 @@ financials = fin.financials(
   #### バリュエーション比率
 </div>
 
-バリュエーション指標と各種比率を取得します。
+バリュエーション指標および比率を取得します。
 
 ```python
 valuation = fin.valuation_ratios(
@@ -170,7 +170,7 @@ valuation = fin.valuation_ratios(
   #### 収益性比率
 </div>
 
-収益性に関連する比率および指標を取得します。
+利益に関連する比率と指標を取得します。
 
 ```python
 earning_ratios = fin.earning_ratios(
@@ -182,10 +182,10 @@ earning_ratios = fin.earning_ratios(
 ```
 
 <div id="operation-ratios">
-  #### 経営効率指標
+  #### 経営効率比率
 </div>
 
-経営効率指標を取得します。
+経営効率比率を取得します。
 
 ```python
 operation_ratios = fin.operation_ratios(
@@ -197,10 +197,10 @@ operation_ratios = fin.operation_ratios(
 ```
 
 <div id="corporate-events-calendar-data">
-  ### コーポレートイベントとカレンダーデータ
+  ### 企業イベント &amp; カレンダーデータ
 </div>
 
-すべてのカレンダーメソッドで、ページネーションとフィルタリングをサポートしています。
+すべてのカレンダーメソッドで、ページネーションとフィルタリングをサポートしています：
 
 ```python
 # 配当
@@ -252,7 +252,7 @@ economics = fin.economics(
     importance=None
 )
 
-# 業績予想
+# 業績見通し
 guidance = fin.guidance(
     page=0,
     pagesize=100,
@@ -294,44 +294,44 @@ conference_calls = fin.conference_calls(
 ```
 
 <div id="company-information">
-  ### 企業情報
+  ### 会社情報
 </div>
 
 <div id="company-profile">
-  #### 企業プロフィール
+  #### 会社概要
 </div>
 
-企業プロフィールの詳細情報を取得します。
+会社の詳細情報を取得します。
 
 ```python
 profile = fin.company_profile(company_ticker='AAPL')
 ```
 
 <div id="company">
-  #### 企業
+  #### 会社
 </div>
 
-企業の基本情報を取得します。
+会社の基本情報を取得します。
 
 ```python
 company = fin.company(company_ticker='AAPL')
 ```
 
 <div id="share-class">
-  #### 株式の種類
+  #### 株式クラス
 </div>
 
-株式の種類の詳細を取得します。
+株式クラスの詳細情報を取得します。
 
 ```python
 share_class = fin.share_class(company_ticker='AAPL')
 ```
 
 <div id="earning-reports">
-  #### 決算報告
+  #### 決算レポート
 </div>
 
-過去の決算報告を取得します。
+過去の決算レポートを取得します。
 
 ```python
 earning_reports = fin.earning_reports(company_ticker='AAPL')
@@ -341,7 +341,7 @@ earning_reports = fin.earning_reports(company_ticker='AAPL')
   #### ロゴ
 </div>
 
-オプションのフィルタで company ロゴを取得します。
+オプションのフィルターを指定して会社ロゴを取得します。
 
 ```python
 logos = fin.logos(
@@ -351,14 +351,14 @@ logos = fin.logos(
 ```
 
 <div id="screening-analysis">
-  ### スクリーニングと分析
+  ### スクリーニング・分析
 </div>
 
 <div id="instruments">
   #### 銘柄
 </div>
 
-セクターや時価総額の条件で銘柄をスクリーニングします。
+セクターおよび時価総額で銘柄をスクリーニングします。
 
 ```python
 instruments = fin.instruments(
@@ -371,7 +371,7 @@ instruments = fin.instruments(
   #### 証券
 </div>
 
-シンボル、取引所、通貨、CUSIP を含む証券の詳細を取得します。
+シンボル、取引所、通貨、CUSIP などの証券詳細を取得します。
 
 ```python
 security = fin.security(company_ticker='AAPL')
@@ -381,12 +381,12 @@ security = fin.security(company_ticker='AAPL')
   #### 値上がり・値下がり銘柄
 </div>
 
-値上がり率上位銘柄と値下がり率上位銘柄を取得します。
+上昇率および下落率の高い銘柄を取得します。
 
 ```python
 movers = fin.movers(
-    session=None,  # オプション: pre, post, regular
-    sector=None    # オプション: セクターフィルター
+    session=None,  # 省略可能: pre、post、regular
+    sector=None    # 省略可能なセクターフィルター
 )
 ```
 
@@ -394,7 +394,7 @@ movers = fin.movers(
   #### ティッカー詳細
 </div>
 
-主要統計、同業他社情報、およびパーセンタイルデータを取得します。
+主要な統計情報、同業銘柄情報、パーセンタイルデータを取得します。
 
 ```python
 detail = fin.ticker_detail(company_ticker='AAPL')
@@ -437,22 +437,22 @@ news = news_data.News(api_key='YOUR_API_KEY')
 ```
 
 <div id="news-methods">
-  ### ニュースメソッド
+  ### ニュース関連メソッド
 </div>
 
 <div id="news">
   #### ニュース
 </div>
 
-柔軟なフィルタリング条件と表示オプションでニュース記事を取得します。
+柔軟なフィルタ条件と表示オプションを指定して、ニュース記事を取得します。
 
 ```python
 articles = news.news(
     pagesize=15,              # デフォルト: 15
     display_output='full',    # オプション: full, abstract, headline
-    date_from='2024-01-01',   # 任意
-    date_to='2024-12-31',     # 任意
-    channel=None              # 任意: チャンネルでフィルタリング
+    date_from='2024-01-01',   # 省略可
+    date_to='2024-12-31',     # 省略可
+    channel=None              # 省略可: チャンネルでフィルタリング
 )
 ```
 
@@ -470,17 +470,17 @@ articles = news.news(
 
 ```python
 top = news.top_news(
-    type=None,      # ニュース種別（省略可）
+    type=None,      # ニュースタイプ（省略可）
     channel=None,   # チャンネルフィルター（省略可）
-    limit=10        # 返す記事の件数
+    limit=10        # 返す記事数
 )
 ```
 
 <div id="channels">
-  #### チャンネル
+  #### チャネル
 </div>
 
-利用可能なニュースチャンネルの一覧を取得します。
+利用可能なニュースチャネルの一覧を取得します。
 
 ```python
 channels = news.channels()
@@ -489,10 +489,10 @@ channels = news.channels()
 **戻り値:** チャンネル名とID
 
 <div id="quantified-news">
-  #### 定量指標付きニュース
+  #### 定量ニュース
 </div>
 
-定量指標を含むニュースデータを取得します。
+定量的な指標を含むニュースデータを取得します。
 
 ```python
 quantified = news.quantified_news(
@@ -503,7 +503,7 @@ quantified = news.quantified_news(
 )
 ```
 
-**戻り値:** ヘッドライン、出来高、寄り付きギャップ、レンジ指標、その他の定量データ
+**返却内容:** 見出し、出来高、寄り付きギャップ、レンジ指標、その他の定量データ
 
 ***
 
@@ -514,7 +514,7 @@ quantified = news.quantified_news(
 どちらのモジュールも、JSON を見やすく表示するための `.output()` メソッドをサポートしています。
 
 ```python
-# 財務データの出力
+# 金融データの出力
 data = fin.quote('AAPL')
 fin.output(data)
 
@@ -526,7 +526,7 @@ news.output(articles)
 ***
 
 <div id="complete-example">
-  ## サンプル全体
+  ## 完全なサンプル
 </div>
 
 ```python
@@ -536,7 +536,7 @@ from benzingaorg import financial_data, news_data
 fin = financial_data.Benzinga(api_key='YOUR_API_KEY')
 news = news_data.News(api_key='YOUR_API_KEY')
 
-# 財務データの取得
+# 金融データの取得
 quote = fin.quote('AAPL')
 fundamentals = fin.fundamentals('AAPL')
 earnings = fin.earnings(ticker='AAPL', date_from='2024-01-01')
@@ -558,10 +558,10 @@ news.output(articles)
 
 * **リポジトリ**: [github.com/Benzinga/benzinga-python-client](https://github.com/Benzinga/benzinga-python-client)
 * **ライセンス**: MIT
-* **APIキー**: [cloud.benzinga.com](https://cloud.benzinga.com)
+* **API キー**: [cloud.benzinga.com](https://cloud.benzinga.com)
 
 <div id="support">
   ## サポート
 </div>
 
-技術サポートおよびAPIキーの発行については、[cloud.benzinga.com](https://cloud.benzinga.com) からBenzingaにお問い合わせください。
+技術サポートおよびAPIキーの発行については、[cloud.benzinga.com](https://cloud.benzinga.com) でBenzingaまでお問い合わせください。

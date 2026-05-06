@@ -1,5 +1,5 @@
 ---
-title: 'Markdown 構文'
+title: 'Markdown構文'
 description: '標準的なMarkdownでのテキスト、タイトル、スタイル'
 icon: 'text-size'
 ---
@@ -18,13 +18,10 @@ icon: 'text-size'
   ### サブタイトル
 </div>
 
-小見出しに適しています。
+小見出しに最適です。
 
 ```md
-<div id="subtitles">
-  ### サブタイトル
-</div>
-
+### Subtitles
 ```
 
 <Tip>
@@ -35,44 +32,44 @@ icon: 'text-size'
   ## テキストの書式設定
 </div>
 
-ほとんどの Markdown 書式に対応しています。書式を設定するには、テキストの前後に `**`、`_`、または `~` を付けるだけです。
+Markdown の書式のほとんどをサポートしています。書式を設定するには、テキストの前後に `**`、`_`、または `~` を付けるだけです。
 
-| スタイル  | 書き方               | 結果        |
-| ----- | ----------------- | --------- |
-| 太字    | `**bold**`        | **太字**    |
-| 斜体    | `_italic_`        | *斜体*      |
-| 取り消し線 | `~strikethrough~` | ~~取り消し線~~ |
+| スタイル  | 書き方               | 結果                |
+| ----- | ----------------- | ----------------- |
+| 太字    | `**bold**`        | **bold**          |
+| 斜体    | `_italic_`        | *italic*          |
+| 取り消し線 | `~strikethrough~` | ~~strikethrough~~ |
 
-これらは組み合わせて使うこともできます。たとえば、`**_bold and italic_**` と書くと、***太字かつ斜体*** のテキストになります。
+これらは組み合わせて使用できます。たとえば、`**_bold and italic_**` と書くと、***bold and italic*** のように表示されます。
 
-上付き文字と下付き文字を記述するには HTML を使用する必要があります。つまり、テキストの前後に `<sup>` または `<sub>` を追加します。
+上付き文字と下付き文字を記述するには、HTML を使用する必要があります。つまり、テキストの前後に `<sup>` または `<sub>` を追加します。
 
-| テキストサイズ | 書き方                      | 結果               |
-| ------- | ------------------------ | ---------------- |
-| 上付き文字   | `<sup>superscript</sup>` | <sup>上付き文字</sup> |
-| 下付き文字   | `<sub>subscript</sub>`   | <sub>下付き文字</sub> |
+| 文字種別  | 書き方                      | 結果                     |
+| ----- | ------------------------ | ---------------------- |
+| 上付き文字 | `<sup>superscript</sup>` | <sup>superscript</sup> |
+| 下付き文字 | `<sub>subscript</sub>`   | <sub>subscript</sub>   |
 
 <div id="linking-to-pages">
   ## ページへのリンク
 </div>
 
-`[]()` でテキストを囲むと、リンクを追加できます。たとえば、Google へのリンクは `[link to google](https://google.com)` のように記述します。たとえば、[link to google](https://google.com)。
+テキストを `[]()` で囲むと、リンクを追加できます。たとえば、[link to google](https://google.com) へのリンクを作成するには、`[link to google](https://google.com)` と記述します。
 
-ドキュメント内のページへのリンクは、ルート相対にする必要があります。つまり、フォルダーパス全体を含めてください。たとえば、`[link to text](/writing-content/text)` は、components セクションの「Text」ページへのリンクになります。
+ドキュメント内のページへのリンクは、ルート相対パスにする必要があります。つまり、フォルダーパス全体を含めてください。たとえば、`[link to text](/writing-content/text)` は、components セクションの「Text」ページにリンクします。
 
-`[link to text](../text)` のような相対リンクは、最適化しにくいため、表示が遅くなります。
+`[link to text](../text)` のような相対リンクは、こちらで容易に最適化できないため、表示が遅くなります。
 
 <div id="blockquotes">
   ## 引用ブロック
 </div>
 
 <div id="singleline">
-  ### 1行
+  ### 1 行
 </div>
 
-引用ブロックを作成するには、段落の先頭に `>` を追加します。
+引用ブロックを作成するには、段落の前に `>` を追加します。
 
-> ドロシーは城の美しい部屋をいくつも通り抜けながら、彼女のあとについていった。
+> ドロシーは城の美しい部屋をいくつも通り抜けながら、彼女のあとについていきました。
 
 ```md
 > Dorothy followed her through many of the beautiful rooms in her castle.
@@ -82,9 +79,9 @@ icon: 'text-size'
   ### 複数行
 </div>
 
-> ドロシーは、城の中の美しい部屋をいくつも通りながら、あとについていった。
+> ドロシーは城の美しい部屋をいくつも通り抜けながら、彼女のあとについていった。
 >
-> 魔女はドロシーに、鍋ややかんを洗い、床を掃き、火が絶えないよう薪をくべるよう言いつけた。
+> 魔女は彼女に、鍋ややかんを洗い、床を掃き、火に薪をくべて絶やさないようにと言いつけた。
 
 ```md
 > Dorothy followed her through many of the beautiful rooms in her castle.
@@ -96,7 +93,7 @@ icon: 'text-size'
   ### LaTeX
 </div>
 
-Mintlify は、Latex コンポーネントを介して [LaTeX](https://www.latex-project.org) をサポートしています。
+Mintlify は [LaTeX](https://www.latex-project.org) を、Latex コンポーネント経由でサポートしています。
 
 <Latex>8 x (vk x H1 - H2) = (0,1)</Latex>
 

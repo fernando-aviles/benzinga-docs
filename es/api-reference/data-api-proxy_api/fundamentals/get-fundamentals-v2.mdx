@@ -4,7 +4,7 @@ openapi: /es/openapi/data-api-proxy_api.spec.yml GET /api/v2/fundamentals
 ---
 
 <ResponseExample>
-  ```json Respuesta (200 OK)
+  ```json Response (200 OK)
   {
     "result": [
       {
@@ -24,7 +24,7 @@ openapi: /es/openapi/data-api-proxy_api.spec.yml GET /api/v2/fundamentals
           "standardName": "Apple Inc",
           "totalEmployees": 166000,
           "legalName": "Apple Inc",
-          "longDescription": "Apple se encuentra entre las empresas más grandes del mundo, con una amplia cartera de productos de hardware y software dirigidos tanto a consumidores como a empresas. El iPhone de Apple representa la mayor parte de las ventas de la compañía, y otros productos de Apple, como Mac, iPad y Watch, están diseñados en torno al iPhone como eje central de un amplio ecosistema de software. Apple ha trabajado progresivamente para añadir nuevas aplicaciones, como video en flujo, paquetes de suscripción y realidad aumentada. La compañía diseña su propio software y semiconductores, mientras trabaja con subcontratistas como Foxconn y TSMC para fabricar sus productos y chips. Algo menos de la mitad de las ventas de Apple provienen directamente de sus tiendas insignia, mientras que la mayor parte llega indirectamente a través de asociaciones y distribución."
+          "longDescription": "Apple figura entre las empresas más grandes del mundo, con una amplia cartera de productos de hardware y software dirigidos a consumidores y empresas. El iPhone de Apple representa la mayor parte de las ventas de la compañía, y otros productos de Apple, como Mac, iPad y Watch, están diseñados en torno al iPhone como eje central de un amplio ecosistema de software. Apple ha trabajado de forma progresiva para incorporar nuevas aplicaciones, como video en streaming, paquetes de suscripción y realidad aumentada. La empresa diseña su propio software y semiconductores, mientras colabora con subcontratistas como Foxconn y TSMC para fabricar sus productos y chips. Algo menos de la mitad de las ventas de Apple proviene directamente de sus tiendas emblemáticas, mientras que la mayor parte llega de forma indirecta a través de alianzas y distribución."
         },
         "shareClass": {
           "shareClassId": "0P000000GY",
@@ -50,7 +50,7 @@ openapi: /es/openapi/data-api-proxy_api.spec.yml GET /api/v2/fundamentals
   }
   ```
 
-  ```json Respuesta (401 No autorizado)
+  ```json Response (401 Unauthorized)
   {
     "ok": false,
     "errors": [
@@ -63,7 +63,7 @@ openapi: /es/openapi/data-api-proxy_api.spec.yml GET /api/v2/fundamentals
   }
   ```
 
-  ```json Respuesta (404 No encontrado)
+  ```json Response (404 Not Found)
   {
     "ok": false,
     "errors": [
@@ -76,7 +76,7 @@ openapi: /es/openapi/data-api-proxy_api.spec.yml GET /api/v2/fundamentals
   }
   ```
 
-  ```json Respuesta (500 Error interno del servidor)
+  ```json Response (500 Internal Server Error)
   {
     "ok": false,
     "errors": [

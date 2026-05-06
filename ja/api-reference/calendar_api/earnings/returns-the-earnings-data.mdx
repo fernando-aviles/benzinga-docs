@@ -1,10 +1,10 @@
 ---
-title: "決算発表"
+title: "決算"
 openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/earnings
 ---
 
 <ResponseExample>
-  ```json レスポンス (200 OK)
+  ```json Response (200 OK)
   {
     "earnings": [
       {
@@ -40,40 +40,40 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/earnings
   }
   ```
 
-  ```json レスポンス（401 認証されていません）
+  ```json Response (401 Unauthorized)
   {
     "ok": false,
     "errors": [
       {
         "code": "auth_failed",
         "id": "unauthorized",
-        "value": "認証トークンが無効であるか、指定されていません"
+        "value": "Invalid or missing authentication token"
       }
     ]
   }
   ```
 
-  ```json レスポンス（404 見つかりません）
+  ```json Response (404 Not Found)
   {
     "ok": false,
     "errors": [
       {
         "code": "no_data_found",
         "id": "not_found",
-        "value": "指定したパラメータに該当するデータが見つかりません"
+        "value": "No data found for the specified parameters"
       }
     ]
   }
   ```
 
-  ```json レスポンス（500 内部サーバーエラー）
+  ```json Response (500 Internal Server Error)
   {
     "ok": false,
     "errors": [
       {
         "code": "internal_server_error",
         "id": "server_error",
-        "value": "リクエストの処理中に予期しないエラーが発生しました"
+        "value": "An unexpected error occurred while processing your request"
       }
     ]
   }

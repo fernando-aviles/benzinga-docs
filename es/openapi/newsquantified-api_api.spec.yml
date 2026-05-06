@@ -1,21 +1,21 @@
 openapi: 3.0.0
 info:
   contact: {}
-  description: Esta API REST proporciona endpoints para buscar logotipos y obtener
-    sus detalles.
+  description: Esta API REST proporciona puntos finales para buscar logotipos y
+    obtener detalles de logotipos.
   termsOfService: http://swagger.io/terms/
   title: NewsQuantified API
   version: 2.0.0
 paths:
   /api/v2/newsquantified:
     get:
-      description: Recupera datos de análisis cuantitativo de noticias con
+      description: Recupera datos de analítica cuantitativa de noticias con
         puntuaciones de sentimiento, métricas de relevancia e indicadores de
-        impacto en el mercado. Devuelve datos estructurados que analizan los
-        aspectos cuantitativos de la cobertura de noticias, incluidos la
+        impacto de mercado. Devuelve datos estructurados que analizan los
+        aspectos cuantitativos de la cobertura informativa, incluida la
         polaridad del sentimiento, el recuento de artículos, las puntuaciones de
-        tendencia y las métricas específicas por ticker. Utilice este endpoint
-        para acceder a análisis de noticias en formato legible por máquina para
+        tendencia y las métricas específicas por tíker. Use este punto final
+        para acceder a analítica de noticias en formato legible por máquina para
         trading algorítmico e investigación cuantitativa.
       operationId: get-newsquantified-data
       parameters:
@@ -38,15 +38,15 @@ paths:
           name: updated_since
           schema:
             type: integer
-        - description: Lista separada por comas de tickers bursátiles para filtrar los
-            resultados (p. ej., AAPL,MSFT,TSLA). Devuelve análisis solo para los
-            valores especificados.
+        - description: Lista separada por comas de símbolos de tíker bursátil para filtrar
+            los resultados (p. ej., AAPL,MSFT,TSLA). Devuelve analítica solo
+            para los valores especificados.
           in: query
           name: symbols
           schema:
             type: string
         - description: Fecha única en formato YYYY-MM-DD (p. ej., 2024-12-30). Forma
-            abreviada de filtrar cuando date_from y date_to son iguales.
+            abreviada de filtrado cuando date_from y date_to son iguales.
             Devuelve datos para esta fecha específica.
           in: query
           name: date
@@ -68,8 +68,8 @@ paths:
             type: string
       responses:
         "200":
-          description: Array de análisis cuantitativo de noticias con puntuaciones y
-            métricas de sentimiento
+          description: Array de analítica cuantitativa de noticias con puntuaciones de
+            sentimiento y métricas
           content:
             application/json:
               schema:
@@ -101,7 +101,7 @@ paths:
                 type: array
       security:
         - ApiKeyAuth: []
-      summary: Análisis cuantitativo de noticias
+      summary: Analítica cuantitativa de noticias
       tags:
         - News Analytics
 components:

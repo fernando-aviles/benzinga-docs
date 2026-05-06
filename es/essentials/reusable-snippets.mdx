@@ -1,6 +1,6 @@
 ---
 title: Fragmentos reutilizables
-description: Fragmentos personalizados y reutilizables para mantener el contenido sincronizado
+description: Fragmentos reutilizables y personalizados para mantener el contenido sincronizado
 icon: 'recycle'
 ---
 
@@ -12,11 +12,11 @@ import SnippetIntro from '/snippets/es/snippet-intro.mdx';
   ## Crear un fragmento personalizado
 </div>
 
-**Condición previa**: Debes crear tu archivo de fragmento en el directorio `snippets`.
+**Condición previa**: Debes crear el archivo del fragmento en el directorio `snippets`.
 
 <Note>
-  Cualquier página del directorio `snippets` se tratará como un fragmento y no se
-  renderizará como una página independiente. Si quieres crear una página independiente
+  Cualquier página del directorio `snippets` se tratará como un fragmento y no
+  se renderizará como una página independiente. Si quieres crear una página independiente
   a partir de ese fragmento, impórtalo en otro archivo y úsalo como un
   componente.
 </Note>
@@ -25,8 +25,8 @@ import SnippetIntro from '/snippets/es/snippet-intro.mdx';
   ### Exportación predeterminada
 </div>
 
-1. Agrega al archivo de tu fragmento el contenido que quieras reutilizar en varios
-   lugares. De forma opcional, puedes agregar variables que se puedan completar mediante props
+1. Agrega al archivo de fragmento el contenido que quieras reutilizar en varias
+   ubicaciones. Opcionalmente, puedes agregar variables que se puedan completar mediante props
    al importar el fragmento.
 
 ```mdx snippets/my-snippet.mdx
@@ -36,7 +36,7 @@ day is {word}.
 
 <Warning>
   El contenido que quieres reutilizar debe estar dentro del directorio `snippets`
-  para que la importación funcione.
+  para que la importación funcione correctamente.
 </Warning>
 
 2. Importa el fragmento en el archivo de destino.
@@ -60,7 +60,7 @@ Lorem impsum dolor sit amet.
   ### Variables reutilizables
 </div>
 
-1. Exporta una variable desde el archivo del fragmento:
+1. Exporta una variable desde tu archivo de fragmento:
 
 ```mdx snippets/path/to/custom-variables.mdx
 export const myName = 'my name';
@@ -86,7 +86,7 @@ Hello, my name is {myName} and I like {myObject.fruit}.
 </div>
 
 1. Dentro de tu archivo de fragmento, crea un componente que reciba props exportándolo
-   como una función flecha.
+   en forma de función flecha.
 
 ```mdx snippets/custom-component.mdx
 export const MyComponent = ({ title }) => (
@@ -99,10 +99,10 @@ export const MyComponent = ({ title }) => (
 
 <Warning>
   MDX no se compila dentro del cuerpo de una función flecha. Usa la sintaxis
-  HTML siempre que puedas o una exportación por defecto si necesitas usar MDX.
+  HTML cuando puedas o una exportación por defecto si necesitas usar MDX.
 </Warning>
 
-2. Importa el fragmento en tu archivo de destino y pásale las props
+2. Importa el fragmento en el archivo de destino y pásale las props
 
 ```mdx destination-file.mdx
 ---

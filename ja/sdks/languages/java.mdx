@@ -8,11 +8,11 @@ icon: "java"
   # BZ-Java-Client
 </div>
 
-*openapi* API を活用するために設計された、開発者向けの型安全な Java SDK。
+開発者に使いやすく、型安全性を備えた、*openapi* API を活用するための Java SDK。
 
 <div style={{ textAlign: "left" }}>
   <a href="https://www.speakeasy.com/?utm_source=openapi&utm_campaign=java">
-    <img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" alt="Speakeasy 製" />
+    <img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" alt="Speakeasy によって構築" />
   </a>
 
   <a href="https://mit-license.org/">
@@ -24,26 +24,26 @@ icon: "java"
   ## 概要
 </div>
 
-Benzinga APIs: このREST APIは、すべてのBenzinga APIのエンドポイントを提供します。
+Benzinga APIs: このREST APIは、Benzinga のすべてのAPIにアクセスするためのエンドポイントを提供します。
 
 <div id="table-of-contents">
   ## 目次
 </div>
 
 * [BZ-Java-Client](#bz-java-client)
-* [SDK インストール](#sdk-installation)
+* [SDKのインストール](#sdk-installation)
 * [SDK 使用例](#sdk-example-usage)
 * [認証](#authentication)
 * [利用可能なリソースと操作](#available-resources-and-operations)
 * [再試行](#retries)
-* [エラーハンドリング](#error-handling)
+* [エラー処理](#error-handling)
 * [サーバー選択](#server-selection)
 * [開発](#development)
 * [成熟度](#maturity)
 * [コントリビューション](#contributions)
 
 <div id="sdk-installation">
-  ## SDKのインストール
+  ## SDK のインストール
 </div>
 
 <div id="getting-started">
@@ -52,7 +52,7 @@ Benzinga APIs: このREST APIは、すべてのBenzinga APIのエンドポイン
 
 JDK 11 以降が必要です。
 
-以下のサンプルは、公開されている SDK アーティファクトの使用方法を示しています。
+以下のサンプルは、公開済みのSDKアーティファクトの使用方法を示しています。
 
 Gradle:
 
@@ -74,7 +74,7 @@ Maven:
   ### ビルド方法
 </div>
 
-git リポジトリをファイルシステムにクローンした後、*nix 系システムでは `./gradlew build`、Windows システムでは `gradlew.bat` を実行すると、ソースから SDK アーティファクトを `build` ディレクトリにビルドできます。
+git リポジトリをファイルシステムにクローンしたら、*nix 系システムでは `./gradlew build`、Windows では `gradlew.bat` を実行することで、ソースから SDK アーティファクトを `build` ディレクトリにビルドできます。
 
 ソースからビルドし、SDK アーティファクトをローカルの Maven リポジトリ (ファイルシステム上) に公開する場合は、次のコマンドを使用します (git リポジトリをローカルにクローンした後) 。
 
@@ -128,16 +128,16 @@ public class Application {
 </div>
 
 <div id="per-client-security-schemes">
-  ### クライアントごとのセキュリティスキーム
+  ### クライアント単位のセキュリティスキーム
 </div>
 
-このSDKは、次のセキュリティスキームをグローバルにサポートしています。
+この SDK は、SDK 全体で次のセキュリティスキームをサポートしています。
 
-| 名前           | 種別     | スキーム  |
-| ------------ | ------ | ----- |
-| `apiKeyAuth` | apiKey | APIキー |
+| 名前           | 種類     | スキーム   |
+| ------------ | ------ | ------ |
+| `apiKeyAuth` | apiKey | API キー |
 
-API で認証するには、SDKクライアントインスタンスの初期化時に `apiKeyAuth` パラメータを設定する必要があります。例:
+API への認証を行うには、SDK クライアントインスタンスの初期化時に `apiKeyAuth` パラメータを設定する必要があります。例:
 
 ```java
 package hello.world;
@@ -174,7 +174,7 @@ public class Application {
   ### [analystInsights()](/ja/sdks/java/analystinsights/README)
 </div>
 
-* [取得](/ja/sdks/java/analystinsights/README#get) - アナリストインサイトV1を取得
+* [get](/ja/sdks/java/analystinsights/README#get) - Analyst Insights V1を取得
 
 <div id="analystreportsrawtext">
   ### [analystReportsRawText()](/ja/sdks/java/analystreportsrawtext/README)
@@ -186,19 +186,19 @@ public class Application {
   ### [bars()](/ja/sdks/java/bars/README)
 </div>
 
-* [取得](/ja/sdks/java/bars/README#get) - Bars V2の取得
+* [get](/ja/sdks/java/bars/README#get) - Bars V2を取得
 
 <div id="bullsbearssaybearssay">
   ### [bullsBearsSayBearsSay()](/ja/sdks/java/bullsbearssaybearssay/README)
 </div>
 
-* [取得](/ja/sdks/java/bullsbearssaybearssay/README#get) - Bulls Say Bears Say V1を取得
+* [get](/ja/sdks/java/bullsbearssaybearssay/README#get) - Bulls Say Bears Say V1を取得
 
 <div id="conferencecalls">
   ### [conferenceCalls()](/ja/sdks/java/conferencecalls/README)
 </div>
 
-* [get](/ja/sdks/java/conferencecalls/README#get) - カンファレンスコールを取得
+* [get](/ja/sdks/java/conferencecalls/README#get) - カンファレンスコールの取得
 
 <div id="consensusratings">
   ### [consensusRatings()](/ja/sdks/java/consensusratings/README)
@@ -210,20 +210,20 @@ public class Application {
   ### [derivedFiguresAndRatios()](/ja/sdks/java/derivedfiguresandratios/README)
 </div>
 
-* [get](/ja/sdks/java/derivedfiguresandratios/README#get) - 派生数値と比率 V3 を取得
+* [get](/ja/sdks/java/derivedfiguresandratios/README#get) - 派生指標と比率 V3 を取得
 
 <div id="dividends">
   ### [dividends()](/ja/sdks/java/dividends/README)
 </div>
 
-* [getV22](/ja/sdks/java/dividends/README#getv22) - 配当情報を取得 V2.2
-* [get](/ja/sdks/java/dividends/README#get) - 配当情報を取得 V2 / V2.1
+* [getV22](/ja/sdks/java/dividends/README#getv22) - 配当金を取得 V2.2
+* [get](/ja/sdks/java/dividends/README#get) - 配当金を取得 V2 &amp; V2.1
 
 <div id="earningratios">
   ### [earningRatios()](/ja/sdks/java/earningratios/README)
 </div>
 
-* [取得](/ja/sdks/java/earningratios/README#get) - 収益比率を取得する V2.1
+* [get](/ja/sdks/java/earningratios/README#get) - Earning Ratios V2.1を取得
 
 <div id="earnings">
   ### [earnings()](/ja/sdks/java/earnings/README)
@@ -242,33 +242,33 @@ public class Application {
   ### [economics()](/ja/sdks/java/economics/README)
 </div>
 
-* [取得](/ja/sdks/java/economics/README#get) - 経済データを取得
+* [get](/ja/sdks/java/economics/README#get) - 経済指標を取得
 
 <div id="events">
   ### [events()](/ja/sdks/java/events/README)
 </div>
 
-* [get](/ja/sdks/java/events/README#get) - イベントの取得
+* [get](/ja/sdks/java/events/README#get) - イベントを取得
 
 <div id="fda">
   ### [fda()](/ja/sdks/java/fda/README)
 </div>
 
-* [get](/ja/sdks/java/fda/README#get) - FDAを取得
+* [get](/ja/sdks/java/fda/README#get) - FDAを取得する
 
 <div id="fundamentals">
   ### [fundamentals()](/ja/sdks/java/fundamentals/README)
 </div>
 
 * [getV21](/ja/sdks/java/fundamentals/README#getv21) - ファンダメンタルズ V2.1 を取得
-* [getAlphaBeta](/ja/sdks/java/fundamentals/README#getalphabeta) - Alpha Beta V2.1 を取得
-* [getCompanyV21](/ja/sdks/java/fundamentals/README#getcompanyv21) - 企業データ V2.1 を取得
-* [getCompanyProfileV21](/ja/sdks/java/fundamentals/README#getcompanyprofilev21) - 企業プロファイル V2.1 を取得
+* [getAlphaBeta](/ja/sdks/java/fundamentals/README#getalphabeta) - アルファ・ベータ V2.1 を取得
+* [getCompanyV21](/ja/sdks/java/fundamentals/README#getcompanyv21) - 会社データ v2.1 を取得
+* [getCompanyProfileV21](/ja/sdks/java/fundamentals/README#getcompanyprofilev21) - 会社プロファイル v2.1 を取得
 * [getShareClass](/ja/sdks/java/fundamentals/README#getshareclass) - 株式クラス V2.1 を取得
 * [getShareClassProfile](/ja/sdks/java/fundamentals/README#getshareclassprofile) - 株式クラスプロファイル V2.1 を取得
 * [get](/ja/sdks/java/fundamentals/README#get) - ファンダメンタルズ V2 を取得
 * [getAssetClassification](/ja/sdks/java/fundamentals/README#getassetclassification) - 資産分類 V2.1 を取得
-* [getEarningsReports](/ja/sdks/java/fundamentals/README#getearningsreports) - 決算報告書 V2.1 を取得
+* [getEarningsReports](/ja/sdks/java/fundamentals/README#getearningsreports) - 決算レポート V2.1 を取得
 * [getFinancialsV21](/ja/sdks/java/fundamentals/README#getfinancialsv21) - 財務情報 V2.1 を取得
 * [getV3](/ja/sdks/java/fundamentals/README#getv3) - ファンダメンタルズ V3 を取得
 * [getBalanceSheetV3](/ja/sdks/java/fundamentals/README#getbalancesheetv3) - 貸借対照表 V3 を取得
@@ -280,25 +280,25 @@ public class Application {
   ### [governmentTradeReports()](/ja/sdks/java/governmenttradereports/README)
 </div>
 
-* [取得](/ja/sdks/java/governmenttradereports/README#get) - 政府取引レポートを取得する
+* [get](/ja/sdks/java/governmenttradereports/README#get) - 政府取引レポートを取得
 
 <div id="governmenttrades">
   ### [governmentTrades()](/ja/sdks/java/governmenttrades/README)
 </div>
 
-* [取得](/ja/sdks/java/governmenttrades/README#get) - 政府関係者の取引を取得
+* [get](/ja/sdks/java/governmenttrades/README#get) - Government Trades を取得
 
 <div id="guidance">
   ### [guidance()](/ja/sdks/java/guidance/README)
 </div>
 
-* [get](/ja/sdks/java/guidance/README#get) - ガイダンスの取得
+* [get](/ja/sdks/java/guidance/README#get) - ガイダンスを取得
 
 <div id="insidertransaction">
   ### [insiderTransaction()](/ja/sdks/java/insidertransaction/README)
 </div>
 
-* [get](/ja/sdks/java/insidertransaction/README#get) - インサイダー取引を取得
+* [get](/ja/sdks/java/insidertransaction/README#get) - インサイダー取引情報を取得
 
 <div id="insidertransactions">
   ### [insiderTransactions()](/ja/sdks/java/insidertransactions/README)
@@ -310,28 +310,28 @@ public class Application {
   ### [ipos()](/ja/sdks/java/ipos/README)
 </div>
 
-* [getV21](/ja/sdks/java/ipos/README#getv21) - IPO情報を取得 V2.1
-* [get](/ja/sdks/java/ipos/README#get) - IPO情報を取得 V2
+* [getV21](/ja/sdks/java/ipos/README#getv21) - IPO情報 V2.1 を取得
+* [get](/ja/sdks/java/ipos/README#get) - IPO情報 V2 を取得
 
 <div id="logos">
   ### [logos()](/ja/sdks/java/logos/README)
 </div>
 
-* [bulkSync](/ja/sdks/java/logos/README#bulksync) - 指定した検索キーに対応するロゴを取得
-* [search](/ja/sdks/java/logos/README#search) - 指定した検索キーに対応するロゴを取得
+* [bulkSync](/ja/sdks/java/logos/README#bulksync) - 指定した検索キーのロゴを取得します
+* [search](/ja/sdks/java/logos/README#search) - 指定した検索キーのロゴを取得します
 
 <div id="ma">
   ### [ma()](/ja/sdks/java/ma/README)
 </div>
 
-* [取得](/ja/sdks/java/ma/README#get) - M&amp;A情報を取得
+* [get](/ja/sdks/java/ma/README#get) - M&amp;A情報を取得
 
 <div id="news">
   ### [news()](/ja/sdks/java/news/README)
 </div>
 
 * [get](/ja/sdks/java/news/README#get) - ニュースを取得
-* [getRemoved](/ja/sdks/java/news/README#getremoved) - 削除済みのニュースを取得
+* [getRemoved](/ja/sdks/java/news/README#getremoved) - 削除済みニュースを取得
 
 <div id="newsquantified">
   ### [newsquantified()](/ja/sdks/java/newsquantified/README)
@@ -343,19 +343,19 @@ public class Application {
   ### [offerings()](/ja/sdks/java/offerings/README)
 </div>
 
-* [取得](/ja/sdks/java/offerings/README#get) - Offerings を取得
+* [get](/ja/sdks/java/offerings/README#get) - Offerings の取得
 
 <div id="operationratios">
   ### [operationRatios()](/ja/sdks/java/operationratios/README)
 </div>
 
-* [get](/ja/sdks/java/operationratios/README#get) - オペレーション比率 V2.1 を取得
+* [get](/ja/sdks/java/operationratios/README#get) - operation ratios V2.1を取得
 
 <div id="optionactivity">
   ### [optionActivity()](/ja/sdks/java/optionactivity/README)
 </div>
 
-* [取得](/ja/sdks/java/optionactivity/README#get) - OptionActivity V1 の取得
+* [get](/ja/sdks/java/optionactivity/README#get) - OptionActivity V1 を取得する
 
 ### [quotedelayed()](/ja/sdks/java/quotedelayed/README)
 
@@ -365,7 +365,7 @@ public class Application {
   ### [quoteDelayed()](/ja/sdks/java/bzclientquotedelayed/README)
 </div>
 
-* [get](/ja/sdks/java/bzclientquotedelayed/README#get) - V2 の遅延クオートを取得
+* [get](/ja/sdks/java/bzclientquotedelayed/README#get) - 遅延クオート V2 を取得
 
 <div id="ratings">
   ### [ratings()](/ja/sdks/java/ratings/README)
@@ -377,13 +377,13 @@ public class Application {
   ### [ratingsAnalysts()](/ja/sdks/java/ratingsanalysts/README)
 </div>
 
-* [取得](/ja/sdks/java/ratingsanalysts/README#get) - レーティングアナリストを取得
+* [get](/ja/sdks/java/ratingsanalysts/README#get) - レーティングのアナリスト情報を取得
 
 <div id="ratingsfirms">
   ### [ratingsFirms()](/ja/sdks/java/ratingsfirms/README)
 </div>
 
-* [取得](/ja/sdks/java/ratingsfirms/README#get) - 格付け会社を取得
+* [get](/ja/sdks/java/ratingsfirms/README#get) - レーティング会社を取得
 
 <div id="removed">
   ### [removed()](/ja/sdks/java/removed/README)
@@ -395,28 +395,28 @@ public class Application {
   ### [splits()](/ja/sdks/java/splits/README)
 </div>
 
-* [取得](/ja/sdks/java/splits/README#get) - 株式分割を取得
+* [get](/ja/sdks/java/splits/README#get) - 株式分割を取得
 
 <div id="tickertrends">
   ### [tickerTrends()](/ja/sdks/java/tickertrends/README)
 </div>
 
-* [get](/ja/sdks/java/tickertrends/README#get) - ティッカートレンドデータを取得
-* [getList](/ja/sdks/java/tickertrends/README#getlist) - ティッカートレンド一覧データを取得
+* [get](/ja/sdks/java/tickertrends/README#get) - ティッカーのトレンドデータを取得します
+* [getList](/ja/sdks/java/tickertrends/README#getlist) - ティッカーのトレンド一覧データを取得します
 
 <div id="valuationratios">
   ### [valuationRatios()](/ja/sdks/java/valuationratios/README)
 </div>
 
-* [get](/ja/sdks/java/valuationratios/README#get) - バリュエーション比率を取得 V2.1
+* [get](/ja/sdks/java/valuationratios/README#get) - V2.1 のバリュエーション比率を取得
 
 <div id="retries">
-  ## リトライ
+  ## 再試行
 </div>
 
-このSDKの一部のエンドポイントは、リトライをサポートしています。設定を行わずにSDKを使用した場合は、APIが提供するデフォルトのリトライ戦略が適用されます。ただし、このデフォルトのリトライ戦略は、操作ごと、またはSDK全体で上書きできます。
+この SDK の一部のエンドポイントは再試行をサポートしています。設定を行わずに SDK を使用した場合は、API が提供するデフォルトの再試行戦略が適用されます。ただし、デフォルトの再試行戦略は、操作ごとに、または SDK 全体に対して上書きできます。
 
-単一のAPI呼び出しに対するデフォルトのリトライ戦略を変更するには、`retryConfig` ビルダーメソッドを使用して `RetryConfig` オブジェクトを指定できます:
+単一の API 呼び出しに対するデフォルトの再試行戦略を変更するには、`retryConfig` ビルダーメソッドを使用して `RetryConfig` オブジェクトを指定します。
 
 ```java
 package hello.world;
@@ -458,7 +458,7 @@ public class Application {
 }
 ```
 
-再試行に対応しているすべての操作でデフォルトの再試行戦略を上書きする場合は、SDK の初期化時に設定を指定できます。
+再試行をサポートするすべての操作でデフォルトの再試行戦略を変更する場合は、SDK の初期化時に設定を指定できます。
 
 ```java
 package hello.world;
@@ -504,11 +504,11 @@ public class Application {
   ## エラー処理
 </div>
 
-このSDKのエラー処理は、おおむね想定どおりです。すべての操作はレスポンスオブジェクトを返すか、例外を送出します。
+このSDKのエラー処理は、基本的には想定どおりです。すべての操作は、レスポンスオブジェクトを返すか、例外をスローします。
 
-デフォルトでは、APIエラーが発生すると `models/errors/APIException` 例外がスローされます。操作にカスタムのエラーレスポンスが定義されている場合、SDK は対応する例外をスローすることもあります。各操作で発生する可能性のある例外種別の詳細については、SDKドキュメント内の該当する *エラー* テーブルを参照してください。たとえば、`get` メソッドは次の例外をスローします。
+デフォルトでは、APIエラーが発生すると `models/errors/APIException` 例外がスローされます。ある操作に対してカスタムのエラーレスポンスが指定されている場合、SDK はそれに対応する例外をスローすることもあります。各操作で発生する可能性がある例外の種類の詳細については、SDK ドキュメント内の該当する *エラー* テーブルを参照してください。たとえば、`get` メソッドは次の例外をスローします。
 
-| エラー種別                          | ステータスコード | Content Type     |
+| エラータイプ                         | ステータスコード | コンテンツタイプ         |
 | ------------------------------ | -------- | ---------------- |
 | models/errors/ApiErrorResponse | 400, 500 | application/json |
 | models/errors/APIException     | 4XX, 5XX | */*              |
@@ -554,7 +554,7 @@ public class Application {
   ### インデックスでサーバーを選択
 </div>
 
-SDKクライアントインスタンスの初期化時に `.serverIndex(int serverIdx)` ビルダーメソッドを使用すると、デフォルトサーバーをグローバルに変更できます。選択したサーバーは、そのサーバーを使用する操作のデフォルトとして使用されます。次の表は、利用可能なサーバーに対応するインデックスを示しています。
+SDK クライアントインスタンスの初期化時に `.serverIndex(int serverIdx)` ビルダーメソッドを使用すると、デフォルトサーバーをグローバルに上書きできます。選択したサーバーは、それを使用する操作のデフォルトとして使用されます。以下の表は、利用可能なサーバーに対応するインデックスを示しています。
 
 | # | サーバー                                |
 | - | ----------------------------------- |
@@ -597,10 +597,10 @@ public class Application {
 ```
 
 <div id="override-server-url-per-client">
-  ### クライアントごとにサーバーURLを上書き
+  ### クライアントごとにサーバーURLを上書きする
 </div>
 
-デフォルトのサーバーは、SDKクライアントインスタンスの初期化時に `.serverURL(String serverUrl)` ビルダーメソッドを使用して、全体で上書きすることもできます。例:
+デフォルトのサーバーは、SDKクライアントインスタンスの初期化時に `.serverURL(String serverUrl)` ビルダーメソッドを使用することで、グローバルに上書きすることもできます。例:
 
 ```java
 package hello.world;
@@ -638,16 +638,16 @@ public class Application {
   ## 安定性
 </div>
 
-このSDKはベータ版であり、メジャーバージョンの更新がなくても、バージョン間で破壊的変更が発生する可能性があります。そのため、使用する
+このSDKはベータ版のため、メジャーバージョンの更新がなくても、バージョン間で互換性のない変更が発生する可能性があります。したがって、使用する
 パッケージのバージョンは特定のものに固定することを推奨します。そうすることで、意図的に最新バージョンを
-利用したい場合を除き、破壊的変更の影響を受けずに毎回同じバージョンをインストールできます。
+利用したい場合を除き、互換性のない変更を避けつつ毎回同じバージョンをインストールできます。
 
 <div id="contributions">
   ## コントリビューション
 </div>
 
-このSDKへのオープンソースでのコントリビューションは歓迎していますが、このライブラリはプログラムによって自動生成されています。内部ファイルに手動で加えた変更は、次回の生成時に上書きされます。
-ぜひフィードバックをお寄せください。PRやissueは、概念実証を添えてお気軽に作成してください。今後のリリースに反映できるよう、できる限り対応します。
+このSDKへのオープンソースのコントリビューションは歓迎しますが、このライブラリはプログラムで自動生成されています。内部ファイルへの手動変更は、次回の生成時に上書きされます。
+フィードバックをお待ちしています。PoC を添えて PR または Issue をお気軽に作成してください。今後のリリースに取り込めるよう、できる限り対応します。
 
 <div id="sdk-created-by-speakeasy">
   ### [Speakeasy](https://www.speakeasy.com/?utm_source=openapi\&utm_campaign=java) が作成した SDK

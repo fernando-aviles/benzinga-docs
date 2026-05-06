@@ -1,5 +1,5 @@
 ---
-title: "M&A"
+title: "合併・買収"
 description: ma()
 ---
 
@@ -13,13 +13,13 @@ description: ma()
   ### 利用可能な操作
 </div>
 
-* [取得](#get) - M&amp;A情報を取得
+* [get](#get) - 合併・買収情報を取得
 
 <div id="get">
-  ## 取得
+  ## get
 </div>
 
-M&amp;Aデータを返します
+合併・買収データを取得します
 
 <div id="example-usage">
   ### 使用例
@@ -59,9 +59,9 @@ public class Application {
   ### パラメータ
 </div>
 
-| パラメータ     | 型                                                       | 必須                         | 説明                  |
-| --------- | ------------------------------------------------------- | -------------------------- | ------------------- |
-| `request` | [GetMaRequest](../../models/operations/GetMaRequest.md) | :heavy&#95;check&#95;mark: | リクエストで使用するオブジェクトです。 |
+| パラメータ     | Type                                                    | Required                   | 説明                       |
+| --------- | ------------------------------------------------------- | -------------------------- | ------------------------ |
+| `request` | [GetMaRequest](../../models/operations/GetMaRequest.md) | :heavy&#95;check&#95;mark: | リクエストで使用するリクエストオブジェクトです。 |
 
 <div id="response">
   ### レスポンス
@@ -73,6 +73,6 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                      | ステータスコード | コンテンツタイプ |
+| エラータイプ                     | ステータスコード | コンテンツタイプ |
 | -------------------------- | -------- | -------- |
 | models/errors/APIException | 4XX, 5XX | */*      |

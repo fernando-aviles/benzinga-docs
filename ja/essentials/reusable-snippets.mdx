@@ -1,6 +1,6 @@
 ---
 title: 再利用可能なスニペット
-description: コンテンツの一貫性を保つための再利用可能なカスタムスニペット
+description: コンテンツの同期を維持するための再利用可能なカスタムスニペット
 icon: 'recycle'
 ---
 
@@ -12,11 +12,11 @@ import SnippetIntro from '/snippets/ja/snippet-intro.mdx';
   ## カスタムスニペットの作成
 </div>
 
-**事前条件**: スニペットファイルは `snippets` ディレクトリ内に作成する必要があります。
+**前提条件**: スニペットファイルは `snippets` ディレクトリ内に作成する必要があります。
 
 <Note>
   `snippets` ディレクトリ内のページはすべてスニペットとして扱われ、
-  独立したページとしてはレンダリングされません。スニペットを独立したページとして作成したい場合は、
+  単独のページとしてはレンダリングされません。スニペットを単独のページとして作成したい場合は、
   そのスニペットを別のファイルにインポートし、コンポーネントとして
   呼び出してください。
 </Note>
@@ -25,8 +25,9 @@ import SnippetIntro from '/snippets/ja/snippet-intro.mdx';
   ### デフォルトエクスポート
 </div>
 
-1. 複数の箇所で再利用したい内容を、スニペットファイルに追加します。
-   必要に応じて、スニペットのインポート時に props 経由で値を渡せる変数を追加することもできます。
+1. 複数の箇所で再利用したい内容をスニペットファイルに追加します。
+   必要に応じて、スニペットのインポート時に props 経由で
+   値を渡せる変数を追加することもできます。
 
 ```mdx snippets/my-snippet.mdx
 Hello world! This is my content I want to reuse across pages. My keyword of the
@@ -34,7 +35,7 @@ day is {word}.
 ```
 
 <Warning>
-  再利用するコンテンツは、インポートを機能させるために `snippets` ディレクトリ内に配置する必要があります。
+  インポートを機能させるには、再利用したいコンテンツを `snippets` ディレクトリ内に配置する必要があります。
 </Warning>
 
 2. スニペットを対象ファイルにインポートします。
@@ -58,7 +59,7 @@ Lorem impsum dolor sit amet.
   ### 再利用可能な変数
 </div>
 
-1. スニペットファイルから変数をエクスポートします。
+1. スニペットファイルで変数をエクスポートします:
 
 ```mdx snippets/path/to/custom-variables.mdx
 export const myName = 'my name';
@@ -66,7 +67,7 @@ export const myName = 'my name';
 export const myObject = { fruit: 'strawberries' };
 ```
 
-2. 使用先のファイルからスニペットをインポートし、その変数を使用します:
+2. 使用先のファイルでスニペットをインポートし、変数を使用します:
 
 ```mdx destination-file.mdx
 ---
@@ -83,7 +84,8 @@ Hello, my name is {myName} and I like {myObject.fruit}.
   ### 再利用可能なコンポーネント
 </div>
 
-1. スニペットファイル内で、props を受け取るコンポーネントをアロー関数形式でエクスポートして作成します。
+1. スニペットファイル内で、props を受け取るコンポーネントを作成するには、
+   アロー関数としてコンポーネントを export します。
 
 ```mdx snippets/custom-component.mdx
 export const MyComponent = ({ title }) => (
@@ -95,8 +97,8 @@ export const MyComponent = ({ title }) => (
 ```
 
 <Warning>
-  MDX はアロー関数の本体内ではコンパイルできません。可能な場合は HTML
-  構文を使用し、MDX を使う必要がある場合は デフォルトエクスポート を使用してください。
+  MDX はアロー関数の本体内ではコンパイルできません。可能であれば HTML
+  構文を使用し、MDX を使用する必要がある場合は デフォルトエクスポート を使用してください。
 </Warning>
 
 2. スニペットを対象のファイルにインポートし、props を渡します

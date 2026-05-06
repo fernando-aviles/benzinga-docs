@@ -1,9 +1,9 @@
 ---
-title: "Logotipo"
+title: "Logotipos"
 description: logos()
 ---
 
-[&lt; ATRÁS](/es/sdks/languages/java#logos)
+[&lt; VOLVER](/es/sdks/languages/java#logos)
 
 <div id="overview">
   ## Descripción general
@@ -13,14 +13,14 @@ description: logos()
   ### Operaciones disponibles
 </div>
 
-* [bulkSync](#bulksync) - Obtener logotipos para las claves de búsqueda especificadas
-* [search](#search) - Obtener logotipos para las claves de búsqueda especificadas
+* [bulkSync](#bulksync) - Obtener logotipos para las claves de búsqueda indicadas
+* [search](#search) - Obtener logotipos para las claves de búsqueda indicadas
 
 <div id="bulksync">
   ## bulkSync
 </div>
 
-Obtener logotipos para las claves de búsqueda especificadas
+Obtén logotipos para las claves de búsqueda indicadas
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -55,7 +55,7 @@ public class Application {
                 .call();
 
         if (res.bzhttpResp().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -65,9 +65,9 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro | Tipo                                                                  | Obligatorio                | Descripción                                              |
-| --------- | --------------------------------------------------------------------- | -------------------------- | -------------------------------------------------------- |
-| `request` | [LogoBulkSyncRequest](../../models/operations/LogoBulkSyncRequest.md) | :heavy&#95;check&#95;mark: | El objeto de solicitud que debe usarse para la petición. |
+| Parámetro | Tipo                                                                  | Obligatorio                | Descripción                                                |
+| --------- | --------------------------------------------------------------------- | -------------------------- | ---------------------------------------------------------- |
+| `request` | [LogoBulkSyncRequest](../../models/operations/LogoBulkSyncRequest.md) | :heavy&#95;check&#95;mark: | El objeto de solicitud que se utilizará para la solicitud. |
 
 <div id="response">
   ### Respuesta
@@ -88,7 +88,7 @@ public class Application {
   ## search
 </div>
 
-Obtiene logotipos para las claves de búsqueda indicadas
+Obtiene logotipos para las claves de búsqueda proporcionadas
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -131,7 +131,7 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro | Tipo                                                                      | Requerido                  | Descripción                                               |
+| Parámetro | Tipo                                                                      | Obligatorio                | Descripción                                               |
 | --------- | ------------------------------------------------------------------------- | -------------------------- | --------------------------------------------------------- |
 | `request` | [GetSearchLogosRequest](../../models/operations/GetSearchLogosRequest.md) | :heavy&#95;check&#95;mark: | El objeto de solicitud que se utilizará para la petición. |
 
