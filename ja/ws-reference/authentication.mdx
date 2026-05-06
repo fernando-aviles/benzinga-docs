@@ -3,21 +3,21 @@ title: "認証"
 description: "Benzinga API へのリクエストを認証する方法。"
 ---
 
-Benzinga API にアクセスするには、各リクエストを API トークンで認証する必要があります。API トークンは [Benzinga Console](https://www.api.benzinga.com/token) で生成および管理できます。
+Benzinga API にアクセスするには、各リクエストを API tokenで認証する必要があります。API tokenは、[Benzinga Console](https://www.api.benzinga.com/token) から生成および管理できます。
 
-> **重要:** API トークンがあるとお客様の Benzinga アカウントにアクセスできるため、厳重に管理してください。公開リポジトリ、クライアントサイドのコード、そのほか安全でない場所で共有しないでください。
+> **重要:** API tokenを使うとお使いの Benzinga アカウントにアクセスできるため、厳重に管理してください。公開リポジトリ、クライアントサイドのコード、その他の安全でない場所で共有しないでください。
 
 <div id="authenticating-requests">
   ## リクエストの認証
 </div>
 
-Benzinga API では、各リクエストの `token` クエリパラメータにトークンを含める **Bearer 認証** という安全な方式を使用します。このトークンは、Benzinga リソースへのアクセス権限を付与する bearer として機能します。
+Benzinga API では **Bearer Authentication** を使用します。これは、各リクエストの `token` クエリパラメータに token を含めるセキュアな認証方式です。この token は、Benzinga リソースへのアクセス権限を示す bearer として機能します。
 
 <div id="example-request-with-bearer-token">
   ### Bearer Token を使用したリクエスト例
 </div>
 
-以下のように、リクエストの `Token` クエリパラメータに token を含めます。
+次のように、リクエストの `Token` クエリパラメータにtokenを含めます。
 
 ```bash
 Token: <token>

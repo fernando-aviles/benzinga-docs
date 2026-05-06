@@ -11,14 +11,14 @@ paths:
   /api/v1/webhook/test:
     get:
       summary: Probar la entrega del webhook
-      description: Este endpoint enviará datos de prueba a su endpoint de webhook para
-        que pueda verificar su integración
+      description: Este Punto final enviará datos de prueba a su Punto final de
+        webhook para que pueda verificar su integración
       operationId: get-webhook-test
       parameters:
         - name: destination
           in: query
           required: true
-          description: La URL del endpoint de webhook a la que se enviarán los datos de
+          description: La URL del Punto final de webhook a la que se enviarán los datos de
             prueba
           schema:
             type: string
@@ -45,13 +45,13 @@ paths:
         - name: token
           in: query
           required: false
-          description: Especifique el token para que los datos se transformen para su uso
-            en producción
+          description: Especifique token para transformar los datos para su uso en
+            producción
           schema:
             type: string
       responses:
         "200":
-          description: "Éxito: la entrega de prueba del webhook se envió correctamente"
+          description: "Correcto: la entrega de prueba del webhook se envió correctamente"
           content:
             application/json:
               schema:
@@ -100,4 +100,4 @@ components:
       type: apiKey
       in: header
       name: Key
-      description: Su clave API de Benzinga
+      description: Su clave de API de Benzinga

@@ -8,33 +8,33 @@ asyncapi: "/asyncapi/consensus-ratings-stream.yml consensusRatings"
   ## Descripción general
 </div>
 
-Suscríbase a las calificaciones de consenso en tiempo real, que consolidan múltiples opiniones de analistas en calificaciones y precios objetivo unificados. Siga el sentimiento general del mercado y los cambios en el consenso de los analistas.
+Suscríbase a las calificaciones de consenso en tiempo real, que agregan las opiniones de varios analistas en calificaciones y precios objetivo unificados. Siga el sentimiento general del mercado y los cambios en el consenso de los analistas.
 
 <div id="key-features">
-  ### Funcionalidades clave
+  ### Características clave
 </div>
 
-* **Consenso agregado**: Vista combinada de todas las calificaciones de analistas para un valor
+* **Consenso agregado**: Vista consolidada de todas las calificaciones de analistas para un valor
 * **Consenso de precio objetivo**: Precio objetivo promedio, máximo y mínimo
 * **Distribución de calificaciones**: Desglose por Compra fuerte, Compra, Mantener, Venta y Venta fuerte
-* **Número de analistas**: Seguimiento de la cobertura total y de analistas únicos
+* **Recuento de analistas**: Seguimiento de la cobertura total y del número de analistas únicos
 * **Agregación flexible**: Visualización en recuentos o porcentajes
 
 <div id="use-cases">
   ### Casos de uso
 </div>
 
-* Crear dashboards y widgets de calificaciones de consenso
-* Hacer seguimiento de la evolución general del sentimiento de los analistas
-* Comparar calificaciones individuales con el consenso
-* Supervisar los rangos de precios objetivo (máximo, mínimo, promedio)
-* Identificar valores cuyo consenso mejora o empeora
+* Crear paneles y widgets de calificación de consenso
+* Hacer seguimiento de los cambios en el sentimiento general de los analistas
+* Comparar las calificaciones individuales con el consenso
+* Supervisar los rangos de precio objetivo (máximo, mínimo, promedio)
+* Identificar valores con un consenso al alza o a la baja
 
 <div id="quick-start">
   ## Inicio rápido
 </div>
 
-Utiliza el probador interactivo de WebSocket de arriba para conectarte y probar el flujo en tiempo real.
+Usa el probador interactivo de WebSocket de arriba para conectarte y probar la transmisión en tiempo real.
 
 <div id="connection-url">
   ### URL de conexión
@@ -48,13 +48,13 @@ wss://api.benzinga.com/api/v1/consensus-ratings/stream?token=YOUR_TOKEN
   ### Parámetros de consulta
 </div>
 
-| Parámetro        | Obligatorio | Descripción                                                      |
-| ---------------- | ----------- | ---------------------------------------------------------------- |
-| `token`          | Sí          | Su token de la API WebSocket de Benzinga (bz.production***)      |
-| `tickers`        | No          | Lista de ticker symbols separada por comas (p. ej., `AAPL,MSFT`) |
-| `isins`          | No          | Lista de ISIN separados por comas para filtrar                   |
-| `simplify`       | No          | Reduce las calificaciones a Buy, Hold y Sell                     |
-| `aggregate_type` | No          | Tipo de agregación: `number` o `percentage`                      |
+| Parámetro        | Obligatorio | Descripción                                                          |
+| ---------------- | ----------- | -------------------------------------------------------------------- |
+| `token`          | Sí          | Token de la API WebSocket de Benzinga (bz.production***)             |
+| `tickers`        | No          | Lista de símbolos de tíker separados por comas (p. ej., `AAPL,MSFT`) |
+| `isins`          | No          | Lista de ISIN separados por comas para filtrar                       |
+| `simplify`       | No          | Simplifica las calificaciones a Compra, Mantener o Venta             |
+| `aggregate_type` | No          | Tipo de agregación: `number` o `percentage`                          |
 
 <div id="message-example">
   ## Ejemplo de mensaje
@@ -116,17 +116,17 @@ wss://api.benzinga.com/api/v1/consensus-ratings/stream?token=YOUR_TOKEN
   ## Comandos interactivos
 </div>
 
-| Comando  | Descripción                                       |
-| -------- | ------------------------------------------------- |
-| `ping`   | Mantiene la conexión activa (responde con `pong`) |
-| `replay` | Reproduce hasta los últimos 100 mensajes en caché |
+| Comando  | Descripción                                             |
+| -------- | ------------------------------------------------------- |
+| `ping`   | Mantiene la conexión activa (responde con `pong`)       |
+| `replay` | Reproduce los últimos 100 mensajes almacenados en caché |
 
 <div id="best-practices">
-  ## Prácticas recomendadas
+  ## Mejores prácticas
 </div>
 
-* **Cambios en el consenso**: Supervise los cambios en `consensus_rating_val` con el paso del tiempo
-* **Rango de precio objetivo**: Compare el precio actual con los objetivos máximo y mínimo para contextualizar la valoración
-* **Profundidad de cobertura**: Un mayor número de analistas indica un consenso más fiable
+* **Cambios en el consenso**: Supervise los cambios en `consensus_rating_val` a lo largo del tiempo
+* **Rango de precio objetivo**: Compare el precio actual con los objetivos máximo y mínimo para obtener contexto de valoración
+* **Profundidad de cobertura**: Un mayor número de analistas indica un consenso más confiable
 * **Análisis de distribución**: Examine el desglose de `aggregate_ratings` para captar mejor los matices del sentimiento
-* **Vista porcentual**: Use `aggregate_type=percentage` para realizar comparaciones normalizadas
+* **Vista porcentual**: Use `aggregate_type=percentage` para comparaciones normalizadas

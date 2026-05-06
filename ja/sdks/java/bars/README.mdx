@@ -1,5 +1,5 @@
 ---
-title: "バー"
+title: "Bars"
 description: bars()
 ---
 
@@ -13,13 +13,13 @@ description: bars()
   ### 利用可能な操作
 </div>
 
-* [get](#get) - バー V2 を取得
+* [get](#get) - Bars V2を取得
 
 <div id="get">
   ## get
 </div>
 
-バー V2の取得
+Bars V2の取得
 
 <div id="example-usage">
   ### 使用例
@@ -62,9 +62,9 @@ public class Application {
 | パラメータ      | 型                        | 必須                         | 説明   |
 | ---------- | ------------------------ | -------------------------- | ---- |
 | `symbols`  | *String*                 | :heavy&#95;check&#95;mark: | シンボル |
-| `from`     | *String*                 | :heavy&#95;check&#95;mark: | 開始日  |
-| `to`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 終了日  |
-| `interval` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 時間間隔 |
+| `from`     | *String*                 | :heavy&#95;check&#95;mark: | 開始   |
+| `to`       | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 終了   |
+| `interval` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 間隔   |
 
 <div id="response">
   ### レスポンス
@@ -76,7 +76,7 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                      | ステータスコード | コンテンツタイプ         |
+| エラータイプ                     | ステータスコード | コンテンツタイプ         |
 | -------------------------- | -------- | ---------------- |
 | models/errors/BzhttpResp   | 400, 500 | application/json |
 | models/errors/APIException | 4XX, 5XX | */*              |

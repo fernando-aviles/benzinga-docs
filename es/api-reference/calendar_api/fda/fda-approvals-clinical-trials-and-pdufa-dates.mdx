@@ -4,7 +4,7 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/fda
 ---
 
 <ResponseExample>
-  ```json Respuesta (200 OK)
+  ```json Response (200 OK)
   {
     "fda": [
       {
@@ -32,11 +32,11 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/fda
           ],
           "name": "Alpha DaRT"
         },
-        "event_type": "Actualización proporcionada",
+        "event_type": "Actualización emitida",
         "id": "695bc49183cac20001bec514",
         "nic_number": "",
         "notes": "",
-        "outcome": "Alpha Tau Medical Ltd. anunció la presentación del primer módulo de su solicitud de aprobación previa a la comercialización (PMA) ante la U.S. Food and Drug Administration (FDA), tras la decisión previa de la FDA de permitir a la empresa utilizar el enfoque modular más flexible.",
+        "outcome": "Alpha Tau Medical Ltd. anunció la presentación del primer módulo de su solicitud de aprobación previa a la comercialización (PMA) ante la Administración de Alimentos y Medicamentos de EE. UU. (FDA), después de que la FDA decidiera previamente permitir a la empresa utilizar el enfoque modular más flexible.",
         "outcome_brief": "",
         "source_link": "https://www.benzinga.com/pressreleases/26/01/g49690927/alpha-tau-submits-first-pre-market-approval-module-to-the-fda-for-alpha-dart-for-the-treatment-of-",
         "source_type": "Comunicado de prensa",
@@ -49,20 +49,20 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/fda
   }
   ```
 
-  ```json Respuesta (401 No autorizado)
+  ```json Response (401 Unauthorized)
   {
     "ok": false,
     "errors": [
       {
         "code": "auth_failed",
         "id": "unauthorized",
-        "value": "Token de autenticación no válido o faltante"
+        "value": "Token de autenticación no válido o ausente"
       }
     ]
   }
   ```
 
-  ```json Respuesta (404 No encontrado)
+  ```json Response (404 Not Found)
   {
     "ok": false,
     "errors": [
@@ -75,7 +75,7 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/fda
   }
   ```
 
-  ```json Respuesta (500 Error interno del servidor)
+  ```json Response (500 Internal Server Error)
   {
     "ok": false,
     "errors": [

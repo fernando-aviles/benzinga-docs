@@ -4,7 +4,7 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/ipos
 ---
 
 <ResponseExample>
-  ```json レスポンス (200 OK)
+  ```json Response (200 OK)
   {
     "ipos": [
       {
@@ -57,40 +57,40 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/ipos
   }
   ```
 
-  ```json レスポンス（401 認証されていません）
+  ```json Response (401 Unauthorized)
   {
     "ok": false,
     "errors": [
       {
         "code": "auth_failed",
         "id": "unauthorized",
-        "value": "Invalid or missing authentication token"
+        "value": "認証tokenが無効か、指定されていません"
       }
     ]
   }
   ```
 
-  ```json レスポンス（404 見つかりません）
+  ```json Response (404 Not Found)
   {
     "ok": false,
     "errors": [
       {
         "code": "no_data_found",
         "id": "not_found",
-        "value": "No data found for the specified parameters"
+        "value": "指定されたパラメータに一致するデータが見つかりません"
       }
     ]
   }
   ```
 
-  ```json レスポンス（500 内部サーバーエラー）
+  ```json Response (500 Internal Server Error)
   {
     "ok": false,
     "errors": [
       {
         "code": "internal_server_error",
         "id": "server_error",
-        "value": "An unexpected error occurred while processing your request"
+        "value": "リクエストの処理中に予期しないエラーが発生しました"
       }
     ]
   }

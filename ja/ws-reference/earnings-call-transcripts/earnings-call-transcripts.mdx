@@ -1,10 +1,10 @@
 ---
 title: "カンファレンスコール・トランスクリプトストリーム"
-description: "このウェブソケットエンドポイントでは、カンファレンスコールのトランスクリプトをリアルタイムで購読できます。"
+description: "このWebSocketエンドポイントでは、カンファレンスコールのトランスクリプトをリアルタイムで購読できます。"
 ---
 
 <div id="websocket-websocketv1">
-  ## ウェブソケット `websocket/v1`:
+  ## WebSocket `websocket/v1`:
 </div>
 
 ```txt
@@ -15,16 +15,16 @@ wss://api.benzinga.com/api/v1/earnings-call-transcripts/stream
   ### パラメータ:
 </div>
 
-| 名前        |  場所 |  型  | 必須 |                                          説明 |
-| :-------- | :-: | :-: | -: | ------------------------------------------: |
-| `token`   | クエリ | 文字列 | 必須 | Benzinga ウェブソケットのtoken (bz.production***) 。 |
-| `tickers` | クエリ | 文字列 | 任意 |                購読するティッカーの一覧です。カンマ区切りで指定します。 |
+| 名前        |  場所 |    型   | 必須 |                                             説明 |
+| :-------- | :-: | :----: | -: | ---------------------------------------------: |
+| `token`   | クエリ | string | はい | Benzinga WebSocket用のtoken (bz.production***) 。 |
+| `tickers` | クエリ | string | 任意 |                          購読したいティッカーの一覧。カンマ区切り。 |
 
 <div id="stream-response">
   ### ストリームレスポンス:
 </div>
 
-ストリームを購読すると、カンファレンスコールのトランスクリプトに関する更新が次の形式で配信されます:
+ストリームを購読すると、以下の形式でカンファレンスコールのトランスクリプトに関する更新を受信します。
 
 ```json
 {
@@ -54,7 +54,7 @@ wss://api.benzinga.com/api/v1/earnings-call-transcripts/stream
 </div>
 
 * **200 OK**
-* **説明**: 正常終了
+* **説明**: 成功
 * **コンテンツタイプ**: `application/json`
 * **スキーマ**: [EarningsCallTranscriptsWSResp](#earningscalltranscriptswsresp)
 
@@ -64,34 +64,34 @@ wss://api.benzinga.com/api/v1/earnings-call-transcripts/stream
 
 | Property        | Type   | Description                                                |
 | --------------- | ------ | ---------------------------------------------------------- |
-| api&#95;version | string | ウェブソケット API のバージョン: `EarningsCallTranscripts/v1`。          |
-| kind            | string | ウェブソケット接続ストリームの種別。                                         |
-| data            | object | ウェブソケットデータの詳細を含みます。                                        |
-| - type          | string | メッセージの種別 (例: transcript&#95;chunk、transcription&#95;end) 。 |
+| api&#95;version | string | WebSocket API のバージョン: `EarningsCallTranscripts/v1`。        |
+| kind            | string | WebSocket 接続ストリームのタイプ。                                     |
+| data            | object | WebSocket データの詳細を含むオブジェクト。                                 |
+| - type          | string | メッセージの種類 (例: transcript&#95;chunk、transcription&#95;end) 。 |
 | - content       | object | `EarningsCallTranscripts` スキーマへの参照。                        |
 
 <div id="earningscalltranscripts">
   ### EarningsCallTranscripts
 </div>
 
-| Property             | Type    | Description                                  |
-| -------------------- | ------- | -------------------------------------------- |
-| call&#95;id          | string  | 一意のコールID。                                    |
-| transcript&#95;chunk | string  | カンファレンスコールのトランスクリプトの一部。                      |
-| security             | object  | 対象証券の詳細を含みます。                                |
-| - cik                | string  | 証券のCIK。                                      |
-| - exchange           | string  | 証券が上場している取引所。                                |
-| - isin               | string  | ISIN (国際証券識別番号) 。                            |
-| - name               | string  | 証券の名称。                                       |
-| - symbol             | string  | 証券のティッカーシンボル。                                |
-| time                 | integer | トランスクリプトチャンクが作成された時刻のタイムスタンプ (形式: float64) 。 |
-| index                | integer | トランスクリプトチャンクのインデックス (形式: int) 。              |
+| Property             | Type    | Description                                             |
+| -------------------- | ------- | ------------------------------------------------------- |
+| call&#95;id          | string  | 一意のコールID。                                               |
+| transcript&#95;chunk | string  | カンファレンスコールの文字起こしチャンク。                                   |
+| security             | object  | インサイトが提供される対象の証券情報を含みます。                                |
+| - cik                | string  | 証券の CIK (Central Index Key) 。                           |
+| - exchange           | string  | 証券が上場されている取引所。                                          |
+| - isin               | string  | ISIN (International Securities Identification Number) 。 |
+| - name               | string  | 証券名。                                                    |
+| - symbol             | string  | 証券のティッカーシンボル。                                           |
+| time                 | integer | 文字起こしチャンクの作成時刻のタイムスタンプ (float64 形式) 。                   |
+| index                | integer | 文字起こしチャンクのインデックス (int 形式) 。                             |
 
 <div id="success-response">
   ## 成功レスポンス
 </div>
 
-* 成功 `101` - ウェブソケット接続が確立されました。
+* 成功 `101` - WebSocket 接続が正常に確立されました。
 
 <div
   style={{
@@ -112,16 +112,16 @@ wss://api.benzinga.com/api/v1/earnings-call-transcripts/stream
   }}
   >
     <div style={{ color: '#000000'}}>
-      ✅ wss://api.benzinga.com/api.benzinga.com/api/v1/earnings-call-transcripts/stream?token=bz.p*** に接続されました
+      ✅ wss://api.benzinga.com/api.benzinga.com/api/v1/earnings-call-transcripts/stream?token=bz.p*** に接続しました
     </div>
   </div>
 
   <div style={{ color: 'grey', fontWeight: 'bold', marginBottom: '-4px' }}>
-    ハンドシェイク詳細
+    ハンドシェイクの詳細
   </div>
 
   <div style={{ marginBottom: '4px' }}>
-    <span><strong>リクエスト URL:</strong> </span>
+    <span><strong>リクエストURL:</strong> </span>
 
     <p style={{ color: 'blue' }}>
       &quot;https://api.benzinga.com/api.benzinga.com/api/v1/earnings-call-transcripts/stream?token=bz&quot;
@@ -129,7 +129,7 @@ wss://api.benzinga.com/api/v1/earnings-call-transcripts/stream
   </div>
 
   <div style={{ marginBottom: '4px' }}>
-    <span> <strong>リクエスト メソッド:</strong> </span><span style={{ color: 'blue' }}>&quot;GET&quot;</span>
+    <span> <strong>リクエストメソッド:</strong> </span><span style={{ color: 'blue' }}>&quot;GET&quot;</span>
   </div>
 
   <div style={{ marginBottom: '4px' }}>
@@ -171,7 +171,7 @@ wss://api.benzinga.com/api/v1/earnings-call-transcripts/stream
   </div>
 
   <div style={{ color: 'grey', fontWeight: 'bold', marginBottom: '-4px' }}>
-    ハンドシェイク詳細
+    ハンドシェイクの詳細
   </div>
 
   <div style={{ marginBottom: '4px' }}>
@@ -183,7 +183,7 @@ wss://api.benzinga.com/api/v1/earnings-call-transcripts/stream
   </div>
 </div>
 
-* Bad Gateway `502` - ルートが無効か、サーバーエラーです。
+* Bad Gateway `502` - 無効なルートまたはサーバーエラーです。
 
 <div
   style={{
@@ -213,7 +213,7 @@ wss://api.benzinga.com/api/v1/earnings-call-transcripts/stream
   </div>
 
   <div style={{ color: 'grey', fontWeight: 'bold', marginBottom: '-4px' }}>
-    ハンドシェイク詳細
+    ハンドシェイクの詳細
   </div>
 
   <div style={{ marginBottom: '4px' }}>

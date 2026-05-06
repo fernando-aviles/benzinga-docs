@@ -5,7 +5,7 @@ openapi: /es/openapi/data-api-proxy_api.spec.yml GET
 ---
 
 <ResponseExample>
-  ```json Respuesta (200 OK)
+  ```json Response (200 OK)
   {
     "result": [
       {
@@ -40,7 +40,7 @@ openapi: /es/openapi/data-api-proxy_api.spec.yml GET
           "province": "CA",
           "totalEmployees": 166000,
           "legalName": "Apple Inc",
-          "longDescription": "Apple se encuentra entre las empresas más grandes del mundo, con una amplia cartera de productos de hardware y software dirigidos a consumidores y empresas. El iPhone de Apple representa la mayor parte de las ventas de la empresa, y otros productos de Apple, como Mac, iPad y Watch, están diseñados en torno al iPhone como eje central de un amplio ecosistema de software. Apple ha trabajado progresivamente para incorporar nuevas aplicaciones, como video en streaming, paquetes de suscripción y realidad aumentada. La empresa diseña su propio software y semiconductores, al tiempo que trabaja con subcontratistas como Foxconn y TSMC para fabricar sus productos y chips. Algo menos de la mitad de las ventas de Apple provienen directamente de sus tiendas emblemáticas, mientras que la mayoría llega indirectamente a través de alianzas y canales de distribución."
+          "longDescription": "Apple se encuentra entre las empresas más grandes del mundo, con una amplia cartera de productos de hardware y software dirigidos a consumidores y empresas. El iPhone de Apple representa la mayor parte de las ventas de la compañía, y otros productos de Apple, como Mac, iPad y Watch, están diseñados en torno al iPhone como eje central de un amplio ecosistema de software. Apple ha trabajado progresivamente para incorporar nuevas aplicaciones, como video en streaming, paquetes de suscripción y realidad aumentada. La empresa diseña su propio software y semiconductores, mientras colabora con subcontratistas como Foxconn y TSMC para fabricar sus productos y chips. Algo menos de la mitad de las ventas de Apple provienen directamente de sus tiendas insignia, mientras que la mayoría llega de forma indirecta a través de asociaciones y distribución."
         },
         "symbol": "AAPL",
         "idType": "SYMBOL",
@@ -50,7 +50,7 @@ openapi: /es/openapi/data-api-proxy_api.spec.yml GET
   }
   ```
 
-  ```json Respuesta (401 No autorizado)
+  ```json Response (401 Unauthorized)
   {
     "ok": false,
     "errors": [
@@ -63,7 +63,7 @@ openapi: /es/openapi/data-api-proxy_api.spec.yml GET
   }
   ```
 
-  ```json Respuesta (404 No encontrado)
+  ```json Response (404 Not Found)
   {
     "ok": false,
     "errors": [
@@ -76,7 +76,7 @@ openapi: /es/openapi/data-api-proxy_api.spec.yml GET
   }
   ```
 
-  ```json Respuesta (500 Error interno del servidor)
+  ```json Response (500 Internal Server Error)
   {
     "ok": false,
     "errors": [

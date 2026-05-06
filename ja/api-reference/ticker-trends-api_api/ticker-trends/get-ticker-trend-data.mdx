@@ -1,10 +1,10 @@
 ---
-title: "ティッカートレンドデータ"
+title: "ティッカーのトレンドデータ"
 openapi: /ja/openapi/ticker-trends-api_api.spec.yml GET /api/v1/trending-tickers
 ---
 
 <ResponseExample>
-  ```json レスポンス (200 OK)
+  ```json Response (200 OK)
   {
     "ok": true,
     "data": [
@@ -28,14 +28,14 @@ openapi: /ja/openapi/ticker-trends-api_api.spec.yml GET /api/v1/trending-tickers
 </ResponseExample>
 
 <ResponseExample>
-  ```json レスポンス（401 認証されていません）
+  ```json Response (401 Unauthorized)
   {
       "ok": false,
       "errors": [
           {
               "id": "hbiGJjhsSpnfhM8aBePyTB",
               "code": "auth_failed",
-              "value": "認証に失敗しました"
+              "value": "authentication failed"
           }
       ]
   }

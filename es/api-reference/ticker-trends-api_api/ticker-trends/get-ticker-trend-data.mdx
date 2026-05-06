@@ -1,10 +1,10 @@
 ---
-title: "Datos de tendencia del ticker"
+title: "Datos de tendencias de tíkers"
 openapi: /es/openapi/ticker-trends-api_api.spec.yml GET /api/v1/trending-tickers
 ---
 
 <ResponseExample>
-  ```json Respuesta (200 OK)
+  ```json Response (200 OK)
   {
     "ok": true,
     "data": [
@@ -28,14 +28,14 @@ openapi: /es/openapi/ticker-trends-api_api.spec.yml GET /api/v1/trending-tickers
 </ResponseExample>
 
 <ResponseExample>
-  ```json Respuesta (401 No autorizado)
+  ```json Response (401 Unauthorized)
   {
       "ok": false,
       "errors": [
           {
               "id": "hbiGJjhsSpnfhM8aBePyTB",
               "code": "auth_failed",
-              "value": "la autenticación falló"
+              "value": "falló la autenticación"
           }
       ]
   }

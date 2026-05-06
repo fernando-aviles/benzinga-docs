@@ -9,7 +9,7 @@ paths:
     get:
       description: Devuelve una lista de todos los canales de noticias disponibles que
         pueden usarse para filtrar noticias. Los canales pueden tener
-        subcanales, pero cada uno se mostrará como un elemento independiente.
+        subcanales, pero cada uno aparecerá como un elemento independiente.
       operationId: get-channels
       responses:
         "200":
@@ -33,8 +33,9 @@ paths:
     get:
       description: Esta API REST devuelve datos estructurados de noticias. Para un
         rendimiento óptimo, limite el alcance de la consulta mediante parámetros
-        como tickers, date y channels, o use updatedSince para obtener deltas.
-        Los desplazamientos de página están limitados de 0 a 100000.
+        como tíkeres, fecha y canales, o use updatedSince para obtener cambios
+        incrementales. Los desplazamientos de página están limitados de 0 a
+        100000.
       operationId: get-news
       parameters:
         - description: Especifique el formato de salida
@@ -49,21 +50,21 @@ paths:
             default: application/json
         - description: Desplazamiento de página. Por motivos de optimización, rendimiento
             y razones técnicas, los desplazamientos de página están limitados de
-            0 a 100000. Limite los resultados de la consulta con otros
-            parámetros, como date.
+            0 a 100000. Limite los resultados de la consulta mediante otros
+            parámetros, como fecha.
           in: query
           name: page
           schema:
             type: integer
             default: 0
-        - description: "Número de resultados devueltos. Máximo: 100."
+        - description: Número de resultados devueltos. Máximo 100.
           in: query
           name: pageSize
           schema:
             type: integer
             maximum: 100
             default: 15
-        - description: Especifique si desea solo el titular (headline), titular + avance
+        - description: Especifique si desea solo el titular (headline), titular + resumen
             (abstract) o titular + texto completo (full)
           in: query
           name: displayOutput
@@ -74,40 +75,40 @@ paths:
               - abstract
               - headline
             default: headline
-        - description: "La date para consultar noticias. Abreviatura de dateFrom y dateTo
+        - description: "La fecha para consultar noticias. Abreviatura de dateFrom y dateTo
             si son iguales. Formato: yyyy-mm-dd"
           in: query
           name: date
           schema:
             type: string
-        - description: "Date desde la cual consultar. Ordenado por fecha de publicación.
-            Formato: yyyy-mm-dd"
+        - description: "Fecha desde la que se consultan las noticias. Ordenado por fecha
+            de publicación. Formato: yyyy-mm-dd"
           in: query
           name: dateFrom
           schema:
             type: string
-        - description: "Date hasta la cual consultar. Ordenado por fecha de publicación.
-            Formato: yyyy-mm-dd"
+        - description: "Fecha hasta la que se consultan las noticias. Ordenado por fecha
+            de publicación. Formato: yyyy-mm-dd"
           in: query
           name: dateTo
           schema:
             type: string
-        - description: La marca de tiempo Unix (UTC) de la última actualización por la que
-            se recuperarán y ordenarán los resultados
+        - description: La marca de tiempo Unix (UTC) de la última actualización para
+            extraer y ordenar
           in: query
           name: updatedSince
           schema:
             type: integer
-        - description: La marca de tiempo Unix (UTC) de la última publicación por la que
-            se recuperarán y ordenarán los resultados
+        - description: La marca de tiempo Unix (UTC) de la última publicación para extraer
+            y ordenar
           in: query
           name: publishedSince
           schema:
             type: integer
         - description: "Permite controlar el orden de los resultados. El valor
-            predeterminado es created, DESC. Formato: field:direction. Campos de
-            ordenación: id, created, updated. Orden: asc (ascendente), desc
-            (descendente)"
+            predeterminado es created, DESC. Formato: campo:dirección. Campos de
+            ordenación: id, created, updated. Orden de clasificación: asc
+            (ascendente), desc (descendente)"
           in: query
           name: sort
           schema:
@@ -119,42 +120,43 @@ paths:
               - created:desc
               - updated:asc
               - updated:desc
-        - description: "Uno o más ISIN separados por comas. Máximo: 50. Formato: csv"
+        - description: "Uno o más ISIN separados por comas. Máximo 50. Formato: csv"
           in: query
           name: isin
           schema:
             type: string
-        - description: "Uno o más CUSIP separados por comas. Máximo: 50. Se requiere un
+        - description: "Uno o más CUSIP separados por comas. Máximo 50. Se requiere un
             acuerdo de licencia. Formato: csv"
           in: query
           name: cusips
           schema:
             type: string
-        - description: "Uno o más ticker separados por comas. Máximo: 50. Formato: csv"
+        - description: "Uno o más símbolos de tíker separados por comas. Máximo 50.
+            Formato: csv"
           in: query
           name: tickers
           schema:
             type: string
-        - description: "Uno o más ticker principales separados por comas. Filtra solo por
-            asociación con el ticker principal. Formato: csv"
+        - description: "Uno o más símbolos de tíker principales separados por comas.
+            Filtra solo por la asociación con el tíker principal. Formato: csv"
           in: query
           name: primaryTickers
           schema:
             type: string
-        - description: "Uno o más nombres o ID de canales separados por comas. Formato: csv"
+        - description: "Uno o más nombres o ID de canal separados por comas. Formato: csv"
           in: query
           name: channels
           schema:
             type: string
         - description: "Una o más palabras o frases separadas por comas; busca en el
-            título, las etiquetas y el cuerpo, en ese orden de prioridad.
-            Formato: csv"
+            título, las etiquetas y el cuerpo por orden de prioridad. Formato:
+            csv"
           in: query
           name: topics
           schema:
             type: string
         - description: Operador lógico para la consulta de temas. Use 'and' para exigir
-            todos los temas y 'or' para exigir cualquiera de ellos
+            todos los temas, u 'or' para exigir cualquiera de ellos
           in: query
           name: topic_group_by
           schema:
@@ -219,7 +221,7 @@ paths:
               schema:
                 type: string
         "499":
-          description: Contexto de la solicitud cancelado
+          description: Contexto de solicitud cancelado
           content:
             application/json:
               schema:
@@ -238,7 +240,7 @@ paths:
                 type: string
       security:
         - ApiKeyAuth: []
-      summary: Obtener las noticias
+      summary: Obtener noticias
       tags:
         - News
   /api/v2/news-removed:
@@ -258,9 +260,9 @@ paths:
               - application/json
             default: application/json
         - description: Desplazamiento de página. Por motivos de optimización, rendimiento
-            y razones técnicas, los desplazamientos de página se limitan a 0 -
-            100000. Limite los resultados de la consulta mediante otros
-            parámetros, como date.
+            y técnicos, los desplazamientos de página están limitados de 0 a
+            100000. Limite los resultados de la consulta con otros parámetros,
+            como fecha.
           in: query
           name: page
           schema:
@@ -274,7 +276,7 @@ paths:
             maximum: 100
             default: 15
         - description: Filtra los resultados para incluir solo los elementos que se hayan
-            actualizado desde la marca de tiempo Unix (UTC) especificada
+            actualizado desde la marca de tiempo Unix especificada (UTC)
           in: query
           name: updatedSince
           schema:
@@ -297,7 +299,7 @@ paths:
               schema:
                 type: string
         "499":
-          description: Contexto de la solicitud cancelado
+          description: Contexto de solicitud cancelado
           content:
             application/json:
               schema:
@@ -340,7 +342,7 @@ components:
           type: string
       type: object
     api.NewsItem:
-      description: Artículo de noticias con metadatos completos
+      description: Elemento de artículo de noticias con todos los metadatos
       properties:
         author:
           example: Benzinga Newsdesk
@@ -384,7 +386,7 @@ components:
           type: string
       type: object
     api.NewsRemovedItem:
-      description: Artículo de noticias eliminado con ID y marca de tiempo de actualización
+      description: Artículo de noticias eliminado con id y marca de tiempo de actualización
       properties:
         id:
           example: 123456
@@ -394,7 +396,7 @@ components:
           type: string
       type: object
     api.Stock:
-      description: Información de la acción con ticker e identificadores
+      description: Información de la acción con símbolo de tíker e identificadores
       properties:
         cusip:
           example: "037833100"

@@ -1,5 +1,5 @@
 ---
-title: "募集・売出し"
+title: "オファリング"
 description: offerings()
 ---
 
@@ -13,13 +13,13 @@ description: offerings()
   ### 利用可能な操作
 </div>
 
-* [取得](#get) - オファリング情報を取得
+* [get](#get) - オファリングを取得
 
 <div id="get">
-  ## 取得
+  ## get
 </div>
 
-セカンダリー・オファリングのデータを返却します
+セカンダリー・オファリングデータを返します
 
 <div id="example-usage">
   ### 使用例
@@ -59,9 +59,9 @@ public class Application {
   ### パラメータ
 </div>
 
-| パラメータ     | 型                                                                     | 必須                         | 説明                       |
-| --------- | --------------------------------------------------------------------- | -------------------------- | ------------------------ |
-| `request` | [GetOfferingsRequest](../../models/operations/GetOfferingsRequest.md) | :heavy&#95;check&#95;mark: | リクエストに使用するリクエストオブジェクトです。 |
+| パラメータ     | Type                                                                  | Required                   | 説明                      |
+| --------- | --------------------------------------------------------------------- | -------------------------- | ----------------------- |
+| `request` | [GetOfferingsRequest](../../models/operations/GetOfferingsRequest.md) | :heavy&#95;check&#95;mark: | リクエストに使用するリクエスト オブジェクト。 |
 
 <div id="response">
   ### レスポンス
@@ -73,6 +73,6 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                      | ステータスコード | Content Type |
-| -------------------------- | -------- | ------------ |
-| models/errors/APIException | 4XX, 5XX | */*          |
+| エラータイプ                     | ステータスコード | コンテンツタイプ |
+| -------------------------- | -------- | -------- |
+| models/errors/APIException | 4XX, 5XX | */*      |

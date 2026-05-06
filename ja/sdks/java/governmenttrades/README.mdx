@@ -1,5 +1,5 @@
 ---
-title: "政府関係者取引"
+title: "Government Trades"
 description: governmentTrades()
 ---
 
@@ -13,13 +13,13 @@ description: governmentTrades()
   ### 利用可能な操作
 </div>
 
-* [get](#get) - 政府関係者取引を取得
+* [get](#get) - Government Tradesを取得
 
 <div id="get">
   ## get
 </div>
 
-政府関係者取引を取得
+Government Tradesを取得
 
 <div id="example-usage">
   ### 使用例
@@ -60,9 +60,9 @@ public class Application {
   ### パラメータ
 </div>
 
-| パラメータ     | 型                                                                                   | 必須                         | 説明                      |
-| --------- | ----------------------------------------------------------------------------------- | -------------------------- | ----------------------- |
-| `request` | [GetGovernmentTradesRequest](../../models/operations/GetGovernmentTradesRequest.md) | :heavy&#95;check&#95;mark: | リクエストに使用するリクエスト オブジェクト。 |
+| パラメータ     | 型                                                                                   | 必須                         | 説明                       |
+| --------- | ----------------------------------------------------------------------------------- | -------------------------- | ------------------------ |
+| `request` | [GetGovernmentTradesRequest](../../models/operations/GetGovernmentTradesRequest.md) | :heavy&#95;check&#95;mark: | リクエストで使用するリクエストオブジェクトです。 |
 
 <div id="response">
   ### レスポンス
@@ -74,7 +74,7 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                          | ステータスコード | コンテンツタイプ         |
+| エラータイプ                         | ステータスコード | コンテンツタイプ         |
 | ------------------------------ | -------- | ---------------- |
 | models/errors/ApiErrorResponse | 400, 500 | application/json |
 | models/errors/APIException     | 4XX, 5XX | */*              |

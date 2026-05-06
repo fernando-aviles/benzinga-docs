@@ -1,22 +1,22 @@
 ---
 title: "Motor de webhooks de datos"
-description: "Envía datos de calendario, señales y sentimiento de Benzinga directamente a sus endpoints de webhook en tiempo real."
+description: "Envía datos de calendarios, señales y sentimiento de Benzinga directamente a tus Puntos finales de webhook en tiempo real."
 icon: bolt
 ---
 
-El motor de webhooks envía actualizaciones de calendario y señales directamente a su endpoint HTTP, con reintentos integrados, filtrado y opciones de transformación. Use esta guía para comprender la mecánica de entrega, la estructura del payload y las prácticas recomendadas de integración.
+El motor de webhooks envía actualizaciones de calendarios y señales directamente a tu Punto final HTTP, con reintentos, filtrado y opciones de transformación integrados. Usa esta guía para comprender la mecánica de entrega, la estructura de la carga útil y las prácticas recomendadas de integración.
 
 <div id="overview">
   ## Descripción general
 </div>
 
-El servicio de Webhook de Datos de Benzinga envía datos de calendarios y señales en tiempo real a los endpoints de webhook que hayas configurado. Cuando se crean, actualizan o eliminan eventos del calendario (resultados, dividendos, calificaciones, etc.) o señales (actividad de opciones, suspensiones, etc.), el servicio envía automáticamente solicitudes HTTP POST a la URL de tu webhook con el payload de datos.
+El servicio Benzinga Data Webhook entrega datos de calendario y señales en tiempo real a los Puntos finales de webhook que configures. Cuando se crean, actualizan o eliminan eventos de calendario (resultados, dividendos, calificaciones, etc.) o señales (actividad de opciones, suspensiones, etc.), el servicio envía automáticamente solicitudes HTTP POST a tu URL de webhook con el payload de datos.
 
 Capacidades clave:
 
-* Cobertura configurable para calendarios y señales, de modo que solo recibas los datos que necesitas
-* Entregas idempotentes con un encabezado `X-BZ-Delivery` único y el campo `id` del payload para la deduplicación
-* Un esquema de reintentos robusto que pasa de reintentos exponenciales rápidos a intentos por hora de larga duración
+* Alcances configurables para la cobertura de calendarios y señales, para que solo recibas los datos que necesitas
+* Entregas idempotentes con un encabezado `X-BZ-Delivery` único y un campo `id` en el payload para la deduplicación
+* Programación de reintentos sólida que pasa de reintentos exponenciales rápidos a intentos por hora durante un período prolongado
 * Transformaciones de contenido opcionales para adaptar los payloads a los requisitos de los sistemas de destino
 
 <div id="webhook-delivery">
@@ -27,40 +27,40 @@ Capacidades clave:
   ### Detalles de la solicitud HTTP
 </div>
 
-* **Método**: `POST`
+* **Method**: `POST`
 * **Content-Type**: `application/json`
 * **User-Agent**: `Benzinga-Dispatch/v1.0.0 {build-version}`
-* **Encabezado personalizado**: `X-BZ-Delivery` - Un UUID único para cada intento de entrega (útil para eliminar duplicados)
+* **Custom Header**: `X-BZ-Delivery` - Un UUID único para cada intento de entrega (útil para evitar duplicados)
 
 <div id="retry-policy">
   ### Política de reintentos
 </div>
 
-El servicio de webhook de datos implementa un mecanismo sólido de reintentos:
+El servicio de webhooks de datos implementa un mecanismo de reintento sólido:
 
-* **Fase exponencial**: 15 reintentos en los primeros 5 minutos
+* **Fase exponencial**: 15 reintentos durante los primeros 5 minutos
 * **Reintentos exponenciales adicionales**: 11 reintentos más, si es necesario
-* **Fase de intervalo fijo**: 12 reintentos por hora × 24 horas/día × 7 días (para reintentos a largo plazo)
+* **Fase de intervalo fijo**: 12 reintentos por hora × 24 horas/día × 7 días (para reintentos prolongados)
 * **Tiempo máximo de espera**: 5 minutos entre reintentos en la fase exponencial
-* **Tiempo de espera de la solicitud**: 30 segundos por solicitud
+* **Tiempo de espera por solicitud**: 30 segundos por solicitud
 
 <div id="response-requirements">
-  ### Requisitos de respuesta
+  ### Requisitos de la respuesta
 </div>
 
-El endpoint de webhook debe devolver uno de los siguientes códigos de estado HTTP:
+Su Punto final de webhook debe devolver uno de los siguientes códigos de estado HTTP:
 
-* **Códigos de éxito** (200-202, 204): Indican una entrega correcta. No se realizarán reintentos.
+* **Códigos de éxito** (200-202, 204): Indican una entrega exitosa. No se realizarán reintentos.
 * **Códigos de error del cliente** (401-403): Indican un fallo de autenticación/autorización. Los reintentos se **detendrán de inmediato** para evitar más intentos fallidos.
 * **Otros códigos** (4xx, 5xx): Activarán reintentos según la política de reintentos anterior.
 
-**Importante**: El endpoint debe responder rápidamente (idealmente en menos de 30 segundos) para evitar un timeout. El motor volverá a intentarlo en caso de timeout.
+**Importante**: Su Punto final debe responder rápidamente (idealmente en un plazo de 30 segundos) para evitar un tiempo de espera. El motor reintentará en caso de tiempo de espera.
 
 <div id="webhook-payload-structure">
   ## Estructura del payload del webhook
 </div>
 
-Cada entrega de webhook contiene un payload JSON con la siguiente estructura:
+Cada envío de webhook incluye un payload JSON con la siguiente estructura:
 
 ```json
 {
@@ -101,72 +101,72 @@ Cada entrega de webhook contiene un payload JSON con la siguiente estructura:
   #### Campos de nivel superior
 </div>
 
-* **`id`** (string, UUID): Identificador único de esta entrega del webhook. Úselo para eliminar duplicados.
-* **`api_version`** (string): Identificador de la versión de la API. Actualmente, `"webhook/v1"`.
-* **`kind`** (string): Identificador de la ruta del tipo de dato. Consulte [Tipos de datos compatibles](#supported-data-types) para ver todos los valores posibles.
+* **`id`** (string, UUID): Identificador único de esta entrega de webhook. Úselo para la deduplicación.
+* **`api_version`** (string): Identificador de versión de la API. Actualmente, `"webhook/v1"`.
+* **`kind`** (string): Identificador de la ruta del tipo de dato. Consulte [Tipos de datos compatibles](#supported-data-types) para conocer todos los valores posibles.
 
 <div id="data-object">
   #### Objeto de datos
 </div>
 
 * **`action`** (string): Tipo de acción del evento. Valores posibles:
-  * `"Created"`: Se crearon nuevos datos (valor predeterminado para nuevas claves de webhook)
+  * `"Created"`: Se crearon nuevos datos (valor predeterminado para las nuevas claves de webhook)
   * `"Updated"`: Se actualizaron datos existentes
   * `"Removed"`: Se eliminaron datos
   * **Nota**: Las claves de webhook heredadas pueden recibir valores en minúsculas: `"created"`, `"updated"`, `"removed"`
 * **`id`** (string): Identificador único del registro de calendario o señal
-* **`timestamp`** (string, ISO 8601): Marca de tiempo en la que se generó el webhook
-* **`content`** (object): Los datos del calendario o de la señal. La estructura varía según el tipo de dato (consulte [Tipos de datos compatibles](#supported-data-types))
+* **`timestamp`** (string, ISO 8601): Marca de tiempo en que se generó el webhook
+* **`content`** (object): Los datos del calendario o la señal. La estructura varía según el tipo de dato (consulta [Tipos de datos compatibles](#supported-data-types))
 
 <div id="supported-data-types">
   ## Tipos de datos compatibles
 </div>
 
-El servicio de webhooks de datos admite los siguientes tipos de calendario y de señal:
+El servicio de webhooks de datos admite los siguientes tipos de calendario y señales:
 
 <div id="calendar-data-types-v21">
   ### Tipos de datos de calendario (v2.1)
 </div>
 
-| Tipo de dato             | Ruta de kind                    | Descripción                                |
-| ------------------------ | ------------------------------- | ------------------------------------------ |
-| Resultados               | `data/v2.1/calendar/earnings`   | Anuncios de resultados de la empresa       |
-| Dividendos               | `data/v2.1/calendar/dividends`  | Declaraciones y pagos de dividendos        |
-| Calificaciones           | `data/v2.1/calendar/ratings`    | Calificaciones de analistas y precios objetivo    |
-| IPOs                     | `data/v2.1/calendar/ipos`       | Ofertas públicas iniciales                 |
-| Guidance                 | `data/v2.1/calendar/guidance`   | Actualizaciones del guidance de la empresa |
-| Conferencias             | `data/v2.1/calendar/conference` | Conferencias telefónicas y presentaciones  |
-| Indicadores económicos   | `data/v2.1/calendar/economics`  | Indicadores y publicaciones económicas     |
-| Ofertas                  | `data/v2.1/calendar/offerings`  | Ofertas secundarias                        |
-| Fusiones y adquisiciones | `data/v2.1/calendar/ma`         | Anuncios de fusiones y adquisiciones       |
-| Retail                   | `data/v2.1/calendar/retail`     | Datos de ventas minoristas                 |
-| Desdoblamientos          | `data/v2.1/calendar/splits`     | Desdoblamientos de acciones                |
-| FDA                      | `data/v2.1/calendar/fda`        | Aprobaciones y anuncios de la FDA          |
+| Tipo de dato             | Ruta de kind                    | Descripción                                    |
+| ------------------------ | ------------------------------- | ---------------------------------------------- |
+| Resultados               | `data/v2.1/calendar/earnings`   | Anuncios de resultados empresariales           |
+| Dividendos               | `data/v2.1/calendar/dividends`  | Declaraciones y pagos de dividendos            |
+| Calificaciones           | `data/v2.1/calendar/ratings`    | Calificaciones de analistas y precios objetivo |
+| IPOs                     | `data/v2.1/calendar/ipos`       | Ofertas públicas iniciales                     |
+| Previsiones              | `data/v2.1/calendar/guidance`   | Actualizaciones de previsiones de la empresa   |
+| Conferencia              | `data/v2.1/calendar/conference` | Conferencias telefónicas y presentaciones      |
+| Economía                 | `data/v2.1/calendar/economics`  | Indicadores y publicaciones económicas         |
+| Ofertas                  | `data/v2.1/calendar/offerings`  | Ofertas secundarias                            |
+| Fusiones y adquisiciones | `data/v2.1/calendar/ma`         | Anuncios de fusiones y adquisiciones           |
+| Comercio minorista       | `data/v2.1/calendar/retail`     | Datos de ventas minoristas                     |
+| Desdoblamientos          | `data/v2.1/calendar/splits`     | Desdoblamientos de acciones                    |
+| FDA                      | `data/v2.1/calendar/fda`        | Aprobaciones y anuncios de la FDA              |
 
 <div id="signals-data-types-v1">
   ### Tipos de datos de señales (v1)
 </div>
 
-| Tipo de dato                                           | Ruta del tipo                              | Descripción                                                                 |
-| ------------------------------------------------------ | ------------------------------------------ | --------------------------------------------------------------------------- |
-| Actividad de opciones                                  | `data/v1/signal/option_activity`           | Actividad inusual de opciones                                               |
-| WIIMs                                                  | `data/v1/wiims`                            | Datos de Why Is It Moving (WIIMs)                                           |
-| Transacciones con información privilegiada ante la SEC | `data/v1/sec/insider_transactions/filings` | Presentaciones ante la SEC sobre transacciones con información privilegiada |
-| Transacciones gubernamentales                          | `data/v1/gov/usa/congress`                 | Datos de transacciones del Congreso                                         |
+| Tipo de datos                       | ruta de kind                              | Descripción                                           |
+| ----------------------------------- | ------------------------------------------ | ----------------------------------------------------- |
+| Actividad de opciones               | `data/v1/signal/option_activity`           | Actividad inusual de opciones                         |
+| WIIMs                               | `data/v1/wiims`                            | Datos de Why Is It Moving (WIIMs)                     |
+| Transacciones de insiders de la SEC | `data/v1/sec/insider_transactions/filings` | Presentaciones de operaciones de insiders ante la SEC |
+| Government Trades                   | `data/v1/gov/usa/congress`                 | Datos de operaciones del Congreso                     |
 
 <div id="additional-data-types-v1">
   ### Tipos de datos adicionales (v1)
 </div>
 
-| Tipo de dato                  | Ruta                             | Descripción                          |
+| Tipo de datos                 | ruta de kind                   | Descripción                          |
 | ----------------------------- | -------------------------------- | ------------------------------------ |
-| Bulls Say Bears Say           | `data/v1/bulls_bears_say`        | Análisis del sentimiento de mercado  |
+| Bulls Say Bears Say           | `data/v1/bulls_bears_say`        | Análisis del sentimiento del mercado |
 | Bulls Say Bears Say (coreano) | `data/v1/bulls_bears_say/korean` | Sentimiento del mercado coreano      |
-| Analyst Insights              | `data/v1/analyst/insights`       | Análisis y comentarios de analistas  |
+| Insights de analistas         | `data/v1/analyst/insights`       | Insights y comentarios de analistas  |
 | Calificaciones de consenso    | `data/v1/consensus-ratings`      | Calificaciones de consenso agregadas |
 
 <div id="content-structure-examples">
-  ## Ejemplos de estructura del contenido
+  ## Ejemplos de estructura de contenido
 </div>
 
 <div id="earnings-example">
@@ -331,13 +331,13 @@ El servicio de webhooks de datos admite los siguientes tipos de calendario y de 
   ## Acciones de evento
 </div>
 
-El servicio de webhook de datos envía eventos para tres tipos de acciones:
+El servicio de webhooks de datos envía eventos para tres tipos de acciones:
 
-1. **Created**: Se activa cuando se publican nuevos datos de calendario o de señales
-2. **Updated**: Se activa cuando se modifican datos existentes
-3. **Removed**: Se activa cuando se eliminan datos
+1. **Creado**: Se activa cuando se publican nuevos datos de calendario o de señales
+2. **Actualizado**: Se activa cuando se modifican datos existentes
+3. **Eliminado**: Se activa cuando se eliminan datos
 
-**Nota**: El formato de `action` depende de la configuración del webhook:
+**Nota**: El formato de la acción depende de la configuración de tu webhook:
 
 * **Nuevas claves de webhook**: Reciben acciones con inicial mayúscula (`"Created"`, `"Updated"`, `"Removed"`)
 * **Claves de webhook heredadas**: Reciben acciones en minúsculas (`"created"`, `"updated"`, `"removed"`)
@@ -346,27 +346,27 @@ El servicio de webhook de datos envía eventos para tres tipos de acciones:
   ## Filtrado de contenido
 </div>
 
-La configuración de tu webhook puede incluir filtros para controlar qué datos recibes:
+La configuración del webhook puede incluir filtros para controlar qué datos recibes:
 
 <div id="filter-options">
   ### Opciones de filtrado
 </div>
 
-* **Tipos de datos**: Filtre por tipos específicos de calendario o señal (p. ej., solo resultados, solo calificaciones)
-* **Filtros geográficos**: Controle si desea recibir:
+* **Tipos de datos**: Filtre por tipos específicos de calendario/señal (p. ej., solo resultados, solo calificaciones)
+* **Filtros geográficos**: Controle si quiere recibir:
   * Datos del mercado de EE. UU. (`AllowUSA`)
   * Datos del mercado canadiense (`AllowCanada`)
   * Datos del mercado indio (`AllowIndia`) - para datos de WIIMs
-* **Filtro por fecha**: Excluya datos históricos anteriores a una fecha específica (`MaxHistoricalDate`)
+* **Filtro de fecha**: Excluya los datos históricos anteriores a una fecha especificada (`MaxHistoricalDate`)
 
 <div id="exchange-filtering">
-  ### Filtrado por exchange
+  ### Filtrado por bolsa
 </div>
 
-El servicio filtra automáticamente por exchange según su configuración geográfica:
+El servicio filtra automáticamente por bolsa en función de tu configuración geográfica:
 
-* **Exchanges de EE. UU.**: NYSE, NASDAQ, AMEX, ARCA, OTC, OTCBB, PINX, PINK, BATS, IEX
-* **Exchanges canadienses**: TSX, TSXV, CSE, CNSX
+* **Bolsas de EE. UU.**: NYSE, NASDAQ, AMEX, ARCA, OTC, OTCBB, PINX, PINK, BATS, IEX
+* **Bolsas canadienses**: TSX, TSXV, CSE, CNSX
 
 <div id="content-transformation">
   ## Transformación de contenido
@@ -375,40 +375,40 @@ El servicio filtra automáticamente por exchange según su configuración geogr�
 El motor de webhooks admite la transformación de contenido para tipos de datos específicos. Las transformaciones se aplican en función de la configuración de tu webhook y pueden incluir:
 
 * Cambio de nombre de campos
-* Conversión de formatos de datos
-* Filtrado/eliminación de campos
+* Conversión del formato de los datos
+* Filtrado o eliminación de campos
 
 <div id="best-practices">
-  ## Prácticas recomendadas
+  ## Mejores prácticas
 </div>
 
 <div id="1-idempotency">
   ### 1. Idempotencia
 </div>
 
-Usa el campo `id` (UUID) en el payload para implementar la idempotencia. Almacena los IDs de entrega ya procesados para evitar el procesamiento duplicado.
+Usa el campo `id` (UUID) en el payload para implementar la idempotencia. Almacena los ID de entrega ya procesados para evitar procesarlos por duplicado.
 
 <div id="2-response-handling">
-  ### 2. Manejo de la respuesta
+  ### 2. Gestión de la respuesta
 </div>
 
-* Devuelve `200 OK` o `204 No Content` inmediatamente al recibir el webhook
+* Devuelve `200 OK` o `204 No Content` en cuanto recibas el webhook
 * Procesa los datos de forma asíncrona si es necesario
 * No realices operaciones prolongadas antes de responder
 
 <div id="3-error-handling">
-  ### 3. Gestión de errores
+  ### 3. Manejo de errores
 </div>
 
-* Devuelva los códigos de estado HTTP adecuados
-* Para errores de autenticación (401-403), asegúrese de que su endpoint esté configurado correctamente
-* Para fallos temporales, devuelva códigos de estado 5xx para activar los reintentos
+* Devuelve los códigos de estado HTTP adecuados
+* Para errores de autenticación (401-403), asegúrate de que tu Punto final esté configurado correctamente
+* Para fallos temporales, devuelve códigos de estado 5xx para activar los reintentos
 
 <div id="4-security">
   ### 4. Seguridad
 </div>
 
-* Usa HTTPS para el endpoint de tu webhook
+* Usa HTTPS para el Punto final de tu webhook
 * Implementa autenticación/autorización (claves de API, tokens, etc.)
 * Valida el encabezado `X-BZ-Delivery` para mayor seguridad
 
@@ -416,17 +416,17 @@ Usa el campo `id` (UUID) en el payload para implementar la idempotencia. Almacen
   ### 5. Monitoreo
 </div>
 
-* Supervise los tiempos de respuesta de su endpoint
-* Configure alertas para fallos repetidos
+* Supervise los tiempos de respuesta de su Punto final
+* Configure alertas ante fallos repetidos
 * Realice un seguimiento del encabezado `X-BZ-Delivery` para identificar los intentos de entrega
 
 <div id="6-data-type-handling">
   ### 6. Manejo de tipos de datos
 </div>
 
-* Verifique el campo `kind` para determinar el tipo de datos
-* Analice el objeto `content` según la estructura del tipo de datos
-* Maneje distintos formatos de `action` (con mayúscula inicial vs. minúscula) si admite claves heredadas
+* Verifica el campo `kind` para determinar el tipo de dato
+* Analiza el objeto `content` según la estructura del tipo de dato
+* Gestiona distintos formatos de acción (en mayúsculas vs. en minúsculas) si admites claves heredadas
 
 <div id="example-webhook-handler">
   ## Ejemplo de manejador de webhook
@@ -445,10 +445,10 @@ processed_ids = set()
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
-    # Obtener ID de entrega para deduplicación
+    # Obtener el ID de entrega para deduplicación
     delivery_id = request.headers.get('X-BZ-Delivery')
     
-    # Parsear payload
+    # Parsear el payload
     payload = request.json
     content_id = payload['id']
     
@@ -475,7 +475,7 @@ def webhook():
     # Marcar como procesado
     processed_ids.add(content_id)
     
-    # Devolver respuesta de éxito inmediatamente
+    # Devolver éxito inmediatamente
     return jsonify({'status': 'received'}), 200
 ```
 
@@ -491,10 +491,10 @@ app.use(express.json());
 const processedIds = new Set();
 
 app.post('/webhook', (req, res) => {
-  // Obtener ID de entrega para deduplicación
+  // Obtener el ID de entrega para deduplicación
   const deliveryId = req.headers['x-bz-delivery'];
   
-  // Parsear payload
+  // Parsear el payload
   const payload = req.body;
   const contentId = payload.id;
   
@@ -617,35 +617,35 @@ func main() {
 </div>
 
 1. **No se reciben webhooks**
-   * Verifique que la URL de su webhook esté configurada correctamente
-   * Compruebe que su endpoint sea accesible públicamente
-   * Asegúrese de que su clave de API sea válida y esté activa
-   * Verifique que los filtros no estén excluyendo todos los tipos de datos
-   * Compruebe que sus filtros geográficos coincidan con los datos que espera
+   * Verifica que la URL de tu webhook esté configurada correctamente
+   * Comprueba que tu Punto final sea accesible públicamente
+   * Asegúrate de que tu clave de API sea válida y esté activa
+   * Verifica que los filtros no estén excluyendo todos los tipos de datos
+   * Comprueba que tus filtros geográficos coincidan con los datos que esperas
 
 2. **Entregas duplicadas**
-   * Implemente idempotencia usando el campo `id`
-   * Compruebe los tiempos de respuesta de su endpoint (las respuestas lentas pueden provocar reintentos)
+   * Implementa idempotencia usando el campo `id`
+   * Comprueba los tiempos de respuesta de tu Punto final (las respuestas lentas pueden provocar reintentos)
 
 3. **Errores de autenticación (401-403)**
-   * Verifique la configuración de autenticación de su endpoint
-   * Compruebe las claves de API y los tokens
+   * Verifica la configuración de autenticación de tu Punto final
+   * Comprueba las claves de API y los tokens
    * Nota: Los errores de autenticación detienen los reintentos de inmediato
 
-4. **Errores de tiempo de espera**
-   * Asegúrese de que su endpoint responda en un plazo máximo de 30 segundos
-   * Procese los datos de forma asíncrona si es necesario
-   * Devuelva una respuesta de éxito de inmediato y procese después
+4. **Errores por tiempo de espera**
+   * Asegúrate de que tu Punto final responda en un plazo de 30 segundos
+   * Procesa los datos de forma asíncrona si es necesario
+   * Devuelve una respuesta de éxito de inmediato y procesa los datos después
 
-5. **Formato inesperado de action**
-   * Compruebe si está usando una clave de webhook heredada (actions en minúsculas)
-   * Actualice a una nueva clave de webhook para recibir actions con inicial mayúscula
-   * Maneje ambos formatos si da soporte a varios clientes
+5. **Formato de acción inesperado**
+   * Comprueba si estás usando una clave de webhook antigua (acciones en minúsculas)
+   * Actualiza a una nueva clave de webhook para recibir acciones con inicial mayúscula
+   * Maneja ambos formatos si das soporte a varios clientes
 
 6. **Faltan tipos de datos**
-   * Verifique que la configuración de su webhook incluya los tipos de datos deseados
-   * Compruebe los filtros geográficos (configuración de US/Canada/India)
-   * Asegúrese de que los filtros de fecha no estén excluyendo datos recientes
+   * Verifica que la configuración de tu webhook incluya los tipos de datos deseados
+   * Comprueba los filtros geográficos (configuración de EE. UU./Canadá/India)
+   * Asegúrate de que los filtros de fecha no estén excluyendo datos recientes
 
 <div id="support">
   ## Soporte
@@ -654,7 +654,7 @@ func main() {
 Si tienes preguntas o problemas con la entrega de webhooks:
 
 * Consulta la [documentación de la API de Benzinga](https://docs.benzinga.io/)
-* Ponte en contacto con tu representante de Benzinga
+* Ponte en contacto con tu representante de cuenta de Benzinga
 * Revisa la configuración del webhook con tu equipo de integración
 
 <div id="version-history">

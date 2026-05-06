@@ -1,5 +1,5 @@
 ---
-title: "削除済み"
+title: "削除済みデータ"
 description: removed()
 ---
 
@@ -13,13 +13,13 @@ description: removed()
   ### 利用可能な操作
 </div>
 
-* [取得](#get) - 削除済みデータを取得 (v2)
+* [get](#get) - 削除済みデータを取得 (v2)
 
 <div id="get">
-  ## 取得
+  ## get
 </div>
 
-v2 エンドポイントで削除済み項目を取得します
+v2 エンドポイントから削除済みデータを取得
 
 <div id="example-usage">
   ### 使用例
@@ -59,12 +59,12 @@ public class Application {
   ### パラメータ
 </div>
 
-| Parameter  | Type                                                    | Required                   | Description |
-| ---------- | ------------------------------------------------------- | -------------------------- | ----------- |
-| `page`     | *Optional&lt;Long&gt;*                                  | :heavy&#95;minus&#95;sign: | ページ番号       |
-| `pageSize` | *Optional&lt;Long&gt;*                                  | :heavy&#95;minus&#95;sign: | 1ページあたりの件数  |
-| `type`     | [Optional&lt;Type&gt;](../../models/operations/Type.md) | :heavy&#95;minus&#95;sign: | 種別          |
-| `updated`  | *Optional&lt;Long&gt;*                                  | :heavy&#95;minus&#95;sign: | Unix形式の更新時刻 |
+| パラメータ      | 型                                                       | 必須                         | 説明           |
+| ---------- | ------------------------------------------------------- | -------------------------- | ------------ |
+| `page`     | *Optional&lt;Long&gt;*                                  | :heavy&#95;minus&#95;sign: | ページ番号        |
+| `pageSize` | *Optional&lt;Long&gt;*                                  | :heavy&#95;minus&#95;sign: | 1ページあたりの件数   |
+| `type`     | [Optional&lt;type&gt;](../../models/operations/Type.md) | :heavy&#95;minus&#95;sign: | type         |
+| `updated`  | *Optional&lt;Long&gt;*                                  | :heavy&#95;minus&#95;sign: | Unix 形式の更新日時 |
 
 <div id="response">
   ### レスポンス
@@ -76,6 +76,6 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                      | ステータスコード | コンテンツタイプ |
+| エラーの種類                     | ステータスコード | コンテンツタイプ |
 | -------------------------- | -------- | -------- |
 | models/errors/APIException | 4XX, 5XX | */*      |

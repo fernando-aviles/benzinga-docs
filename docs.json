@@ -328,7 +328,7 @@
                 ]
               },
               {
-                "group": "Perspectivas de los analistas",
+                "group": "Insights de analistas",
                 "pages": [
                   "es/api-reference/calendar_api/analyst-insights/overview",
                   "es/api-reference/calendar_api/analyst-insights/analyst-insights-v1"
@@ -342,7 +342,7 @@
                 ]
               },
               {
-                "group": "Argumentos alcistas Argumentos bajistas",
+                "group": "Alcistas vs. bajistas",
                 "pages": [
                   "es/api-reference/calendar_api/bulls-say-bears-say/overview",
                   "es/api-reference/calendar_api/bulls-say-bears-say/latest-bull-and-bear-cases-for-a-given-ticker-symbol"
@@ -375,7 +375,7 @@
                 ]
               },
               {
-                "group": "Fundamentos de la empresa",
+                "group": "Fundamentales de la empresa",
                 "pages": [
                   "es/api-reference/data-api-proxy_api/fundamentals/overview",
                   "es/api-reference/data-api-proxy_api/fundamentals/get-alpha-beta-v21",
@@ -397,7 +397,7 @@
                 ]
               },
               {
-                "group": "Logos corporativos",
+                "group": "Logotipos corporativos",
                 "pages": [
                   "es/api-reference/logo-api_api/logos/overview",
                   "es/api-reference/logo-api_api/logos/get-search-logos",
@@ -405,21 +405,21 @@
                 ]
               },
               {
-                "group": "Cifras derivadas y ratios",
+                "group": "Cifras y ratios derivados",
                 "pages": [
                   "es/api-reference/data-api-proxy_api/derivedfiguresandratios/overview",
                   "es/api-reference/data-api-proxy_api/derivedfiguresandratios/get-derived-figures-and-ratios-for-a-list-of-symbols"
                 ]
               },
               {
-                "group": "Cotizaciones diferidas",
+                "group": "Cotizaciones con retraso",
                 "pages": [
                   "es/api-reference/data-api-proxy_api/quotedelayed/overview",
                   "es/api-reference/data-api-proxy_api/quotedelayed/get-delayed-quotes-for-a-list-of-symbols"
                 ]
               },
               {
-                "group": "Transcripciones de conferencias de resultados",
+                "group": "Transcripciones de llamadas de resultados",
                 "pages": [
                   "es/api-reference/earnings-call-transcripts-api_api/earnings-call-transcripts/overview",
                   "es/api-reference/earnings-call-transcripts-api_api/earnings-call-transcripts/get-earnings-call-transcripts",
@@ -435,7 +435,7 @@
                 ]
               },
               {
-                "group": "Operaciones con información privilegiada",
+                "group": "Operaciones de insiders",
                 "pages": [
                   "es/api-reference/calendar_api/insider-transaction/overview",
                   "es/api-reference/calendar_api/insider-transaction/insider-transaction-filing",
@@ -443,7 +443,7 @@
                 ]
               },
               {
-                "group": "Newsfeed & Why is it Moving (WIIMs)",
+                "group": "Noticias y ¿por qué se mueve? (WIIMs)",
                 "pages": [
                   "es/api-reference/news-api_api/news/overview",
                   "es/api-reference/news-api_api/news/get-the-news-items",
@@ -459,14 +459,14 @@
                 ]
               },
               {
-                "group": "Cotizaciones en diferido",
+                "group": "Cotizaciones con retraso",
                 "pages": [
                   "es/api-reference/data-api-proxy_api/quotedelayed/overview",
                   "es/api-reference/data-api-proxy_api/quotedelayed/get-delayed-quotes-for-a-list-of-symbols"
                 ]
               },
               {
-                "group": "Tendencias de tickers",
+                "group": "Tendencias de tíkeres",
                 "pages": [
                   "es/api-reference/ticker-trends-api_api/ticker-trends/overview",
                   "es/api-reference/ticker-trends-api_api/ticker-trends/get-ticker-trend-data",
@@ -476,7 +476,7 @@
             ]
           },
           {
-            "tab": "Referencia de la API WebSocket",
+            "tab": "Referencia de WebSocket",
             "groups": [
               {
                 "group": "WebSockets",
@@ -488,7 +488,7 @@
                 ]
               },
               {
-                "group": "Perspectivas de los analistas",
+                "group": "Insights de analistas",
                 "pages": [
                   "es/ws-reference/data-websocket/get-analyst-insights-stream"
                 ]
@@ -500,7 +500,7 @@
                 ]
               },
               {
-                "group": "Datos de calendar",
+                "group": "Datos de calendario",
                 "pages": [
                   "es/ws-reference/data-websocket/get-calendar-earnings-stream",
                   "es/ws-reference/data-websocket/get-calendar-ratings-stream",
@@ -526,7 +526,7 @@
                 ]
               },
               {
-                "group": "API de webhooks",
+                "group": "API de Webhooks",
                 "pages": [
                   "es/api-reference/webhook_api/test-webhook-delivery"
                 ]
@@ -612,7 +612,7 @@
                 ]
               },
               {
-                "group": "アナリストインサイト",
+                "group": "アナリスト・インサイト",
                 "pages": [
                   "ja/api-reference/calendar_api/analyst-insights/overview",
                   "ja/api-reference/calendar_api/analyst-insights/analyst-insights-v1"
@@ -626,14 +626,14 @@
                 ]
               },
               {
-                "group": "強気派の主張 弱気派の主張",
+                "group": "強気材料・弱気材料",
                 "pages": [
                   "ja/api-reference/calendar_api/bulls-say-bears-say/overview",
                   "ja/api-reference/calendar_api/bulls-say-bears-say/latest-bull-and-bear-cases-for-a-given-ticker-symbol"
                 ]
               },
               {
-                "group": "Calendars",
+                "group": "カレンダー",
                 "pages": [
                   "ja/api-reference/calendar_api/overview",
                   "ja/api-reference/calendar_api/block-trade/blocktrade-v1",
@@ -689,21 +689,21 @@
                 ]
               },
               {
-                "group": "派生指標・比率",
+                "group": "派生指標と比率",
                 "pages": [
                   "ja/api-reference/data-api-proxy_api/derivedfiguresandratios/overview",
                   "ja/api-reference/data-api-proxy_api/derivedfiguresandratios/get-derived-figures-and-ratios-for-a-list-of-symbols"
                 ]
               },
               {
-                "group": "遅延株価",
+                "group": "遅延クオート",
                 "pages": [
                   "ja/api-reference/data-api-proxy_api/quotedelayed/overview",
                   "ja/api-reference/data-api-proxy_api/quotedelayed/get-delayed-quotes-for-a-list-of-symbols"
                 ]
               },
               {
-                "group": "決算説明会の書き起こし",
+                "group": "決算説明会トランスクリプト",
                 "pages": [
                   "ja/api-reference/earnings-call-transcripts-api_api/earnings-call-transcripts/overview",
                   "ja/api-reference/earnings-call-transcripts-api_api/earnings-call-transcripts/get-earnings-call-transcripts",
@@ -711,7 +711,7 @@
                 ]
               },
               {
-                "group": "政府関係者の取引",
+                "group": "Government Trades",
                 "pages": [
                   "ja/api-reference/calendar_api/government-trades/overview",
                   "ja/api-reference/calendar_api/government-trade-reports/government-trade-reports",
@@ -727,7 +727,7 @@
                 ]
               },
               {
-                "group": "ニュースフィード & Why is it Moving（WIIMs）",
+                "group": "ニュースフィードと価格変動要因（WIIMs）",
                 "pages": [
                   "ja/api-reference/news-api_api/news/overview",
                   "ja/api-reference/news-api_api/news/get-the-news-items",
@@ -743,14 +743,14 @@
                 ]
               },
               {
-                "group": "遅延クォート",
+                "group": "遅延クオート",
                 "pages": [
                   "ja/api-reference/data-api-proxy_api/quotedelayed/overview",
                   "ja/api-reference/data-api-proxy_api/quotedelayed/get-delayed-quotes-for-a-list-of-symbols"
                 ]
               },
               {
-                "group": "ティッカー動向",
+                "group": "ティッカーのトレンド",
                 "pages": [
                   "ja/api-reference/ticker-trends-api_api/ticker-trends/overview",
                   "ja/api-reference/ticker-trends-api_api/ticker-trends/get-ticker-trend-data",
@@ -760,10 +760,10 @@
             ]
           },
           {
-            "tab": "ウェブソケット リファレンス",
+            "tab": "WebSocketリファレンス",
             "groups": [
               {
-                "group": "ウェブソケット",
+                "group": "WebSocket",
                 "pages": [
                   "ja/ws-reference/introduction",
                   "ja/ws-reference/authentication",
@@ -772,7 +772,7 @@
                 ]
               },
               {
-                "group": "アナリストインサイト",
+                "group": "アナリスト・インサイト",
                 "pages": [
                   "ja/ws-reference/data-websocket/get-analyst-insights-stream"
                 ]
@@ -784,7 +784,7 @@
                 ]
               },
               {
-                "group": "Calendar データ",
+                "group": "カレンダーデータ",
                 "pages": [
                   "ja/ws-reference/data-websocket/get-calendar-earnings-stream",
                   "ja/ws-reference/data-websocket/get-calendar-ratings-stream",
@@ -851,7 +851,7 @@
             "tab": "変更履歴",
             "groups": [
               {
-                "group": "更新履歴",
+                "group": "変更履歴",
                 "pages": [
                   "ja/changelog/overview",
                   "ja/changelog/upcoming"

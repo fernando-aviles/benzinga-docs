@@ -3,7 +3,7 @@ title: "Ipos"
 description: ipos()
 ---
 
-[&lt; ATRÁS](/es/sdks/languages/java#ipos)
+[&lt; VOLVER](/es/sdks/languages/java#ipos)
 
 <div id="overview">
   ## Descripción general
@@ -20,7 +20,7 @@ description: ipos()
   ## getV21
 </div>
 
-Devuelve los datos de IPOs
+Devuelve los datos de las IPO
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -50,7 +50,7 @@ public class Application {
                 .call();
 
         if (res.modelsIPOJSON().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -60,9 +60,9 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro | Tipo                                                              | Obligatorio                | Descripción                                         |
-| --------- | ----------------------------------------------------------------- | -------------------------- | --------------------------------------------------- |
-| `request` | [GetIposV21Request](../../models/operations/GetIposV21Request.md) | :heavy&#95;check&#95;mark: | El objeto de solicitud que se usará en la petición. |
+| Parámetro | Tipo                                                              | Obligatorio                | Descripción                                            |
+| --------- | ----------------------------------------------------------------- | -------------------------- | ------------------------------------------------------ |
+| `request` | [GetIposV21Request](../../models/operations/GetIposV21Request.md) | :heavy&#95;check&#95;mark: | El objeto de solicitud que se usará para la solicitud. |
 
 <div id="response">
   ### Respuesta
@@ -82,7 +82,7 @@ public class Application {
   ## get
 </div>
 
-Devuelve el dato de IPOs
+Devuelve los datos de las IPO
 
 <div id="example-usage">
   ### Ejemplo de uso
@@ -122,9 +122,9 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro | Tipo                                                            | Obligatorio                | Descripción                                             |
-| --------- | --------------------------------------------------------------- | -------------------------- | ------------------------------------------------------- |
-| `request` | [GetIposV2Request](../../models/operations/GetIposV2Request.md) | :heavy&#95;check&#95;mark: | El objeto de solicitud que se utilizará en la petición. |
+| Parámetro | Tipo                                                            | Obligatorio                | Descripción                                              |
+| --------- | --------------------------------------------------------------- | -------------------------- | -------------------------------------------------------- |
+| `request` | [GetIposV2Request](../../models/operations/GetIposV2Request.md) | :heavy&#95;check&#95;mark: | El objeto de solicitud que se usará para esta solicitud. |
 
 <div id="response">
   ### Respuesta

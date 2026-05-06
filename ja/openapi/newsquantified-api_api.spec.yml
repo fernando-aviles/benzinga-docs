@@ -1,58 +1,58 @@
 openapi: 3.0.0
 info:
   contact: {}
-  description: この REST API は、ロゴの検索およびロゴ詳細の取得のためのエンドポイントを提供します。
+  description: このREST APIは、ロゴを検索し、ロゴの詳細を取得するためのエンドポイントを提供します。
   termsOfService: http://swagger.io/terms/
   title: NewsQuantified API
   version: 2.0.0
 paths:
   /api/v2/newsquantified:
     get:
-      description: センチメントスコア、関連度指標、市場インパクト指標を含む定量ニュース分析データを取得します。センチメントの極性、記事数、トレンドスコア、ティッカー別指標など、ニュース報道の定量的側面を分析した構造化データを返します。アルゴリズム取引や定量分析向けの機械可読なニュース分析にアクセスするには、このエンドポイントを使用します。
+      description: センチメントスコア、関連性指標、市場インパクト指標を含む定量ニュース分析データを取得します。センチメント極性、記事数、トレンドスコア、ティッカー固有の指標など、ニュース報道の定量的側面を分析した構造化データを返します。アルゴリズム取引や定量分析向けの機械可読なニュース分析データにアクセスするには、このエンドポイントを使用します。
       operationId: get-newsquantified-data
       parameters:
-        - description: "ページネーション用のページ番号。ゼロ始まりです（0 = 1 ページ目、1 = 2 ページ目、など）。デフォルト: 0"
+        - description: "ページネーション用のページ番号です。ゼロ始まりです（0 = 1ページ目、1 = 2ページ目、など）。デフォルト: 0"
           in: query
           name: page
           schema:
             type: integer
-        - description: "1 ページあたりの結果件数。デフォルト: 1000。最大: 1000。最新のデータから返されます。"
+        - description: "1ページあたりの結果数です。デフォルト: 1000。最大: 1000。最新のデータから返します。"
           in: query
           name: pagesize
           schema:
             type: integer
-        - description: 秒単位の Unix タイムスタンプ（UTC）。このタイムスタンプ以降に更新された newsquantified
-            データを返します。増分更新に使用します。
+        - description: 秒単位のUnixタイムスタンプ（UTC）です。このタイムスタンプ以降に更新されたnewsquantifiedデータを返します。増分更新に使用します。
           in: query
           name: updated_since
           schema:
             type: integer
-        - description: "結果を絞り込むための、カンマ区切りの株式ティッカー一覧（例: AAPL,MSFT,TSLA）。指定した証券の分析のみを返します。"
+        - description: "結果を絞り込むための、カンマ区切りの株式ティッカーシンボルのリストです（例:
+            AAPL,MSFT,TSLA）。指定した証券の分析データのみを返します。"
           in: query
           name: symbols
           schema:
             type: string
-        - description: "YYYY-MM-DD 形式の単一の日付（例: 2024-12-30）。date_from と date_to
-            が同じ場合の簡易指定です。この特定の日付のデータを返します。"
+        - description: "YYYY-MM-DD形式の単一の日付です（例:
+            2024-12-30）。date_fromとdate_toが同じ場合の簡略指定です。この日付のデータを返します。"
           in: query
           name: date
           schema:
             type: string
-        - description: "YYYY-MM-DD 形式の開始日（例: 2024-01-01）。この日付以降のデータを返します。日付範囲で照会する場合は
-            date_to と併用します。"
+        - description: "YYYY-MM-DD形式の開始日です（例:
+            2024-01-01）。この日付以降のデータを返します。日付範囲で照会する場合はdate_toと併用します。"
           in: query
           name: date_from
           schema:
             type: string
-        - description: "YYYY-MM-DD 形式の終了日（例: 2024-12-31）。この日付までのデータを含めて返します。日付範囲で照会する場合は
-            date_from と併用します。"
+        - description: "YYYY-MM-DD形式の終了日です（例:
+            2024-12-31）。この日付を含む、それ以前のデータを返します。日付範囲で照会する場合はdate_fromと併用します。"
           in: query
           name: date_to
           schema:
             type: string
       responses:
         "200":
-          description: センチメントスコアと各種指標を含む定量ニュース分析の配列
+          description: センチメントスコアと各種指標を含む定量ニュース分析データの配列
           content:
             application/json:
               schema:
@@ -60,7 +60,7 @@ paths:
                   $ref: "#/components/schemas/models.Newsquantified"
                 type: array
         "400":
-          description: 不正なリクエスト - 無効な日付形式またはパラメータ
+          description: 不正なリクエスト - 日付形式またはパラメータが無効です
           content:
             application/json:
               schema:
@@ -68,7 +68,7 @@ paths:
                   type: object
                 type: array
         "404":
-          description: 見つかりません - 指定したパラメータに一致するデータはありません
+          description: 見つかりません - 指定されたパラメータに該当するデータはありません
           content:
             application/json:
               schema:

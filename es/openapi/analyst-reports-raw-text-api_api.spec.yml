@@ -1,8 +1,8 @@
 openapi: 3.0.0
 info:
   contact: {}
-  description: Esta API REST proporciona endpoints para obtener detalles de
-    informes de analistas.
+  description: Esta API REST proporciona puntos finales para obtener los detalles
+    de los informes de analistas.
   termsOfService: http://swagger.io/terms/
   title: Analyst Reports Raw Text API
   version: 1.0.0
@@ -10,11 +10,11 @@ paths:
   /analyst/reports/raw-text:
     get:
       description: Recupera el contenido de texto sin procesar de informes de análisis
-        de analistas profesionales. Devuelve informes completos de analistas,
-        notas de análisis y recomendaciones de inversión de instituciones
-        financieras. Incluye metadatos del informe, cambios de calificación,
-        precios objetivo y análisis detallados. Es esencial para acceder a
-        análisis institucionales y al sentimiento de los analistas.
+        de analistas elaborados por profesionales. Devuelve informes completos
+        de analistas, notas de análisis y recomendaciones de inversión de
+        instituciones financieras. Incluye metadatos del informe, cambios de
+        calificación, precios objetivo y análisis detallados. Es esencial para
+        acceder a análisis institucionales y al sentimiento de los analistas.
       operationId: get-analyst-reports-raw-text-data
       parameters:
         - description: "Número de página para la paginación. Indexado desde cero (0 =

@@ -3,18 +3,18 @@ title: "Autenticación"
 description: "Cómo autenticar tus solicitudes a la API de Benzinga"
 ---
 
-La API de Benzinga utiliza **claves de API** para autenticar las solicitudes. Tu clave de API es un identificador único que otorga acceso a datos y funciones específicos según tu suscripción.
+La API de Benzinga utiliza **claves de API** para autenticar las solicitudes. Tu clave de API es un identificador único que otorga acceso a datos y funcionalidades específicas según tu suscripción.
 
 > [!IMPORTANT]
-> **Mantén segura tu clave de API.** No la compartas en lugares de acceso público, como GitHub, código del lado del cliente o canales de comunicación no seguros. Si crees que tu clave se ha visto comprometida, contacta con soporte de inmediato.
+> **Mantén tu clave de API segura.** No la compartas en lugares de acceso público, como GitHub, código del lado del cliente o comunicaciones no seguras. Si crees que tu clave se ha visto comprometida, ponte en contacto con soporte de inmediato.
 
-Puedes ver y administrar tu clave de API en la [Consola para desarrolladores de Benzinga](https://www.api.benzinga.com/token).
+Puedes ver y administrar tu clave de API en tu [Benzinga Developer Console](https://www.api.benzinga.com/token).
 
 <div id="authentication-methods">
   ## Métodos de autenticación
 </div>
 
-La API de Benzinga admite dos métodos de autenticación. Recomendamos encarecidamente utilizar el método de **encabezado HTTP** para aplicaciones de producción, ya que es más seguro y evita que su clave aparezca en los registros de las URL.
+La API de Benzinga admite dos métodos de autenticación. Recomendamos encarecidamente usar el método de **encabezado HTTP** en aplicaciones de producción, ya que es más seguro y evita que su clave aparezca en los registros de URL.
 
 <div id="1-http-header-recommended">
   ### 1. Encabezado HTTP (recomendado)
@@ -30,7 +30,7 @@ Authorization: token <YOUR_API_KEY>
   ### 2. Parámetro de consulta
 </div>
 
-Para pruebas rápidas o cuando no sea posible modificar el encabezado, puedes enviar tu clave como parámetro de consulta llamado `token`.
+Para pruebas rápidas o cuando no sea posible modificar el encabezado, puede enviar su clave como un parámetro de consulta llamado `token`.
 
 ```http
 https://api.benzinga.com/api/v2/news?token=<YOUR_API_KEY>
@@ -40,7 +40,7 @@ https://api.benzinga.com/api/v2/news?token=<YOUR_API_KEY>
   ## Ejemplos de código
 </div>
 
-Aquí tienes ejemplos aptos para producción para conectarte a la API de Benzinga en lenguajes habituales.
+A continuación, se muestran ejemplos listos para producción para conectarse a la API de Benzinga en lenguajes habituales.
 
 <CodeGroup>
   ```bash cURL
@@ -161,8 +161,8 @@ Aquí tienes ejemplos aptos para producción para conectarte a la API de Benzing
 
 Errores comunes de autenticación y cómo resolverlos.
 
-| Código de estado | Mensaje        | Posible causa          | Resolución                                                                                                                                              |
-| :--------------- | :------------- | :--------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **401**          | `Unauthorized` | Clave de API no válida | Verifique que su clave de API sea correcta y que no se haya regenerado. Asegúrese de no haber copiado espacios adicionales.                             |
-| **401**          | `Unauthorized` | Falta la clave de API  | Asegúrese de que el encabezado `Authorization` tenga el formato correcto: `token <KEY>`, o de que el parámetro `token` esté presente.                   |
-| **403**          | `Forbidden`    | Permisos insuficientes | Su clave de API es válida, pero su plan no incluye acceso al endpoint solicitado. Póngase en contacto con ventas o con soporte para actualizar su plan. |
+| Código de estado | Mensaje        | Posible causa          | Resolución                                                                                                                                                             |
+| :--------------- | :------------- | :--------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **401**          | `Unauthorized` | Clave de API no válida | Verifique que su clave de API sea correcta y que no se haya regenerado. Asegúrese de que no se hayan copiado espacios de más.                                          |
+| **401**          | `Unauthorized` | Falta la clave de API  | Asegúrese de que el encabezado `Authorization` tenga el formato correcto: `token <KEY>`, o de que esté presente el parámetro `token`.                                  |
+| **403**          | `Forbidden`    | Permisos insuficientes | Su clave de API es válida, pero su plan no incluye acceso al punto final solicitado. Póngase en contacto con el equipo de ventas o de soporte para actualizar su plan. |

@@ -4,7 +4,7 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/ratings/analysts
 ---
 
 <ResponseExample>
-  ```json Respuesta (200 OK)
+  ```json Response (200 OK)
   {
     "analyst_ratings_analyst": [
       {
@@ -58,7 +58,7 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/ratings/analysts
   }
   ```
 
-  ```json Respuesta (401 No autorizado)
+  ```json Response (401 Unauthorized)
   {
     "ok": false,
     "errors": [
@@ -71,7 +71,7 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/ratings/analysts
   }
   ```
 
-  ```json Respuesta (404 No encontrado)
+  ```json Response (404 Not Found)
   {
     "ok": false,
     "errors": [
@@ -84,7 +84,7 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/ratings/analysts
   }
   ```
 
-  ```json Respuesta (500 Error interno del servidor)
+  ```json Response (500 Internal Server Error)
   {
     "ok": false,
     "errors": [

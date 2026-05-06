@@ -4,7 +4,7 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/fda
 ---
 
 <ResponseExample>
-  ```json レスポンス (200 OK)
+  ```json Response (200 OK)
   {
     "fda": [
       {
@@ -36,7 +36,7 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/fda
         "id": "695bc49183cac20001bec514",
         "nic_number": "",
         "notes": "",
-        "outcome": "Alpha Tau Medical Ltd.は、FDAがより柔軟なモジュール方式の使用を同社に認めるという以前の決定を受け、米国食品医薬品局（FDA）に対し、市販前承認（PMA）申請の最初のモジュールを提出したと発表しました。",
+        "outcome": "Alpha Tau Medical Ltd. は、FDAが以前より同社に対してより柔軟なモジュール方式の使用を認めていたことを受け、米国食品医薬品局（FDA）に対し、市販前承認（PMA）申請の第1モジュールを提出したと発表しました。",
         "outcome_brief": "",
         "source_link": "https://www.benzinga.com/pressreleases/26/01/g49690927/alpha-tau-submits-first-pre-market-approval-module-to-the-fda-for-alpha-dart-for-the-treatment-of-",
         "source_type": "プレスリリース",
@@ -49,7 +49,7 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/fda
   }
   ```
 
-  ```json レスポンス（401 認証されていません）
+  ```json Response (401 Unauthorized)
   {
     "ok": false,
     "errors": [
@@ -62,20 +62,20 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v2.1/calendar/fda
   }
   ```
 
-  ```json レスポンス（404 見つかりません）
+  ```json Response (404 Not Found)
   {
     "ok": false,
     "errors": [
       {
         "code": "no_data_found",
         "id": "not_found",
-        "value": "指定されたパラメーターに該当するdataが見つかりません"
+        "value": "指定されたパラメータに該当するデータが見つかりません"
       }
     ]
   }
   ```
 
-  ```json レスポンス（500 内部サーバーエラー）
+  ```json Response (500 Internal Server Error)
   {
     "ok": false,
     "errors": [

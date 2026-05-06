@@ -9,14 +9,14 @@ servers:
 paths:
   /api/v1/webhook/test:
     get:
-      summary: Webhook配信のテスト
-      description: このエンドポイントは、統合を確認できるように、Webhookエンドポイントへテストデータを送信します
+      summary: Webhook配信をテストする
+      description: このエンドポイントはWebhookエンドポイントにテストデータを送信し、統合を検証できるようにします
       operationId: get-webhook-test
       parameters:
         - name: destination
           in: query
           required: true
-          description: テストデータの送信先となるWebhookエンドポイントURL
+          description: テストデータの送信先となるWebhookエンドポイントのURL
           schema:
             type: string
             format: uri
@@ -33,7 +33,7 @@ paths:
         - name: kind
           in: query
           required: true
-          description: メッセージ種別を識別します。現在は ニュース/v1
+          description: メッセージ種別を識別します。現在は News/v1
           schema:
             type: string
             enum:
@@ -42,12 +42,12 @@ paths:
         - name: token
           in: query
           required: false
-          description: 本番利用向けにデータを変換するには、token を指定します
+          description: 本番環境向けにデータを変換するには、token を指定します
           schema:
             type: string
       responses:
         "200":
-          description: 成功 - テストWebhook配信が正常に送信されました
+          description: 成功 - テストWebhook配信は正常に送信されました
           content:
             application/json:
               schema:

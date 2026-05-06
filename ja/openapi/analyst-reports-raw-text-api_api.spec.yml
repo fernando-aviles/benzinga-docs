@@ -8,7 +8,7 @@ info:
 paths:
   /analyst/reports/raw-text:
     get:
-      description: プロのアナリストによる調査レポートから、生のテキストコンテンツを取得します。金融機関によるアナリストレポートの全文、調査ノート、投資推奨を返します。レポートのメタデータ、レーティング変更、目標株価、詳細な分析が含まれます。機関投資家向けリサーチやアナリストのセンチメントにアクセスするうえで重要です。
+      description: プロのアナリストによる調査レポートの生テキストを取得します。金融機関による全文のアナリストレポート、調査ノート、投資推奨を返します。レポートのメタデータ、レーティングの変更、目標株価、詳細な分析が含まれます。機関投資家向けリサーチやアナリストのセンチメントにアクセスするために不可欠です。
       operationId: get-analyst-reports-raw-text-data
       parameters:
         - description: "ページネーション用のページ番号。0始まりです（0 = 1ページ目、1 = 2ページ目、など）。デフォルト: 0"
@@ -16,14 +16,14 @@ paths:
           name: page
           schema:
             type: integer
-        - description: "1ページあたりの結果数。デフォルト: 100。最大: 100。最新のレポートから順に返します。"
+        - description: "1ページあたりの結果数。デフォルト: 100。最大: 100。最新のレポートから順に返されます。"
           in: query
           name: pagesize
           schema:
             type: integer
       responses:
         "200":
-          description: 全文テキストコンテンツとメタデータを含むアナリストレポートの配列
+          description: 全文テキストとメタデータを含むアナリストレポートの配列
           content:
             application/json:
               schema:
@@ -48,7 +48,7 @@ paths:
                 type: array
       security:
         - ApiKeyAuth: []
-      summary: アナリスト調査レポート
+      summary: アナリストの調査レポート
       tags:
         - Analyst Reports
 components:

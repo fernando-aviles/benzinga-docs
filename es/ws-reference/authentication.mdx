@@ -5,19 +5,19 @@ description: "Cómo autenticar las solicitudes a la API de Benzinga."
 
 Para acceder a la API de Benzinga, debes autenticar cada solicitud con un token de la API. Puedes generar y administrar tus tokens de la API desde tu [Benzinga Console](https://www.api.benzinga.com/token).
 
-> **Importante:** Tu token de la API da acceso a tu cuenta de Benzinga, así que guárdalo de forma segura. Evita compartirlo en repositorios públicos, código del lado del cliente u otras ubicaciones no seguras.
+> **Importante:** Tu token de la API otorga acceso a tu cuenta de Benzinga, así que debes manejarlo de forma segura. Evita compartirlo en repositorios públicos, código del lado del cliente u otras ubicaciones no seguras.
 
 <div id="authenticating-requests">
   ## Autenticación de solicitudes
 </div>
 
-La API de Benzinga utiliza **autenticación Bearer**, un esquema seguro en el que cada solicitud incluye un token en el parámetro de consulta `token`. Este token sirve como credencial de acceso a los recursos de Benzinga.
+La API de Benzinga utiliza **autenticación Bearer**, un esquema seguro en el que cada solicitud incluye un token en el parámetro de consulta `token`. Este token funciona como credencial de acceso a los recursos de Benzinga.
 
 <div id="example-request-with-bearer-token">
-  ### Ejemplo de solicitud con un token Bearer
+  ### Ejemplo de solicitud con token Bearer
 </div>
 
-Incluya el token en el parámetro de consulta `Token` de su solicitud, de la siguiente manera:
+Incluye el token en el parámetro de consulta `Token` de la solicitud, como se muestra a continuación:
 
 ```bash
 Token: <token>

@@ -4,7 +4,7 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v1/sec/insider_transactions/fil
 ---
 
 <ResponseExample>
-  ```json レスポンス (200 OK)
+  ```json Response (200 OK)
   {
     "data": [
       {
@@ -57,33 +57,33 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v1/sec/insider_transactions/fil
   }
   ```
 
-  ```json レスポンス（401 認証されていません）
+  ```json Response (401 Unauthorized)
   {
     "ok": false,
     "errors": [
       {
         "code": "auth_failed",
         "id": "unauthorized",
-        "value": "認証 token が無効であるか、指定されていません"
+        "value": "認証トークンが無効か、指定されていません"
       }
     ]
   }
   ```
 
-  ```json レスポンス（404 見つかりません）
+  ```json Response (404 Not Found)
   {
     "ok": false,
     "errors": [
       {
         "code": "no_data_found",
         "id": "not_found",
-        "value": "指定されたパラメータに一致するデータが見つかりません"
+        "value": "指定されたパラメータに一致するデータは見つかりませんでした"
       }
     ]
   }
   ```
 
-  ```json レスポンス（500 内部サーバーエラー）
+  ```json Response (500 Internal Server Error)
   {
     "ok": false,
     "errors": [

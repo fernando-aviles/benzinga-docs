@@ -1,5 +1,5 @@
 ---
-title: "強気派の見方・弱気派の見方"
+title: "強気派の見方、弱気派の見方"
 description: bullsBearsSayBearsSay()
 ---
 
@@ -13,13 +13,13 @@ description: bullsBearsSayBearsSay()
   ### 利用可能な操作
 </div>
 
-* [get](#get) - 強気派の見方・弱気派の見方 V1を取得
+* [get](#get) - 見解 V1 を取得
 
 <div id="get">
   ## get
 </div>
 
-強気派の見方・弱気派の見方を取得 V1
+強気・弱気の見解 V1 を取得
 
 <div id="example-usage">
   ### 使用例
@@ -58,7 +58,7 @@ public class Application {
 
 | パラメータ     | 型                        | 必須                         | 説明     |
 | --------- | ------------------------ | -------------------------- | ------ |
-| `symbols` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | 銘柄シンボル |
+| `symbols` | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | シンボル一覧 |
 
 <div id="response">
   ### レスポンス
@@ -70,7 +70,7 @@ public class Application {
   ### エラー
 </div>
 
-| エラー種別                          | ステータスコード | Content Type     |
+| エラータイプ                         | ステータスコード | コンテンツタイプ         |
 | ------------------------------ | -------- | ---------------- |
 | models/errors/ApiErrorResponse | 400, 500 | application/json |
 | models/errors/APIException     | 4XX, 5XX | */*              |

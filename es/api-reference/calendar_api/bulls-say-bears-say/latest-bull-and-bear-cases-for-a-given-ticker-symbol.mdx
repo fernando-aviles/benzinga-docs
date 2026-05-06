@@ -1,15 +1,15 @@
 ---
-title: "Alcistas vs. bajistas"
+title: "Alcistas vs. Bajistas"
 openapi: /openapi/calendar_api.spec.yml GET /api/v1/bulls_bears_say
 ---
 
 <ResponseExample>
-  ```json Respuesta (200 OK)
+  ```json Response (200 OK)
   {
     "bulls_say_bears_say": [
       {
-        "bear_case": "El análisis destaca una caída interanual del 3,6% en las ventas en China, lo que genera preocupación por el desempeño del mercado en una región clave. Además, aunque los márgenes brutos se mantienen estables en torno al 47% interanual, el aumento de los gastos operativos supone un riesgo para la rentabilidad. Asimismo, una posible desaceleración en las ventas del iPhone y la posibilidad de un deterioro de la reputación de Apple podrían ejercer presión a la baja sobre la valoración de la empresa, lo que genera inquietud entre los inversores.",
-        "bull_case": "Las ventas de Apple en el cuarto trimestre aumentaron un 8%, hasta 102.500 millones de dólares, en línea con las estimaciones y respaldando una proyección de crecimiento de las ventas totales del 10% al 12% en el próximo trimestre, impulsada principalmente por un sólido desempeño de las ventas del iPhone. La empresa también informó un beneficio operativo de 32.400 millones de dólares, lo que refleja un incremento interanual del 10%, así como un crecimiento del 15% en los ingresos por servicios, contribuyendo positivamente a la evolución del margen bruto. Además, con el crecimiento previsto en la región de China y las inversiones estratégicas en IA y desarrollo de productos, Apple está bien posicionada para un crecimiento sostenible a largo plazo a pesar del aumento de los gastos operativos.",
+        "bear_case": "El análisis destaca una disminución interanual del 3.6% en las ventas procedentes de China, lo que genera preocupación sobre el desempeño del mercado en una región clave. Además, aunque los márgenes brutos se mantienen estables en aproximadamente un 47% interanual, el aumento de los gastos operativos supone un riesgo para la rentabilidad. Asimismo, un posible crecimiento lento en las ventas del iPhone y la posibilidad de un deterioro en la reputación de Apple podrían ejercer presión a la baja sobre la valoración de la empresa, generando inquietud entre los inversores.",
+        "bull_case": "Las ventas de Apple en el cuarto trimestre aumentaron un 8%, hasta 102.5 mil millones de dólares, en línea con las estimaciones y respaldando una proyección de crecimiento de las ventas totales del 10% al 12% en el próximo trimestre, impulsada principalmente por un sólido desempeño en las ventas del iPhone. La empresa también reportó un ingreso operativo de 32.4 mil millones de dólares, lo que refleja un aumento interanual del 10%, así como un crecimiento del 15% en los ingresos por servicios, contribuyendo positivamente a la dinámica del margen bruto. Además, con el crecimiento previsto en la región de China y las inversiones estratégicas en IA y desarrollo de productos, Apple está bien posicionada para un crecimiento sostenible a largo plazo a pesar del aumento de los gastos operativos.",
         "id": "6951d73e304f6ecd69d00189",
         "securities": [
           {
@@ -27,7 +27,7 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v1/bulls_bears_say
   }
   ```
 
-  ```json Respuesta (401 No autorizado)
+  ```json Response (401 Unauthorized)
   {
     "ok": false,
     "errors": [
@@ -40,7 +40,7 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v1/bulls_bears_say
   }
   ```
 
-  ```json Respuesta (404 No encontrado)
+  ```json Response (404 Not Found)
   {
     "ok": false,
     "errors": [
@@ -53,14 +53,14 @@ openapi: /openapi/calendar_api.spec.yml GET /api/v1/bulls_bears_say
   }
   ```
 
-  ```json Respuesta (500 Error interno del servidor)
+  ```json Response (500 Internal Server Error)
   {
     "ok": false,
     "errors": [
       {
         "code": "internal_server_error",
         "id": "server_error",
-        "value": "Se produjo un error inesperado al procesar su solicitud"
+        "value": "Se produjo un error inesperado al procesar tu solicitud"
       }
     ]
   }

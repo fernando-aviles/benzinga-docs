@@ -4,7 +4,7 @@ openapi: /ja/openapi/data-api-proxy_api.spec.yml GET /api/v2/fundamentals
 ---
 
 <ResponseExample>
-  ```json レスポンス (200 OK)
+  ```json Response (200 OK)
   {
     "result": [
       {
@@ -24,7 +24,7 @@ openapi: /ja/openapi/data-api-proxy_api.spec.yml GET /api/v2/fundamentals
           "standardName": "Apple Inc",
           "totalEmployees": 166000,
           "legalName": "Apple Inc",
-          "longDescription": "Appleは世界最大級の企業の1つであり、個人および法人向けの幅広いハードウェア製品とソフトウェア製品のポートフォリオを展開しています。Appleの売上の大半はiPhoneが占めており、Mac、iPad、Watchなどの他製品は、広範なソフトウェアエコシステムの中核であるiPhoneを中心に設計されています。Appleは、動画ストリーミング、サブスクリプションバンドル、拡張現実などの新しいアプリケーションの追加を継続的に進めてきました。同社は自社でソフトウェアと半導体を設計する一方、FoxconnやTSMCなどの委託先と連携して製品やチップを製造しています。Appleの売上のうち直営店経由は半分弱で、大半は提携先や流通チャネルを通じて間接的にもたらされています。"
+          "longDescription": "Apple is among the largest companies in the world, with a broad portfolio of hardware and software products targeted at consumers and businesses. Apple's iPhone makes up a majority of the firm sales, and Apple's other products like Mac, iPad, and Watch are designed around the iPhone as the focal point of an expansive software ecosystem. Apple has progressively worked to add new applications, like streaming video, subscription bundles, and augmented reality. The firm designs its own software and semiconductors while working with subcontractors like Foxconn and TSMC to build its products and chips. Slightly less than half of Apple's sales come directly through its flagship stores, with a majority of sales coming indirectly through partnerships and distribution."
         },
         "shareClass": {
           "shareClassId": "0P000000GY",
@@ -50,40 +50,40 @@ openapi: /ja/openapi/data-api-proxy_api.spec.yml GET /api/v2/fundamentals
   }
   ```
 
-  ```json レスポンス（401 認証されていません）
+  ```json Response (401 Unauthorized)
   {
     "ok": false,
     "errors": [
       {
         "code": "auth_failed",
         "id": "unauthorized",
-        "value": "認証トークンが無効であるか、指定されていません"
+        "value": "Invalid or missing authentication token"
       }
     ]
   }
   ```
 
-  ```json レスポンス（404 見つかりません）
+  ```json Response (404 Not Found)
   {
     "ok": false,
     "errors": [
       {
         "code": "no_data_found",
         "id": "not_found",
-        "value": "指定されたパラメータに一致するデータが見つかりません"
+        "value": "No data found for the specified parameters"
       }
     ]
   }
   ```
 
-  ```json レスポンス（500 内部サーバーエラー）
+  ```json Response (500 Internal Server Error)
   {
     "ok": false,
     "errors": [
       {
         "code": "internal_server_error",
         "id": "server_error",
-        "value": "リクエストの処理中に予期しないエラーが発生しました"
+        "value": "An unexpected error occurred while processing your request"
       }
     ]
   }

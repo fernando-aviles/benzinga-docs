@@ -1,22 +1,22 @@
 ---
-title: "Inicio"
+title: "Inicio (NUEVO)"
 description: "¡Bienvenido a la documentación para desarrolladores de las API de Benzinga!"
 ---
 
-En el portal de documentación para desarrolladores de [Benzinga Cloud](https://cloud.benzinga.com/), encontrarás documentación sobre nuestras API de noticias, mercado y datos de empresas. Si tienes alguna pregunta, [ponte en contacto con nosotros](mailto:partners@benzinga.com). Estaremos encantados de ayudarte.
+Aquí, en el portal de documentación para desarrolladores de [Benzinga Cloud](https://cloud.benzinga.com/), encontrará documentación sobre nuestras API de noticias, datos de mercado y datos de empresas. Si tiene alguna pregunta, [contáctenos](mailto:partners@benzinga.com). Estaremos encantados de ayudarle.
 
 <div id="about-this-documentation-and-the-new-features">
-  ## Acerca de esta documentación y las nuevas funciones
+  ## Acerca de esta documentación y de las nuevas funciones
 </div>
 
-En el caso de nuestras API REST, esta documentación se basa en especificaciones OpenAPI. Puede ver la especificación YAML sin procesar en el repositorio público de esta aplicación de documentación, [aquí](https://github.com/Benzinga/doc-site-mintlify).
+Para nuestras API REST, esta documentación se basa en especificaciones OpenAPI. Puede ver el archivo YAML sin procesar en el repositorio público de esta aplicación de documentación, [aquí](https://github.com/Benzinga/doc-site-mintlify).
 
-Hay un cliente REST integrado directamente en la sección &quot;Playground&quot; de cada página basada en OpenAPI. Una vez que haya obtenido una clave de API, puede probar llamadas sin salir del portal de documentación. También puede probar llamadas con cualquier otro cliente REST con interfaz gráfica ([Postman](https://www.getpostman.com/), [Insomnia](https://insomnia.rest/), [Paw](https://paw.cloud/)) o herramientas de CLI como cUrl1.
+Hay un cliente REST integrado directamente en la sección &quot;Playground&quot; de cada página basada en OpenAPI. Una vez que haya obtenido una clave API, puede probar solicitudes sin salir del portal de documentación. Como alternativa, puede probar solicitudes con cualquier otro cliente REST con interfaz gráfica ([Postman](https://www.getpostman.com/), [Insomnia](https://insomnia.rest/), [Paw](https://paw.cloud/)) o con herramientas de línea de comandos como cUrl1.
 
-Por último, las especificaciones OpenAPI son compatibles con herramientas del ecosistema Swagger, por lo que incluso puede [generar un cliente para el lenguaje de programación que prefiera](http://swagger.io/swagger-codegen/).
+Por último, las especificaciones OpenAPI son compatibles con herramientas del ecosistema Swagger, por lo que incluso puede [generar un cliente para el lenguaje de programación que elija](http://swagger.io/swagger-codegen/).
 
 <Info>
-  Nuestra documentación cuenta con funciones de IA. Pruebe a hacer una pregunta con Ctrl + K (PC) o Cmd + K (Mac).
+  Nuestra documentación incorpora funciones de IA. Pruebe a hacer una pregunta con Ctrl + K (PC) o Cmd + K (Mac).
 </Info>
 
 <div id="acessing-the-data">
@@ -25,15 +25,15 @@ Por último, las especificaciones OpenAPI son compatibles con herramientas del e
 
 <Steps>
   <Step title="Inicia sesión en tu cuenta">
-    Haz clic en &quot;[Comenzar](https://www.benzinga.com/apis/licensing/register)&quot; para crear una cuenta.
+    Haz clic en &quot;[Get Started](https://www.benzinga.com/apis/licensing/register)&quot; para crear una cuenta.
   </Step>
 
-  <Step title="Copia tu clave de API">
-    Una vez que hayas iniciado sesión en el panel de control, copia tu clave de API.
+  <Step title="Copia tu clave API">
+    Una vez que hayas iniciado sesión en el panel de usuario, copia tu clave API.
   </Step>
 
   <Step title="¡Empieza a desarrollar!">
-    La autenticación se realiza mediante una clave de API configurada como parámetro de consulta de la URL &quot;token&quot;.
+    La autenticación se realiza mediante una clave API configurada como parámetro de consulta en la URL &quot;token&quot;.
   </Step>
 </Steps>
 
@@ -41,9 +41,9 @@ Por último, las especificaciones OpenAPI son compatibles con herramientas del e
   ## Mejores prácticas
 </div>
 
-Sugerimos que los clientes utilicen los clientes de Benzinga siempre que sea posible. Muchos endpoints están disponibles en nuestra [biblioteca de Python](https://github.com/Benzinga/benzinga-python-client). También ofrecemos implementaciones de ejemplo y bibliotecas cliente a través de nuestro [Github](https://github.com/benzinga) público.
+Sugerimos que los clientes usen, cuando sea posible, los clientes proporcionados por Benzinga. Muchos puntos finales están disponibles en nuestra [biblioteca de Python](https://github.com/Benzinga/benzinga-python-client). Además, ofrecemos implementaciones de ejemplo y bibliotecas cliente a través de nuestro [GitHub](https://github.com/benzinga) público.
 
-Por último, recomendamos encarecidamente usar deltas al utilizar las API de Calendar, Signals y Noticias, especialmente para la ingesta en tiempo real (en lugar de la ingesta de datos históricos). Esto puede hacerse mediante el parámetro de consulta `parameters[updated]` para las API de Calendar y Signals, y el parámetro de consulta `updatedSince` para la API de Noticias. El uso de estos parámetros garantiza una latencia mínima.
+Por último, recomendamos encarecidamente usar deltas al utilizar las API de Calendar, Signals y News, especialmente para la ingesta en tiempo real (en lugar de la ingesta de datos históricos). Esto puede hacerse mediante el parámetro de consulta `parameters[updated]` para las API de Calendar y Signals, y el parámetro de consulta `updatedSince` para la API de News. El uso de estos parámetros garantiza una latencia mínima.
 
 <div id="additional-resources">
   ## Recursos adicionales
@@ -51,34 +51,34 @@ Por último, recomendamos encarecidamente usar deltas al utilizar las API de Cal
 
 <CardGroup cols={2}>
   <Card title="Estado de la API" icon="signal-bars" href="https://benzinga1.statuspage.io">
-    Consulta la página de estado de las API de Benzinga para estar al tanto de cualquier interrupción en los servicios de Benzinga.
+    Consulta la página de estado de las API de Benzinga para mantenerte al tanto de cualquier interrupción en los servicios de Benzinga.
   </Card>
 
   <Card title="Ejecutar en Postman" icon="signs-post" href="">
-    Ejecuta las API de Benzinga en tu entorno de Postman
+    Ejecuta las API de Benzinga en tu entorno de Postman.
   </Card>
 
   <Card title="Eventos" icon="award" href="https://www.benzinga.com/events/fintech-awards?utm_source=bzapidocs&utm_medium=organic&utm_campaign=docs&utm_term=benzingaevents&utm_content=home">
-    Benzinga Events busca conectar a traders, inversionistas y empresas con oportunidades de crecimiento.
+    Benzinga Events busca conectar a traders, inversores y empresas con oportunidades de crecimiento.
   </Card>
 
   <Card title="Benzinga Research Terminal" icon="rectangle-pro" href="https://www.benzinga.com/pro/register?utm_source=bzapidocs&utm_medium=organic&utm_campaign=docs&utm_term=benzingapro&utm_content=home">
-    Benzinga Pro ofrece docenas de alertas de Noticias de última hora con potencial para mover el mercado todos los días.
+    Benzinga Pro ofrece decenas de alertas de noticias de última hora con potencial para mover el mercado cada día.
   </Card>
 </CardGroup>
 
 ***
 
 <div id="get-in-touch">
-  ## ¡Póngase en contacto!
+  ## ¡Contáctanos!
 </div>
 
 <Info>
-  ## Contáctenos
+  ## Contacto
 
   ### Soporte
 
-  Si tiene alguna pregunta o inquietud, *estamos para ayudarle*.
+  Si tienes alguna pregunta o inquietud, *te escuchamos*.
 
   * Correo electrónico: partners@benzinga.com
 
@@ -90,5 +90,5 @@ Por último, recomendamos encarecidamente usar deltas al utilizar las API de Cal
 </Info>
 
 <Info>
-  ¿Ya le contamos que [Benzinga está contratando](http://jobs.benzinga.com/)?
+  ¿Ya mencionamos que [Benzinga está contratando](http://jobs.benzinga.com/)?
 </Info>

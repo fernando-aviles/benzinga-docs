@@ -1,6 +1,6 @@
 ---
-title: "Flujo de Analyst Información"
-description: "Información de analistas, calificaciones y precios objetivo para valores en tiempo real."
+title: "Flujo de análisis de analistas"
+description: "Análisis, calificaciones y precio objetivo de analistas en tiempo real para valores."
 asyncapi: "/asyncapi/analyst-insights-stream.yml analystInsights"
 ---
 
@@ -8,31 +8,31 @@ asyncapi: "/asyncapi/analyst-insights-stream.yml analystInsights"
   ## Descripción general
 </div>
 
-Suscríbase a información de analistas en tiempo real y reciba actualizaciones sobre calificaciones de analistas, precios objetivo y recomendaciones detalladas en el momento en que se publiquen.
+Suscríbase a análisis de analistas en tiempo real y reciba actualizaciones sobre calificaciones de analistas, precios objetivo y recomendaciones detalladas a medida que se publiquen.
 
 <div id="key-features">
   ### Características clave
 </div>
 
-* **Actualizaciones en tiempo real**: Recibe notificaciones instantáneas cuando los analistas publican nueva información o actualizan calificaciones existentes
-* **Filtrado por valor**: Suscríbete a tickers o ISIN específicos para recibir solo los datos relevantes
-* **Datos completos**: Incluye detalles de la firma de análisis, calificaciones, precios objetivo e información detallada
-* **Seguimiento de cambios**: Supervisa cuándo se crea, actualiza o elimina información
+* **Actualizaciones en tiempo real**: Reciba notificaciones instantáneas cuando los analistas publiquen nuevos análisis o actualicen calificaciones existentes
+* **Filtrar por instrumento**: Suscríbase a tíkers o ISIN específicos para recibir solo los datos relevantes
+* **Datos completos**: Incluye detalles de la firma de análisis, calificaciones, precios objetivo y análisis detallados
+* **Seguimiento de cambios**: Supervise cuándo se crean, actualizan o eliminan los análisis
 
 <div id="use-cases">
   ### Casos de uso
 </div>
 
-* Hacer seguimiento de los cambios en el sentimiento de los analistas sobre los activos de la cartera
-* Crear alertas en tiempo real para mejoras o rebajas de calificación
-* Supervisar los cambios en los precios objetivo de varios analistas
-* Consolidar información de consenso de varias firmas de análisis
+* Sigue los cambios en el sentimiento de los analistas sobre los valores de tu cartera
+* Crea alertas en tiempo real para mejoras o rebajas de recomendación
+* Supervisa los cambios en el precio objetivo de varios analistas
+* Agrega análisis de consenso de varias firmas de análisis
 
 <div id="quick-start">
   ## Inicio rápido
 </div>
 
-Utiliza la herramienta interactiva de prueba de WebSocket de arriba para conectarte y probar el flujo en tiempo real.
+Usa el tester interactivo de WebSocket de arriba para conectarte y probar el flujo en tiempo real.
 
 <div id="connection-url">
   ### URL de conexión
@@ -48,9 +48,9 @@ wss://api.benzinga.com/api/v1/analyst/insights/stream?token=YOUR_TOKEN
 
 | Parámetro | Obligatorio | Descripción                                                 |
 | --------- | ----------- | ----------------------------------------------------------- |
-| `token`   | Sí          | Su token de la API WebSocket de Benzinga (bz.production***) |
-| `tickers` | No          | Lista de tickers separados por comas (p. ej., `AAPL,MSFT`)  |
-| `isins`   | No          | Lista de ISIN separados por comas para filtrar              |
+| `token`   | Sí          | Tu token de la API WebSocket de Benzinga (bz.production***) |
+| `tickers` | No          | Lista de tíkeres separada por comas (p. ej., `AAPL,MSFT`)   |
+| `isins`   | No          | Lista de ISIN separada por comas para filtrar               |
 
 <div id="message-example">
   ## Ejemplo de mensaje
@@ -87,24 +87,24 @@ wss://api.benzinga.com/api/v1/analyst/insights/stream?token=YOUR_TOKEN
 
 | Acción                | Descripción                         |
 | --------------------- | ----------------------------------- |
-| `created` / `Created` | Nueva opinión de analista publicada |
-| `updated` / `Updated` | Opinión existente modificada        |
-| `deleted` / `Deleted` | Opinión eliminada                   |
+| `created` / `Created` | Nuevo insight de analista publicado |
+| `updated` / `Updated` | Insight existente modificado        |
+| `deleted` / `Deleted` | Insight eliminado                   |
 
 <div id="interactive-commands">
   ## Comandos interactivos
 </div>
 
-| Comando  | Descripción                                                  |
-| -------- | ------------------------------------------------------------ |
-| `ping`   | Mantiene activa la conexión (responde con `pong`)            |
-| `replay` | Recupera hasta los últimos 100 mensajes almacenados en caché |
+| Comando  | Descripción                                       |
+| -------- | ------------------------------------------------- |
+| `ping`   | Mantiene la conexión activa (responde con `pong`) |
+| `replay` | Reenvía hasta los últimos 100 mensajes en caché   |
 
 <div id="best-practices">
   ## Mejores prácticas
 </div>
 
-* **Deduplicación**: Use el campo `id` para evitar procesar mensajes duplicados
-* **Heartbeat**: Envíe comandos `ping` cada 30-60 segundos para mantener la conexión
-* **Manejo de errores**: Implemente una lógica de reconexión con espera exponencial
-* **Filtrado**: Use filtros de ticker/ISIN para reducir el ancho de banda
+* **Eliminación de duplicados**: Usa el campo `id` para evitar procesar mensajes duplicados
+* **Heartbeat**: Envía comandos `ping` cada 30-60 segundos para mantener la conexión
+* **Manejo de errores**: Implementa una lógica de reconexión con retroceso exponencial
+* **Filtrado**: Usa filtros de tíker/ISIN para reducir el ancho de banda

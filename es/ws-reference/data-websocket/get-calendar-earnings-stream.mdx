@@ -5,28 +5,28 @@ asyncapi: "/asyncapi/calendar-earnings-stream.yml calendarEarnings"
 ---
 
 <div id="overview">
-  ## Descripción general
+  ## Resumen
 </div>
 
-Suscríbase a los anuncios de resultados en tiempo real y reciba actualizaciones instantáneas sobre los resultados financieros de las empresas, incluidos el BPA, los ingresos y las sorpresas de resultados.
+Suscríbase a los anuncios de resultados en tiempo real y reciba actualizaciones instantáneas sobre los resultados financieros de las empresas, incluidos el BPA, los ingresos y las sorpresas en los resultados.
 
 <div id="key-features">
   ### Características clave
 </div>
 
-* **Resultados en tiempo real**: Reciba notificaciones instantáneas de los anuncios de resultados a medida que se produzcan
-* **Datos completos**: Incluye BPA, ingresos, estimaciones, cifras reales y métricas de sorpresa
-* **Filtrado por valor**: Suscríbase a tickers o ISIN específicos
-* **Períodos de resultados**: Haga seguimiento de los resultados de Q1, Q2, Q3, Q4 y del ejercicio completo (FY)
-* **Niveles de importancia**: Escala de 0 a 5 que indica la relevancia para el mercado
+* **Resultados en tiempo real**: Reciba notificaciones instantáneas de anuncios de resultados a medida que se producen
+* **Datos completos**: Incluye EPS, ingresos, estimaciones, valores reales y métricas de sorpresa
+* **Filtrar por valor**: Suscríbase a tíkers o ISIN específicos
+* **Períodos de resultados**: Realice un seguimiento de los resultados de Q1, Q2, Q3, Q4 y del año completo (FY)
+* **Calificaciones de importancia**: Escala de 0 a 5 que indica la relevancia para el mercado
 
 <div id="use-cases">
   ### Casos de uso
 </div>
 
 * Crear calendarios y alertas de resultados en tiempo real
-* Hacer seguimiento de las sorpresas en resultados y de los patrones de resultados por encima o por debajo de las expectativas
-* Supervisar en tiempo real los resultados de las empresas de la cartera
+* Hacer seguimiento de las sorpresas en los resultados y de los patrones de superación/incumplimiento de expectativas
+* Monitorizar en tiempo real los resultados de las empresas en cartera
 * Crear paneles de control para la temporada de resultados
 * Automatizar estrategias de trading basadas en los resultados
 
@@ -48,11 +48,11 @@ wss://api.benzinga.com/api/v2.1/calendar/earnings/stream?token=YOUR_TOKEN
   ### Parámetros de consulta
 </div>
 
-| Parámetro | Obligatorio | Descripción                                                        |
-| --------- | ----------- | ------------------------------------------------------------------ |
-| `token`   | Sí          | Su token de la API WebSocket de Benzinga (bz.production***)        |
-| `tickers` | No          | Lista de símbolos ticker separados por comas (p. ej., `AAPL,MSFT`) |
-| `isins`   | No          | Lista de ISIN separados por comas para filtrar                     |
+| Parámetro | Obligatorio | Descripción                                              |
+| --------- | ----------- | -------------------------------------------------------- |
+| `token`   | Sí          | Token de la API WebSocket de Benzinga (bz.production***) |
+| `tickers` | No          | Lista de tíkers separada por comas (p. ej., `AAPL,MSFT`) |
+| `isins`   | No          | Lista de ISIN separada por comas para filtrar            |
 
 <div id="message-example">
   ## Ejemplo de mensaje
@@ -91,25 +91,25 @@ wss://api.benzinga.com/api/v2.1/calendar/earnings/stream?token=YOUR_TOKEN
   ### Campos clave
 </div>
 
-| Campo                  | Descripción                                         |
-| ---------------------- | --------------------------------------------------- |
-| `eps`                  | Beneficio por acción real reportado                 |
-| `eps_est`              | Estimación consensuada del BPA de los analistas     |
-| `eps_surprise`         | Diferencia entre el valor real y la estimación      |
-| `eps_surprise_percent` | Sorpresa como porcentaje de la estimación           |
-| `revenue`              | Ingresos reales reportados                          |
-| `revenue_est`          | Estimación consensuada de ingresos de los analistas |
-| `importance`           | Importancia para el mercado (0-5, 5 = máxima)       |
+| Campo                  | Descripción                                        |
+| ---------------------- | -------------------------------------------------- |
+| `eps`                  | BPA real informado                                 |
+| `eps_est`              | Estimación consensuada de BPA de analistas         |
+| `eps_surprise`         | Diferencia entre el valor real y la estimación     |
+| `eps_surprise_percent` | Sorpresa como porcentaje de la estimación          |
+| `revenue`              | Ingresos reales informados                         |
+| `revenue_est`          | Estimación consensuada de ingresos de analistas    |
+| `importance`           | Importancia para el mercado (0-5, 5 = la más alta) |
 
 <div id="message-actions">
   ### Acciones del mensaje
 </div>
 
-| Acción                | Descripción                     |
-| --------------------- | ------------------------------- |
-| `created` / `Created` | Nuevo anuncio de resultados     |
-| `updated` / `Updated` | Datos de resultados modificados |
-| `deleted` / `Deleted` | Anuncio eliminado               |
+| Acción                | Descripción                      |
+| --------------------- | -------------------------------- |
+| `created` / `Created` | Nuevo anuncio de resultados      |
+| `updated` / `Updated` | Datos de resultados actualizados |
+| `deleted` / `Deleted` | Anuncio eliminado                |
 
 <div id="interactive-commands">
   ## Comandos interactivos
@@ -118,13 +118,13 @@ wss://api.benzinga.com/api/v2.1/calendar/earnings/stream?token=YOUR_TOKEN
 | Comando  | Descripción                                                 |
 | -------- | ----------------------------------------------------------- |
 | `ping`   | Mantiene la conexión activa (responde con `pong`)           |
-| `replay` | Vuelve a reproducir hasta los últimos 100 mensajes en caché |
+| `replay` | Reenvía hasta los últimos 100 mensajes almacenados en caché |
 
 <div id="best-practices">
   ## Mejores prácticas
 </div>
 
-* **Eliminación de duplicados**: Use el campo `id` para evitar procesar duplicados
-* **Filtro de importancia**: Concéntrese en los resultados con alta importancia (4-5) por su gran impacto en el mercado
-* **Alertas de sorpresas**: Establezca umbrales para detectar sorpresas significativas en los resultados
-* **Hora**: Tenga en cuenta que el campo `time` usa el formato de 24 horas en EST/EDT
+* **Deduplicación**: Use el campo `id` para evitar el procesamiento duplicado
+* **Filtro de importancia**: Céntrese en los resultados de alta importancia (4-5) por su gran impacto en el mercado
+* **Alertas de sorpresa**: Defina umbrales para sorpresas significativas en los resultados
+* **Horario**: Tenga en cuenta que el campo `time` usa el formato de 24 horas en EST/EDT

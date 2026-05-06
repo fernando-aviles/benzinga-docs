@@ -1,6 +1,6 @@
 ---
-title: "Stream de calificaciones"
-description: "Calificaciones de analistas en tiempo real y cambios en los precios objetivo."
+title: "Flujo de calificaciones"
+description: "Calificaciones de analistas y cambios de precio objetivo en tiempo real."
 asyncapi: "/asyncapi/calendar-ratings-stream.yml calendarRatings"
 ---
 
@@ -8,17 +8,17 @@ asyncapi: "/asyncapi/calendar-ratings-stream.yml calendarRatings"
   ## Descripción general
 </div>
 
-Suscríbase a cambios en tiempo real en las calificaciones de analistas y a actualizaciones de precios objetivo. Supervise mejoras y rebajas de calificación, inicios de cobertura y ajustes de precios objetivo en cuanto se produzcan.
+Suscríbete a los cambios en las calificaciones de analistas y a las actualizaciones de precios objetivo en tiempo real. Supervisa mejoras, rebajas, inicios de cobertura y ajustes de precios objetivo a medida que se producen.
 
 <div id="key-features">
   ### Características clave
 </div>
 
-* **Calificaciones en tiempo real**: Reciba notificaciones instantáneas sobre cambios en las calificaciones de analistas
-* **Precios objetivo**: Realice un seguimiento de los precios objetivo actuales y anteriores, junto con sus ajustes
+* **Calificaciones en tiempo real**: Recibe notificaciones instantáneas sobre cambios en las calificaciones de los analistas
+* **Precios objetivo**: Sigue los precios objetivo actuales y anteriores, junto con sus ajustes
 * **Detalles del analista**: Incluye el nombre del analista, la firma y métricas de precisión histórica
-* **Clasificación de cambios**: Mejoras, rebajas, mantenimiento, inicio, reiteración
-* **Filtrar por valor**: Suscríbase a tickers o ISIN específicos
+* **Clasificación de acciones**: Mejoras, rebajas, mantenimiento, inicio y reiteración
+* **Filtrar por instrumento**: Suscríbete a tíkeres o ISIN específicos
 
 <div id="use-cases">
   ### Casos de uso
@@ -26,15 +26,15 @@ Suscríbase a cambios en tiempo real en las calificaciones de analistas y a actu
 
 * Crear alertas y notificaciones en tiempo real sobre cambios de calificación
 * Hacer seguimiento del rendimiento y la precisión de las firmas de análisis
-* Supervisar los cambios en el consenso de precios objetivo
-* Crear dashboards de mejoras/rebajas de calificación
-* Automatizar estrategias de trading basadas en acciones de analistas
+* Supervisar los cambios en el consenso del precio objetivo
+* Crear paneles de subidas/bajadas de calificación
+* Automatizar estrategias de trading basadas en los movimientos de los analistas
 
 <div id="quick-start">
   ## Inicio rápido
 </div>
 
-Usa la herramienta interactiva de prueba de WebSocket de arriba para conectarte y probar el stream en tiempo real.
+Usa el probador interactivo de WebSocket de arriba para conectarte y probar el flujo en tiempo real.
 
 <div id="connection-url">
   ### URL de conexión
@@ -50,9 +50,9 @@ wss://api.benzinga.com/api/v2.1/calendar/ratings/stream?token=YOUR_TOKEN
 
 | Parámetro | Obligatorio | Descripción                                                 |
 | --------- | ----------- | ----------------------------------------------------------- |
-| `token`   | Sí          | Su token de la API WebSocket de Benzinga (bz.production***) |
-| `tickers` | No          | Lista separada por comas de tickers (p. ej., `AAPL,TSLA`)   |
-| `isins`   | No          | Lista separada por comas de ISIN para filtrar               |
+| `token`   | Sí          | Tu token de la API WebSocket de Benzinga (bz.production***) |
+| `tickers` | No          | Lista de tíkeres separada por comas (p. ej., `AAPL,TSLA`)   |
+| `isins`   | No          | Lista de ISIN separada por comas para filtrar               |
 
 <div id="message-example">
   ## Ejemplo de mensaje
@@ -90,13 +90,13 @@ wss://api.benzinga.com/api/v2.1/calendar/ratings/stream?token=YOUR_TOKEN
   ### Acciones de calificación
 </div>
 
-| Acción       | Descripción                                  |
-| ------------ | -------------------------------------------- |
+| Acción       | Descripción                                   |
+| ------------ | --------------------------------------------- |
 | `Upgrades`   | Calificación mejorada (p. ej., Neutral → Buy) |
 | `Downgrades` | Calificación rebajada (p. ej., Buy → Hold)    |
 | `Maintains`  | Calificación sin cambios                      |
-| `Initiates`  | Inicio de cobertura                           |
-| `Reiterates` | Confirma la calificación existente            |
+| `Initiates`  | Primera cobertura de calificación             |
+| `Reiterates` | Confirma la calificación vigente              |
 
 <div id="message-actions">
   ### Acciones del mensaje
@@ -121,7 +121,7 @@ wss://api.benzinga.com/api/v2.1/calendar/ratings/stream?token=YOUR_TOKEN
   ## Mejores prácticas
 </div>
 
-* **Seguimiento de cambios**: Compare `rating_current` vs `rating_prior` para detectar mejoras o rebajas de calificación
-* **Movimiento del precio objetivo**: Supervise `pt_current` vs `pt_prior` para detectar cambios en el precio objetivo
-* **Reputación del analista**: Considere la importancia de la firma y su precisión histórica
-* **Filtro de importancia**: Céntrese en las calificaciones de alta importancia (4-5) para identificar las de mayor impacto
+* **Seguimiento de cambios**: Compare `rating_current` y `rating_prior` para detectar mejoras o rebajas de calificación
+* **Movimiento del precio objetivo**: Supervise `pt_current` y `pt_prior` para identificar cambios en el precio objetivo
+* **Reputación del analista**: Tenga en cuenta la importancia de la firma y su precisión histórica
+* **Filtro de importancia**: Céntrese en las calificaciones de alta importancia (4-5) para identificar los cambios con mayor impacto

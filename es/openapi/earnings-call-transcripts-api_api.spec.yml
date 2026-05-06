@@ -1,26 +1,26 @@
 openapi: 3.0.0
 info:
   contact: {}
-  description: Esta API REST proporciona endpoints para buscar transcripciones de
-    conferencias de resultados y obtener los detalles de una transcripción de
-    conferencia de resultados.
+  description: Esta API REST proporciona puntos finales para buscar
+    transcripciones de llamadas de resultados y obtener los detalles de una
+    transcripción de llamada de resultados.
   termsOfService: http://swagger.io/terms/
   title: Earnings Call Transcripts API
   version: 1.0.0
 paths:
   /api/v1/earnings-call-transcripts:
     get:
-      description: Recupera transcripciones de conferencias de resultados para
-        empresas o ID de llamada especificados. Devuelve transcripciones
-        completas de conferencias de resultados trimestrales y anuales,
-        incluidas sesiones de preguntas y respuestas, identificación de los
-        participantes y marcas de tiempo. Use filtros de fecha para recuperar
-        transcripciones de períodos de reporte específicos o filtre por ticker
-        para obtener conferencias de resultados de empresas concretas.
+      description: Recupera transcripciones de llamadas de resultados para las
+        empresas o los ID de llamada especificados. Devuelve transcripciones
+        completas de llamadas de resultados trimestrales y anuales, incluidas
+        sesiones de preguntas y respuestas, identificación de los oradores y
+        marcas de tiempo. Use filtros de fecha para recuperar transcripciones de
+        períodos de reporte específicos o filtre por símbolos de tíker para
+        obtener conversaciones de resultados de empresas concretas.
       operationId: get-earnings-call-transcripts
       parameters:
-        - description: Lista de tickers bursátiles separados por comas para filtrar
-            transcripciones de conferencias de resultados (p. ej.,
+        - description: Lista de símbolos de tíker bursátiles separados por comas para
+            filtrar transcripciones de llamadas de resultados (p. ej.,
             AAPL,MSFT,GOOGL). Devuelve todas las transcripciones de estas
             empresas.
           in: query
@@ -32,9 +32,9 @@ paths:
             items:
               type: string
         - description: Lista separada por comas de ID de llamada específicos que se van a
-            recuperar. Use esta opción para obtener transcripciones de
-            identificadores de conferencias de resultados conocidos. Tiene
-            prioridad sobre el filtrado por ticker.
+            recuperar. Use esto para obtener transcripciones de identificadores
+            de llamadas de resultados conocidos. Tiene prioridad sobre el
+            filtrado por tíker.
           in: query
           name: call_id
           style: form
@@ -43,36 +43,37 @@ paths:
             type: array
             items:
               type: string
-        - description: "Número de page para la paginación. Indexado desde cero (0 =
+        - description: "Número de página para la paginación. Indexado desde cero (0 =
             primera página, 1 = segunda página, etc.). Predeterminado: 0"
           in: query
           name: page
           schema:
             type: integer
-        - description: "Número de resultados por page. Predeterminado: 5. Máximo: 1000.
-            Use tamaños de page mayores para la recuperación masiva de datos."
+        - description: "Número de resultados por página. Predeterminado: 5. Máximo: 1000.
+            Use tamaños de página más grandes para la recuperación masiva de
+            datos."
           in: query
           name: pagesize
           schema:
             type: integer
         - description: Filtro de fecha de inicio en formato YYYY-MM-DD (p. ej.,
-            2024-01-01). Devuelve transcripciones de conferencias de resultados
-            en esta fecha o posteriores.
+            2024-01-01). Devuelve transcripciones de llamadas de resultados en
+            esta fecha o posteriores.
           in: query
           name: date_from
           schema:
             type: string
         - description: Filtro de fecha de fin en formato YYYY-MM-DD (p. ej., 2024-12-31).
-            Devuelve transcripciones de conferencias de resultados en esta fecha
-            o anteriores.
+            Devuelve transcripciones de llamadas de resultados en esta fecha o
+            anteriores.
           in: query
           name: date_to
           schema:
             type: string
       responses:
         "200":
-          description: Matriz de resúmenes de transcripciones de conferencias de
-            resultados con texto completo y metadatos
+          description: Matriz de resúmenes de transcripciones de llamadas de resultados
+            con texto completo y metadatos
           content:
             application/json:
               schema:
@@ -97,23 +98,23 @@ paths:
                 type: array
       security:
         - ApiKeyAuth: []
-      summary: Transcripciones de conferencias de resultados
+      summary: Transcripciones de llamadas de resultados
       tags:
         - Earnings Call Transcripts
   /api/v1/earnings-call-transcripts/audio:
     get:
       description: Recupera URL descargables de archivos de audio de grabaciones de
-        conferencias de resultados. Devuelve URL firmadas para acceder a
-        grabaciones de audio completas de conferencias de resultados
-        trimestrales y anuales. Los archivos de audio incluyen presentaciones
-        completas de resultados y sesiones de preguntas y respuestas. Las URL
-        tienen un tiempo de validez limitado y están firmadas de forma segura
-        para el acceso autorizado.
+        llamadas de resultados. Devuelve URL firmadas para acceder a grabaciones
+        de audio completas de llamadas de resultados trimestrales y anuales. Los
+        archivos de audio incluyen presentaciones completas de resultados y
+        sesiones de preguntas y respuestas. Las URL tienen una validez limitada
+        y están firmadas de forma segura para el acceso autorizado.
       operationId: get-earnings-call-transcript-audio-files
       parameters:
-        - description: Lista de tickers bursátiles separados por comas para filtrar
-            archivos de audio (p. ej., AAPL,MSFT,GOOGL). Devuelve archivos de
-            audio de todas las conferencias de resultados de estas empresas.
+        - description: Lista de símbolos de tíker bursátiles separados por comas para
+            filtrar archivos de audio (p. ej., AAPL,MSFT,GOOGL). Devuelve
+            archivos de audio de todas las llamadas de resultados de estas
+            empresas.
           in: query
           name: tickers
           style: form
@@ -123,8 +124,8 @@ paths:
             items:
               type: string
         - description: Lista separada por comas de ID de llamada específicos para
-            recuperar archivos de audio. Use esta opción para obtener el audio
-            de identificadores de conferencias de resultados conocidos.
+            recuperar archivos de audio. Use esto para obtener audio de
+            identificadores de llamadas de resultados conocidos.
           in: query
           name: call_id
           style: form
@@ -133,21 +134,21 @@ paths:
             type: array
             items:
               type: string
-        - description: "Número de page para la paginación. Indexado desde cero (0 =
+        - description: "Número de página para la paginación. Indexado desde cero (0 =
             primera página, 1 = segunda página, etc.). Predeterminado: 0"
           in: query
           name: page
           schema:
             type: integer
-        - description: "Número de resultados por page. Predeterminado: 5. Máximo: 1000"
+        - description: "Número de resultados por página. Predeterminado: 5. Máximo: 1000"
           in: query
           name: pagesize
           schema:
             type: integer
       responses:
         "200":
-          description: Matriz de metadatos de archivos de audio de conferencias de
-            resultados con URL de descarga firmadas
+          description: Matriz de metadatos de archivos de audio de llamadas de resultados
+            con URL de descarga firmadas
           content:
             application/json:
               schema:
@@ -172,7 +173,7 @@ paths:
                 type: array
       security:
         - ApiKeyAuth: []
-      summary: Archivos de audio de conferencias de resultados
+      summary: Archivos de audio de llamadas de resultados
       tags:
         - Earnings Call Transcripts
 components:

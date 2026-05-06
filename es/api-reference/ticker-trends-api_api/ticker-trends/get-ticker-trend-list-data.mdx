@@ -1,10 +1,10 @@
 ---
-title: "Datos de la lista de tendencias de tickers"
+title: "Datos de la lista de tendencias de tíkeres"
 openapi: /es/openapi/ticker-trends-api_api.spec.yml GET /api/v1/trending-tickers/list
 ---
 
 <ResponseExample>
-  ```json Respuesta (200 OK)
+  ```json Response (200 OK)
   {
     "ok": true,
     "data": [
@@ -23,14 +23,14 @@ openapi: /es/openapi/ticker-trends-api_api.spec.yml GET /api/v1/trending-tickers
 </ResponseExample>
 
 <ResponseExample>
-  ```json Respuesta (400 Solicitud incorrecta)
+  ```json Response (400 Bad Request)
   {
       "ok": false,
       "errors": [
           {
               "id": "hbiGJjhsSpnfhM8aBePyTB",
               "code": "400",
-              "value": "Solicitud incorrecta"
+              "value": "Bad Request"
           }
       ]
   }
@@ -38,14 +38,14 @@ openapi: /es/openapi/ticker-trends-api_api.spec.yml GET /api/v1/trending-tickers
 </ResponseExample>
 
 <ResponseExample>
-  ```json Respuesta (500 Error interno del servidor)
+  ```json Response (500 Internal Server Error)
   {
       "ok": false,
       "errors": [
           {
               "id": "hbiGJjhsSpnfhM8aBePyTB",
               "code": "500",
-              "value": "Algo salió mal"
+              "value": "Something went wrong"
           }
       ]
   }

@@ -3,7 +3,7 @@ title: "Dividendos"
 description: dividends()
 ---
 
-[&lt; VOLVER](/es/sdks/languages/java#dividends)
+[&lt; Volver](/es/sdks/languages/java#dividends)
 
 <div id="overview">
   ## Descripción general
@@ -50,7 +50,7 @@ public class Application {
                 .call();
 
         if (res.modelsDividendJSON().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -60,9 +60,9 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro | Tipo                                                                        | Obligatorio                | Descripción                                           |
-| --------- | --------------------------------------------------------------------------- | -------------------------- | ----------------------------------------------------- |
-| `request` | [GetDividendsV22Request](../../models/operations/GetDividendsV22Request.md) | :heavy&#95;check&#95;mark: | El objeto de solicitud que se usará para la petición. |
+| Parámetro | Tipo                                                                        | Obligatorio                | Descripción                                                |
+| --------- | --------------------------------------------------------------------------- | -------------------------- | ---------------------------------------------------------- |
+| `request` | [GetDividendsV22Request](../../models/operations/GetDividendsV22Request.md) | :heavy&#95;check&#95;mark: | El objeto de solicitud que se debe usar para la solicitud. |
 
 <div id="response">
   ### Respuesta
@@ -122,7 +122,7 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro | Tipo                                                                  | Requerido                  | Descripción                                               |
+| Parámetro | Tipo                                                                  | Obligatorio                | Descripción                                               |
 | --------- | --------------------------------------------------------------------- | -------------------------- | --------------------------------------------------------- |
 | `request` | [GetDividendsRequest](../../models/operations/GetDividendsRequest.md) | :heavy&#95;check&#95;mark: | El objeto de solicitud que se utilizará para la petición. |
 

@@ -13,7 +13,7 @@ description: derivedFiguresAndRatios()
   ### Operaciones disponibles
 </div>
 
-* [get](#get) - Obtiene cifras derivadas y ratios V3
+* [get](#get) - Obtener cifras derivadas y ratios V3
 
 <div id="get">
   ## get
@@ -48,7 +48,7 @@ public class Application {
                 .call();
 
         if (res.string().isPresent()) {
-            // manejar la respuesta
+            // manejar respuesta
         }
     }
 }
@@ -58,12 +58,12 @@ public class Application {
   ### Parámetros
 </div>
 
-| Parámetro | Tipo                     | Obligatorio                | Descripción                           |
-| --------- | ------------------------ | -------------------------- | ------------------------------------- |
-| `symbols` | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separados por comas |
-| `from`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de inicio                       |
-| `to`      | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de fin                          |
-| `date`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                       |
+| Parámetro | Tipo                     | Obligatorio                | Descripción                          |
+| --------- | ------------------------ | -------------------------- | ------------------------------------ |
+| `symbols` | *String*                 | :heavy&#95;check&#95;mark: | Lista de símbolos separada por comas |
+| `from`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de inicio                      |
+| `to`      | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Fecha de fin                         |
+| `date`    | *Optional&lt;String&gt;* | :heavy&#95;minus&#95;sign: | Tipo de informe                      |
 
 <div id="response">
   ### Respuesta

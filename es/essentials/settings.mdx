@@ -1,10 +1,10 @@
 ---
 title: 'Configuración global'
-description: 'Mintlify te da control total sobre el aspecto y la experiencia de tu documentación mediante el archivo docs.json'
+description: 'Mintlify te brinda control total sobre la apariencia y el funcionamiento de tu documentación mediante el archivo docs.json'
 icon: 'gear'
 ---
 
-Todos los sitios de Mintlify necesitan un archivo `docs.json` con los ajustes de configuración principales. Más abajo encontrarás más información sobre las [propiedades](#properties).
+Todos los sitios de Mintlify necesitan un archivo `docs.json` con la configuración principal. Obtén más información sobre las [propiedades](#properties) a continuación.
 
 <div id="properties">
   ## Propiedades
@@ -17,7 +17,7 @@ Todos los sitios de Mintlify necesitan un archivo `docs.json` con los ajustes de
 </ResponseField>
 
 <ResponseField name="navigation" type="Navigation[]" required>
-  Una matriz de grupos con todas las páginas dentro de cada grupo
+  Un array de grupos con todas las páginas dentro de cada grupo
 
   <Expandable title="Navegación">
     <ResponseField name="group" type="string">
@@ -27,7 +27,7 @@ Todos los sitios de Mintlify necesitan un archivo `docs.json` con los ajustes de
     </ResponseField>
 
     <ResponseField name="pages" type="string[]">
-      Las rutas relativas de los archivos Markdown que servirán como páginas.
+      Las rutas relativas a los archivos Markdown que servirán como páginas.
 
       Ejemplo: `["customization", "page"]`
     </ResponseField>
@@ -35,39 +35,39 @@ Todos los sitios de Mintlify necesitan un archivo `docs.json` con los ajustes de
 </ResponseField>
 
 <ResponseField name="logo" type="string or object">
-  Ruta de la imagen del logotipo o un objeto con las rutas de las imágenes del logotipo para los modos &quot;light&quot; y &quot;dark&quot;
+  Ruta a la imagen del logotipo o a un objeto con las rutas a las imágenes del logotipo para los modos &quot;light&quot; y &quot;dark&quot;
 
-  <Expandable title="Logo">
+  <Expandable title="Logotipo">
     <ResponseField name="light" type="string">
-      Ruta del logotipo en modo claro
+      Ruta al logotipo en modo claro
     </ResponseField>
 
     <ResponseField name="dark" type="string">
-      Ruta del logotipo en modo oscuro
+      Ruta al logotipo en modo oscuro
     </ResponseField>
 
     <ResponseField name="href" type="string" default="/">
-      Destino del enlace al hacer clic en el logotipo
+      Destino al que enlaza el logotipo al hacer clic
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="favicon" type="string">
-  Ruta de la imagen del favicon
+  Ruta a la imagen del favicon
 </ResponseField>
 
 <ResponseField name="colors" type="Colors">
   Códigos de color hexadecimales para tu tema global
 
-  <Expandable title="Colors">
+  <Expandable title="Colores">
     <ResponseField name="primary" type="string" required>
-      El color principal. Se usa con mayor frecuencia para el contenido resaltado, los encabezados
-      de sección y los acentos, en modo claro
+      El color principal. Se usa con mayor frecuencia para contenido resaltado,
+      encabezados de sección y acentos, en modo claro
     </ResponseField>
 
     <ResponseField name="light" type="string">
-      El color principal para el modo oscuro. Se usa con mayor frecuencia para el contenido resaltado,
-      los encabezados de sección y los acentos, en modo oscuro
+      El color principal para el modo oscuro. Se usa con mayor frecuencia para contenido resaltado,
+      encabezados de sección y acentos, en modo oscuro
     </ResponseField>
 
     <ResponseField name="dark" type="string">
@@ -91,7 +91,7 @@ Todos los sitios de Mintlify necesitan un archivo `docs.json` con los ajustes de
 </ResponseField>
 
 <ResponseField name="topbarLinks" type="TopbarLink[]">
-  Matriz de `name` y `url` de los enlaces que quieres incluir en la barra superior
+  Array de `name` y `url` de los enlaces que quieres incluir en la barra superior
 
   <Expandable title="TopbarLink">
     <ResponseField name="name" type="string">
@@ -101,7 +101,7 @@ Todos los sitios de Mintlify necesitan un archivo `docs.json` con los ajustes de
     </ResponseField>
 
     <ResponseField name="url" type="string">
-      La URL a la que te lleva al hacer clic en el botón. Ejemplo: `https://mintlify.com/contact`
+      La URL a la que dirige el botón al hacer clic. Ejemplo: `https://mintlify.com/contact`
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -109,11 +109,11 @@ Todos los sitios de Mintlify necesitan un archivo `docs.json` con los ajustes de
 <ResponseField name="topbarCtaButton" type="Call to Action">
   <Expandable title="Llamada a la acción de la barra superior">
     <ResponseField name="type" type={'"link" or "github"'} default="link">
-      `link` muestra un botón. `github` muestra la información del repositorio en la URL proporcionada, incluido el número de estrellas de GitHub.
+      Link muestra un botón. GitHub muestra la información del repositorio en la URL proporcionada, incluido el número de estrellas de GitHub.
     </ResponseField>
 
     <ResponseField name="url" type="string">
-      Si es `link`: a dónde enlaza el botón.
+      Si es `link`: destino del botón.
 
       Si es `github`: enlace al repositorio del que se cargará la información de GitHub.
     </ResponseField>
@@ -125,14 +125,14 @@ Todos los sitios de Mintlify necesitan un archivo `docs.json` con los ajustes de
 </ResponseField>
 
 <ResponseField name="versions" type="string[]">
-  Matriz de nombres de versiones. Usa esto solo si quieres mostrar diferentes versiones
+  Array de nombres de versiones. Usa esto solo si quieres mostrar distintas versiones
   de la documentación con un menú desplegable en la barra de navegación.
 </ResponseField>
 
 <ResponseField name="anchors" type="Anchor[]">
-  Un array de anclas que incluye `icon`, `color` y `url`.
+  Una lista de anclas que incluye `icon`, `color` y `url`.
 
-  <Expandable title="Anchor">
+  <Expandable title="Ancla">
     <ResponseField name="icon" type="string">
       El icono de [Font Awesome](https://fontawesome.com/search?s=brands%2Cduotone) que se usa para representar el ancla.
 
@@ -146,7 +146,7 @@ Todos los sitios de Mintlify necesitan un archivo `docs.json` con los ajustes de
     </ResponseField>
 
     <ResponseField name="url" type="string">
-      El inicio de la URL que determina qué páginas van en el ancla. Por lo general, es el nombre de la carpeta en la que colocas tus páginas.
+      El inicio de la URL que indica qué páginas pertenecen al ancla. Por lo general, es el nombre de la carpeta en la que colocas tus páginas.
     </ResponseField>
 
     <ResponseField name="color" type="string">
@@ -158,21 +158,21 @@ Todos los sitios de Mintlify necesitan un archivo `docs.json` con los ajustes de
     </ResponseField>
 
     <ResponseField name="isDefaultHidden" type="boolean" default="false">
-      Pasa `true` si quieres ocultar el ancla hasta que alguien acceda directamente, mediante un enlace, a la documentación que contiene.
+      Pasa `true` si quieres ocultar el ancla hasta que alguien acceda directamente mediante un enlace a documentación dentro de ella.
     </ResponseField>
 
     <ResponseField name="iconType" default="duotone" type="string">
-      Uno de los siguientes: &quot;brands&quot;, &quot;duotone&quot;, &quot;light&quot;, &quot;sharp-solid&quot;, &quot;solid&quot; o &quot;thin&quot;
+      Uno de: &quot;brands&quot;, &quot;duotone&quot;, &quot;light&quot;, &quot;sharp-solid&quot;, &quot;solid&quot; o &quot;thin&quot;
     </ResponseField>
   </Expandable>
 </ResponseField>
 
-<ResponseField name="topAnchor" type="Objeto">
-  Sobrescribe la configuración predeterminada del ancla superior.
+<ResponseField name="topAnchor" type="Object">
+  Sobrescribe la configuración predeterminada del ancla situada más arriba.
 
   <Expandable title="Objeto">
     <ResponseField name="name" default="Documentation" type="string">
-      El nombre del ancla superior
+      El nombre del ancla situada más arriba
     </ResponseField>
 
     <ResponseField name="icon" default="book-open" type="string">
@@ -180,61 +180,61 @@ Todos los sitios de Mintlify necesitan un archivo `docs.json` con los ajustes de
     </ResponseField>
 
     <ResponseField name="iconType" default="duotone" type="string">
-      Uno de los siguientes: &quot;brands&quot;, &quot;duotone&quot;, &quot;light&quot;, &quot;sharp-solid&quot;, &quot;solid&quot; o &quot;thin&quot;
+      Uno de: &quot;brands&quot;, &quot;duotone&quot;, &quot;light&quot;, &quot;sharp-solid&quot;, &quot;solid&quot; o &quot;thin&quot;
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="tabs" type="Tabs[]">
-  Un array de pestañas de navegación.
+  Una lista de pestañas de navegación.
 
-  <Expandable title="Tabs">
+  <Expandable title="Pestañas">
     <ResponseField name="name" type="string">
       El nombre de la etiqueta de la pestaña.
     </ResponseField>
 
     <ResponseField name="url" type="string">
-      El inicio de la URL que determina qué páginas van en la pestaña. Por lo general, este
+      El inicio de la URL que indica qué páginas pertenecen a la pestaña. Por lo general, este
       es el nombre de la carpeta en la que colocas tus páginas.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="api" type="API">
-  Configuración de la API. Obtén más información sobre las páginas de API en [API Components](/es/api-playground/demo).
+  Configuración de la API. Obtén más información sobre las páginas de API en [Componentes de API](/es/api-playground/demo).
 
   <Expandable title="API">
     <ResponseField name="baseUrl" type="string">
-      La URL base de todos los endpoints de la API. Si `baseUrl` es un arreglo, se habilitarán varias opciones de URL base
-      entre las que el usuario podrá alternar.
+      La URL base para todos los puntos finales de la API. Si `baseUrl` es un arreglo, habilita varias
+      opciones de URL base entre las que el usuario puede alternar.
     </ResponseField>
 
     <ResponseField name="auth" type="Auth">
-      <Expandable title="Auth">
+      <Expandable title="Autenticación">
         <ResponseField name="method" type="&#x22;bearer&#x22; | &#x22;basic&#x22; | &#x22;key&#x22;">
-          La estrategia de autenticación que se usa para todos los endpoints de la API.
+          La estrategia de autenticación que se usa en todos los puntos finales de la API.
         </ResponseField>
 
         <ResponseField name="name" type="string">
-          El nombre del parámetro de autenticación que se usa en el playground de la API.
+          El nombre del parámetro de autenticación utilizado en el playground de API.
 
-          Si `method` es `basic`, el formato debe ser `[usernameName]:[passwordName]`
+          Si el método es `basic`, el formato debe ser `[usernameName]:[passwordName]`
         </ResponseField>
 
         <ResponseField name="inputPrefix" type="string">
-          El valor predeterminado diseñado para usarse como prefijo del campo de entrada de autenticación.
+          El valor predeterminado pensado para usarse como prefijo del campo de entrada de autenticación.
 
-          Por ejemplo, un `inputPrefix` de `AuthKey` hará que el valor de entrada predeterminado del campo de autenticación sea `AuthKey`.
+          P. ej., si `inputPrefix` es `AuthKey`, el valor predeterminado del campo de autenticación será `AuthKey`.
         </ResponseField>
       </Expandable>
     </ResponseField>
 
     <ResponseField name="playground" type="Playground">
-      Configuración del playground de la API
+      Configuración del playground de API
 
       <Expandable title="Playground">
         <ResponseField name="mode" default="show" type="&#x22;show&#x22; | &#x22;simple&#x22; | &#x22;hide&#x22;">
-          Indica si el playground se muestra, se oculta o si solo muestra el endpoint sin interacción adicional del usuario (`simple`)
+          Indica si el playground se muestra, se oculta o si solo muestra el punto final sin interactividad adicional para el usuario `simple`
 
           Obtén más información en las [guías del playground](/es/api-playground/demo)
         </ResponseField>
@@ -242,15 +242,15 @@ Todos los sitios de Mintlify necesitan un archivo `docs.json` con los ajustes de
     </ResponseField>
 
     <ResponseField name="maintainOrder" type="boolean">
-      Al habilitar esta marca, se garantiza que el orden de las claves en las páginas de OpenAPI coincida con el orden definido en el archivo OpenAPI.
+      Habilitar esta marca garantiza que el orden de las claves en las páginas de OpenAPI coincida con el orden definido en el archivo OpenAPI.
 
-      <Warning>Pronto este comportamiento se habilitará de forma predeterminada; en ese momento, este campo quedará obsoleto.</Warning>
+      <Warning>Este comportamiento pronto se habilitará de forma predeterminada, momento en el que este campo quedará obsoleto.</Warning>
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="openapi" type="string | string[]">
-  Una cadena o un arreglo de cadenas con URL o rutas relativas que apuntan a tu
+  Una cadena o un arreglo de cadenas de URL o rutas relativas que apuntan a tu
   archivo OpenAPI.
 
   Ejemplos:
@@ -271,7 +271,7 @@ Todos los sitios de Mintlify necesitan un archivo `docs.json` con los ajustes de
 </ResponseField>
 
 <ResponseField name="footerSocials" type="FooterSocials">
-  Un objeto de cuentas de redes sociales en el que cada par clave-propiedad representa la plataforma de red social y la URL de la cuenta.
+  Un objeto de cuentas de redes sociales donde cada par clave-valor representa la plataforma de redes sociales y la URL de la cuenta.
 
   Ejemplo:
 
@@ -284,7 +284,7 @@ Todos los sitios de Mintlify necesitan un archivo `docs.json` con los ajustes de
 
   <Expandable title="FooterSocials">
     <ResponseField name="[key]" type="string">
-      Uno de los siguientes valores: `website`, `facebook`, `x`, `discord`, `slack`, `github`, `linkedin`, `instagram`, `hacker-news`
+      Uno de los siguientes valores `website`, `facebook`, `x`, `discord`, `slack`, `github`, `linkedin`, `instagram`, `hacker-news`
 
       Ejemplo: `x`
     </ResponseField>
@@ -302,11 +302,11 @@ Todos los sitios de Mintlify necesitan un archivo `docs.json` con los ajustes de
 
   <Expandable title="Feedback">
     <ResponseField name="suggestEdit" type="boolean" default="false">
-      Habilita un botón para que los usuarios puedan sugerir ediciones mediante pull requests
+      Habilita un botón para que los usuarios sugieran ediciones mediante pull requests
     </ResponseField>
 
     <ResponseField name="raiseIssue" type="boolean" default="false">
-      Habilita un botón para que los usuarios puedan reportar un problema sobre la documentación
+      Habilita un botón para que los usuarios reporten un problema en la documentación
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -316,8 +316,8 @@ Todos los sitios de Mintlify necesitan un archivo `docs.json` con los ajustes de
 
   <Expandable title="ModeToggle">
     <ResponseField name="default" type={'"light" or "dark"'}>
-      Define si quieres mostrar siempre el modo claro u oscuro a los usuarios nuevos. Si no se
-      configura, se usa de forma predeterminada el mismo modo que el sistema operativo del usuario.
+      Indica si quieres mostrar siempre el modo claro u oscuro a los usuarios nuevos. Si no se
+      establece, se usa de forma predeterminada el mismo modo que el sistema operativo del usuario.
     </ResponseField>
 
     <ResponseField name="isHidden" type="boolean" default="false">
@@ -343,6 +343,6 @@ Todos los sitios de Mintlify necesitan un archivo `docs.json` con los ajustes de
 </ResponseField>
 
 <ResponseField name="backgroundImage" type="string">
-  Una imagen de fondo que se mostrará detrás de cada página. Consulta el ejemplo de
+  Una imagen de fondo que se mostrará detrás de cada página. Consulta un ejemplo con
   [Infisical](https://infisical.com/docs) y [FRPC](https://frpc.io).
 </ResponseField>
